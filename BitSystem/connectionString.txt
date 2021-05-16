@@ -1,0 +1,3 @@
+Data Source=DESKTOP-PK9H8L7\SQLEXPRESS;Initial Catalog=BitSystem_DB;User ID=BitSysAdmin;Password=BitSysAdmin
+
+SELECT * FROM [BusAccountTable]
