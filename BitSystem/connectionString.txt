@@ -1,3 +1,11 @@
 Data Source=DESKTOP-PK9H8L7\SQLEXPRESS;Initial Catalog=BitSystem_DB;User ID=BitSysAdmin;Password=BitSysAdmin
 
 SELECT * FROM [BusAccountTable]
+
+
+System.Data.SqlClient.SqlException
+  HResult=0x80131904
+  Message=找不到預存程序 'sqlTest'。
+  Source=.Net SqlClient Data Provider
+  StackTrace: 
+<無法評估例外狀況堆疊追蹤>
