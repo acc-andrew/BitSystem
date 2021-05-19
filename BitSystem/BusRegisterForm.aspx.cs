@@ -110,9 +110,17 @@ namespace BitSystem
 
         protected void RegisterBtn_Click(object sender, EventArgs e)
         {
-            SQLDB_write("BitSystem_DBConnectionString");
-            // to get BusID from BusAccountTable
-            SQLDB_verify("BitSystem_DBConnectionString", _BusName.Text);
+            if (_BusPassword.Text != _ConfirmPassword.Text)
+            {
+                Response.Write("<script>alert('密碼不正確！請重新輸入');</script>");
+            }
+            else
+            {
+                SQLDB_write("BitSystem_DBConnectionString");
+                // to get BusID from BusAccountTable
+                SQLDB_verify("BitSystem_DBConnectionString", _BusName.Text);
+            }// password matches
+
         }// 
     }
 }
