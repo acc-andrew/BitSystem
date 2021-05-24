@@ -13,7 +13,27 @@ namespace BitSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // for year, month  droplist
+            if (!IsPostBack) //如果第一次載入頁面
+            {
+                for (int y = 1949; y < 2050; y++) //給日期1下拉框新增年份資料
+                {
+                    _birthYear_list.Items.Add(y.ToString());
+                }
+                for (int m = 1; m < 13; m++) //給日期2下拉框新增月份資料
+                {
+                    _birthMonth_list.Items.Add(m.ToString());
+                }
 
+                // to initialize date
+                MonthChanged(this, System.EventArgs.Empty);
+
+                //給下拉框預設顯示當前日期
+                _birthYear_list.Text = (DateTime.Now.Year).ToString(); 
+                _birthMonth_list.Text = (DateTime.Now.Month).ToString();
+                _birthDate_list.Text = (DateTime.Now.Date).ToString();
+
+            }// if (!IsPostBack)
         }
         protected void SQLDB_write(string connString)
         {
@@ -26,19 +46,44 @@ namespace BitSystem
             connection.Open();
 
             // _File
-            SqlCommand sql_insert_cmd = new SqlCommand("insert into [memberAccountTable](Password,Name) values(@Password,@Name);", connection); //SQL語句
-            sql_insert_cmd.Parameters.Add("@Password", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@Password"].Value = _memberPassword.Text;
+            SqlCommand sql_insert_cmd = new SqlCommand("insert into Member(user_name,password,name,mail,mobile_phone,year,month,date,address,status) values(@user_name,@password,@name,@mail,@mobile_phone,@year,@month,@date,@address,@status);", connection); //SQL語句
+            sql_insert_cmd.Parameters.Add("@user_name", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@user_name"].Value = _user_name.Text;
 
-            sql_insert_cmd.Parameters.Add("@Name", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@Name"].Value = _memberName.Text;
+            sql_insert_cmd.Parameters.Add("@password", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@password"].Value = _memberPassword.Text;
+
+            sql_insert_cmd.Parameters.Add("@name", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@name"].Value = _name.Text;
+
+            sql_insert_cmd.Parameters.Add("@mail", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@mail"].Value = _email.Text;
+
+            sql_insert_cmd.Parameters.Add("@mobile_phone", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@mobile_phone"].Value = _cellphoneNo.Text;
+            
+            sql_insert_cmd.Parameters.Add("@year", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@year"].Value = _birthYear_list.Text;
+
+            sql_insert_cmd.Parameters.Add("@month", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@month"].Value = _birthMonth_list.Text;
+
+            sql_insert_cmd.Parameters.Add("@date", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@date"].Value = _birthDate_list.Text;
+
+
+            sql_insert_cmd.Parameters.Add("@address", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@address"].Value = _address.Text;
+
+            sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@status"].Value = _status.Text;
 
             sql_insert_cmd.ExecuteNonQuery();
 
             //關閉與資料庫連接的通道
             connection.Close();
 
-            Response.Write($"<script>alert('寫入會員資料庫 memberAccountTable 成功');</script>");
+            Response.Write($"<script>alert('寫入會員資料庫成功');</script>");
 
 
         }// protected void SQLDB_write()
@@ -51,7 +96,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select * from memberAccountTable where Name='{_guiName}'";
+            string sql_statement = $"select * from Member where user_name='{_user_name.Text}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -75,9 +120,9 @@ namespace BitSystem
                     if (Reader["Password"].ToString() == Request.Form["_memberPassword"])
                     {
                         //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-                        Session["Name"] = Request.Form[_guiName];  //"_BusName"
-                        string smemberID = Reader["memberID"].ToString();
-                        Session["memberID"] = smemberID;
+                        Session["name"] = Request.Form[_guiName];  //"_BusName"
+                        string smemberID = Reader["member_ID"].ToString();
+                        Session["member_ID"] = smemberID;
                         _memberID.Text = smemberID;
 
                         Session["memberLogged"] = "Yes";
@@ -111,10 +156,68 @@ namespace BitSystem
             }
             else
             {
-                SQLDB_write("BitSystem_DBConnectionString");
+                SQLDB_write("Sale_netConnectionString");
                 // to get BusID from BusAccountTable
-                SQLDB_verify("BitSystem_DBConnectionString", _memberName.Text);
+                SQLDB_verify("Sale_netConnectionString", _user_name.Text);
             }// password matches
         }// protected void RegisterBtn_Click(object sender, EventArgs e)
+
+        protected bool isLeapYear()
+        {
+            int nYear = int.Parse(_birthYear_list.SelectedValue);
+            return (((nYear % 4) == 0) && ((nYear % 100) != 0)) || ((nYear % 400) == 0);
+        }
+        protected void YearSelected(object sender, EventArgs e)
+        {
+            // force  to refresh month and date
+            MonthChanged(this, System.EventArgs.Empty);
+        }
+
+        protected void MonthChanged(object sender, EventArgs e)
+        {
+            int nMonth = int.Parse(_birthMonth_list.SelectedValue);
+            _birthDate_list.Items.Clear();
+            switch (nMonth)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    for (int d = 1; d < 32; d++)
+                    {
+                        _birthDate_list.Items.Add(d.ToString());
+                    }
+                    break;
+
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    for (int d = 1; d < 31; d++)
+                    {
+                        _birthDate_list.Items.Add(d.ToString());
+                    }
+                    break;
+                case 2:
+                    int nLastFebDate = 0;
+                    bool ifLeapYear = isLeapYear();
+                    if (ifLeapYear == true)
+                    {
+                        nLastFebDate = 30;
+                    }
+                    else
+                    {
+                        nLastFebDate = 29;
+                    }
+                    for (int d = 1; d < nLastFebDate; d++)
+                    {
+                        _birthDate_list.Items.Add(d.ToString());
+                    }
+                    break;
+            }// switch
+        }
     }
 }

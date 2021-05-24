@@ -23,7 +23,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select * from memberAccountTable where Name='{_guiName}'";
+            string sql_statement = $"select * from Member  where Name='{_guiName}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -47,9 +47,9 @@ namespace BitSystem
                     if (Reader["Password"].ToString() == Request.Form["_loginPassword"])
                     {
                         //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-                        Session["Name"] = Request.Form[_guiName];  //"_BusName"
-                        string smemberID = Reader["memberID"].ToString();
-                        Session["memberID"] = smemberID;
+                        Session["name"] = Request.Form[_guiName];  //"_BusName"
+                        string smemberID = Reader["member_ID"].ToString();
+                        Session["member_ID"] = smemberID;
 
                         Session["memberLogged"] = "Yes";
                         Response.Write("<script>alert('會員登入成功');</script>");
@@ -58,9 +58,8 @@ namespace BitSystem
                     }
                     else
                     {
-                        // Response.Write("<script>alert('password mismatch');</script>");
-                        //HTML_msgbox('password mismatch');
-                        bFound = true;
+                        Response.Write("<script>alert('密碼不正確！');</script>");
+                        bFound = false;
                     }
 
                 }// if (Reader.Read())
@@ -68,8 +67,7 @@ namespace BitSystem
             }// if (Reader.HasRows) login name match
             else
             {
-                //Response.Write("<script>alert('login name mismatch');</script>");
-                //HTML_msgbox('login name mismatch');
+                Response.Write("<script>alert('會員資料庫無此帳號！');</script>");
                 bFound = false;
             }// if (Reader.HasRows) login name mismatch
             //關閉與資料庫連接的通道
@@ -80,14 +78,10 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("BitSystem_DBConnectionString", _loginName.Text)
-                == false)
+            if (bSQLDB_verify("Sale_netConnectionString", _loginName.Text)
+                == true)
             {
-                Response.Write("<script>alert('會員資料庫無此帳號！');</script>");
-                Response.Redirect("memberRegisterForm.aspx");
-            }
-            else
-            {
+                Response.Write("<script>alert('會員登入成功！');</script>");
                 Response.Redirect("Default.aspx");
             }
 

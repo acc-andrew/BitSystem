@@ -21,6 +21,7 @@
             &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
             <asp:Button ID="memRegBtn" runat="server" Text="新會員註冊" />
         </div>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_netConnectionString %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
