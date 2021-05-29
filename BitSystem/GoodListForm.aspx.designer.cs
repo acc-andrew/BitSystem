@@ -11,7 +11,7 @@ namespace BitSystem
 {
 
 
-    public partial class memberLoginForm
+    public partial class GoodListForm
     {
 
         /// <summary>
@@ -24,67 +24,67 @@ namespace BitSystem
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// _memberEmail 控制項。
+        /// _memberLoginBtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _memberEmail;
+        protected global::System.Web.UI.WebControls.Button _memberLoginBtn;
 
         /// <summary>
-        /// _CreaateMemberBtn 控制項。
+        /// _memberRegisterBtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _CreaateMemberBtn;
+        protected global::System.Web.UI.WebControls.Button _memberRegisterBtn;
 
         /// <summary>
-        /// Label1 控制項。
+        /// _MyGoodsBtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Button _MyGoodsBtn;
 
         /// <summary>
-        /// _loginName 控制項。
+        /// _OnSaleWebSiteBtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _loginName;
+        protected global::System.Web.UI.WebControls.Button _OnSaleWebSiteBtn;
 
         /// <summary>
-        /// Label2 控制項。
+        /// _SysAdminBtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Button _SysAdminBtn;
 
         /// <summary>
-        /// _loginPassword 控制項。
+        /// _GoodsGridView 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _loginPassword;
+        protected global::System.Web.UI.WebControls.GridView _GoodsGridView;
 
         /// <summary>
-        /// LoginBtn 控制項。
+        /// _ListView 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LoginBtn;
+        protected global::System.Web.UI.WebControls.ListView _ListView;
 
         /// <summary>
         /// SqlDataSource1 控制項。

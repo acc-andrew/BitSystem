@@ -1,55 +1,217 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberRegisterForm.aspx.cs" Inherits="BitSystem.memberRegisterForm" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<link href="assets/css/bootstrap.css" rel="stylesheet"/>
+	<!-- Customize styles -->
+	<link href="style.css" rel="stylesheet"/>
+	<!-- font awesome styles -->
+	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!--[if IE 7]>
+		<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="assets/ico/favicon.ico">
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <h1>會員註冊畫面</h1>
-            <asp:Label ID="Label1" runat="server" Text="會員名稱："></asp:Label>
-            <asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
-            <br/>
-            <asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
-            <asp:TextBox ID="_memberPassword" runat="server" TextMode="Password"></asp:TextBox>
-            <br/>
-            <asp:Label ID="Label3" runat="server" Text="確認密碼："></asp:Label>
-            <asp:TextBox ID="_ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:Label ID="Label4" runat="server" Text="請與會員密碼相同"></asp:Label>
-            <br/>
-            <asp:Label ID="Label5" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
-            <asp:TextBox ID="_name" runat="server" ></asp:TextBox>
-            <br/>
-            <asp:Label ID="Label6" runat="server" Text="電子郵件："></asp:Label>
-            <asp:TextBox ID="_email" runat="server" TextMode="Email" ></asp:TextBox>
-            <br/>            
-            <asp:Label ID="Label7" runat="server" Text="手機號碼："></asp:Label>
-            <asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
-            <br/>
-            <asp:Label ID="Label8" runat="server" Text="出生年&nbsp;&nbsp;&nbsp;&nbsp;："></asp:Label>
-            <asp:DropDownList ID="_birthYear_list" runat="server" OnSelectedIndexChanged="YearSelected" AutoPostBack="True"></asp:DropDownList>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="Label9" runat="server" Text="月份："></asp:Label>
-            <asp:DropDownList ID="_birthMonth_list" runat="server" OnSelectedIndexChanged="MonthChanged" AutoPostBack="True"></asp:DropDownList>
-            &nbsp;&nbsp;
-            <asp:Label ID="Label10" runat="server" Text="日期："></asp:Label>
-            <asp:DropDownList ID="_birthDate_list" runat="server" ></asp:DropDownList>
-            <br/>
-            <asp:Label ID="Label11" runat="server" Text="居住地址："></asp:Label>
-            <asp:TextBox ID="_address" runat="server" ></asp:TextBox>
-            <br/>
-            <asp:Label ID="Label12" runat="server" Text="會員狀態："></asp:Label>
-            <asp:TextBox ID="_status" runat="server" ></asp:TextBox>
-            <br/>
-            <asp:Button ID="RegisterBtn" runat="server" Text="會員註冊" OnClick="RegisterBtn_Click"/>
-            <br/>
-            <asp:Label ID="Label13" runat="server" Text="會員編號："></asp:Label>
-            <asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
-        </div>
-    </form>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="topNav">
+		<div class="container">
+			<div class="alignR">
+				<a href="index.html"> <span class="icon-home"></span>商城首頁</a> 
+				<a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a>
+			</div>
+		</div>
+	</div>
+</div>
+<br/>
+<!--
+Lower Header Section 
+-->
+<div class="container">
+<div id="gototop"> </div>
+<header id="header">
+	<div class="row">
+		<div class="span4">
+			<h1>
+				<a class="logo" href="index.html"> 
+                    <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop"/>
+				</a>
+			</h1>
+		</div>
+		<div class="span4 alignR">
+            <p><br/> <strong> Support (24/7) :  0800 1234 678 </strong><br/><br/></p>
+		</div>
+	</div>
+</header>
+<!--
+Navigation Bar Section 
+-->
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<div class="nav-collapse">
+				<ul class="nav">
+					<li class="active"><a href="index.html">Home	</a></li>
+					<li class=""><a href="list-view.html">List View</a></li>
+					<li class=""><a href="grid-view.html">Grid View</a></li>
+					<li class=""><a href="three-col.html">Three Column</a></li>
+					<li class=""><a href="four-col.html">Four Column</a></li>
+					<li class=""><a href="general.html">General Content</a></li>
+				</ul>
+				<form action="#" class="navbar-search pull-left">
+					<input type="text" placeholder="Search" class="search-query span2"/>
+				</form>
+				<ul class="nav pull-right">
+					<li class="dropdown">
+						<div class="dropdown-menu">
+							<form class="form-horizontal loginFrm">
+								<div class="control-group">
+                                    <input type="text" class="span2" id="inputEmail" placeholder="Email"/>
+								</div>
+								<div class="control-group">
+									<input type="password" class="span2" id="inputPassword" placeholder="Password"/>
+								</div>
+								<div class="control-group">
+									<label class="checkbox">
+                                        <input type="checkbox"/> Remember me
+									</label>
+									<button type="submit" class="shopBtn btn-block">Sign in</button>
+								</div>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 
+Body Section 
+-->
+<div class="row">
+<div id="sidebar" class="span3">
+<div class="well well-small">
+	<ul class="nav nav-list">
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
+		<li style="border:0"> &nbsp;</li>
+	</ul>
+</div>
+			  <div class="well well-small alert alert-warning cntr">
+				  <h2>50% Discount</h2>
+				  <p> 
+                      only valid for online order. <br/><br/><a class="defaultBtn" href="#">Click here </a>
+				  </p>
+			  </div>
+    <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"/></a></div>
+			
+    <a class="shopBtn btn-block" href="#">Upcoming products <br/><small>Click to view</small></a>
+    <br/>
+    <br/>
+			<ul class="nav nav-list promowrapper">
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                  <img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates"/>
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+		  </ul>
+
+	</div>
+	<div class="span9">
+	<ul class="breadcrumb">
+		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li class="active">會員登入</li>
+	</ul>
+	<h3> 會員註冊</h3>	
+	<hr class="soft"/>
+	<form id="form1" runat="server">
+		<div>
+			<h1>會員註冊畫面</h1>
+			<asp:Label ID="Label1" runat="server" Text="會員名稱："></asp:Label>
+			<asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
+			<asp:TextBox ID="_memberPassword" runat="server" TextMode="Password"></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label3" runat="server" Text="確認密碼："></asp:Label>
+			<asp:TextBox ID="_ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
+			<asp:Label ID="Label4" runat="server" Text="請與會員密碼相同"></asp:Label>
+			<br/>
+			<asp:Label ID="Label5" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
+			<asp:TextBox ID="_name" runat="server" ></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label6" runat="server" Text="電子郵件："></asp:Label>
+			<asp:TextBox ID="_email" runat="server" TextMode="Email" ></asp:TextBox>
+			<br/>            
+			<asp:Label ID="Label7" runat="server" Text="手機號碼："></asp:Label>
+			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label8" runat="server" Text="出生年&nbsp;&nbsp;&nbsp;："></asp:Label>
+			<asp:DropDownList ID="_birthYear_list" runat="server" OnSelectedIndexChanged="YearSelected" AutoPostBack="True"></asp:DropDownList>
+			<br/>
+			<asp:Label ID="Label9" runat="server" Text="出生月&nbsp;&nbsp;&nbsp;："></asp:Label>
+			<asp:DropDownList ID="_birthMonth_list" runat="server" OnSelectedIndexChanged="MonthChanged" AutoPostBack="True"></asp:DropDownList>
+			<br/>
+			<asp:Label ID="Label10" runat="server" Text="出生日&nbsp;&nbsp;&nbsp;："></asp:Label>
+			<asp:DropDownList ID="_birthDate_list" runat="server" ></asp:DropDownList>
+			<br/>
+			<asp:Label ID="Label11" runat="server" Text="居住地址："></asp:Label>
+			<asp:TextBox ID="_address" runat="server" ></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label12" runat="server" Text="會員狀態："></asp:Label>
+			<asp:TextBox ID="_status" runat="server" ></asp:TextBox>
+			<br/>
+			<asp:Button ID="RegisterBtn" runat="server" Text="會員註冊" OnClick="RegisterBtn_Click"/>
+			<br/>
+			<asp:Label ID="Label13" runat="server" Text="會員編號："></asp:Label>
+			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
+		</div>
+	</form>
 </body>
 </html>

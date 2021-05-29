@@ -30,8 +30,8 @@
 			<div class="alignR">
 				<a href="index.html"> <span class="icon-home"></span> Home</a> 
 				<a href="#"><span class="icon-user"></span> My Account</a> 
-				<a href="memberRegisterForm.aspx"><span class="icon-edit"></span> 免費註冊 </a> 
-				<a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a>
+				<a href="memberRegisterForm.aspx"><span class="icon-edit"></span> Free Register </a> 
+				<a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
 			</div>
 		</div>
 	</div>
@@ -183,7 +183,7 @@ Body Section
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">E-mail address</label>
 					<div class="controls">
-                        <asp:TextBox ID="_memberEmail"  runat="server" Width="160px"></asp:TextBox>
+						<input class="span3"  type="text" placeholder="Email">
 						<asp:Button ID="_CreaateMemberBtn" runat="server" Text="建立新的會員帳號" OnClick="_CreaateMemberBtn_Click"  />
 					</div>
 				</div>

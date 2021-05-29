@@ -34,7 +34,9 @@ namespace BitSystem
                 _birthDate_list.Text = (DateTime.Now.Date).ToString();
 
             }// if (!IsPostBack)
-        }
+
+            _email.Text = (string)Session["NewMemberEmail"];
+        }// protected void Page_Load(object sender, EventArgs e)
         protected void SQLDB_write(string connString)
         {
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
@@ -156,7 +158,7 @@ namespace BitSystem
             }
             else
             {
-                SQLDB_write("Sale_netConnectionString");
+                 SQLDB_write("Sale_netConnectionString");
                 // to get BusID from BusAccountTable
                 SQLDB_verify("Sale_netConnectionString", _user_name.Text);
             }// password matches

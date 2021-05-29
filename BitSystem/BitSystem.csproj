@@ -106,6 +106,59 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="assets\css\bootstrap-responsive.css" />
+    <Content Include="assets\css\bootstrap-responsive.min.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\font-awesome\css\font-awesome-ie7.css" />
+    <Content Include="assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="assets\font-awesome\css\font-awesome.css" />
+    <Content Include="assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="assets\ico\favicon.ico" />
+    <Content Include="assets\img\1.png" />
+    <Content Include="assets\img\2.png" />
+    <Content Include="assets\img\3.png" />
+    <Content Include="assets\img\4.png" />
+    <Content Include="assets\img\5.png" />
+    <Content Include="assets\img\6.png" />
+    <Content Include="assets\img\a.jpg" />
+    <Content Include="assets\img\ax.png" />
+    <Content Include="assets\img\b.jpg" />
+    <Content Include="assets\img\bootstrap-ecommerce-templates.PNG" />
+    <Content Include="assets\img\bootstrap-ring.png" />
+    <Content Include="assets\img\bootstrap-template.png" />
+    <Content Include="assets\img\bootstrap-templates.png" />
+    <Content Include="assets\img\bootstrappage_shop.png" />
+    <Content Include="assets\img\bootstrap_free-ecommerce.png" />
+    <Content Include="assets\img\c.jpg" />
+    <Content Include="assets\img\carousel1.png" />
+    <Content Include="assets\img\carousel3.png" />
+    <Content Include="assets\img\d.jpg" />
+    <Content Include="assets\img\disc.png" />
+    <Content Include="assets\img\e.jpg" />
+    <Content Include="assets\img\f.jpg" />
+    <Content Include="assets\img\g.jpg" />
+    <Content Include="assets\img\h.jpg" />
+    <Content Include="assets\img\i.jpg" />
+    <Content Include="assets\img\j.jpg" />
+    <Content Include="assets\img\logo-bootstrap-shoping-cart.png" />
+    <Content Include="assets\img\maestro.png" />
+    <Content Include="assets\img\mc.png" />
+    <Content Include="assets\img\new.png" />
+    <Content Include="assets\img\paypal.jpg" />
+    <Content Include="assets\img\pp.png" />
+    <Content Include="assets\img\s.png" />
+    <Content Include="assets\img\shop-cart.PNG" />
+    <Content Include="assets\img\shopping-cart-template.PNG" />
+    <Content Include="assets\img\visa.png" />
+    <Content Include="assets\img\white_leather.png" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery.easing-1.3.min.js" />
+    <Content Include="assets\js\jquery.js" />
+    <Content Include="assets\js\jquery.scrollTo-1.4.3.1-min.js" />
+    <Content Include="assets\js\shop.js" />
     <Content Include="BusLoginForm.aspx" />
     <Content Include="BusRegisterForm.aspx" />
     <Content Include="Contact.aspx" />
@@ -126,7 +179,30 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="assets\font-awesome\less\bootstrap.less" />
+    <Content Include="assets\font-awesome\less\core.less" />
+    <Content Include="assets\font-awesome\less\extras.less" />
+    <Content Include="assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="assets\font-awesome\less\font-awesome.less" />
+    <Content Include="assets\font-awesome\less\icons.less" />
+    <Content Include="assets\font-awesome\less\mixins.less" />
+    <Content Include="assets\font-awesome\less\path.less" />
+    <Content Include="assets\font-awesome\less\variables.less" />
+    <Content Include="assets\font-awesome\scss\font-awesome-ie7.scss" />
+    <Content Include="assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="assets\font-awesome\scss\_bootstrap.scss" />
+    <Content Include="assets\font-awesome\scss\_core.scss" />
+    <Content Include="assets\font-awesome\scss\_extras.scss" />
+    <Content Include="assets\font-awesome\scss\_icons.scss" />
+    <Content Include="assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="assets\font-awesome\scss\_path.scss" />
+    <Content Include="assets\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="GoodListForm.aspx" />
     <Content Include="memberLoginForm.aspx" />
     <Content Include="memberRegisterForm.aspx" />
     <Content Include="SavePicToDB.aspx" />
@@ -204,6 +280,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GoodListForm.aspx.cs">
+      <DependentUpon>GoodListForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodListForm.aspx.designer.cs">
+      <DependentUpon>GoodListForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberLoginForm.aspx.cs">
       <DependentUpon>memberLoginForm.aspx</DependentUpon>

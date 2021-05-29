@@ -75,6 +75,47 @@ namespace BitSystem
             return bFound;
         }// protected void SQLDB_verify()
 
+        protected bool bSQLDB_ifmatch(string connString, string _enterEmail)
+        {
+            bool bFound = false;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+
+            //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
+            SqlConnection connection = new SqlConnection(s_data);
+
+            // bug1: SQL content
+            string sql_statement = $"select * from Member where mail='{_enterEmail}'";
+
+            // bug2: sqlText
+            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+            SqlCommand Command = new SqlCommand(sql_statement, connection);
+
+            //與資料庫連接的通道開啟
+            connection.Open();
+
+            //new一個DataReader接取Execute所回傳的資料。
+            SqlDataReader Reader = Command.ExecuteReader();
+
+
+            //檢查是否有資料列
+            if (Reader.HasRows)
+            {
+
+                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
+                if (Reader.Read())
+                {
+                    bFound = true;
+                }// if (Reader.Read())
+
+            }// if (Reader.HasRows) login name match
+            else
+            {
+                bFound = false;
+            }// if (Reader.HasRows) login name mismatch
+            //關閉與資料庫連接的通道
+            connection.Close();
+            return bFound;
+        }// protected void bSQLDB_ifmatch()
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
@@ -86,5 +127,22 @@ namespace BitSystem
             }
 
         }// protected void LoginBtn_Click(object sender, EventArgs e)
+
+        protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
+        {
+            // if the e-mail exists, reply the account has used
+            if (bSQLDB_ifmatch("Sale_netConnectionString", _memberEmail.Text)
+                == true)
+            {
+                Response.Write("<script>alert('E-mail 已有會員登記，請改另一個 E-mail ');</script>");
+            }
+            else
+            {
+                Session["NewMemberEmail"] = _memberEmail.Text;
+
+                Response.Redirect("memberRegisterForm.aspx");
+            }
+
+        }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
     }
 }
