@@ -25,14 +25,16 @@
         <asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
                       CellPadding="4">
             <Columns>
-                <asp:ImageField DataImageUrlField="pic_pathname" ControlStyle-Width="100" ControlStyle-Height="100" HeaderText="商品圖片"></asp:ImageField> 
+                <asp:TemplateField HeaderText="圖片">
+                    <ItemTemplate>
+                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="product_name" HeaderText="商品名稱"/>
                 <asp:BoundField DataField="total_number" HeaderText="商品數量"/>
                 <asp:BoundField DataField="seller_ID" HeaderText="商家名稱"/>
             </Columns>
         </asp:GridView>
-        <asp:ListView ID="_ListView" runat="server">
-        </asp:ListView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_netConnectionString %>" SelectCommand="SELECT * FROM [Market_product2]"></asp:SqlDataSource>
     </form>
 </body>

@@ -203,6 +203,9 @@
     <Content Include="assets\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GoodListForm.aspx" />
+    <Content Include="GoodPics\iPhone8_256g.jpg" />
+    <Content Include="GoodPics\iPhone8_64g.jpg" />
+    <Content Include="GoodPics\iPhoneX_64g.jpg" />
     <Content Include="memberLoginForm.aspx" />
     <Content Include="memberRegisterForm.aspx" />
     <Content Include="SavePicToDB.aspx" />
