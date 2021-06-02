@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BitSystem
 {
-    public partial class _Default : Page
+    public partial class market_unlogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
