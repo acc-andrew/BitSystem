@@ -105,17 +105,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="assets\css\bootstrap-responsive.css" />
     <Content Include="assets\css\bootstrap-responsive.min.css" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\flex-slider.css" />
+    <Content Include="assets\css\fontawesome.css" />
+    <Content Include="assets\css\owl.css" />
+    <Content Include="assets\css\templatemo-sixteen.css" />
     <Content Include="assets\font-awesome\css\font-awesome-ie7.css" />
     <Content Include="assets\font-awesome\css\font-awesome-ie7.min.css" />
     <Content Include="assets\font-awesome\css\font-awesome.css" />
     <Content Include="assets\font-awesome\css\font-awesome.min.css" />
     <Content Include="assets\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\flexslider-icon.svg" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\slick.svg" />
     <Content Include="assets\ico\favicon.ico" />
+    <Content Include="assets\images\about-heading.jpg" />
+    <Content Include="assets\images\client-01.png" />
+    <Content Include="assets\images\contact-heading.jpg" />
+    <Content Include="assets\images\feature-image.jpg" />
+    <Content Include="assets\images\more-info.jpg" />
+    <Content Include="assets\images\products-heading.jpg" />
+    <Content Include="assets\images\product_01.jpg" />
+    <Content Include="assets\images\product_02.jpg" />
+    <Content Include="assets\images\product_03.jpg" />
+    <Content Include="assets\images\product_04.jpg" />
+    <Content Include="assets\images\product_05.jpg" />
+    <Content Include="assets\images\product_06.jpg" />
+    <Content Include="assets\images\services-bg.jpg" />
+    <Content Include="assets\images\slide_01.jpg" />
+    <Content Include="assets\images\slide_02.jpg" />
+    <Content Include="assets\images\slide_03.jpg" />
+    <Content Include="assets\images\team_01.jpg" />
+    <Content Include="assets\images\team_02.jpg" />
+    <Content Include="assets\images\team_03.jpg" />
+    <Content Include="assets\images\team_04.jpg" />
+    <Content Include="assets\images\team_05.jpg" />
+    <Content Include="assets\images\team_06.jpg" />
     <Content Include="assets\img\1.png" />
     <Content Include="assets\img\2.png" />
     <Content Include="assets\img\3.png" />
@@ -153,21 +181,24 @@
     <Content Include="assets\img\shopping-cart-template.PNG" />
     <Content Include="assets\img\visa.png" />
     <Content Include="assets\img\white_leather.png" />
+    <Content Include="assets\js\accordions.js" />
     <Content Include="assets\js\bootstrap.js" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\custom.js" />
+    <Content Include="assets\js\isotope.js" />
     <Content Include="assets\js\jquery.easing-1.3.min.js" />
     <Content Include="assets\js\jquery.js" />
     <Content Include="assets\js\jquery.scrollTo-1.4.3.1-min.js" />
+    <Content Include="assets\js\owl.js" />
     <Content Include="assets\js\shop.js" />
+    <Content Include="assets\js\slick.js" />
     <Content Include="BusLoginForm.aspx" />
     <Content Include="BusRegisterForm.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -201,11 +232,29 @@
     <Content Include="assets\font-awesome\scss\_mixins.scss" />
     <Content Include="assets\font-awesome\scss\_path.scss" />
     <Content Include="assets\font-awesome\scss\_variables.scss" />
+    <Content Include="assets\fonts\Flaticon.woff" />
+    <Content Include="assets\fonts\flexslider-icon.eot" />
+    <Content Include="assets\fonts\flexslider-icon.ttf" />
+    <Content Include="assets\fonts\flexslider-icon.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\slick.eot" />
+    <Content Include="assets\fonts\slick.ttf" />
+    <Content Include="assets\fonts\slick.woff" />
+    <Content Include="Sale_product_login.aspx" />
+    <Content Include="Sale_product_unlogin.aspx" />
+    <Content Include="market_login.aspx" />
+    <Content Include="market_unlogin.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GoodListForm.aspx" />
     <Content Include="GoodPics\iPhone8_256g.jpg" />
     <Content Include="GoodPics\iPhone8_64g.jpg" />
     <Content Include="GoodPics\iPhoneX_64g.jpg" />
+    <Content Include="Sale_unlogin.aspx" />
+    <Content Include="Sale_login.aspx" />
     <Content Include="memberLoginForm.aspx" />
     <Content Include="memberRegisterForm.aspx" />
     <Content Include="SavePicToDB.aspx" />
@@ -237,21 +286,12 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusLoginForm.aspx.cs">
       <DependentUpon>BusLoginForm.aspx</DependentUpon>
@@ -267,20 +307,6 @@
     <Compile Include="BusRegisterForm.aspx.designer.cs">
       <DependentUpon>BusRegisterForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -290,6 +316,20 @@
     </Compile>
     <Compile Include="GoodListForm.aspx.designer.cs">
       <DependentUpon>GoodListForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_unlogin.aspx.cs">
+      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sale_unlogin.aspx.designer.cs">
+      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_login.aspx.cs">
+      <DependentUpon>Sale_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sale_login.aspx.designer.cs">
+      <DependentUpon>Sale_login.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberLoginForm.aspx.cs">
       <DependentUpon>memberLoginForm.aspx</DependentUpon>
@@ -313,26 +353,40 @@
     <Compile Include="SavePicToDB.aspx.designer.cs">
       <DependentUpon>SavePicToDB.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_product_login.aspx.cs">
+      <DependentUpon>Sale_product_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sale_product_login.aspx.designer.cs">
+      <DependentUpon>Sale_product_login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_product_unlogin.aspx.cs">
+      <DependentUpon>Sale_product_unlogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sale_product_unlogin.aspx.designer.cs">
+      <DependentUpon>Sale_product_unlogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="market_login.aspx.cs">
+      <DependentUpon>market_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="market_login.aspx.designer.cs">
+      <DependentUpon>market_login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="market_unlogin.aspx.cs">
+      <DependentUpon>market_unlogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="market_unlogin.aspx.designer.cs">
+      <DependentUpon>market_unlogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
