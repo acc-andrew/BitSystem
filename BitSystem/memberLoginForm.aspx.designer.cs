@@ -9,8 +9,6 @@
 
 namespace BitSystem
 {
-
-
     public partial class memberLoginForm
     {
 

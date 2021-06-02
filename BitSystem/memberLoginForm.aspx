@@ -6,7 +6,6 @@
 <head runat="server" >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title></title>
-    ;
 	<link href="assets/css/bootstrap.css" rel="stylesheet"/>
 	<!-- Customize styles -->
 	<link href="style.css" rel="stylesheet"/>
@@ -23,11 +22,11 @@
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="assets/ico/favicon.ico">
 </head>
-
 <body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;">
 <!-- 
 Upper Header Section 
 -->
+<!--
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="topNav">
         <div class="container">
@@ -39,90 +38,100 @@ Upper Header Section
     </div>
 </div>
 <br/>
+-->
 <!--
 Lower Header Section 
 -->
 <div class="container">
 <div id="gototop"> </div>
 <header id="header">
-	<div class="row">
-		<div class="span4">
-			<h1>
-				<a class="logo" href="index.html"> 
-					<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
-				</a>
-			</h1>
-		</div>
-		<div class="span4 alignR">
-			<p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>
-		</div>
+<div class="row">
+	<div class="span4">
+	<h1>
+	<a class="logo" href="index.html"><!--<span>比價王購物商城</span>--> 
+		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	</a>
+	</h1>
 	</div>
+	<div class="span4">
+	<div class="offerNoteWrapper">
+
+	</div>
+	</div>
+	<div class="span4 alignR">
+		<p><br><br></p>
+	<!--<p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>-->
+		<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+	</div>
+</div>
 </header>
 <!--
 Navigation Bar Section 
 -->
 <div class="navbar">
-	<div class="navbar-inner">
+	  <div class="navbar-inner">
 		<div class="container">
-			<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-					<li class="active"><a href="index.html">Home	</a></li>
-					<li class=""><a href="list-view.html">List View</a></li>
-					<li class=""><a href="grid-view.html">Grid View</a></li>
-					<li class=""><a href="three-col.html">Three Column</a></li>
-					<li class=""><a href="four-col.html">Four Column</a></li>
-					<li class=""><a href="general.html">General Content</a></li>
-				</ul>
-				<form action="#" class="navbar-search pull-left">
-					<input type="text" placeholder="Search" class="search-query span2">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class=""><a href="Home.aspx">回主頁	</a></li>
+			  <li class=""><a href="list-view.aspx">商城</a></li>
+			  <li class=""><a href="grid-view.aspx">拍賣網</a></li>
+			  <li class=""><a href="#"><span class="icon-user"></span>我的帳戶</a> </li>
+			  <li class="active"><a href="memberLoginForm.aspx"><span class="icon-edit"></span>免費註冊</a> </li>
+			  <li class=""><a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a></li>
+			</ul>
+			<form action="#" class="navbar-search pull-left">
+			  <input type="text" placeholder="Search" class="search-query span2">
+			</form>
+			<ul class="nav pull-right">
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span>登入<b class="caret"></b></a>
+				<div class="dropdown-menu">
+				<form class="form-horizontal loginFrm">
+				  <div class="control-group">
+					<input type="text" class="span2" id="inputEmail" placeholder="Email">
+				  </div>
+				  <div class="control-group">
+					<input type="password" class="span2" id="inputPassword" placeholder="Password">
+				  </div>
+				  <div class="control-group">
+					<label class="checkbox">
+					<input type="checkbox"> Remember me
+					</label>
+					<button type="submit" class="shopBtn btn-block">Sign in</button>
+				  </div>
 				</form>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<div class="dropdown-menu">
-							<form class="form-horizontal loginFrm">
-								<div class="control-group">
-									<input type="text" class="span2" id="inputEmail" placeholder="Email">
-								</div>
-								<div class="control-group">
-									<input type="password" class="span2" id="inputPassword" placeholder="Password">
-								</div>
-								<div class="control-group">
-									<label class="checkbox">
-										<input type="checkbox"> Remember me
-									</label>
-									<button type="submit" class="shopBtn btn-block">Sign in</button>
-								</div>
-							</form>
-						</div>
-					</li>
-				</ul>
-			</div>
+				</div>
+			</li>
+			</ul>
+		  </div>
 		</div>
+	  </div>
 	</div>
-</div>
 <!-- 
 Body Section 
 -->
-<div class="row">
+	<div class="row">
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
-		<li style="border:0"> &nbsp;</li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>衣著</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>居家生活</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>男女鞋款</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>寵物</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>其他類別</a></li>
+		<!--<li style="border:0"> &nbsp;</li>-->
+		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
 	</ul>
 </div>
 			  <div class="well well-small alert alert-warning cntr">

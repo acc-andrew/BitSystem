@@ -203,6 +203,9 @@
     <Content Include="assets\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GoodListForm.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="list-view.aspx" />
+    <Content Include="grid-view.aspx" />
     <Content Include="memberLoginForm.aspx" />
     <Content Include="memberRegisterForm.aspx" />
     <Content Include="SavePicToDB.aspx" />
@@ -287,6 +290,27 @@
     </Compile>
     <Compile Include="GoodListForm.aspx.designer.cs">
       <DependentUpon>GoodListForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="list-view.aspx.cs">
+      <DependentUpon>list-view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list-view.aspx.designer.cs">
+      <DependentUpon>list-view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="grid-view.aspx.cs">
+      <DependentUpon>grid-view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="grid-view.aspx.designer.cs">
+      <DependentUpon>grid-view.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberLoginForm.aspx.cs">
       <DependentUpon>memberLoginForm.aspx</DependentUpon>
