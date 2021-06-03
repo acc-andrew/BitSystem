@@ -7,13 +7,11 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace BitSystem
-{
-
-
-    public partial class memberLoginForm
-    {
-
+namespace BitSystem {
+    
+    
+    public partial class memberLoginForm {
+        
         /// <summary>
         /// form1 控制項。
         /// </summary>
@@ -22,7 +20,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// _memberEmail 控制項。
         /// </summary>
@@ -31,7 +29,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox _memberEmail;
-
+        
         /// <summary>
         /// _CreaateMemberBtn 控制項。
         /// </summary>
@@ -40,7 +38,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button _CreaateMemberBtn;
-
+        
         /// <summary>
         /// Label1 控制項。
         /// </summary>
@@ -49,7 +47,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// _loginName 控制項。
         /// </summary>
@@ -58,7 +56,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox _loginName;
-
+        
         /// <summary>
         /// Label2 控制項。
         /// </summary>
@@ -67,7 +65,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
+        
         /// <summary>
         /// _loginPassword 控制項。
         /// </summary>
@@ -76,7 +74,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox _loginPassword;
-
+        
         /// <summary>
         /// LoginBtn 控制項。
         /// </summary>
@@ -85,7 +83,7 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button LoginBtn;
-
+        
         /// <summary>
         /// SqlDataSource1 控制項。
         /// </summary>

@@ -34,11 +34,10 @@
 		<div class="container">
 			<div class="alignR">
 				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
-				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberProfile.aspx"><span class="icon-user"></span> 會員資料</a> 
 				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
 				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
 				<a href="#"><span class="icon-remove"></span> 登出</a>
-				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
@@ -75,7 +74,6 @@ Navigation Bar Section
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <li class=""><a href="Home.aspx">拍賣站</a></li>
-			  <li class=""><a href="#">商城</a></li>
 			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
 			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
 			</ul>
