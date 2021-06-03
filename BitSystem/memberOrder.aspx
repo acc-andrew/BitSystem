@@ -2,9 +2,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head >
     <meta charset="utf-8">
-    <title></title>
+    <title>Twitter Bootstrap shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,20 +25,19 @@
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
   </head>
-<body>
+<body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;" >
 <!-- 
 	Upper Header Section 
 -->
-	<div class="navbar-nav ml-auto">
+<div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
 				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
-				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberProfile.aspx"><span class="icon-user"></span> 會員資料</a> 
 				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
 				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
 				<a href="#"><span class="icon-remove"></span> 登出</a>
-				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
@@ -58,19 +57,8 @@ Lower Header Section
 	</a>
 	</h1>
 	</div>
-	<div >
-	<div >
-	</div>
-	</div>
-	<div >
-	<div >
-	</div>
-	
-	
-	</div>
 </div>
 </header>
-
 
 <!--
 Navigation Bar Section 
@@ -78,73 +66,48 @@ Navigation Bar Section
 <div class="navbar">
 	  <div class="navbar-inner">
 		<div class="container">
-			<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-					<li class="active"><a href="index.html">Home	</a></li>
-					<li class=""><a href="list-view.html">List View</a></li>
-					<li class=""><a href="grid-view.html">Grid View</a></li>
-					<li class=""><a href="three-col.html">Three Column</a></li>
-					<li class=""><a href="four-col.html">Four Column</a></li>
-					<li class=""><a href="general.html">General Content</a></li>
-				</ul>
-				<form action="#" class="navbar-search pull-left">
-					<input type="text" placeholder="Search" class="search-query span2"/>
-				</form>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<div class="dropdown-menu">
-							<form class="form-horizontal loginFrm">
-								<div class="control-group">
-                                    <input type="text" class="span2" id="inputEmail" placeholder="Email"/>
-								</div>
-								<div class="control-group">
-									<input type="password" class="span2" id="inputPassword" placeholder="Password"/>
-								</div>
-								<div class="control-group">
-									<label class="checkbox">
-                                        <input type="checkbox"/> Remember me
-									</label>
-									<button type="submit" class="shopBtn btn-block">Sign in</button>
-								</div>
-							</form>
-						</div>
-					</li>
-				</ul>
-			</div>
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class=""><a href="Home.aspx">拍賣站</a></li>
+			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
+			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
+			</ul>
+			
+				
+			</li>
+			</ul>
+			
+		  </div>
 		</div>
 	  </div>
 	</div>
 <!-- 
 Body Section 
 -->
-<!-- 
-Three column view
--->
-<!-- 
-Body Section 
--->
-<div class="row">
+	<div class="row">
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
-		<li style="border:0"> &nbsp;</li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>衣著</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>居家生活</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>男女鞋款</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>寵物</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>其他類別</a></li>
+		<!--<li style="border:0"> &nbsp;</li>-->
+		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
 	</ul>
 </div>
+
 			  <div class="well well-small alert alert-warning cntr">
 				  <h2>50% Discount</h2>
 				  <p> 
@@ -159,7 +122,7 @@ Body Section
 			<ul class="nav nav-list promowrapper">
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
 				<div class="caption">
 				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
@@ -169,20 +132,20 @@ Body Section
 			<li style="border:0"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="Sale_product_login.aspx">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
 				</div>
 			  </div>
 			</li>
 			<li style="border:0"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="Sale_product_login.aspx">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
 				</div>
 			  </div>
 			</li>

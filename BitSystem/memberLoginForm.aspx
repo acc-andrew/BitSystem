@@ -2,9 +2,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head >
     <meta charset="utf-8">
-    <title></title>
+    <title>Twitter Bootstrap shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,7 +25,7 @@
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
   </head>
-<body>
+<body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;" >
 <!-- 
 	Upper Header Section 
 -->
@@ -34,11 +34,10 @@
 		<div class="container">
 			<div class="alignR">
 				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
-				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberProfile.aspx"><span class="icon-user"></span> 會員資料</a> 
 				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
 				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
 				<a href="#"><span class="icon-remove"></span> 登出</a>
-				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
@@ -89,30 +88,8 @@ Navigation Bar Section
 			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
 			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
 			</ul>
-			<ul class="nav pull-right">
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
-				<div class="dropdown-menu">
-				<form class="form-horizontal loginFrm">
-				  <div class="control-group">
-					<input type="text" class="span2" id="inputEmail" placeholder="Email">
-				  </div>
-				  <div class="control-group">
-					<input type="password" class="span2" id="inputPassword" placeholder="Password">
-				  </div>
-				  <div class="control-group">
-					<label class="checkbox">
-					<input type="checkbox"> Remember me
-					</label>
-					<button type="submit" class="shopBtn btn-block">登入</button>
-				  </div>
-				</form>
-				</div>
-			</li>
-			</ul>
-			<form action="#" class="navbar-search pull-right">
-			  <input type="text" placeholder="Search" class="search-query span2">
-			</form>
+			
+				
 		  </div>
 		</div>
 	  </div>

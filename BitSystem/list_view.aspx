@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="list_view.aspx.cs" Inherits="BitSystem.list_view" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head runat="server" >
+<html lang="en">
+  <head >
     <meta charset="utf-8">
     <title>Twitter Bootstrap shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,17 +29,15 @@
 <!-- 
 	Upper Header Section 
 -->
-
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
 				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
-				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberProfile.aspx"><span class="icon-user"></span> 會員資料</a> 
 				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
 				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
 				<a href="#"><span class="icon-remove"></span> 登出</a>
-				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
@@ -75,7 +73,6 @@ Navigation Bar Section
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <li class=""><a href="Home.aspx">拍賣站</a></li>
-			  <li class=""><a href="#">商城</a></li>
 			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
 			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
 			</ul>

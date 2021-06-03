@@ -33,7 +33,7 @@
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-								<a href="Sale_unlogin.aspx"> <span class="icon-home"></span> 首頁</a> 
+				<a href="Sale_unlogin.aspx"> <span class="icon-home"></span> 首頁</a> 
 				<a href="Sale_product_login.aspx"><span class="icon-user"></span> 我的會員</a> 
 				<a href="memberRegisterForm.aspx"><span class="icon-edit"></span> 免費註冊 </a> 
 				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
