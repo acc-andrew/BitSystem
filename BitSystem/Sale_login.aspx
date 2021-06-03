@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sale_login.aspx.cs" Inherits="BitSystem.memberLoginForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sale_login.aspx.cs" Inherits="BitSystem.Sale_login" %>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head >
+  <head>
     <meta charset="utf-8">
-    <title>Twitter Bootstrap shopping cart</title>
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -29,15 +29,15 @@
 <!-- 
 	Upper Header Section 
 -->
-<div class="navbar-nav ml-auto">
+	<div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<a href="index.html"> <span class="icon-home"></span> 首頁</a> 
+								<a href="index.html"> <span class="icon-home"></span> 首頁</a> 
 				<a href="#"><span class="icon-user"></span> 會員資料</a> 
 				<a href="register.html"><span class="icon-edit"></span> 訂單查詢 </a> 
 				<a href="contact.html"><span class="icon-envelope"></span> 聯絡我們</a>
-				<a href="index.html"><span class="icon-remove"></span> 登出</a>
+				<a href="contact.html"><span class="icon-remove"></span> 登出</a>
 				<a href="cart.html"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
@@ -71,6 +71,7 @@ Lower Header Section
 </div>
 </header>
 
+
 <!--
 Navigation Bar Section 
 -->
@@ -84,7 +85,7 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class=""><a href="Sale_login.html">拍賣站</a></li>
+			  <li class=""><a href="index.html">拍賣站</a></li>
 			  <li class=""><a href="four-col.html">商城</a></li>
 			  <li class=""><a href="list-view.html">競標拍賣</a></li>
 			  <li class=""><a href="grid-view.html">價低拍賣</a></li>
@@ -93,21 +94,18 @@ Navigation Bar Section
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
 				<div class="dropdown-menu">
-				<form class="form-horizontal loginFrm" runat="server">
+				<form class="form-horizontal loginFrm">
 				  <div class="control-group">
-                      <asp:TextBox ID="Email" runat="server" class="span2"></asp:TextBox>
-	
+					<input type="text" class="span2" id="inputEmail" placeholder="Email">
 				  </div>
 				  <div class="control-group">
-                      <asp:TextBox ID="password" runat="server" class="span2"></asp:TextBox>
-					 
+					<input type="password" class="span2" id="inputPassword" placeholder="Password">
 				  </div>
 				  <div class="control-group">
 					<label class="checkbox">
 					<input type="checkbox"> Remember me
 					</label>
-                      <asp:Button ID="LoginBtn" runat="server" Text="登入" class="shopBtn btn-block" />
-
+					<button type="submit" class="shopBtn btn-block">登入</button>
 				  </div>
 				</form>
 				</div>
@@ -126,8 +124,78 @@ Body Section
 <!-- 
 Three column view
 -->
-	<h2 align = center>拍賣熱門商品</h2>
-		<ul class="thumbnails">
+
+	<div class="row">
+<div id="sidebar" class="span3">
+<div class="well well-small">
+	<ul class="nav nav-list">
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
+		<li style="border:0"> &nbsp;</li>
+		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+	</ul>
+</div>
+
+			  <div class="well well-small alert alert-warning cntr">
+				  <h2>50% Discount</h2>
+				  <p> 
+					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+				  </p>
+			  </div>
+			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
+			
+			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
+			<br>
+			<br>
+			<ul class="nav nav-list promowrapper">
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+		  </ul>
+
+	</div>
+	<div class="span9">
+<!--
+New Products
+-->
+	<div class="well well-small">
+	<h3>拍賣熱門商品</h3>
+		<div class="row-fluid">
+		  <ul class="thumbnails">
 			<li class="span4">
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
@@ -180,8 +248,9 @@ Three column view
 			  </div>
 			</li>
 		  </ul>
-
-		<ul class="thumbnails">
+		</div>
+	<div class="row-fluid">
+		  <ul class="thumbnails">
 			<li class="span4">
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
@@ -234,9 +303,9 @@ Three column view
 			  </div>
 			</li>
 		  </ul>
-
-
-		<ul class="thumbnails">
+		</div>
+	<div class="row-fluid">
+		  <ul class="thumbnails">
 			<li class="span4">
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
@@ -289,9 +358,9 @@ Three column view
 			  </div>
 			</li>
 		  </ul>
-
-
-		<ul class="thumbnails">
+		</div>
+	<div class="row-fluid">
+		  <ul class="thumbnails">
 			<li class="span4">
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
@@ -344,7 +413,11 @@ Three column view
 			  </div>
 			</li>
 		  </ul>
-
+		</div>
+	
+	</div>
+	</div>
+	</div>
 <!-- 
 Clients 
 -->

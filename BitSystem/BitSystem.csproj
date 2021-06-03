@@ -248,15 +248,13 @@
     <Content Include="memberProfile.aspx" />
     <Content Include="Sale_product_login.aspx" />
     <Content Include="Sale_product_unlogin.aspx" />
-    <Content Include="market_login.aspx" />
-    <Content Include="market_unlogin.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GoodListForm.aspx" />
     <Content Include="GoodPics\iPhone8_256g.jpg" />
     <Content Include="GoodPics\iPhone8_64g.jpg" />
     <Content Include="GoodPics\iPhoneX_64g.jpg" />
-    <Content Include="Sale_unlogin.aspx" />
     <Content Include="Sale_login.aspx" />
+    <Content Include="Sale_unlogin.aspx" />
     <Content Include="memberLoginForm.aspx" />
     <Content Include="memberRegisterForm.aspx" />
     <Content Include="SavePicToDB.aspx" />
@@ -331,19 +329,19 @@
     <Compile Include="memberProfile.aspx.designer.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sale_unlogin.aspx.cs">
-      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sale_unlogin.aspx.designer.cs">
-      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Sale_login.aspx.cs">
       <DependentUpon>Sale_login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Sale_login.aspx.designer.cs">
       <DependentUpon>Sale_login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_unlogin.aspx.cs">
+      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sale_unlogin.aspx.designer.cs">
+      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberLoginForm.aspx.cs">
       <DependentUpon>memberLoginForm.aspx</DependentUpon>
@@ -387,20 +385,6 @@
     </Compile>
     <Compile Include="Sale_product_unlogin.aspx.designer.cs">
       <DependentUpon>Sale_product_unlogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="market_login.aspx.cs">
-      <DependentUpon>market_login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="market_login.aspx.designer.cs">
-      <DependentUpon>market_login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="market_unlogin.aspx.cs">
-      <DependentUpon>market_unlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="market_unlogin.aspx.designer.cs">
-      <DependentUpon>market_unlogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
