@@ -25,7 +25,7 @@
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
   </head>
-<body>
+<body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;" >
 <!-- 
 	Upper Header Section 
 -->
