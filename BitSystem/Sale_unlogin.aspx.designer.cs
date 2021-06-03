@@ -11,7 +11,7 @@ namespace BitSystem
 {
 
 
-    public partial class Sale_unlogin
+    public partial class memberLoginForm
     {
     }
 }

@@ -122,6 +122,76 @@ Navigation Bar Section
 <!-- 
 Body Section 
 -->
+		<div class="row">
+<div id="sidebar" class="span3">
+<div class="well well-small">
+	<ul class="nav nav-list">
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>衣著</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>居家生活</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>男女鞋款</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>寵物</a></li>
+		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>其他類別</a></li>
+		<li style="border:0"> &nbsp;</li>
+		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+	</ul>
+</div>
+
+			  <div class="well well-small alert alert-warning cntr">
+				  <h2>50% Discount</h2>
+				  <p> 
+					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+				  </p>
+			  </div>
+			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
+			
+			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
+			<br>
+			<br>
+			<ul class="nav nav-list promowrapper">
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+		  </ul>
+
+	</div>
+	<div class="span9">
+<!--
+New Products
+-->
+	<div class="well well-small">
+
+
     <ul class="breadcrumb">
     <li><a href="index.html">首頁</a> <span class="divider">/</span></li>
     <li><a href="products.html">拍賣站</a> <span class="divider">/</span></li>
