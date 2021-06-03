@@ -14,6 +14,7 @@ namespace BitSystem
         {
 
         }
+        
         protected bool bSQLDB_verify(string connString, string _guiName)
         {
             bool bFound = false;
@@ -144,5 +145,6 @@ namespace BitSystem
             }
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
+        
     }
 }

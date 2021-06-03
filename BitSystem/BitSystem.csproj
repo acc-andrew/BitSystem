@@ -244,6 +244,9 @@
     <Content Include="assets\fonts\slick.eot" />
     <Content Include="assets\fonts\slick.ttf" />
     <Content Include="assets\fonts\slick.woff" />
+    <Content Include="grid_view.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="list_view.aspx" />
     <Content Include="memberOrder.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="Sale_product_login.aspx" />
@@ -317,14 +320,37 @@
     <Compile Include="GoodListForm.aspx.designer.cs">
       <DependentUpon>GoodListForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="grid_view.aspx.cs">
+      <DependentUpon>grid_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="grid_view.aspx.designer.cs">
+      <DependentUpon>grid_view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="list_view.aspx.cs">
+      <DependentUpon>list_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list_view.aspx.designer.cs">
+      <DependentUpon>list_view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="memberOrder.aspx.cs">
       <DependentUpon>memberOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="memberOrder.aspx.designer.cs">
       <DependentUpon>memberOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberProfile.aspx.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="memberProfile.aspx.designer.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>

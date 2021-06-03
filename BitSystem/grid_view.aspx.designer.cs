@@ -11,7 +11,7 @@ namespace BitSystem
 {
 
 
-    public partial class Home
+    public partial class grid_view
     {
 
         /// <summary>

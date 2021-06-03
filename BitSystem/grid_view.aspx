@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="list-view.aspx.cs" Inherits="BitSystem.memberLoginForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="grid_view.aspx.cs" Inherits="BitSystem.grid_view" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head runat="server" >
+<html lang="en">
+  <head >
     <meta charset="utf-8">
-    <title></title>
+    <title>Twitter Bootstrap shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,27 +28,22 @@
 <body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;" >
 <!-- 
 	Upper Header Section 
-
-<div class="navbar navbar-inverse navbar-fixed-top">
+-->
+	<div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<div class="pull-left socialNw">
-					<a href="#"><span class="icon-twitter"></span></a>
-					<a href="#"><span class="icon-facebook"></span></a>
-					<a href="#"><span class="icon-youtube"></span></a>
-					<a href="#"><span class="icon-tumblr"></span></a>
-				</div>
-				<a href="index.html"> <span class="icon-home"></span> Home</a> 
-				<a href="#"><span class="icon-user"></span> My Account</a> 
-				<a href="register.html"><span class="icon-edit"></span> Free Register </a> 
-				<a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-				<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
+				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
+				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
+				<a href="#"><span class="icon-remove"></span> 登出</a>
+				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
 </div>
--->
+
 <!--
 Lower Header Section 
 -->
@@ -58,20 +53,10 @@ Lower Header Section
 <div class="row">
 	<div class="span4">
 	<h1>
-	<a class="logo" href="index.html"><!--<span>比價王購物商城</span>--> 
+	<a class="logo" href="index.html"><span></span> 
 		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
 	</a>
 	</h1>
-	</div>
-	<div class="span4">
-	<div class="offerNoteWrapper">
-
-	</div>
-	</div>
-	<div class="span4 alignR">
-		<p><br><br></p>
-	<!--<p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>-->
-		<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
 	</div>
 </div>
 </header>
@@ -89,37 +74,38 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class=""><a href="Home.aspx">回主頁	</a></li>
-			  <li class=""><a href="list-view.aspx">商城</a></li>
-			  <li class="active"><a href="grid-view.aspx">拍賣網</a></li>
-			  <li class=""><a href="#"><span class="icon-user"></span>我的帳戶</a> </li>
-			  <li class=""><a href="memberLoginForm.aspx"><span class="icon-edit"></span>免費註冊</a> </li>
-			  <li class=""><a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a></li>
+			  <li class=""><a href="Home.aspx">拍賣站</a></li>
+			  <li class=""><a href="#">商城</a></li>
+			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
+			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
 			</ul>
-			<form action="#" class="navbar-search pull-left">
-			  <input type="text" placeholder="Search" class="search-query span2">
-			</form>
 			<ul class="nav pull-right">
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span>登入<b class="caret"></b></a>
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
 				<div class="dropdown-menu">
-				<form class="form-horizontal loginFrm">
+				<form class="form-horizontal loginFrm" runat="server">
 				  <div class="control-group">
-					<input type="text" class="span2" id="inputEmail" placeholder="Email">
+                      <asp:TextBox ID="Email" runat="server" class="span2"></asp:TextBox>
+	
 				  </div>
 				  <div class="control-group">
-					<input type="password" class="span2" id="inputPassword" placeholder="Password">
+                      <asp:TextBox ID="password" runat="server" class="span2"></asp:TextBox>
+					 
 				  </div>
 				  <div class="control-group">
 					<label class="checkbox">
 					<input type="checkbox"> Remember me
 					</label>
-					<button type="submit" class="shopBtn btn-block">Sign in</button>
+                      <asp:Button ID="LoginBtn" runat="server" Text="登入" class="shopBtn btn-block" />
+
 				  </div>
 				</form>
 				</div>
 			</li>
 			</ul>
+			<form action="#" class="navbar-search pull-right">
+			  <input type="text" placeholder="Search" class="search-query span2">
+			</form>
 		  </div>
 		</div>
 	  </div>

@@ -25,7 +25,7 @@
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
   </head>
-<body>
+<body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;" >
 <!-- 
 	Upper Header Section 
 -->
@@ -57,16 +57,6 @@ Lower Header Section
 		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
 	</a>
 	</h1>
-	</div>
-	<div >
-	<div >
-	</div>
-	</div>
-	<div >
-	<div >
-	</div>
-	
-	
 	</div>
 </div>
 </header>
