@@ -28,8 +28,12 @@
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<a href="index.html"> <span class="icon-home"></span>商城首頁</a> 
-				<a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a>
+				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
+				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
+				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
+				<a href="#"><span class="icon-remove"></span> 登出</a>
+				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
@@ -66,19 +70,15 @@ Navigation Bar Section
 				<span class="icon-bar"></span>
 			</a>
 			<div class="nav-collapse">
-				<ul class="nav">
-					<li class="active"><a href="index.html">Home	</a></li>
-					<li class=""><a href="list-view.html">List View</a></li>
-					<li class=""><a href="grid-view.html">Grid View</a></li>
-					<li class=""><a href="three-col.html">Three Column</a></li>
-					<li class=""><a href="four-col.html">Four Column</a></li>
-					<li class=""><a href="general.html">General Content</a></li>
-				</ul>
-				<form action="#" class="navbar-search pull-left">
-					<input type="text" placeholder="Search" class="search-query span2"/>
-				</form>
+			<ul class="nav">
+			  <li class=""><a href="Home.aspx">拍賣站</a></li>
+			  <li class=""><a href="#">商城</a></li>
+			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
+			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
+			</ul>
 				<ul class="nav pull-right">
 					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
 						<div class="dropdown-menu">
 							<form class="form-horizontal loginFrm">
 								<div class="control-group">
@@ -97,6 +97,9 @@ Navigation Bar Section
 						</div>
 					</li>
 				</ul>
+				<form action="#" class="navbar-search pull-right">
+					<input type="text" placeholder="Search" class="search-query span2"/>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -108,17 +111,16 @@ Body Section
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
-		<li style="border:0"> &nbsp;</li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>衣著</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>居家生活</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>男女鞋款</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>寵物</a></li>
+		<li><a href="products.html"><span class="icon-chevron-right"></span>其他類別</a></li>
 	</ul>
 </div>
 			  <div class="well well-small alert alert-warning cntr">

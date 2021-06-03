@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sale_unlogin.aspx.cs" Inherits="BitSystem.memberLoginForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sale_unlogin.aspx.cs" Inherits="BitSystem.Sale_unlogin" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,16 +57,6 @@ Lower Header Section
 		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
 	</a>
 	</h1>
-	</div>
-	<div >
-	<div >
-	</div>
-	</div>
-	<div >
-	<div >
-	</div>
-	
-	
 	</div>
 </div>
 </header>

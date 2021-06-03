@@ -26,19 +26,20 @@
 <!-- 
 Upper Header Section 
 -->
-<!--
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="topNav">
-        <div class="container">
-            <div class="alignR">
-                <a href="index.html"> <span class="icon-home"></span> Home</a> 
-                <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-            </div>
-        </div>
-    </div>
+<div class="navbar-nav ml-auto">
+	<div class="topNav">
+		<div class="container">
+			<div class="alignR">
+				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
+				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
+				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
+				<a href="#"><span class="icon-remove"></span> 登出</a>
+				<a href="#"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
+			</div>
+		</div>
+	</div>
 </div>
-<br/>
--->
 <!--
 Lower Header Section 
 -->
@@ -78,16 +79,11 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class=""><a href="Home.aspx">回主頁	</a></li>
-			  <li class=""><a href="list-view.aspx">商城</a></li>
-			  <li class=""><a href="grid-view.aspx">拍賣網</a></li>
-			  <li class=""><a href="#"><span class="icon-user"></span>我的帳戶</a> </li>
-			  <li class="active"><a href="memberLoginForm.aspx"><span class="icon-edit"></span>免費註冊</a> </li>
-			  <li class=""><a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a></li>
+			  <li class=""><a href="Home.aspx">拍賣站</a></li>
+			  <li class=""><a href="#">商城</a></li>
+			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
+			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
 			</ul>
-			<form action="#" class="navbar-search pull-left">
-			  <input type="text" placeholder="Search" class="search-query span2">
-			</form>
 			<ul class="nav pull-right">
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span>登入<b class="caret"></b></a>
@@ -109,6 +105,9 @@ Navigation Bar Section
 				</div>
 			</li>
 			</ul>
+			<form action="#" class="navbar-search pull-right">
+			  <input type="text" placeholder="Search" class="search-query span2">
+			</form>
 		  </div>
 		</div>
 	  </div>
