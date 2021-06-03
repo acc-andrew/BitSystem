@@ -33,12 +33,12 @@
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<a href="index.html"> <span class="icon-home"></span> 首頁</a> 
-				<a href="#"><span class="icon-user"></span> 我的會員</a> 
-				<a href="register.html"><span class="icon-edit"></span> 免費註冊 </a> 
-				<a href="contact.html"><span class="icon-envelope"></span> 聯絡我們</a>
-				<a href="contact.html"><span class="icon-lock"></span> 管理後臺</a>
-				<a href="cart.html"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
+								<a href="Sale_unlogin.aspx"> <span class="icon-home"></span> 首頁</a> 
+				<a href="Sale_product_login.aspx"><span class="icon-user"></span> 我的會員</a> 
+				<a href="memberRegisterForm.aspx"><span class="icon-edit"></span> 免費註冊 </a> 
+				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
+				<a href="#"><span class="icon-lock"></span> 管理後臺</a>
+				<a href="#"><span class="icon-shopping-cart"></span> 購物狀況 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
@@ -84,10 +84,9 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class=""><a href="index.html">拍賣站</a></li>
-			  <li class=""><a href="four-col.html">商城</a></li>
-			  <li class=""><a href="list-view.html">競標拍賣</a></li>
-			  <li class=""><a href="grid-view.html">價低拍賣</a></li>
+			  <li class=""><a href="Sale_login.aspx">拍賣站</a></li>
+			  <li class=""><a href="Sale_login.aspx">競標拍賣</a></li>
+			  <li class=""><a href="Sale_login.aspx">價低拍賣</a></li>
 			</ul>
 			<ul class="nav pull-right">
 			<li class="dropdown">
@@ -125,21 +124,21 @@ Body Section
 <div class="well well-small">
 	<ul class="nav nav-list">
 <li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>衣著</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>居家生活</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>男女鞋款</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>寵物</a></li>
-		<li><a href="Sale_product_login.aspx"><span class="icon-chevron-right"></span>其他類別</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>居家生活</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>男女鞋款</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>寵物</a></li>
+		<li><a href="Sale_login.aspx"><span class="icon-chevron-right"></span>其他類別</a></li>
 		<li style="border:0"> &nbsp;</li>
 		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
 	</ul>
 </div>
 
-			  <div class="well well-small alert alert-warning cntr">
+			 <div class="well well-small alert alert-warning cntr">
 				  <h2>50% Discount</h2>
 				  <p> 
 					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
@@ -153,7 +152,7 @@ Body Section
 			<ul class="nav nav-list promowrapper">
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
 				<div class="caption">
 				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
@@ -163,20 +162,20 @@ Body Section
 			<li style="border:0"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="Sale_product_login.aspx">VIEW</a> <span class="pull-right">$22.00</span></h4>
 				</div>
 			  </div>
 			</li>
 			<li style="border:0"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="Sale_product_login.aspx">VIEW</a> <span class="pull-right">$22.00</span></h4>
 				</div>
 			  </div>
 			</li>
