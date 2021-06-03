@@ -1,105 +1,129 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberOrder.aspx.cs" Inherits="BitSystem.memberOrder" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet"/>
-	<!-- Customize styles -->
-	<link href="style.css" rel="stylesheet"/>
-	<!-- font awesome styles -->
+    <!-- Customize styles -->
+    <link href="style.css" rel="stylesheet"/>
+    <!-- font awesome styles -->
 	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-	<!--[if IE 7]>
-		<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
-	<![endif]-->
+		<!--[if IE 7]>
+			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
 
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="assets/ico/favicon.ico">
-</head>
-<body style="background-image:url('assets/img/white_leather.png');background-repeat:repeat;">
-<div class="navbar navbar-inverse navbar-fixed-top">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  </head>
+<body>
+<!-- 
+	Upper Header Section 
+-->
+	<div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<a href="index.html"> <span class="icon-home"></span>商城首頁</a> 
-				<a href="contact.html"><span class="icon-envelope"></span>聯絡我們</a>
+								<a href="index.html"> <span class="icon-home"></span> 首頁</a> 
+				<a href="#"><span class="icon-user"></span> 會員資料</a> 
+				<a href="register.html"><span class="icon-edit"></span> 訂單查詢 </a> 
+				<a href="contact.html"><span class="icon-envelope"></span> 聯絡我們</a>
+				<a href="contact.html"><span class="icon-remove"></span> 登出</a>
+				<a href="cart.html"><span class="icon-shopping-cart"></span> 購物車 - <span class="badge badge-warning"> $448.42</span></a>
 			</div>
 		</div>
 	</div>
 </div>
-<br/>
+
 <!--
 Lower Header Section 
 -->
 <div class="container">
 <div id="gototop"> </div>
 <header id="header">
-	<div class="row">
-		<div class="span4">
-			<h1>
-				<a class="logo" href="index.html"> 
-                    <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop"/>
-				</a>
-			</h1>
-		</div>
-		<div class="span4 alignR">
-            <p><br/> <strong> Support (24/7) :  0800 1234 678 </strong><br/><br/></p>
-		</div>
+<div class="row">
+	<div class="span4">
+	<h1>
+	<a class="logo" href="index.html"><span></span> 
+		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	</a>
+	</h1>
 	</div>
+	<div >
+	<div >
+	</div>
+	</div>
+	<div >
+	<div >
+	</div>
+	
+	
+	</div>
+</div>
 </header>
+
+
 <!--
 Navigation Bar Section 
 -->
 <div class="navbar">
-	<div class="navbar-inner">
+	  <div class="navbar-inner">
 		<div class="container">
-			<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-					<li class="active"><a href="index.html">Home	</a></li>
-					<li class=""><a href="list-view.html">List View</a></li>
-					<li class=""><a href="grid-view.html">Grid View</a></li>
-					<li class=""><a href="three-col.html">Three Column</a></li>
-					<li class=""><a href="four-col.html">Four Column</a></li>
-					<li class=""><a href="general.html">General Content</a></li>
-				</ul>
-				<form action="#" class="navbar-search pull-left">
-					<input type="text" placeholder="Search" class="search-query span2"/>
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class=""><a href="index.html">拍賣站</a></li>
+			  <li class=""><a href="four-col.html">商城</a></li>
+			  <li class=""><a href="list-view.html">競標拍賣</a></li>
+			  <li class=""><a href="grid-view.html">價低拍賣</a></li>
+			</ul>
+			<ul class="nav pull-right">
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+				<div class="dropdown-menu">
+				<form class="form-horizontal loginFrm">
+				  <div class="control-group">
+					<input type="text" class="span2" id="inputEmail" placeholder="Email">
+				  </div>
+				  <div class="control-group">
+					<input type="password" class="span2" id="inputPassword" placeholder="Password">
+				  </div>
+				  <div class="control-group">
+					<label class="checkbox">
+					<input type="checkbox"> Remember me
+					</label>
+					<button type="submit" class="shopBtn btn-block">登入</button>
+				  </div>
 				</form>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<div class="dropdown-menu">
-							<form class="form-horizontal loginFrm">
-								<div class="control-group">
-                                    <input type="text" class="span2" id="inputEmail" placeholder="Email"/>
-								</div>
-								<div class="control-group">
-									<input type="password" class="span2" id="inputPassword" placeholder="Password"/>
-								</div>
-								<div class="control-group">
-									<label class="checkbox">
-                                        <input type="checkbox"/> Remember me
-									</label>
-									<button type="submit" class="shopBtn btn-block">Sign in</button>
-								</div>
-							</form>
-						</div>
-					</li>
-				</ul>
-			</div>
+				</div>
+			</li>
+			</ul>
+			<form action="#" class="navbar-search pull-right">
+			  <input type="text" placeholder="Search" class="search-query span2">
+			</form>
+		  </div>
 		</div>
+	  </div>
 	</div>
-</div>
+<!-- 
+Body Section 
+-->
+<!-- 
+Three column view
+-->
 <!-- 
 Body Section 
 -->
