@@ -249,6 +249,7 @@
     <Content Include="list_view.aspx" />
     <Content Include="memberOrder.aspx" />
     <Content Include="memberProfile.aspx" />
+    <Content Include="pic\iphone-12.jpg" />
     <Content Include="Sale_product_login.aspx" />
     <Content Include="Sale_product_unlogin.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
