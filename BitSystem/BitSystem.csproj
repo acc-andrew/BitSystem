@@ -248,6 +248,7 @@
     <Content Include="Home.aspx" />
     <Content Include="list_view.aspx" />
     <Content Include="memberOrder.aspx" />
+    <Content Include="product_onsale.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
     <Content Include="Sale_product_login.aspx" />
@@ -348,6 +349,13 @@
     </Compile>
     <Compile Include="memberOrder.aspx.designer.cs">
       <DependentUpon>memberOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product_onsale.aspx.cs">
+      <DependentUpon>product_onsale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product_onsale.aspx.designer.cs">
+      <DependentUpon>product_onsale.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberProfile.aspx.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>
