@@ -154,18 +154,23 @@ Body Section
 
 
 <div class="span9">
+
 	<ul class="breadcrumb">
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">得標結帳</li>
 	</ul>
 	<h3 align ="center">得標商品結帳</h3>	
+	<form id="form1" runat="server">
 <div class="well well-small">
 	<div class="row-fluid">	  
+
 		<div class="span3">
 			<img src="assets/img/a.jpg" alt="">
 		</div>
 		<div class="span6">
 			<h5>Product Name </h5>
+			<asp:Label ID="Label7" runat="server" Text="商品編號："></asp:Label>
+			<asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
 			<p>
 			Nowadays the lingerie industry is one of the most successful business spheres.
 			We always stay in touch with the latest fashion tendencies - 
@@ -192,6 +197,8 @@ Body Section
 		</div>
 		<div class="span6">
 			<h5>Product Name </h5>
+			<asp:Label ID="Label6" runat="server" Text="商品編號："></asp:Label>
+			<asp:TextBox ID="TextBox2" runat="server" ></asp:TextBox>
 			<p>
 			Nowadays the lingerie industry is one of the most successful business spheres.
 			We always stay in touch with the latest fashion tendencies - 
@@ -216,6 +223,8 @@ Body Section
 		</div>
 		<div class="span6">
 			<h5>Product Name </h5>
+			<asp:Label ID="Label2" runat="server" Text="商品編號："></asp:Label>
+			<asp:TextBox ID="TextBox1" runat="server" ></asp:TextBox>
 			<p>
 			Nowadays the lingerie industry is one of the most successful business spheres.
 			We always stay in touch with the latest fashion tendencies - 
@@ -244,13 +253,38 @@ Body Section
 		<h3> $420.00</h3>
 		</div>
 	</div>
+
+	 <hr class="soften">
+	<div class="row-fluid" >	 
+		<div align =" center">
+			<h1 >購買資料確認</h1>
+			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
+			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label3" runat="server" Text="會員名稱："></asp:Label>
+			<asp:TextBox ID="_name" runat="server" Enabled="False"></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label4" runat="server" Text="電子郵件："></asp:Label>
+			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False"></asp:TextBox>
+			<br/>    
+			<asp:Label ID="Label8" runat="server" Text="收件人："></asp:Label>
+			<asp:TextBox ID="receiver" runat="server" ></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
+			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label10" runat="server" Text="寄送地址："></asp:Label>
+			<asp:TextBox ID="_address" runat="server" ></asp:TextBox>
+			<br/>
+		</div>
+      </div>
 	<div>
 	</div>
 	<div>
 	</div>
 	</br>
 	<div align="center">
-	<form id="form1" runat="server">
+	
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Button ID="Button3" runat="server" Text="前往付款" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
