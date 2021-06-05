@@ -160,7 +160,7 @@ Body Section
 	<hr class="soft"/>
     <form id="form1" runat="server">
         <div align =" center">
-			<h1>商品上架資料撰寫</h1>
+			<h1>商品上架資料</h1>
 			<asp:Label ID="Label12" runat="server" Text="會員編號："></asp:Label>
 			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
