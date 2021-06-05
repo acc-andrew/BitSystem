@@ -248,6 +248,7 @@
     <Content Include="Home.aspx" />
     <Content Include="list_view.aspx" />
     <Content Include="memberOrder.aspx" />
+    <Content Include="sale_chickout.aspx" />
     <Content Include="product_onsale.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
@@ -349,6 +350,13 @@
     </Compile>
     <Compile Include="memberOrder.aspx.designer.cs">
       <DependentUpon>memberOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sale_chickout.aspx.cs">
+      <DependentUpon>sale_chickout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sale_chickout.aspx.designer.cs">
+      <DependentUpon>sale_chickout.aspx</DependentUpon>
     </Compile>
     <Compile Include="product_onsale.aspx.cs">
       <DependentUpon>product_onsale.aspx</DependentUpon>
