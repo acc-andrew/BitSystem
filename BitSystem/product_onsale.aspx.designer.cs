@@ -33,13 +33,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label12;
 
         /// <summary>
-        /// _memberID 控制項。
+        /// memberID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _memberID;
+        protected global::System.Web.UI.WebControls.TextBox memberID;
 
         /// <summary>
         /// Label13 控制項。
@@ -69,13 +69,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// _user_name 控制項。
+        /// user_name 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _user_name;
+        protected global::System.Web.UI.WebControls.TextBox user_name;
 
         /// <summary>
         /// Label3 控制項。
@@ -87,13 +87,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// _name 控制項。
+        /// product 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _name;
+        protected global::System.Web.UI.WebControls.TextBox product;
 
         /// <summary>
         /// Label4 控制項。
@@ -105,13 +105,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// DropDownList1 控制項。
+        /// classify 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList classify;
 
         /// <summary>
         /// Label2 控制項。
@@ -123,13 +123,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// number 控制項。
+        /// total_number 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList number;
+        protected global::System.Web.UI.WebControls.DropDownList total_number;
 
         /// <summary>
         /// Label11 控制項。
@@ -141,13 +141,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label11;
 
         /// <summary>
-        /// pro_status 控制項。
+        /// product_status 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pro_status;
+        protected global::System.Web.UI.WebControls.TextBox product_status;
 
         /// <summary>
         /// Label6 控制項。
@@ -159,13 +159,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
-        /// FileUpload1 控制項。
+        /// public_price 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.TextBox public_price;
 
         /// <summary>
         /// Label5 控制項。
@@ -184,6 +184,33 @@ namespace BitSystem
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox description;
+
+        /// <summary>
+        /// Label8 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+
+        /// <summary>
+        /// FileUpload2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
+
+        /// <summary>
+        /// Label7 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
 
         /// <summary>
         /// onsale 控制項。

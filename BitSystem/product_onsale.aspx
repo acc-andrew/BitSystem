@@ -162,49 +162,56 @@ Body Section
         <div align =" center">
 			<h1>商品上架資料</h1>
 			<asp:Label ID="Label12" runat="server" Text="會員編號："></asp:Label>
-			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
+			<asp:TextBox ID="memberID" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label13" runat="server" Text="產品編號："></asp:Label>
 			<asp:TextBox ID="productID" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
-			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
+			<asp:TextBox ID="user_name" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label3" runat="server" Text="產品名稱："></asp:Label>
-			<asp:TextBox ID="_name" runat="server" ></asp:TextBox>
+			<asp:TextBox ID="product" runat="server" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label4" runat="server" Text="分類選擇："></asp:Label>
-			<asp:DropDownList ID="DropDownList1" runat="server"  
+			<asp:DropDownList ID="classify" runat="server"  
             DataSourceID="" DataTextField="classify" DataValueField="classify"  
             AppendDataBoundItems="True">
             <asp:ListItem>請選擇</asp:ListItem></asp:DropDownList>
 			<br/>
 			<asp:Label ID="Label2" runat="server" Text="商品數量："></asp:Label>
-			<asp:DropDownList ID="number" runat="server" ></asp:DropDownList>
+			<asp:DropDownList ID="total_number" runat="server" ></asp:DropDownList>
 			<br/>       
 			<asp:Label ID="Label11" runat="server" Text="商品狀況："></asp:Label>
-			<asp:TextBox ID="pro_status" runat="server" ></asp:TextBox>
+			<asp:TextBox ID="product_status" runat="server" ></asp:TextBox>
 			<br/>
-			<div>
-			&nbsp;<asp:Label ID="Label6" runat="server" Text="檔案圖片："></asp:Label>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
-			</div>
+			<br/>       
+			<asp:Label ID="Label6" runat="server" Text="商品市價："></asp:Label>
+			<asp:TextBox ID="public_price" runat="server" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label5" runat="server" Text="商品描述："></asp:Label>
 			<asp:TextBox ID="description" runat="server" TextMode="MultiLine"  Row="5"></asp:TextBox>
 			<br/>
+			<div align =" center">
+			<asp:Label ID="Label8" runat="server" Text="檔案圖片："></asp:Label>
+            <asp:FileUpload ID="FileUpload2" runat="server" />
+			</div>
 			<br/>
-            <br/>
+			<div align =" center">
+            <asp:Label ID="Label7" runat="server"></asp:Label>
+			</div>
+			<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="onsale" runat="server" Text="商品上架" />
+			<asp:Button ID="onsale" runat="server" Text="商品上架" OnClick="onsale_Click" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Button ID="exit" runat="server" Text="離開取消" />
 			<br/>	
         </div>
-    </form>
 		<!-- 
     Clients 
     -->
+        
+    </form>
     <section class="our_client">
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>

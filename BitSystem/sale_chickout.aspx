@@ -170,7 +170,7 @@ Body Section
 		<div class="span6">
 			<h5>Product Name </h5>
 			<asp:Label ID="Label7" runat="server" Text="商品編號："></asp:Label>
-			<asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
+			<asp:TextBox ID="TextBox3" runat="server" Enabled="False"></asp:TextBox>
 			<p>
 			Nowadays the lingerie industry is one of the most successful business spheres.
 			We always stay in touch with the latest fashion tendencies - 
@@ -198,7 +198,7 @@ Body Section
 		<div class="span6">
 			<h5>Product Name </h5>
 			<asp:Label ID="Label6" runat="server" Text="商品編號："></asp:Label>
-			<asp:TextBox ID="TextBox2" runat="server" ></asp:TextBox>
+			<asp:TextBox ID="TextBox2" runat="server" Enabled="False"></asp:TextBox>
 			<p>
 			Nowadays the lingerie industry is one of the most successful business spheres.
 			We always stay in touch with the latest fashion tendencies - 
@@ -224,7 +224,7 @@ Body Section
 		<div class="span6">
 			<h5>Product Name </h5>
 			<asp:Label ID="Label2" runat="server" Text="商品編號："></asp:Label>
-			<asp:TextBox ID="TextBox1" runat="server" ></asp:TextBox>
+			<asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
 			<p>
 			Nowadays the lingerie industry is one of the most successful business spheres.
 			We always stay in touch with the latest fashion tendencies - 
@@ -236,7 +236,7 @@ Body Section
 		<h3> $140.00</h3>
 		<div class="btn-group">
 		  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-		  <a href="product_details.html" class="shopBtn">VIEW</a>
+		  <a href="product_details.html" class="shopBtn" >VIEW</a>
 		 </div>
 			
 			</form>
@@ -267,7 +267,7 @@ Body Section
 			<asp:Label ID="Label4" runat="server" Text="電子郵件："></asp:Label>
 			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False"></asp:TextBox>
 			<br/>    
-			<asp:Label ID="Label8" runat="server" Text="收件人："></asp:Label>
+			<asp:Label ID="Label8" runat="server" Text="收件姓名："></asp:Label>
 			<asp:TextBox ID="receiver" runat="server" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
