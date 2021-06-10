@@ -1,0 +1,3 @@
+market_product_ID,classify,product_name,total_number,low_price,high_price,status,seller_ID,pic_pathname,datetime
+1,CellPhone,iPhone8_256G,120,7800,12000,OnShelf   ,1,~/GoodPics/iPhone8_256g.jpg,2021-05-27 20:29:12.333000000
+2,CellPhone,iPhone8_64G,27,9200,9900,OnShelf   ,1,~/GoodPics/iPhone8_64g.jpg,2021-05-27 20:29:42.807000000

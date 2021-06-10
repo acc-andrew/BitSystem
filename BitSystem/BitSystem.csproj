@@ -250,6 +250,8 @@
     <Content Include="memberOrder.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
+    <Content Include="BitProductForm.aspx" />
+    <Content Include="PutGoodOnShelfForm.aspx" />
     <Content Include="Sale_product_login.aspx" />
     <Content Include="Sale_product_unlogin.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -355,6 +357,20 @@
     </Compile>
     <Compile Include="memberProfile.aspx.designer.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BitProductForm.aspx.cs">
+      <DependentUpon>BitProductForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BitProductForm.aspx.designer.cs">
+      <DependentUpon>BitProductForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PutGoodOnShelfForm.aspx.cs">
+      <DependentUpon>PutGoodOnShelfForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PutGoodOnShelfForm.aspx.designer.cs">
+      <DependentUpon>PutGoodOnShelfForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sale_login.aspx.cs">
       <DependentUpon>Sale_login.aspx</DependentUpon>

@@ -24,40 +24,13 @@ namespace BitSystem
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// _memberLoginBtn 控制項。
+        /// _GoodOnShelfBtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _memberLoginBtn;
-
-        /// <summary>
-        /// _memberRegisterBtn 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _memberRegisterBtn;
-
-        /// <summary>
-        /// _MyGoodsBtn 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _MyGoodsBtn;
-
-        /// <summary>
-        /// _OnSaleWebSiteBtn 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _OnSaleWebSiteBtn;
+        protected global::System.Web.UI.WebControls.Button _GoodOnShelfBtn;
 
         /// <summary>
         /// _SysAdminBtn 控制項。
