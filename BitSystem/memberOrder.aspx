@@ -158,10 +158,27 @@ Body Section
 		<li class="active">訂單查詢</li>
 	</ul>
 	<h3> 訂單明細</h3>	
-	<hr class="soft"/>
     <form id="form1" runat="server">
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
+	<hr class="soft"/>
         <div>
-			<h1>訂單明細查詢</h1>
+			<h1>競標商品清單</h1>
+			<asp:Label ID="Label15" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label16" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label17" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label18" runat="server" Text="狀態"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label19" runat="server" Text="訂單日期"></asp:Label>
+			<br/>
+			<asp:ImageButton ID="ImageButton2" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label20" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label21" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label22" runat="server" Text="競標中"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label23" runat="server" Text="2021/5/30"></asp:Label>
+			<br/>
+        </div>
+        <div>
+			<h1>得標商品清單</h1>
 			<asp:Label ID="Label1" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Label ID="Label2" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Label ID="Label3" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -169,10 +186,25 @@ Body Section
 			<asp:Label ID="Label5" runat="server" Text="訂單日期"></asp:Label>
 			<br/>
 			<asp:ImageButton ID="OrderList" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label6" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label7" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label8" runat="server" Text="已出貨"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label9" runat="server" Text="2021/5/30"></asp:Label>
+			<asp:Label ID="number" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="price" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="state" runat="server" Text="已結標"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="date" runat="server" Text="2021/5/30"></asp:Label>
+			<br/>
+        </div>
+        <div>
+			<h1>上架商品清單</h1>
+			<asp:Label ID="Label6" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label7" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label8" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label9" runat="server" Text="狀態"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label10" runat="server" Text="訂單日期"></asp:Label>
+			<br/>
+			<asp:ImageButton ID="ImageButton1" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label11" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label12" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label13" runat="server" Text="已上架"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<asp:Label ID="Label14" runat="server" Text="2021/5/30"></asp:Label>
 			<br/>
         </div>
     </form>
