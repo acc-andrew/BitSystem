@@ -40,7 +40,7 @@ namespace BitSystem
                 //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
                 if (Reader.Read())
                 {
-                    //memberID.Text = (String)Reader["member_ID"];
+                    //memberID.Text = (Int32)((String)Reader["member_ID"]);
                     user_name.Text = (String)Reader["user_name"];
                 }
             }
