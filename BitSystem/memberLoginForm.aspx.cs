@@ -49,8 +49,8 @@ namespace BitSystem
                     {
                         //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
                         Session["name"] = Request.Form[_guiName];  //"_BusName"
-                        string smemberID = Reader["member_ID"].ToString();
-                        Session["member_ID"] = smemberID;
+                        int nMemberID = (int)(Reader["member_ID"]);
+                        Session["member_ID"] = nMemberID;
 
                         Session["memberLogged"] = "Yes";
                         Response.Write("<script>alert('會員登入成功');</script>");
@@ -124,7 +124,17 @@ namespace BitSystem
                 == true)
             {
                 Response.Write("<script>alert('會員登入成功！');</script>");
-                Response.Redirect("Default.aspx");
+
+                // goto the web page after member logging
+                if(Session["logged_to_page"] != null){
+                    string pageAfterLogging = (string) Session["logged_to_page"];
+                    Response.Redirect(pageAfterLogging);
+
+                }
+                else
+                {
+                    Response.Redirect("GoodListForm.aspx");
+                }
             }
 
         }// protected void LoginBtn_Click(object sender, EventArgs e)
