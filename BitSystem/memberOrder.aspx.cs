@@ -21,7 +21,7 @@ namespace BitSystem
                 Server.Transfer("memberLoginForm.aspx");
             }
             //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["sale_netConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["sale_netConnectionString3"].ConnectionString;
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
             string sqlcode = $"SELECT * FROM [member] where user_name =" + "'" + Session["user"] + "'";
