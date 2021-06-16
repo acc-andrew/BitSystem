@@ -248,7 +248,8 @@
     <Content Include="Home.aspx" />
     <Content Include="list_view.aspx" />
     <Content Include="memberOrder.aspx" />
-    <Content Include="sale_chickout.aspx" />
+    <Content Include="sale_chickout_product.aspx" />
+    <Content Include="sale_chickout_member.aspx" />
     <Content Include="product_onsale.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
@@ -353,12 +354,19 @@
     <Compile Include="memberOrder.aspx.designer.cs">
       <DependentUpon>memberOrder.aspx</DependentUpon>
     </Compile>
-    <Compile Include="sale_chickout.aspx.cs">
-      <DependentUpon>sale_chickout.aspx</DependentUpon>
+    <Compile Include="sale_chickout_product.aspx.cs">
+      <DependentUpon>sale_chickout_product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sale_chickout.aspx.designer.cs">
-      <DependentUpon>sale_chickout.aspx</DependentUpon>
+    <Compile Include="sale_chickout_product.aspx.designer.cs">
+      <DependentUpon>sale_chickout_product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sale_chickout_member.aspx.cs">
+      <DependentUpon>sale_chickout_member.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sale_chickout_member.aspx.designer.cs">
+      <DependentUpon>sale_chickout_member.aspx</DependentUpon>
     </Compile>
     <Compile Include="product_onsale.aspx.cs">
       <DependentUpon>product_onsale.aspx</DependentUpon>

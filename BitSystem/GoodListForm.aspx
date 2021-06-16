@@ -206,6 +206,7 @@ Body Section
             &nbsp;&nbsp;
             <asp:Button ID="_SysAdminBtn" runat="server" Text="系統管理員" />
         </div>
+        
         <br/><br/>
         <asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
                       CellPadding="4" 

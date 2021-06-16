@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="product_onsale.aspx.cs" Inherits="BitSystem.product_onsale" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sale_chickout_product.aspx.cs" Inherits="BitSystem.sale_chickout_product" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,6 @@
 <!-- 
 	Upper Header Section 
 -->
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
@@ -152,157 +151,166 @@ Body Section
 		  </ul>
 
 	</div>
-	<div class="span9">
+
+
+<div class="span9">
+
 	<ul class="breadcrumb">
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
-		<li class="active">商品上架</li>
+		<li class="active">得標結帳</li>
 	</ul>
-	<hr class="soft"/>
-	<h3 align ="center"> 商品上架</h3>	
-	<hr class="soft"/>
-
-	<div class="span2">
-	</div>
-
-	<div class="span5">
-    <form id="form1" runat="server">
-        <div align =" left">
-			<h1>商品上架資料</h1>
-			
-			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
-			<asp:TextBox ID="user_name" runat="server" Enabled="False"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label3" runat="server" Text="產品名稱："></asp:Label>
-			<asp:TextBox ID="product" runat="server" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label4" runat="server" Text="分類選擇："></asp:Label>
-			<asp:DropDownList ID="classify" runat="server"  
-            DataSourceID="" DataTextField="classify" DataValueField="classify"  
-            AppendDataBoundItems="True">
-            <asp:ListItem>請選擇</asp:ListItem></asp:DropDownList>
-			<br/>
-			<asp:Label ID="Label2" runat="server" Text="商品數量："></asp:Label>
-			<asp:DropDownList ID="total_number" runat="server" Width="84px"></asp:DropDownList>
-			<br/>       
-			<asp:Label ID="Label11" runat="server" Text="商品狀況："></asp:Label>
-			<asp:TextBox ID="product_status" runat="server" ></asp:TextBox>
-			<br/>
-			<br/>       
-			<asp:Label ID="Label6" runat="server" Text="商品市價："></asp:Label>
-			<asp:TextBox ID="public_price" runat="server" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label5" runat="server" Text="商品描述："></asp:Label>
-			<asp:TextBox ID="description" runat="server" TextMode="MultiLine"  Row="5"></asp:TextBox>
-			<br/>
-			<div align =" center">
-			<asp:Label ID="product_image" runat="server" Text="檔案圖片："></asp:Label>
-            <asp:FileUpload ID="FileUpload2" runat="server" />
-			<br/>
-            <asp:Image ID="upload_img" runat="server" />
-			<br/>
-			<asp:Button ID="show_upload_img" runat="server" Text="檢視圖片" OnClick="show_upload_img_Click" />
+	<h3 align ="center">得標商品結帳</h3>	
+	<form id="form1" runat="server">
+<div class="well well-small">
+	<div class="row-fluid">	  
+		<style>
+			td, th {
+				text-align: center;
+			}
+		</style>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" text-align="Center">
+                      
+            <Columns >
+                <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
+                    <ItemTemplate>
+                        <asp:Image ID="img0" runat="server"  Height="160"  width="160" text-align ="center" ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_name" runat="server" text-align ="center" Text='<%# Eval("product") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="total_number" runat="server" text-align ="center" Text='<%# Eval("total_number") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="得標價錢" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="low_price" runat="server" text-align ="center" Text='<%# Eval("low_price") %>'/>
+                    </ItemTemplate> 
+				</asp:TemplateField>
+            </Columns>
+			</asp:GridView>
+		
 			</div>
-			<br/>
-			<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="onsale" runat="server" Text="商品上架" OnClick="onsale_Click" />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="exit" runat="server" Text="離開取消" />
-			<br/>	
-        </div>
-	</div>
-	</div>
-	<div class="span2">
-	</div>
-		<!-- 
-    Clients 
-    -->
- <div class="span12">
-    </form>
-    <section class="our_client">
-        <hr class="soften"/>
-        <h4 class="title cntr"><span class="text">Manufactures</span></h4>
-        <hr class="soften"/>
-        <div class="row">
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/1.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/2.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/3.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/4.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/5.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/6.png"></a>
-            </div>
-        </div>
-    </section>
-    <!--
-    Footer
-    -->
-    <footer class="footer">
-        <div class="row-fluid">
-            <div class="span2">
-                <h5>Your Account</h5>
-                <a href="#">YOUR ACCOUNT</a><br>
-                <a href="#">PERSONAL INFORMATION</a><br>
-                <a href="#">ADDRESSES</a><br>
-                <a href="#">DISCOUNT</a><br>
-                <a href="#">ORDER HISTORY</a><br>
-            </div>
-            <div class="span2">
-                <h5>Iinformation</h5>
-                <a href="contact.html">CONTACT</a><br>
-                <a href="#">SITEMAP</a><br>
-                <a href="#">LEGAL NOTICE</a><br>
-                <a href="#">TERMS AND CONDITIONS</a><br>
-                <a href="#">ABOUT US</a><br>
-            </div>
-            <div class="span2">
-                <h5>Our Offer</h5>
-                <a href="#">NEW PRODUCTS</a> <br>
-                <a href="#">TOP SELLERS</a><br>
-                <a href="#">SPECIALS</a><br>
-                <a href="#">MANUFACTURERS</a><br>
-                <a href="#">SUPPLIERS</a> <br/>
-            </div>
-            <div class="span6">
-                <h5>The standard chunk of Lorem</h5>
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-                those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
-                Malorum" by Cicero are also reproduced in their exact original form, 
-                accompanied by English versions from the 1914 translation by H. Rackham.
-            </div>
-        </div>
-    </footer>
-<!-- /container -->
+	
+	
+				</div>
 
-<div class="copyright">
-    <div class="container">
-        <p class="pull-right">
-            <a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/mc.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/pp.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/visa.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/disc.png" alt="payment"></a>
-        </p>
-        <span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
-    </div>
+			<div class="row-fluid">	  
+				<div class="span8">
+				</div>
+				<div class="span4">
+                    <asp:Label ID="Label1" runat="server" Text="總價 : " Font-Bold="True" Font-Size="XX-Large"></asp:Label>
+                    <asp:Label ID="total_price" runat="server" Font-Bold="True" Font-Size="XX-Large"></asp:Label>
+				</div>
+			</div>
+			<div class="row-fluid">	 
+				<div align ="center" >
+				<asp:Button ID="Button4" runat="server" Text="確認資料" OnClick="Button3_Click" />
+				<asp:Button ID="Button2" runat="server" Text="繼續下標" OnClick="Button4_Click" />
+				</div>
+			</div>
+	</div>
+		</form>
+	</div>
 </div>
-	</div>	
-    <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
+
+<!-- 
+Clients 
+-->
+		<style>
+			td, th {
+				text-align: center;
+			}
+		</style>
+
+				<hr class="soften"/>
+				<h4 class="title cntr"><span class="text">Manufactures</span></h4>
+				<hr class="soften"/>
+				<div class="row">
+					<div class="span2">
+						<a href="#"><img alt="" src="assets/img/1.png"></a>
+					</div>
+					<div class="span2">
+						<a href="#"><img alt="" src="assets/img/2.png"></a>
+					</div>
+					<div class="span2">
+						<a href="#"><img alt="" src="assets/img/3.png"></a>
+					</div>
+					<div class="span2">
+						<a href="#"><img alt="" src="assets/img/4.png"></a>
+					</div>
+					<div class="span2">
+						<a href="#"><img alt="" src="assets/img/5.png"></a>
+					</div>
+					<div class="span2">
+						<a href="#"><img alt="" src="assets/img/6.png"></a>
+					</div>
+				</div>
+
+
+			<!--
+			Footer
+			-->
+			<footer class="footer">
+			<div class="row-fluid">
+			<div class="span2">
+			<h5>Your Account</h5>
+			<a href="#">YOUR ACCOUNT</a><br>
+			<a href="#">PERSONAL INFORMATION</a><br>
+			<a href="#">ADDRESSES</a><br>
+			<a href="#">DISCOUNT</a><br>
+			<a href="#">ORDER HISTORY</a><br>
+			 </div>
+			<div class="span2">
+			<h5>Iinformation</h5>
+			<a href="contact.html">CONTACT</a><br>
+			<a href="#">SITEMAP</a><br>
+			<a href="#">LEGAL NOTICE</a><br>
+			<a href="#">TERMS AND CONDITIONS</a><br>
+			<a href="#">ABOUT US</a><br>
+			 </div>
+			<div class="span2">
+			<h5>Our Offer</h5>
+			<a href="#">NEW PRODUCTS</a> <br>
+			<a href="#">TOP SELLERS</a><br>
+			<a href="#">SPECIALS</a><br>
+			<a href="#">MANUFACTURERS</a><br>
+			<a href="#">SUPPLIERS</a> <br/>
+			 </div>
+			 <div class="span6">
+			<h5>The standard chunk of Lorem</h5>
+			The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
+			 those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
+			 Malorum" by Cicero are also reproduced in their exact original form, 
+			accompanied by English versions from the 1914 translation by H. Rackham.
+			 </div>
+			 </div>
+			</footer>
+			<!-- /container -->
+
+			<div class="copyright">
+			<div class="container">
+				<p class="pull-right">
+					<a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
+					<a href="#"><img src="assets/img/mc.png" alt="payment"></a>
+					<a href="#"><img src="assets/img/pp.png" alt="payment"></a>
+					<a href="#"><img src="assets/img/visa.png" alt="payment"></a>
+					<a href="#"><img src="assets/img/disc.png" alt="payment"></a>
+				</p>
+				<span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
+			</div>
+			</div>
+			</div>
+<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.easing-1.3.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.easing-1.3.min.js"></script>
     <script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
     <script src="assets/js/shop.js"></script>
-</body>
+  </body>
 </html>
