@@ -49,5 +49,10 @@ namespace BitSystem
             //關閉與資料庫連接的通道
             connection.Close();
         }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

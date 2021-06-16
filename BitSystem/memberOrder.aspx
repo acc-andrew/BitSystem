@@ -159,54 +159,51 @@ Body Section
 	</ul>
 	<h3> 訂單明細</h3>	
     <form id="form1" runat="server">
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:ListItem>請選擇</asp:ListItem>
+            <asp:ListItem>已上架</asp:ListItem>
+            <asp:ListItem>競標中</asp:ListItem>
+            <asp:ListItem>已得標</asp:ListItem>
         </asp:DropDownList>
 	<hr class="soft"/>
-        <div>
-			<h1>競標商品清單</h1>
-			<asp:Label ID="Label15" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label16" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label17" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label18" runat="server" Text="狀態"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label19" runat="server" Text="訂單日期"></asp:Label>
-			<br/>
-			<asp:ImageButton ID="ImageButton2" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label20" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label21" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label22" runat="server" Text="競標中"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label23" runat="server" Text="2021/5/30"></asp:Label>
-			<br/>
-        </div>
-        <div>
-			<h1>得標商品清單</h1>
-			<asp:Label ID="Label1" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label2" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label3" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label4" runat="server" Text="狀態"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label5" runat="server" Text="訂單日期"></asp:Label>
-			<br/>
-			<asp:ImageButton ID="OrderList" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="number" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="price" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="state" runat="server" Text="已結標"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="date" runat="server" Text="2021/5/30"></asp:Label>
-			<br/>
-        </div>
-        <div>
-			<h1>上架商品清單</h1>
-			<asp:Label ID="Label6" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label7" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label8" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label9" runat="server" Text="狀態"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label10" runat="server" Text="訂單日期"></asp:Label>
-			<br/>
-			<asp:ImageButton ID="ImageButton1" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label11" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label12" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label13" runat="server" Text="已上架"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label14" runat="server" Text="2021/5/30"></asp:Label>
-			<br/>
-        </div>
+		<asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
+                      CellPadding="4" 
+                      AutoGenerateSelectButton="True"
+                      OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
+            <Columns>
+                <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
+                    <ItemTemplate>
+                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="total_number" runat="server" Text='<%# Eval("total_number") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商家代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="seller_ID" runat="server" Text='<%# Eval("seller_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:Label ID="Action_product_ID" runat="server" Text='<%# Eval("Action_product_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_netConnectionString3 %>" SelectCommand="SELECT * FROM [Action_bidder]"></asp:SqlDataSource>
     </form>
 		<!-- 
     Clients 
