@@ -206,6 +206,7 @@ Body Section
             &nbsp;&nbsp;
             <asp:Button ID="_SysAdminBtn" runat="server" Text="系統管理員" />
         </div>
+        
         <br/><br/>
         <asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
                       CellPadding="4" 
@@ -244,7 +245,7 @@ Body Section
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_netConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
     </form>
     <!--
 Footer

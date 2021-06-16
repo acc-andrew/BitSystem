@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sale_chickout.aspx.cs" Inherits="BitSystem.sale_chickout" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sale_chickout_member.aspx.cs" Inherits="BitSystem.sale_chickout_member" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,99 +163,6 @@ Body Section
 	<form id="form1" runat="server">
 <div class="well well-small">
 	<div class="row-fluid">	  
-
-		<div class="span3">
-			<img src="assets/img/a.jpg" alt="">
-		</div>
-		<div class="span6">
-			<h5>Product Name </h5>
-			<asp:Label ID="Label7" runat="server" Text="商品編號："></asp:Label>
-			<asp:TextBox ID="TextBox3" runat="server" Enabled="False"></asp:TextBox>
-			<p>
-			Nowadays the lingerie industry is one of the most successful business spheres.
-			We always stay in touch with the latest fashion tendencies - 
-			that is why our goods are so popular..
-			</p>
-		</div>
-		<div class="span3 alignR">
-		<form class="form-horizontal qtyFrm">
-		<h3> $140.00</h3>
-		
-		<div class="btn-group">
-		  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-		  <a href="product_details.html" class="shopBtn">VIEW</a>
-		 </div>
-			</form>
-		</div>
-	</div>
-	
-	
-	<hr class="soften">
-	<div class="row-fluid">	  
-		<div class="span3">
-			<img src="assets/img/a.jpg" alt="">
-		</div>
-		<div class="span6">
-			<h5>Product Name </h5>
-			<asp:Label ID="Label6" runat="server" Text="商品編號："></asp:Label>
-			<asp:TextBox ID="TextBox2" runat="server" Enabled="False"></asp:TextBox>
-			<p>
-			Nowadays the lingerie industry is one of the most successful business spheres.
-			We always stay in touch with the latest fashion tendencies - 
-			that is why our goods are so popular..
-			</p>
-		</div>
-		<div class="span3 alignR">
-		<form class="form-horizontal qtyFrm">
-		<h3> $140.00</h3>
-		
-		<div class="btn-group">
-		  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-		  <a href="product_details.html" class="shopBtn">VIEW</a>
-		 </div>
-			</form>
-		</div>
-	</div>
-	<hr class="soften">
-	<div class="row-fluid">	  
-		<div class="span3">
-			<img src="assets/img/b.jpg" alt="">
-		</div>
-		<div class="span6">
-			<h5>Product Name </h5>
-			<asp:Label ID="Label2" runat="server" Text="商品編號："></asp:Label>
-			<asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
-			<p>
-			Nowadays the lingerie industry is one of the most successful business spheres.
-			We always stay in touch with the latest fashion tendencies - 
-			that is why our goods are so popular..
-			</p>
-		</div>
-		<div class="span3 alignR">
-		<form class="form-horizontal qtyFrm">
-		<h3> $140.00</h3>
-		<div class="btn-group">
-		  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-		  <a href="product_details.html" class="shopBtn" >VIEW</a>
-		 </div>
-			
-			</form>
-		</div>
-	</div>
-	<hr class="soften">
-	<div class="row-fluid">	  
-		<div class="span6">
-		</div>
-		<div class="span3">
-			<h3>總金額 : </h3>
-		</div>
-		<div class="span3 alignR">
-		<h3> $420.00</h3>
-		</div>
-	</div>
-
-	 <hr class="soften">
-	<div class="row-fluid" >	 
 		<div align =" center">
 			<h1 >購買資料確認</h1>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
@@ -282,13 +189,15 @@ Body Section
 	</div>
 	<div>
 	</div>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString2 %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sale_netConnectionString3 %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
 	</br>
 	<div align="center">
 	
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="Button3" runat="server" Text="前往付款" />
+			<asp:Button ID="pay" runat="server" Text="前往付款" OnClick="pay_Click" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="Button4" runat="server" Text="繼續下標" />
+			<asp:Button ID="back" runat="server" Text="繼續下標" OnClick="back_Click" />
 			<br/>	
 	</form>
 	</div>
