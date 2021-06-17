@@ -186,12 +186,21 @@ Body Section
             &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="Label3" runat="server" Text="剩餘時間："></asp:Label>
             <asp:Label ID="_LeftTime" runat="server" Text=""></asp:Label>
-            <br/>
+            <br/><br/>
             <asp:Label ID="Label2" runat="server" Text="商品描述："></asp:Label>
             <asp:Label ID="_ProductDesc" runat="server" Text=""></asp:Label>
             <br/><br/>
+            <asp:Label ID="Label4" runat="server" Text="官方售價："></asp:Label>
+            <asp:Label ID="_GUI_official_price" runat="server" Text=""></asp:Label>
+            <br/>
+            <asp:Label ID="Label5" runat="server" Text="目前得標者："></asp:Label>
+            <asp:Label ID="_NowBitWinner" runat="server" Text=""></asp:Label>
+            &nbsp;&nbsp;
+            <asp:Label ID="Label6" runat="server" Text="目前得標價："></asp:Label>
+            <asp:Label ID="_NowBitPrice" runat="server" Text=""></asp:Label>     
+            <br/>
             <asp:TextBox ID="_BitPrice" runat="server"></asp:TextBox>
-            <asp:Button ID="_BitBtn" runat="server" Text="出價" />
+            <asp:Button ID="_BitBtn" runat="server" Text="出價" OnClick="_BitBtn_Click" />
         </div>
     </form>
 </body>
