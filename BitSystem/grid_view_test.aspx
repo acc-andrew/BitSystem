@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sale_chickout_member.aspx.cs" Inherits="BitSystem.sale_chickout_member" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="grid_view_test.aspx.cs" Inherits="BitSystem.grid_view_test" %>
 
 <!DOCTYPE html>
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <title>product_onsale</title>
+    <title>Twitter Bootstrap shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -83,10 +83,17 @@ Navigation Bar Section
 			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
 			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
 			</ul>
+			<ul class="nav pull-right">
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+				<div class="dropdown-menu">
+	            
+				 
 			
-				
+				</div>
 			</li>
 			</ul>
+
 		  </div>
 		</div>
 	  </div>
@@ -157,59 +164,53 @@ Body Section
 		  </ul>
 
 	</div>
+	<div class="span9">
+<!--
+New Products
+-->
 
+	<div class="well well-small">
+	<h3>Our Products </h3>
+		<div class="row-fluid">
+		  <ul class="thumbnails">
+			<li class="span4">
+			  <div class="thumbnail">
 
-<div class="span9">
+				<asp:GridView ID="product_grid" GridLines="None"  runat="server"  AutoGenerateColumns="false">
 
-	<ul class="breadcrumb">
-		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
-		<li class="active">得標結帳</li>
-	</ul>
-	<h3 align ="center">得標商品結帳</h3>	
-
-<div class="well well-small">
-	<div class="row-fluid">	  
-		<div align =" center">
-			<h1 >購買資料確認</h1>
-			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
-			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label3" runat="server" Text="會員名稱："></asp:Label>
-			<asp:TextBox ID="_name" runat="server" Enabled="False"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label4" runat="server" Text="電子郵件："></asp:Label>
-			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False"></asp:TextBox>
-			<br/>    
-			<asp:Label ID="Label8" runat="server" Text="收件姓名："></asp:Label>
-			<asp:TextBox ID="receiver" runat="server" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
-			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label10" runat="server" Text="寄送地址："></asp:Label>
-			<asp:TextBox ID="_address" runat="server" ></asp:TextBox>
-			<br/>
+					<Columns>
+						<asp:TemplateField  HeaderStyle-Width="200px">
+							<ItemTemplate>
+								<asp:Image ID="img0" runat="server"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+							</ItemTemplate>
+						</asp:TemplateField>
+						<asp:TemplateField >
+							<ItemTemplate>   
+								<asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+							</ItemTemplate> 
+						</asp:TemplateField>
+						<asp:TemplateField >
+							<ItemTemplate>   
+								<asp:Label ID="official_price" runat="server" Text='<%# Eval("official_price") %>'/>
+							</ItemTemplate> 
+						</asp:TemplateField>
+						<asp:TemplateField >
+							<ItemTemplate>  
+								<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+							</ItemTemplate> 
+						</asp:TemplateField>
+					</Columns>
+				</asp:GridView>
+			      
+			  </div>
+			</li>
+		  </ul>
 		</div>
-      </div>
-	<div>
+	<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString4 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
 	</div>
-	<div>
 	</div>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString2 %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sale_netConnectionString3 %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
-	</br>
-	<div align="center">
-	
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="pay" runat="server" Text="前往付款" OnClick="pay_Click" />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="back" runat="server" Text="繼續下標" OnClick="back_Click" />
-			<br/>	
+	</div>
 	</form>
-	</div>
-</div>
-</div>
-</div>
 <!-- 
 Clients 
 -->

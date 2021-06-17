@@ -29,15 +29,21 @@
 <!-- 
 	Upper Header Section 
 -->
+<form class="form-horizontal loginFrm" runat="server">
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
-				<a href="memberProfile.aspx"><span class="icon-user"></span> 會員資料</a> 
-				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
-				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
-				<a href="#"><span class="icon-remove"></span> 登出</a>
+				<div align="right">
+					<asp:LinkButton ID="home" runat="server" class="icon-home" OnClick="home_Click">首頁</asp:LinkButton>
+					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user" OnClick="member_info_Click">會員資料</asp:LinkButton>
+					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" OnClick="order_info_Click" >訂單查詢</asp:LinkButton>
+					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" OnClick="my_info_Click">我的會員</asp:LinkButton>
+					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit" OnClick="register_Click">免費註冊</asp:LinkButton>
+					<asp:LinkButton ID="contantus" runat="server" class="icon-envelope" OnClick="contantus_Click">聯絡我們</asp:LinkButton>
+					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" OnClick="manager_Click">管理後臺</asp:LinkButton>
+					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" OnClick="logout_Click">登出</asp:LinkButton>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -158,7 +164,7 @@ Body Section
 	</ul>
 	<h3> 會員資料</h3>	
 	<hr class="soft"/>
-    <form id="form1" runat="server">
+
         <div>
 			<h1>會員資料修改</h1>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
