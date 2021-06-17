@@ -21,6 +21,22 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //設定會員登入與否顯現標示不同
+            Session["Login"] = null;
+
+            if (Convert.ToString(Session["Login"]) == "logged")
+            {
+                member_info.Visible = true;
+                order_info.Visible = true;
+                logout.Visible = true;
+            }
+            else
+            {
+                my_info.Visible = true;
+                register.Visible = true;
+                manager.Visible = true;
+            }
+
             // if the page loaded first time
             if (IsPostBack == false)
             {
