@@ -165,7 +165,7 @@ Body Section
 			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
-			<asp:TextBox ID="_memberPassword" runat="server" TextMode="Password" Enabled="False"></asp:TextBox>
+			<asp:TextBox ID="_memberPassword" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label3" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
 			<asp:TextBox ID="_name" runat="server" Enabled="False" ></asp:TextBox>
