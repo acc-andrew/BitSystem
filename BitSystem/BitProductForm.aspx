@@ -202,6 +202,7 @@ Body Section
             <asp:TextBox ID="_BitPrice" runat="server"></asp:TextBox>
             <asp:Button ID="_BitBtn" runat="server" Text="出價" OnClick="_BitBtn_Click" />
         </div>
+
     </form>
 </body>
 </html>
