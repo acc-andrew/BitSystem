@@ -62,7 +62,7 @@ Lower Header Section
     <div class="row">
         <div class="span4">
             <h1>
-                <a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span> 
+                <a class="logo" href="index.html"><span></span> 
                     <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                 </a>
             </h1>
@@ -75,7 +75,7 @@ Lower Header Section
             </div>
         </div>
         <div class="span4 alignR">
-            <p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>
+            <p><br> <strong></strong><br><br></p>
             <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
             <span class="btn btn-warning btn-mini">$</span>
             <span class="btn btn-mini">&pound;</span>
@@ -138,18 +138,15 @@ Body Section
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
-		<li style="border:0"> &nbsp;</li>
-		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+		<li><asp:LinkButton ID="cloth" runat="server" class="icon-chevron-right" OnClick="cloth_Click">衣服/飾品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="book" runat="server" class="icon-chevron-right" OnClick="book_Click">書籍/文創</asp:LinkButton></li>
+		<li><asp:LinkButton ID="life" runat="server" class="icon-chevron-right" OnClick="life_Click">居家/生活</asp:LinkButton></li>
+		<li><asp:LinkButton ID="bag" runat="server" class="icon-chevron-right" OnClick="bag_Click">包包/精品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="shoes" runat="server" class="icon-chevron-right" OnClick="shoes_Click">男女鞋款</asp:LinkButton></li>
+		<li><asp:LinkButton ID="car" runat="server" class="icon-chevron-right" OnClick="car_Click">汽機車/零件百貨</asp:LinkButton></li>
+		<li><asp:LinkButton ID="entertainment" runat="server" class="icon-chevron-right" OnClick="entertainment_Click">娛樂/收藏</asp:LinkButton></li>
+		<li><asp:LinkButton ID="pet" runat="server" class="icon-chevron-right" OnClick="pet_Click">寵物/用品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="others" runat="server" class="icon-chevron-right" OnClick="others_Click">其他類別</asp:LinkButton></li>
 	</ul>
 </div>
 
@@ -245,7 +242,7 @@ Body Section
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
     </form>
     <!--
 Footer
