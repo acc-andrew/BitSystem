@@ -11,7 +11,7 @@ namespace BitSystem
 {
 
 
-    public partial class GoodListForm
+    public partial class grid_view_test
     {
 
         /// <summary>
@@ -87,31 +87,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton logout;
 
         /// <summary>
-        /// _GoodOnShelfBtn 控制項。
+        /// product_grid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _GoodOnShelfBtn;
-
-        /// <summary>
-        /// _SysAdminBtn 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _SysAdminBtn;
-
-        /// <summary>
-        /// _GoodsGridView 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView _GoodsGridView;
+        protected global::System.Web.UI.WebControls.GridView product_grid;
 
         /// <summary>
         /// SqlDataSource1 控制項。

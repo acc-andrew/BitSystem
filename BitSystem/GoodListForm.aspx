@@ -34,24 +34,24 @@
 <!-- 
 Upper Header Section 
 -->
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="topNav">
-        <div class="container">
-            <div class="alignR">
-                <div class="pull-left socialNw">
-                    <a href="#"><span class="icon-twitter"></span></a>
-                    <a href="#"><span class="icon-facebook"></span></a>
-                    <a href="#"><span class="icon-youtube"></span></a>
-                    <a href="#"><span class="icon-tumblr"></span></a>
-                </div>
-                <a href="index.html"> <span class="icon-home"></span> Home</a> 
-                <a href="#"><span class="icon-user"></span> My Account</a> 
-                <a href="register.html"><span class="icon-edit"></span> Free Register </a> 
-                <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-                <a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
-            </div>
-        </div>
-    </div>
+<form class="form-horizontal loginFrm" runat="server">
+<div class="navbar-nav ml-auto">
+	<div class="topNav">
+		<div class="container">
+			<div class="alignR">
+				<div align="right">
+					<asp:LinkButton ID="home" runat="server" class="icon-home" OnClick="home_Click">首頁</asp:LinkButton>
+					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user" OnClick="member_info_Click">會員資料</asp:LinkButton>
+					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" OnClick="order_info_Click" >訂單查詢</asp:LinkButton>
+					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" OnClick="my_info_Click">我的會員</asp:LinkButton>
+					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit" OnClick="register_Click">免費註冊</asp:LinkButton>
+					<asp:LinkButton ID="contantus" runat="server" class="icon-envelope" OnClick="contantus_Click">聯絡我們</asp:LinkButton>
+					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" OnClick="manager_Click">管理後臺</asp:LinkButton>
+					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" OnClick="logout_Click">登出</asp:LinkButton>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!--
 Lower Header Section 
@@ -103,14 +103,14 @@ Navigation Bar Section
                     <li class=""><a href="four-col.html">Four Column</a></li>
                     <li class=""><a href="general.html">General Content</a></li>
                 </ul>
-                <form action="#" class="navbar-search pull-left">
+                
                     <input type="text" placeholder="Search" class="search-query span2">
-                </form>
+                
                 <ul class="nav pull-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
                         <div class="dropdown-menu">
-                            <form class="form-horizontal loginFrm">
+                            
                                 <div class="control-group">
                                     <input type="text" class="span2" id="inputEmail" placeholder="Email">
                                 </div>
@@ -123,7 +123,7 @@ Navigation Bar Section
                                     </label>
                                     <button type="submit" class="shopBtn btn-block">Sign in</button>
                                 </div>
-                            </form>
+                           
                         </div>
                     </li>
                 </ul>
@@ -198,7 +198,7 @@ Body Section
 
 	</div>
 
-    <form id="form1" runat="server">
+    
         <div>
             <h1>商品列表</h1>
             <asp:Button ID="_GoodOnShelfBtn" runat="server" Text="商品上架" OnClick="_GoodOnShelfBtn_Click" />
@@ -208,7 +208,7 @@ Body Section
         </div>
         
         <br/><br/>
-        <asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
+        <asp:GridView ID="_GoodsGridView" runat="server"  AutoGenerateColumns="false"
                       CellPadding="4" 
                       AutoGenerateSelectButton="True"
                       OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
