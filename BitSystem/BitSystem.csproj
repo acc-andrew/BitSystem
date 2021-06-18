@@ -253,7 +253,6 @@
     <Content Include="product_onsale.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
-    <Content Include="BitProductForm.aspx" />
     <Content Include="PutGoodOnShelfForm.aspx" />
     <Content Include="Sale_product_login.aspx" />
     <Content Include="Sale_product_unlogin.aspx" />
@@ -381,13 +380,6 @@
     </Compile>
     <Compile Include="memberProfile.aspx.designer.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BitProductForm.aspx.cs">
-      <DependentUpon>BitProductForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BitProductForm.aspx.designer.cs">
-      <DependentUpon>BitProductForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PutGoodOnShelfForm.aspx.cs">
       <DependentUpon>PutGoodOnShelfForm.aspx</DependentUpon>
