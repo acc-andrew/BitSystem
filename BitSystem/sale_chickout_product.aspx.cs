@@ -21,7 +21,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-            Session["Login"] = "logged";
+            
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -34,10 +34,11 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Response.Redirect("memberLoginForm.aspx");
             }
 
             //Session["user"] = "Tom";
-            Session["member_ID"] = "13";
+            //Session["member_ID"] = "13";
             // pre-fetch picture pathname from Market_product2 DB
 
             fetchProductInfo();

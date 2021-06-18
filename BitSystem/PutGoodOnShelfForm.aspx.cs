@@ -38,6 +38,7 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Response.Redirect("memberLoginForm.aspx");
             }
 
 
