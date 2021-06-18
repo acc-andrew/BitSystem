@@ -29,15 +29,21 @@
 <!-- 
 	Upper Header Section 
 -->
+<form class="form-horizontal loginFrm" runat="server">
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
 			<div class="alignR">
-				<a href="Home.aspx"> <span class="icon-home"></span> 首頁</a> 
-				<a href="memberProfile.aspx"><span class="icon-user"></span> 會員資料</a> 
-				<a href="memberOrder.aspx"><span class="icon-edit"></span> 訂單查詢 </a> 
-				<a href="#"><span class="icon-envelope"></span> 聯絡我們</a>
-				<a href="#"><span class="icon-remove"></span> 登出</a>
+				<div align="right">
+					<asp:LinkButton ID="home" runat="server" class="icon-home" OnClick="home_Click">首頁</asp:LinkButton>
+					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user" OnClick="member_info_Click">會員資料</asp:LinkButton>
+					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" OnClick="order_info_Click" >訂單查詢</asp:LinkButton>
+					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" OnClick="my_info_Click">我的會員</asp:LinkButton>
+					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit" OnClick="register_Click">免費註冊</asp:LinkButton>
+					<asp:LinkButton ID="contantus" runat="server" class="icon-envelope" OnClick="contantus_Click">聯絡我們</asp:LinkButton>
+					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" OnClick="manager_Click">管理後臺</asp:LinkButton>
+					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" OnClick="logout_Click">登出</asp:LinkButton>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -170,117 +176,43 @@ Body Section
 	</ul>
 	<h3> 會員登入</h3>	
 	<hr class="soft"/>
-	<form id="form1" runat="server">
+
 	<div class="row">
-	<div class="span4">
-		<div class="well">
-			<h1>建立新的帳號</h1><br/>
-			輸入您的電子郵件(e-mail address)以建立一個新帳號<br/>
-				<div class="control-group">
-					<label class="control-label" for="inputEmail">E-mail address</label>
-					<div class="controls">
-                        <asp:TextBox ID="_memberEmail"  runat="server" Width="160px"></asp:TextBox>
-						<asp:Button ID="_CreaateMemberBtn" runat="server" Text="建立新的會員帳號" OnClick="_CreaateMemberBtn_Click"  />
-					</div>
-				</div>
+		<div class="span5">
+			<div class="well">
+				<h1>建立新的帳號</h1><br/>
+				輸入您的電子郵件(e-mail address)以建立一個新帳號<br/><br/><br/>
+                <asp:Label ID="Label3" runat="server" Text="E-mail address : "></asp:Label>
+				<asp:TextBox ID="_memberEmail"  runat="server" Width="160px"></asp:TextBox>
+				<asp:Button ID="_CreaateMemberBtn" runat="server" Text="建立新的會員帳號" OnClick="_CreaateMemberBtn_Click"  />
+
+			</div>
+		</div>
+		<div class="span5">
+			<div class="well">
+				<h1>會員登入畫面</h1><br/>
+			已經是會員，請輸入您的會員名稱和密碼<br/><br/><br/>
+				<asp:Label ID="Label1" runat="server" Text="會員名稱："></asp:Label>
+				<asp:TextBox ID="_loginName" runat="server" Width="160px"></asp:TextBox>
+				<br/>
+				<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
+				<asp:TextBox ID="_loginPassword" runat="server" TextMode="Password" Width="160px"></asp:TextBox>
+				<br/>
+				<asp:Button ID="LoginBtn" runat="server" Text="會員登入" OnClick="LoginBtn_Click" />
+				<br/>
+			</div>
 		</div>
 	</div>
-		<div>
-		<div class="well">
-			<h1>會員登入畫面</h1><br/>
-		已經是會員，請輸入您的會員名稱和密碼<br/><br/><br/>
-			<asp:Label ID="Label1" runat="server" Text="會員名稱："></asp:Label>
-			<asp:TextBox ID="_loginName" runat="server" Width="160px"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
-			<asp:TextBox ID="_loginPassword" runat="server" TextMode="Password" Width="160px"></asp:TextBox>
-			<br/>
-			<asp:Button ID="LoginBtn" runat="server" Text="會員登入" OnClick="LoginBtn_Click" />
-            <br/>
-		<div>
-		</div>
 		<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_netConnectionString %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
 	</form>
     <!-- 
     Clients 
     -->
-    <section class="our_client">
-        <hr class="soften"/>
-        <h4 class="title cntr"><span class="text">Manufactures</span></h4>
-        <hr class="soften"/>
-        <div class="row">
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/1.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/2.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/3.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/4.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/5.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/6.png"></a>
-            </div>
-        </div>
-    </section>
-    <!--
-    Footer
-    -->
-    <footer class="footer">
-        <div class="row-fluid">
-            <div class="span2">
-                <h5>Your Account</h5>
-                <a href="#">YOUR ACCOUNT</a><br>
-                <a href="#">PERSONAL INFORMATION</a><br>
-                <a href="#">ADDRESSES</a><br>
-                <a href="#">DISCOUNT</a><br>
-                <a href="#">ORDER HISTORY</a><br>
-            </div>
-            <div class="span2">
-                <h5>Iinformation</h5>
-                <a href="contact.html">CONTACT</a><br>
-                <a href="#">SITEMAP</a><br>
-                <a href="#">LEGAL NOTICE</a><br>
-                <a href="#">TERMS AND CONDITIONS</a><br>
-                <a href="#">ABOUT US</a><br>
-            </div>
-            <div class="span2">
-                <h5>Our Offer</h5>
-                <a href="#">NEW PRODUCTS</a> <br>
-                <a href="#">TOP SELLERS</a><br>
-                <a href="#">SPECIALS</a><br>
-                <a href="#">MANUFACTURERS</a><br>
-                <a href="#">SUPPLIERS</a> <br/>
-            </div>
-            <div class="span6">
-                <h5>The standard chunk of Lorem</h5>
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-                those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
-                Malorum" by Cicero are also reproduced in their exact original form, 
-                accompanied by English versions from the 1914 translation by H. Rackham.
-            </div>
-        </div>
-    </footer>
-</div><!-- /container -->
+   
 
-<div class="copyright">
-    <div class="container">
-        <p class="pull-right">
-            <a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/mc.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/pp.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/visa.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/disc.png" alt="payment"></a>
-        </p>
-        <span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
-    </div>
-</div>
+
+
+
     <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
