@@ -13,6 +13,9 @@ namespace BitSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+            
             //設定會員登入與否顯現標示不同
             Session["Login"] = null;
 
@@ -28,33 +31,6 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
             }
-        }
-
-        //linkbutton 點擊連接網址
-        protected void home_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Home.aspx");
-        }
-
-        protected void member_info_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberProfile.aspx");
-        }
-
-        protected void order_info_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberOrder.aspx");
-        }
-
-        protected void my_info_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberLoginForm.aspx");
-        }
-
-        protected void register_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberRegisterForm.aspx");
-        }
             if (!IsPostBack) //如果第一次載入頁面
             {
                 for (int y = 1949; y < 2050; y++) //給日期1下拉框新增年份資料
@@ -76,7 +52,7 @@ namespace BitSystem
 
             }
 
-            if (!IsPostBack)
+            /*if (!IsPostBack)
             {
                 //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
                 string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
@@ -119,7 +95,33 @@ namespace BitSystem
 
                 //關閉與資料庫連接的通道
                 connection.Close();
-            }
+            }*/
+        }
+
+        //linkbutton 點擊連接網址
+        protected void home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void member_info_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberProfile.aspx");
+        }
+
+        protected void order_info_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberOrder.aspx");
+        }
+
+        protected void my_info_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberLoginForm.aspx");
+        }
+
+        protected void register_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberRegisterForm.aspx");
         }
         protected bool isLeapYear()
         {
@@ -178,55 +180,6 @@ namespace BitSystem
                     break;
             }// switch
         }
-
-        protected void ModifyBtn_Click(object sender, EventArgs e)
-        {
-            _memberPassword.Enabled = true;
-            _name.Enabled = true;
-            _email.Enabled = true;
-            _cellphoneNo.Enabled = true;
-            _birthYear_list.Enabled = true;
-            _birthMonth_list.Enabled = true;
-            _birthDate_list.Enabled = true;
-            _address.Enabled = true;
-        }
-
-        protected void SaveBtn_Click(object sender, EventArgs e)
-        {
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
-
-            SqlConnection connection = new SqlConnection(s_data);
-
-            string splupdate = $"UPDATE member SET name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
-            
-
-            SqlCommand Command = new SqlCommand(splupdate, connection) ; //SQL語句
-
-            //與資料庫連接的通道開啟
-            connection.Open();
-
-            Command.ExecuteNonQuery();
-
-
-
-            //關閉與資料庫連接的通道
-            connection.Close();
-
-            _memberPassword.Enabled = false;
-            _name.Enabled = false;
-            _email.Enabled = false;
-            _cellphoneNo.Enabled = false;
-            _birthYear_list.Enabled = false;
-            _birthMonth_list.Enabled = false;
-            _birthDate_list.Enabled = false;
-            _address.Enabled = false;
-
-
-
-        }
-       
-    }
-
         protected void contantus_Click(object sender, EventArgs e)
         {
             // email
@@ -242,5 +195,60 @@ namespace BitSystem
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
         }
+
+        protected void ModifyBtn_Click(object sender, EventArgs e)
+        {
+            
+                _memberPassword.Enabled = true;
+                _name.Enabled = true;
+                _email.Enabled = true;
+                _cellphoneNo.Enabled = true;
+                _birthYear_list.Enabled = true;
+                _birthMonth_list.Enabled = true;
+                _birthDate_list.Enabled = true;
+                _address.Enabled = true;
+        }
+
+            protected void SaveBtn_Click(object sender, EventArgs e)
+            {
+                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
+
+                SqlConnection connection = new SqlConnection(s_data);
+
+                string splupdate = $"UPDATE member SET name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
+
+
+                SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
+
+                //與資料庫連接的通道開啟
+                connection.Open();
+
+                Command.ExecuteNonQuery();
+
+
+
+                //關閉與資料庫連接的通道
+                connection.Close();
+
+                _memberPassword.Enabled = false;
+                _name.Enabled = false;
+                _email.Enabled = false;
+                _cellphoneNo.Enabled = false;
+                _birthYear_list.Enabled = false;
+                _birthMonth_list.Enabled = false;
+                _birthDate_list.Enabled = false;
+                _address.Enabled = false;
+
+
+
+            }
+
+        }
     }
-}
+    
+       
+       
+
+
+        
+    
