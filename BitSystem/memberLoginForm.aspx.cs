@@ -66,7 +66,7 @@ namespace BitSystem
                         int nMemberID = (int)(Reader["member_ID"]);
                         Session["member_ID"] = nMemberID;
 
-                        Session["memberLogged"] = "Yes";
+                        Session["Login"] = "logged";
                         Response.Write("<script>alert('會員登入成功');</script>");
                         bFound = true;
                         // Server.Transfer("test2.aspx");
@@ -169,6 +169,7 @@ namespace BitSystem
             }
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
+
 
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)

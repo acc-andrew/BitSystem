@@ -96,36 +96,10 @@ Navigation Bar Section
             </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class=""><a href="index.html">Home	</a></li>
-                    <li class="active"><a href="list-view.html">List View</a></li>
-                    <li class=""><a href="grid-view.html">Grid View</a></li>
-                    <li class=""><a href="three-col.html">Three Column</a></li>
-                    <li class=""><a href="four-col.html">Four Column</a></li>
-                    <li class=""><a href="general.html">General Content</a></li>
-                </ul>
-                
-                    <input type="text" placeholder="Search" class="search-query span2">
-                
-                <ul class="nav pull-right">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
-                        <div class="dropdown-menu">
-                            
-                                <div class="control-group">
-                                    <input type="text" class="span2" id="inputEmail" placeholder="Email">
-                                </div>
-                                <div class="control-group">
-                                    <input type="password" class="span2" id="inputPassword" placeholder="Password">
-                                </div>
-                                <div class="control-group">
-                                    <label class="checkbox">
-                                        <input type="checkbox"> Remember me
-                                    </label>
-                                    <button type="submit" class="shopBtn btn-block">Sign in</button>
-                                </div>
-                           
-                        </div>
-                    </li>
+                    <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
+				    <li class=""><a id="sale_list" href="list_view.aspx">價低拍賣</a></li>
+				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
+				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
                 </ul>
             </div>
         </div>
