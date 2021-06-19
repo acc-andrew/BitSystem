@@ -52,7 +52,7 @@ namespace BitSystem
 
             }
 
-            /*if (!IsPostBack)
+            if (!IsPostBack)
             {
                 //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
                 string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
@@ -95,7 +95,7 @@ namespace BitSystem
 
                 //關閉與資料庫連接的通道
                 connection.Close();
-            }*/
+            }
         }
 
         //linkbutton 點擊連接網址
