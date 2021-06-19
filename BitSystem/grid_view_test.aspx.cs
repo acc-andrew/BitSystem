@@ -22,7 +22,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-            Session["Login"] = null ;
+            
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -155,55 +155,55 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "cloth";
+            Session["classify"] = "衣服/飾品";
             Response.Redirect("list_view.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "book";
+            Session["classify"] = "書籍/文創";
             Response.Redirect("list_view.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "life";
+            Session["classify"] = "居家/生活";
             Response.Redirect("list_view.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "bag";
+            Session["classify"] = "包包/精品";
             Response.Redirect("list_view.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "shoes";
+            Session["classify"] = "男女鞋款";
             Response.Redirect("list_view.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "car";
+            Session["classify"] = "汽機車/零件百貨";
             Response.Redirect("list_view.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "entertainment";
+            Session["classify"] = "娛樂/收藏";
             Response.Redirect("list_view.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "pet";
+            Session["classify"] = "寵物/用品";
             Response.Redirect("list_view.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "others";
+            Session["classify"] = "其他類別";
             Response.Redirect("list_view.aspx");
         }
     }

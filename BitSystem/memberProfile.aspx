@@ -157,7 +157,7 @@ Body Section
 	</div>
 	<div class="span9">
 	<ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">會員資料</li>
 	</ul>
 	<h3> 會員資料</h3>	
