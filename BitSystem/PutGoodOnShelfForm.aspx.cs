@@ -24,6 +24,7 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             //設定會員登入與否顯現標示不同
             Session["Login"] = null;
 
@@ -39,6 +40,7 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
             }
+            */
 
 
             // if the page loaded first time

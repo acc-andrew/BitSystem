@@ -21,6 +21,7 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             //設定會員登入與否顯現標示不同
             Session["Login"] = null;
 
@@ -36,6 +37,7 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
             }
+            */
 
             // if the page loaded first time
             if (IsPostBack == false)
@@ -65,7 +67,7 @@ namespace BitSystem
                     string strProductID = (string) Session["ProductID"];
                     _ProductID = int.Parse(strProductID);
 
-                    getSQLDB_FindProduct_closedDateTime_officialPrice("Sale_netConnectionString", _ProductID);
+                    getSQLDB_FindProduct_closedDateTime_officialPrice("Sale_netConnectionString6", _ProductID);
 
                     // to display least time
                     showProductLastTime();
@@ -115,7 +117,7 @@ namespace BitSystem
             string          strWinnerName = "";
 
             // 1. to open Action_bidder
-            SQLDB_getBidderPrice("Sale_netConnectionString", ref bidderData);
+            SQLDB_getBidderPrice("Sale_netConnectionString6", ref bidderData);
             // case1 : nobody bids
             if(bidderData.Count == 0){
                 _NowBitWinner.Text = "無";
@@ -144,7 +146,7 @@ namespace BitSystem
                     // he/she is winner
                     nWinnerID = bidderDataWinner._nBidderID;
                     // to get Member name from Member DB
-                    SQLDB_getBidderNameFromMember("Sale_netConnectionString", nWinnerID, ref strWinnerName);
+                    SQLDB_getBidderNameFromMember("Sale_netConnectionString6", nWinnerID, ref strWinnerName);
                     _NowBitWinner.Text = strWinnerName;
 
                     string strPrice = bidderDataWinner._nPrice.ToString();
@@ -161,7 +163,7 @@ namespace BitSystem
                     else{
                         nWinnerID = bidderDataWinner._nBidderID;
                         // to get Member name from Member DB
-                        SQLDB_getBidderNameFromMember("Sale_netConnectionString", nWinnerID, ref strWinnerName);
+                        SQLDB_getBidderNameFromMember("Sale_netConnectionString6", nWinnerID, ref strWinnerName);
                         _NowBitWinner.Text = strWinnerName;
 
                         string strPrice = bidderDataWinner._nPrice.ToString();
@@ -186,7 +188,7 @@ namespace BitSystem
             string          strWinnerName = "";
 
             // 1. to open Action_bidder
-            SQLDB_getBidderPrice("Sale_netConnectionString", ref bidderData);
+            SQLDB_getBidderPrice("Sale_netConnectionString6", ref bidderData);
             // case1 : nobody bids
             if(bidderData.Count == 0){
                 _NowBitWinner.Text = "無";
@@ -215,14 +217,14 @@ namespace BitSystem
                     // he/she is winner
                     nWinnerID = bidderDataWinner._nBidderID;
                     // to get Member name from Member DB
-                    SQLDB_getBidderNameFromMember("Sale_netConnectionString", nWinnerID, ref strWinnerName);
+                    SQLDB_getBidderNameFromMember("Sale_netConnectionString6", nWinnerID, ref strWinnerName);
                     _NowBitWinner.Text = strWinnerName;
 
                     string strPrice = bidderDataWinner._nPrice.ToString();
                     _NowBitPrice.Text = strPrice;
 
                     // save winner to Action_product
-                    SQLDB_saveProductBitWinner("Sale_netConnectionString", nWinnerID, getProductIDfromSession());
+                    SQLDB_saveProductBitWinner("Sale_netConnectionString6", nWinnerID, getProductIDfromSession());
 
                     // save winner to Action_bidder
                     SQLDB_updateBidderWinner(bidderDataWinner._nActionBidderID, bidderDataWinner._nPrice);
@@ -238,14 +240,14 @@ namespace BitSystem
                     else{
                         nWinnerID = bidderDataWinner._nBidderID;
                         // to get Member name from Member DB
-                        SQLDB_getBidderNameFromMember("Sale_netConnectionString", nWinnerID, ref strWinnerName);
+                        SQLDB_getBidderNameFromMember("Sale_netConnectionString6", nWinnerID, ref strWinnerName);
                         _NowBitWinner.Text = strWinnerName;
 
                         string strPrice = bidderDataWinner._nPrice.ToString();
                         _NowBitPrice.Text = strPrice;
 
                         // save winner to Action_product
-                        SQLDB_saveProductBitWinner("Sale_netConnectionString", nWinnerID, getProductIDfromSession());
+                        SQLDB_saveProductBitWinner("Sale_netConnectionString6", nWinnerID, getProductIDfromSession());
 
                         // save winner to Action_bidder
                         SQLDB_updateBidderWinner(bidderDataWinner._nActionBidderID, bidderDataWinner._nPrice);
@@ -553,13 +555,13 @@ namespace BitSystem
             1. to remove last bit_winner "Yes" to 0
             2. to set bit_winner to "Yes" by bitWinner ID */
             int nLastBidderID = 0;
-            nLastBidderID = SQLDB_getBidderID_fromBitWinnerMark("Sale_netConnectionString");
+            nLastBidderID = SQLDB_getBidderID_fromBitWinnerMark("Sale_netConnectionString6");
             if(nLastBidderID != 0){
-                SQLDB_setBitWinnerMark("Sale_netConnectionString", nLastBidderID, "0");
-                SQLDB_setBidderLowPrice("Sale_netConnectionString",nLastBidderID, 0);
+                SQLDB_setBitWinnerMark("Sale_netConnectionString6", nLastBidderID, "0");
+                SQLDB_setBidderLowPrice("Sale_netConnectionString6",nLastBidderID, 0);
             }
-            SQLDB_setBitWinnerMark("Sale_netConnectionString", nActionBidID, "Yes");
-            SQLDB_setBidderLowPrice("Sale_netConnectionString",nActionBidID, nUpdatedPrice);
+            SQLDB_setBitWinnerMark("Sale_netConnectionString6", nActionBidID, "Yes");
+            SQLDB_setBidderLowPrice("Sale_netConnectionString6",nActionBidID, nUpdatedPrice);
         }// protected void SQLDB_updateBidderWinner()
 
         protected void SQLDB_setBidderLowPrice(string connString, int nActionBidID, int nNewPrice)
@@ -684,7 +686,7 @@ namespace BitSystem
             }
 
             _bidder_ID = (int)Session["member_ID"];
-            int bidderBalance = getSQLDB_FindMember_balance("Sale_netConnectionString", _bidder_ID);
+            int bidderBalance = getSQLDB_FindMember_balance("Sale_netConnectionString6", _bidder_ID);
 
             // 1. if balance is enough
             if (bidderBalance < nCharge)
@@ -699,13 +701,13 @@ namespace BitSystem
                 // 2.1 balance minus charge
                 bidderBalance -= nCharge;
                 // 2.2 store balance to DB
-                SQLDB_saveMemberBalance("Sale_netConnectionString", _bidder_ID, bidderBalance);
+                SQLDB_saveMemberBalance("Sale_netConnectionString6", _bidder_ID, bidderBalance);
             }// balance is enough
 
             // 3. to save the bidder record
             string strProductID = (string) Session["ProductID"];
             int nProductID = int.Parse(strProductID);
-            SQLDB_saveBidder("Sale_netConnectionString", _bidder_ID, nProductID, nPrice);
+            SQLDB_saveBidder("Sale_netConnectionString6", _bidder_ID, nProductID, nPrice);
             
             // 4. to show bit winner until now
             UpdateBitWinner();
@@ -715,6 +717,7 @@ namespace BitSystem
 
         }// protected void _BitBtn_Click(object sender, EventArgs e)
 
+        
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
         {
@@ -756,5 +759,6 @@ namespace BitSystem
             Session["Login"] = null;
             Server.Transfer("Home.aspx");
         }
+        
     }// public partial class ProductDetailForm : System.Web.UI.Page
 }// namespace BitSystem
