@@ -71,7 +71,7 @@ namespace BitSystem
         protected void Button3_Click(object sender, EventArgs e)
         {
             // if user hasn't logged, redirect to memberLoginForm
-            if (((string)Session["member_ID"]) == "")
+            if (Session["member_ID"] == null)
             {
                 Session["logged_to_page"] = "sale_chickout_product.aspx";
                 Response.Redirect("memberLoginForm.aspx");
