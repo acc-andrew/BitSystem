@@ -66,7 +66,7 @@ namespace BitSystem
                         int nMemberID = (int)(Reader["member_ID"]);
                         Session["member_ID"] = nMemberID;
 
-                        Session["memberLogged"] = "Yes";
+                        Session["Login"] = "logged";
                         Response.Write("<script>alert('會員登入成功');</script>");
                         bFound = true;
                         // Server.Transfer("test2.aspx");
@@ -170,6 +170,7 @@ namespace BitSystem
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
 
+
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
         {
@@ -210,6 +211,62 @@ namespace BitSystem
         {
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+
+        //左側連接分類功能
+        protected void cloth_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "cloth";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void book_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "book";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void life_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "life";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void bag_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "bag";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void shoes_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "shoes";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void car_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "car";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void entertainment_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "entertainment";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void pet_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "pet";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void others_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "others";
+            Response.Redirect("list_view.aspx");
         }
 
     }

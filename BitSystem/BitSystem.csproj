@@ -192,8 +192,6 @@
     <Content Include="assets\js\owl.js" />
     <Content Include="assets\js\shop.js" />
     <Content Include="assets\js\slick.js" />
-    <Content Include="BusLoginForm.aspx" />
-    <Content Include="BusRegisterForm.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -253,17 +251,12 @@
     <Content Include="product_onsale.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
-    <Content Include="BitProductForm.aspx" />
     <Content Include="PutGoodOnShelfForm.aspx" />
-    <Content Include="Sale_product_login.aspx" />
-    <Content Include="Sale_product_unlogin.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GoodListForm.aspx" />
     <Content Include="GoodPics\iPhone8_256g.jpg" />
     <Content Include="GoodPics\iPhone8_64g.jpg" />
     <Content Include="GoodPics\iPhoneX_64g.jpg" />
-    <Content Include="Sale_login.aspx" />
-    <Content Include="Sale_unlogin.aspx" />
     <Content Include="memberLoginForm.aspx" />
     <Content Include="memberRegisterForm.aspx" />
     <Content Include="SavePicToDB.aspx" />
@@ -302,20 +295,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BusLoginForm.aspx.cs">
-      <DependentUpon>BusLoginForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BusLoginForm.aspx.designer.cs">
-      <DependentUpon>BusLoginForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BusRegisterForm.aspx.cs">
-      <DependentUpon>BusRegisterForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BusRegisterForm.aspx.designer.cs">
-      <DependentUpon>BusRegisterForm.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -382,33 +361,12 @@
     <Compile Include="memberProfile.aspx.designer.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BitProductForm.aspx.cs">
-      <DependentUpon>BitProductForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BitProductForm.aspx.designer.cs">
-      <DependentUpon>BitProductForm.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PutGoodOnShelfForm.aspx.cs">
       <DependentUpon>PutGoodOnShelfForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PutGoodOnShelfForm.aspx.designer.cs">
       <DependentUpon>PutGoodOnShelfForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sale_login.aspx.cs">
-      <DependentUpon>Sale_login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sale_login.aspx.designer.cs">
-      <DependentUpon>Sale_login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sale_unlogin.aspx.cs">
-      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sale_unlogin.aspx.designer.cs">
-      <DependentUpon>Sale_unlogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberLoginForm.aspx.cs">
       <DependentUpon>memberLoginForm.aspx</DependentUpon>
@@ -438,20 +396,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Sale_product_login.aspx.cs">
-      <DependentUpon>Sale_product_login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sale_product_login.aspx.designer.cs">
-      <DependentUpon>Sale_product_login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sale_product_unlogin.aspx.cs">
-      <DependentUpon>Sale_product_unlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sale_product_unlogin.aspx.designer.cs">
-      <DependentUpon>Sale_product_unlogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

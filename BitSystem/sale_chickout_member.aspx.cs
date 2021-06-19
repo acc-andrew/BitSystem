@@ -15,7 +15,7 @@ namespace BitSystem
         {
             
             //設定會員登入與否顯現標示不同
-            Session["Login"] = "logined";
+            Session["Login"] = "logged";
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -38,7 +38,7 @@ namespace BitSystem
             }
 
             //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
             string sqlcode = $"SELECT * FROM [Member] where member_ID = " + Session["member_ID"];
@@ -73,7 +73,7 @@ namespace BitSystem
 
         protected void pay_Click(object sender, EventArgs e)
         {
-            if (Session["logined"] == null)
+            if (Session["Login"] == null)
             {
 
                 Server.Transfer("memberLoginForm.aspx");
@@ -96,7 +96,7 @@ namespace BitSystem
 
                 else
                 {
-                    string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["sale_netConnectionString4"].ConnectionString;
+                    string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
 
                     SqlConnection connection = new SqlConnection(s_data);
 
@@ -171,6 +171,62 @@ namespace BitSystem
         {
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+
+        //左側連接分類功能
+        protected void cloth_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "cloth";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void book_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "book";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void life_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "life";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void bag_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "bag";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void shoes_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "shoes";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void car_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "car";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void entertainment_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "entertainment";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void pet_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "pet";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void others_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "others";
+            Response.Redirect("list_view.aspx");
         }
     }
 }
