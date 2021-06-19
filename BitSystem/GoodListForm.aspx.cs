@@ -196,7 +196,7 @@ namespace BitSystem
         protected void _GoodOnShelfBtn_Click(object sender, EventArgs e)
         {
             // if user hasn't logged, redirect to memberLoginForm
-            if (((string) Session["member_ID"]) == "")
+            if (Session["member_ID"] == null)
             {
                 Session["logged_to_page"] = "GoodListForm.aspx";
                 Response.Redirect("memberLoginForm.aspx");
