@@ -32,8 +32,14 @@ namespace BitSystem
                 Server.Transfer("memberLoginForm.aspx");
             }
 
+            if (Convert.ToString(Session["chickout_product"]) != "chicked") 
+            {
+                Server.Transfer("sale_chickout_product.aspx");
+            }
+
+
             //Session["member_ID"] = "1";
-            
+
 
             //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;

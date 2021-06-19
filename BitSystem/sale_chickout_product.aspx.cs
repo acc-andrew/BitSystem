@@ -78,6 +78,7 @@ namespace BitSystem
             }
             else
             {
+                Session["chickout_product"] = "chicked";
                 Response.Redirect("sale_chickout_member.aspx");
             }
         }
