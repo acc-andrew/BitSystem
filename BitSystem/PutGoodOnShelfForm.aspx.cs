@@ -15,9 +15,9 @@ namespace BitSystem
     {
         private string[] aClassfyTitle = new string[]
         {
-            "美食、伴手禮", "書籍及文創商品", "居家生活",
-            "女生包包/精品","男女鞋", "汽機車零件百貨",
-            "娛樂、收藏", "寵物", "其他類別"
+            "衣服/飾品", "書籍/文創", "居家/生活",
+            "包包/精品","男女鞋款", "汽機車/零件百貨",
+            "娛樂/收藏", "寵物/用品", "其他類別"
         };
 
         DateTime  _closedDateTime = new DateTime();
@@ -39,6 +39,7 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Response.Redirect("memberLoginForm.aspx");
             }
             */
 
@@ -376,6 +377,59 @@ namespace BitSystem
             Response.Redirect("Home.aspx");
         }
 
+        //左側連接分類功能
+        protected void cloth_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "cloth";
+            Response.Redirect("list_view.aspx");
+        }
 
+        protected void book_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "book";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void life_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "life";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void bag_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "bag";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void shoes_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "shoes";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void car_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "car";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void entertainment_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "entertainment";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void pet_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "pet";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void others_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "others";
+            Response.Redirect("list_view.aspx");
+        }
     }//public partial class PutGoodOnShelfForm : System.Web.UI.Page
 }

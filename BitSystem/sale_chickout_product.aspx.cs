@@ -21,7 +21,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-            Session["Login"] = "logined";
+            
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -34,14 +34,15 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Response.Redirect("memberLoginForm.aspx");
             }
 
-            Session["user"] = "Austyn";
-            Session["member_ID"] = "1";
+            //Session["user"] = "Tom";
+            //Session["member_ID"] = "13";
             // pre-fetch picture pathname from Market_product2 DB
 
             fetchProductInfo();
-            SQL_readActionProduct("Sale_net_Jun10_2021ConnectionString");
+            SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString");
             GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
             GridView1.DataBind();
 
@@ -62,7 +63,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price from Action_product where buyer_ID ='"+Session["member_ID"]+"'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price from Action_product where bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product");            //da把資料填入ds裡面
 
@@ -90,13 +91,13 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price from Action_product where buyer_ID =" + Session["member_ID"];
+            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price from Action_product where bid_winner_ID =" + Session["member_ID"];
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -173,6 +174,62 @@ namespace BitSystem
         {
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+
+        //左側連接分類功能
+        protected void cloth_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "cloth";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void book_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "book";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void life_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "life";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void bag_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "bag";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void shoes_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "shoes";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void car_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "car";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void entertainment_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "entertainment";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void pet_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "pet";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void others_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "others";
+            Response.Redirect("list_view.aspx");
         }
 
     }
