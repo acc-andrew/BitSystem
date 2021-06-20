@@ -57,8 +57,8 @@ Lower Header Section
 <header id="header">
 <div class="row">
 	<div class="span4">
-	
-		<marquee  >
+
+		<marquee>
 			<img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/wp6967907-1600321836.png?crop=1.00xw:0.893xh;0,0.0203xh&resize=980:*" alt="" />&nbsp;
 			<img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-purple-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1617130317000" alt="" />&nbsp;
 			<img src="https://www.etungo.com.tw/files/TC_PData/PD_Pic/86331big.jpg" alt="" />&nbsp;
@@ -68,6 +68,7 @@ Lower Header Section
 
 	</div>
 </div>
+
 </header>
 
 <!--

@@ -156,7 +156,7 @@ Body Section
 	</div>
 	<div class="span9">
 	<ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">會員登入</li>
 	</ul>
 	<h3> 會員註冊</h3>	

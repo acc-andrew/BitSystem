@@ -34,6 +34,7 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Session["logged_to_page"] = "sale_chickout_product.aspx";
                 Response.Redirect("memberLoginForm.aspx");
             }
 
@@ -51,9 +52,6 @@ namespace BitSystem
         }//protected void Page_Load(object sender, EventArgs e)
 
 
-        
-
-
         protected void SQL_readActionProduct(string connString)
         {
             cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
@@ -63,7 +61,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price from Action_product where bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price from Action_product where status ='已結標' and bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product");            //da把資料填入ds裡面
 
@@ -73,12 +71,14 @@ namespace BitSystem
         protected void Button3_Click(object sender, EventArgs e)
         {
             // if user hasn't logged, redirect to memberLoginForm
-            if (((string)Session["member_ID"]) == "")
+            if (Session["member_ID"] == null)
             {
+                Session["logged_to_page"] = "sale_chickout_product.aspx";
                 Response.Redirect("memberLoginForm.aspx");
             }
             else
             {
+                Session["chickout_product"] = "chicked";
                 Response.Redirect("sale_chickout_member.aspx");
             }
         }
@@ -97,7 +97,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price from Action_product where bid_winner_ID =" + Session["member_ID"];
+            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price from Action_product where status ='已結標' and bid_winner_ID ='" + Session["member_ID"] + "'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -117,7 +117,7 @@ namespace BitSystem
                 {
                     //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
                     
-                    low_price = int.Parse(Reader1["low_price"].ToString());
+                    low_price += int.Parse(Reader1["low_price"].ToString());
 
 
 
@@ -127,7 +127,9 @@ namespace BitSystem
             }// if (Reader.HasRows) login name match
             else
             {
-                Response.Write("<script>alert('商品資料庫 Action_product 無此帳號！');</script>");
+                Response.Write("<script>alert('還未有得標商品~要再去逛逛嗎?');</script>");
+                Response.Redirect("Home.aspx");
+
 
             }// if (Reader.HasRows) login name mismatch
             //關閉與資料庫連接的通道
@@ -180,55 +182,55 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "cloth";
+            Session["classify"] = "衣服/飾品";
             Response.Redirect("list_view.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "book";
+            Session["classify"] = "書籍/文創";
             Response.Redirect("list_view.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "life";
+            Session["classify"] = "居家/生活";
             Response.Redirect("list_view.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "bag";
+            Session["classify"] = "包包/精品";
             Response.Redirect("list_view.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "shoes";
+            Session["classify"] = "男女鞋款";
             Response.Redirect("list_view.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "car";
+            Session["classify"] = "汽機車/零件百貨";
             Response.Redirect("list_view.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "entertainment";
+            Session["classify"] = "娛樂/收藏";
             Response.Redirect("list_view.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "pet";
+            Session["classify"] = "寵物/用品";
             Response.Redirect("list_view.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "others";
+            Session["classify"] = "其他類別";
             Response.Redirect("list_view.aspx");
         }
 
