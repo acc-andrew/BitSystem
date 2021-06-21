@@ -29,7 +29,7 @@
 <!-- 
 	Upper Header Section 
 -->
-<form class="form-horizontal loginFrm" runat="server">
+<form id="login" class="form-horizontal loginFrm" runat="server">
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
@@ -48,7 +48,6 @@
 		</div>
 	</div>
 </div>
-
 <!--
 Lower Header Section 
 -->
@@ -164,7 +163,7 @@ Body Section
 		<li class="active">訂單查詢</li>
 	</ul>
 	<h3> 訂單明細</h3>	
-    <form id="form1" runat="server">
+    
         <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             <asp:ListItem>請選擇</asp:ListItem>
             <asp:ListItem>已上架</asp:ListItem>
@@ -209,7 +208,7 @@ Body Section
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_netConnectionString3 %>" SelectCommand="SELECT * FROM [Action_bidder]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString5 %>" SelectCommand="SELECT * FROM [Action_bidder]"></asp:SqlDataSource>
     </form>
 		<!-- 
     Clients 
