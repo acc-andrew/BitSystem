@@ -28,12 +28,19 @@ namespace BitSystem
                 member_info.Visible = true;
                 order_info.Visible = true;
                 logout.Visible = true;
+                fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
+                SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString3");
+                GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
+                GridView1.DataBind();
+                total_price.Text = low_price.ToString();
             }
             else
             {
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Session["logged_to_page"] = "sale_chickout_product.aspx";
+                Server.Transfer("memberLoginForm.aspx");
 
             }
 
@@ -41,13 +48,6 @@ namespace BitSystem
             //Session["member_ID"] = "13";
             // pre-fetch picture pathname from Market_product2 DB
 
-            fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString");
-            SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString");
-            GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
-            GridView1.DataBind();
-
-
-            total_price.Text = low_price.ToString();
         }//protected void Page_Load(object sender, EventArgs e)
 
 
@@ -109,7 +109,7 @@ namespace BitSystem
             SqlDataReader Reader1 = Command.ExecuteReader();
 
             //檢查是否有資料列
-            if (Reader1.HasRows)
+            if (Reader1.HasRows != false)
             {
                 //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
                 while (Reader1.Read())
@@ -126,7 +126,6 @@ namespace BitSystem
             {
                 Response.Write("<script>alert('還未有得標商品~要再去逛逛嗎?');</script>");
                 Response.Redirect("Home.aspx");
-
 
             }// if (Reader.HasRows) login name mismatch
             //關閉與資料庫連接的通道

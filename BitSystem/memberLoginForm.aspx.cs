@@ -29,10 +29,10 @@ namespace BitSystem
             }
         }
         
-        protected bool bSQLDB_verify(string Sale_net_0618_testConnectionString, string _guiName)
+        protected bool bSQLDB_verify(string connString, string _guiName)
         {
             bool bFound = false;
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[Sale_net_0618_testConnectionString].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -90,10 +90,10 @@ namespace BitSystem
             return bFound;
         }// protected void SQLDB_verify()
 
-        protected bool bSQLDB_ifmatch(string Sale_net_0618_testConnectionString, string _enterEmail)
+        protected bool bSQLDB_ifmatch(string connString, string _enterEmail)
         {
             bool bFound = false;
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[Sale_net_0618_testConnectionString].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -134,7 +134,7 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString2", _loginName.Text)
+            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString3", _loginName.Text)
                 == true)
             {
                 Response.Write("<script>alert('會員登入成功！');</script>");
@@ -156,7 +156,7 @@ namespace BitSystem
         protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
         {
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString2", _memberEmail.Text)
+            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString3", _memberEmail.Text)
                 == true)
             {
                 Response.Write("<script>alert('E-mail 已有會員登記，請改另一個 E-mail ');</script>");
