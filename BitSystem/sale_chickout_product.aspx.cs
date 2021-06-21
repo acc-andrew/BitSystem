@@ -42,7 +42,7 @@ namespace BitSystem
             //Session["member_ID"] = "13";
             // pre-fetch picture pathname from Market_product2 DB
 
-            fetchProductInfo();
+            fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString");
             SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString");
             GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
             GridView1.DataBind();
@@ -88,10 +88,10 @@ namespace BitSystem
             Response.Redirect("Home.aspx");
         }
 
-        private void fetchProductInfo()
+        private void fetchProductInfo(string connString)
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -118,8 +118,6 @@ namespace BitSystem
                     //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
                     
                     low_price += int.Parse(Reader1["low_price"].ToString());
-
-
 
 
                 }// while (Reader.Read())
