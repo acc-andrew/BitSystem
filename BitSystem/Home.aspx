@@ -57,13 +57,18 @@ Lower Header Section
 <header id="header">
 <div class="row">
 	<div class="span4">
-	<h1>
-	<a class="logo" href="index.html"><span></span> 
-		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
-	</a>
-	</h1>
+
+		<marquee>
+			<img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/wp6967907-1600321836.png?crop=1.00xw:0.893xh;0,0.0203xh&resize=980:*" alt="" />&nbsp;
+			<img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-purple-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1617130317000" alt="" />&nbsp;
+			<img src="https://www.etungo.com.tw/files/TC_PData/PD_Pic/86331big.jpg" alt="" />&nbsp;
+			<img src="圖片網址" alt="" />&nbsp;
+			<img src="圖片網址" alt="" />
+		</marquee>
+
 	</div>
 </div>
+
 </header>
 
 <!--
@@ -79,37 +84,12 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class=""><a href="Home.aspx">拍賣站</a></li>
-			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
-			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
+				<li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
+				<li class=""><a id="sale_list" href="list_view.aspx">價低拍賣</a></li>
+				<li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
+				<li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
 			</ul>
-			<ul class="nav pull-right">
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
-				<div class="dropdown-menu">
-				
-				  <div class="control-group">
-                      <asp:TextBox ID="Email" runat="server" class="span2"></asp:TextBox>
-	
-				  </div>
-				  <div class="control-group">
-                      <asp:TextBox ID="password" runat="server" class="span2"></asp:TextBox>
-					 
-				  </div>
-				  <div class="control-group">
-					<label class="checkbox">
-					<input type="checkbox"> Remember me
-					</label>
-                      <asp:Button ID="LoginBtn" runat="server" Text="登入" class="shopBtn btn-block" />
 
-				  </div>
-				
-				</div>
-			</li>
-			</ul>
-			
-			  <input type="text" placeholder="Search" class="search-query span2">
-			
 		  </div>
 		</div>
 	  </div>
@@ -121,18 +101,15 @@ Body Section
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>衣著</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>居家生活</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>男女鞋款</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>寵物</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>其他類別</a></li>
-		<!--<li style="border:0"> &nbsp;</li>-->
-		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+		<li><asp:LinkButton ID="cloth" runat="server" class="icon-chevron-right" OnClick="cloth_Click">衣服/飾品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="book" runat="server" class="icon-chevron-right" OnClick="book_Click">書籍/文創</asp:LinkButton></li>
+		<li><asp:LinkButton ID="life" runat="server" class="icon-chevron-right" OnClick="life_Click">居家/生活</asp:LinkButton></li>
+		<li><asp:LinkButton ID="bag" runat="server" class="icon-chevron-right" OnClick="bag_Click">包包/精品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="shoes" runat="server" class="icon-chevron-right" OnClick="shoes_Click">男女鞋款</asp:LinkButton></li>
+		<li><asp:LinkButton ID="car" runat="server" class="icon-chevron-right" OnClick="car_Click">汽機車/零件百貨</asp:LinkButton></li>
+		<li><asp:LinkButton ID="entertainment" runat="server" class="icon-chevron-right" OnClick="entertainment_Click">娛樂/收藏</asp:LinkButton></li>
+		<li><asp:LinkButton ID="pet" runat="server" class="icon-chevron-right" OnClick="pet_Click">寵物/用品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="others" runat="server" class="icon-chevron-right" OnClick="others_Click">其他類別</asp:LinkButton></li>
 	</ul>
 </div>
 

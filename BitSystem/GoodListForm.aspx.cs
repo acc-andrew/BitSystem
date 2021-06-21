@@ -23,7 +23,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-            Session["Login"] = null;
+            
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -46,7 +46,7 @@ namespace BitSystem
             _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
 
-            SQL_readActionProduct("Sale_net_Jun10_2021ConnectionString2");
+            SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString");
             _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
             _GoodsGridView.DataBind();
 
@@ -82,7 +82,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -196,8 +196,9 @@ namespace BitSystem
         protected void _GoodOnShelfBtn_Click(object sender, EventArgs e)
         {
             // if user hasn't logged, redirect to memberLoginForm
-            if (((string) Session["member_ID"]) == "")
+            if (Session["member_ID"] == null)
             {
+                Session["logged_to_page"] = "GoodListForm.aspx";
                 Response.Redirect("memberLoginForm.aspx");
             }
             else
@@ -247,6 +248,61 @@ namespace BitSystem
         {
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+        //左側連接分類功能
+        protected void cloth_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "衣服/飾品";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void book_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "書籍/文創";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void life_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "居家/生活";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void bag_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "包包/精品";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void shoes_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "男女鞋款";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void car_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "汽機車/零件百貨";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void entertainment_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "娛樂/收藏";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void pet_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "寵物/用品";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void others_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "其他類別";
+            Response.Redirect("list_view.aspx");
         }
 
     }// public partial class GoodListForm : System.Web.UI.Page

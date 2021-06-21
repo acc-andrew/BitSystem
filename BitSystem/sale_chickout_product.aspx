@@ -79,9 +79,10 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class=""><a href="Home.aspx">拍賣站</a></li>
-			  <li class=""><a href="list_view.aspx">競標拍賣</a></li>
-			  <li class=""><a href="grid_view.aspx">價低拍賣</a></li>
+			  <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
+				    <li class=""><a id="sale_list" href="list_view.aspx">價低拍賣</a></li>
+				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
+				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
 			</ul>
 			
 				
@@ -98,18 +99,15 @@ Body Section
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>衣著</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>居家生活</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>男女鞋款</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>娛樂、收藏</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>寵物</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>其他類別</a></li>
-		<!--<li style="border:0"> &nbsp;</li>-->
-		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+		<li><asp:LinkButton ID="cloth" runat="server" class="icon-chevron-right" OnClick="cloth_Click">衣服/飾品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="book" runat="server" class="icon-chevron-right" OnClick="book_Click">書籍/文創</asp:LinkButton></li>
+		<li><asp:LinkButton ID="life" runat="server" class="icon-chevron-right" OnClick="life_Click">居家/生活</asp:LinkButton></li>
+		<li><asp:LinkButton ID="bag" runat="server" class="icon-chevron-right" OnClick="bag_Click">包包/精品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="shoes" runat="server" class="icon-chevron-right" OnClick="shoes_Click">男女鞋款</asp:LinkButton></li>
+		<li><asp:LinkButton ID="car" runat="server" class="icon-chevron-right" OnClick="car_Click">汽機車/零件百貨</asp:LinkButton></li>
+		<li><asp:LinkButton ID="entertainment" class="icon-chevron-right" runat="server" OnClick="entertainment_Click">娛樂/收藏</asp:LinkButton></li>
+		<li><asp:LinkButton ID="pet" runat="server" class="icon-chevron-right" OnClick="pet_Click">寵物/用品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="others" runat="server" class="icon-chevron-right" OnClick="others_Click">其他類別</asp:LinkButton></li>
 	</ul>
 </div>
 

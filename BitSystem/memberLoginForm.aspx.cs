@@ -13,7 +13,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-            Session["Login"] = null;
+            
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -66,7 +66,7 @@ namespace BitSystem
                         int nMemberID = (int)(Reader["member_ID"]);
                         Session["member_ID"] = nMemberID;
 
-                        Session["memberLogged"] = "Yes";
+                        Session["Login"] = "logged";
                         Response.Write("<script>alert('會員登入成功');</script>");
                         bFound = true;
                         // Server.Transfer("test2.aspx");
@@ -134,7 +134,7 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_netConnectionString", _loginName.Text)
+            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString", _loginName.Text)
                 == true)
             {
                 Response.Write("<script>alert('會員登入成功！');</script>");
@@ -156,7 +156,7 @@ namespace BitSystem
         protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
         {
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_netConnectionString", _memberEmail.Text)
+            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString", _memberEmail.Text)
                 == true)
             {
                 Response.Write("<script>alert('E-mail 已有會員登記，請改另一個 E-mail ');</script>");
@@ -169,6 +169,7 @@ namespace BitSystem
             }
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
+
 
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
@@ -210,6 +211,62 @@ namespace BitSystem
         {
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+
+        //左側連接分類功能
+        protected void cloth_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "衣服/飾品";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void book_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "書籍/文創";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void life_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "居家/生活";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void bag_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "包包/精品";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void shoes_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "男女鞋款";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void car_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "汽機車/零件百貨";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void entertainment_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "娛樂/收藏";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void pet_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "寵物/用品";
+            Response.Redirect("list_view.aspx");
+        }
+
+        protected void others_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = "其他類別";
+            Response.Redirect("list_view.aspx");
         }
 
     }
