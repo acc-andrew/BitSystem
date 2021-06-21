@@ -66,8 +66,9 @@ namespace BitSystem
                         int nMemberID = (int)(Reader["member_ID"]);
                         Session["member_ID"] = nMemberID;
 
-                        Session["Login"] = "logged";
                         Response.Write("<script>alert('會員登入成功');</script>");
+                        Session["Login"] = "logged";
+
                         bFound = true;
                         // Server.Transfer("test2.aspx");
                     }
@@ -137,17 +138,16 @@ namespace BitSystem
             if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString3", _loginName.Text)
                 == true)
             {
-                Response.Write("<script>alert('會員登入成功！');</script>");
 
                 // goto the web page after member logging
                 if(Session["logged_to_page"] != null){
                     string pageAfterLogging = (string) Session["logged_to_page"];
-                    Response.Redirect(pageAfterLogging);
+                    Server.Transfer(pageAfterLogging);
 
                 }
                 else
                 {
-                    Response.Redirect("GoodListForm.aspx");
+                    Response.Redirect("Home.aspx");
                 }
             }
 

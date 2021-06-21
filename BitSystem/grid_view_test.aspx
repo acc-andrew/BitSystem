@@ -48,7 +48,7 @@
 		</div>
 	</div>
 </div>
-
+    
 <!--
 Lower Header Section 
 -->
@@ -157,49 +157,107 @@ Body Section
 <!--
 New Products
 -->
-
-	<div class="well well-small">
-	<h3>Our Products </h3>
+    
+<div class="well well-small">
+	<h3>熱門商品 搶先看 </h3>
 		<div class="row-fluid">
-		  <ul class="thumbnails">
-			<li class="span4">
-			  <div class="thumbnail">
+		  <div class="thumbnails">
+                  <asp:DataList ID="product_view_life" runat="server" Width="100%"  RepeatColumns="3">
+					<ItemTemplate>
+						<div class="thumbnail">
+							<table  border="0" cellpadding="5" cellspacing="5">
+								<tr>
+									<td >
+									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="product" runat="server" Text='<%# Eval("product") %>'/>
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="official_price_price" runat="server" Text='市價:'/>
+									<asp:Label ID="official_price" runat="server" Text='<%# Eval("official_price") %>'/>
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</ItemTemplate>
+				</asp:DataList>
 
-				<asp:GridView ID="pro_gridview" GridLines="None"  runat="server"  AutoGenerateColumns="false">
+			  <h3>激熱商品 馬上標</h3>
+                  <asp:DataList ID="product_view_cloth" runat="server" Width="100%"  RepeatColumns="3">
+					<ItemTemplate>
+						<div class="thumbnail">
+							<table  border="0" cellpadding="5" cellspacing="5">
+								<tr>
+									<td>
+									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="product" runat="server" Text='<%# Eval("product") %>'/>
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="official_price_price" runat="server" Text='市價:'/>
+									<asp:Label ID="official_price" runat="server" Text='<%# Eval("official_price") %>'/>
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</ItemTemplate>
+				</asp:DataList>
 
-					<Columns>
-						<asp:TemplateField  HeaderStyle-Width="200px">
-							<ItemTemplate>
-								<asp:Image ID="img0" runat="server" ImageUrl='<%# Eval("pic_pathname") %>' /> 
-							</ItemTemplate>
-						</asp:TemplateField>
-						<asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
-							<ItemTemplate>   
-								<asp:Label  ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
-							</ItemTemplate> 
-						</asp:TemplateField>
-						<asp:TemplateField HeaderText="市價" HeaderStyle-Width="150px">
-							<ItemTemplate>   
-								<asp:Label ID="official_price" runat="server" Text='<%# Eval("official_price") %>'/>
-							</ItemTemplate> 
-						</asp:TemplateField>
-						<asp:TemplateField HeaderText="狀態" HeaderStyle-Width="150px">
-							<ItemTemplate>  
-								<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
-							</ItemTemplate> 
-						</asp:TemplateField>
-					</Columns>
-				</asp:GridView>
-
-			  </div>
-			</li>
-		  </ul>
+			  <h3>精品商品 低價購</h3>
+                  <asp:DataList ID="product_view_bag" runat="server" Width="100%"  RepeatColumns="3">
+					<ItemTemplate>
+						<div class="thumbnail">
+							<table  border="0" cellpadding="5" cellspacing="5">
+								<tr>
+									<td>
+									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="product" runat="server" Text='<%# Eval("product") %>'/>
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="official_price_price" runat="server" Text='市價:'/>
+									<asp:Label ID="official_price" runat="server" Text='<%# Eval("official_price") %>'/>
+									</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</ItemTemplate>
+				</asp:DataList>
+		  </div>
 		</div>
-	<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString4 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
-	</div>
-	</div>
-	</div>
-	</form>
+</div>
+</div>
+</form>
 <!-- 
 Clients 
 -->

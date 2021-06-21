@@ -42,7 +42,7 @@ namespace BitSystem
 
 
             //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString3"].ConnectionString;
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
             string sqlcode = $"SELECT * FROM [Member] where member_ID = " + Session["member_ID"];
@@ -100,7 +100,7 @@ namespace BitSystem
 
                 else
                 {
-                    string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
+                    string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString3"].ConnectionString;
 
                     SqlConnection connection = new SqlConnection(s_data);
 
