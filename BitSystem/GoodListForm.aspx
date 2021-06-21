@@ -72,7 +72,6 @@ Lower Header Section
         </div>
         <div class="span4 alignR">
             <p><br> <strong></strong><br><br></p>
-            <p><br>
             <span ></span>
             <span ></span>
             <span ></span>
