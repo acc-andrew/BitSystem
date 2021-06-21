@@ -57,14 +57,12 @@ Lower Header Section
 <header id="header">
 <div class="row">
 	<div class="span4">
-
-		<marquee>
-			<img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/wp6967907-1600321836.png?crop=1.00xw:0.893xh;0,0.0203xh&resize=980:*" alt="" />&nbsp;
-			<img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-purple-select-2021?wid=470&hei=556&fmt=png-alpha&.v=1617130317000" alt="" />&nbsp;
-			<img src="https://www.etungo.com.tw/files/TC_PData/PD_Pic/86331big.jpg" alt="" />&nbsp;
-			<img src="圖片網址" alt="" />&nbsp;
-			<img src="圖片網址" alt="" />
-		</marquee>
+		<h1>
+	<a class="logo" href="index.html"><span></span> 
+		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	</a>
+	</h1>
+		
 
 	</div>
 </div>
@@ -162,30 +160,30 @@ Body Section
 		<div id="myCarousel" class="carousel slide homCar">
             <div class="carousel-inner">
 			  <div class="item">
-                <img style="width:100%" src="assets/img/bootstrap_free-ecommerce.png" alt="bootstrap ecommerce templates">
+                <img style="width:800px;height:450px" src="pic/bootstrap_iphone13.png" alt="bootstrap ecommerce templates">
                 <div class="carousel-caption">
-                      <h4>Bootstrap shopping cart</h4>
+                      <h4>iphone13</h4>
                       <p><span>Very clean simple to use</span></p>
                 </div>
               </div>
 			  <div class="item">
-                <img style="width:100%" src="assets/img/carousel1.png" alt="bootstrap ecommerce templates">
+                <img style="width:800px;height:450px" src="pic/bootstrap_bicycle.png" alt="bootstrap ecommerce templates">
                 <div class="carousel-caption">
-                      <h4>Bootstrap Ecommerce template</h4>
+                      <h4>bicycle  </h4>
                       <p><span>Highly Google seo friendly</span></p>
                 </div>
               </div>
 			  <div class="item active">
-                <img style="width:100%" src="assets/img/carousel3.png" alt="bootstrap ecommerce templates">
+                <img style="width:800px;height:450px" src="pic/bootstrap_mask.png" alt="bootstrap ecommerce templates">
                 <div class="carousel-caption">
-                      <h4>Twitter Bootstrap cart</h4>
+                      <h4>mask</h4>
                       <p><span>Very easy to integrate and expand.</span></p>
                 </div>
               </div>
               <div class="item">
-                <img style="width:100%" src="assets/img/bootstrap-templates.png" alt="bootstrap templates">
+                <img style="width:800px;height:450px" src="pic/bootstrap_switch.png" alt="bootstrap templates">
                 <div class="carousel-caption">
-                      <h4>Bootstrap templates integration</h4>
+                      <h4>switch</h4>
                       <p><span>Compitable to many more opensource cart</span></p>
                 </div>
               </div>
@@ -198,7 +196,7 @@ Body Section
 New Products
 -->
 	<div class="well well-small">
-	<h3>New Products </h3>
+	<h3>WHAT'S NEW 新品搶先看</h3>
 	<hr class="soften"/>
 		<div class="row-fluid">
 		<div id="newProductCar" class="carousel slide">
@@ -325,7 +323,11 @@ New Products
 	Featured Products
 	-->
 		<div class="well well-small">
-		  <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> Featured Products  </h3>
+		  <h3> HOTTEST 熱門競標中   
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  <asp:Button ID="more_hot" runat="server" Text="更多熱門" OnClick="more_hot_Click" />
+            </h3>
 		  <hr class="soften"/>
 		  <div class="row-fluid">
 		  <ul class="thumbnails">
