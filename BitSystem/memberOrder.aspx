@@ -206,7 +206,7 @@ Body Section
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun10_2021ConnectionString5 %>" SelectCommand="SELECT * FROM [Action_bidder]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString2 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
     </form>
 		<!-- 
     Clients 

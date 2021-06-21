@@ -177,7 +177,6 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton others;
 
         /// <summary>
-        /// Label1 控制項。
         /// DropDownList1 控制項。
         /// </summary>
         /// <remarks>

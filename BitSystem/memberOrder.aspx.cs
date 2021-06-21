@@ -21,7 +21,6 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-     
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -83,6 +82,7 @@ namespace BitSystem
         {
             if(DropDownList1.SelectedValue == "已上架")
             {
+                _GoodsGridView.Visible = true;
                 // pre-fetch picture pathname from Market_product2 DB
                 fetchProductInfo();
 
@@ -90,17 +90,41 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun10_2021ConnectionString5");
+                SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='拍賣中' and seller_ID='"+Session["member_ID"]+"')");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
             else if (DropDownList1.SelectedValue == "競標中")
             {
+                _GoodsGridView.Visible = true;
+                // pre-fetch picture pathname from Market_product2 DB
+                fetchProductInfo();
 
+                // to set event handler: row
+                // called while each row data prepared
+                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
+
+                SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='拍賣中' and bidder_ID='" + Session["member_ID"] + "')");
+                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+                _GoodsGridView.DataBind();
             }
             else if (DropDownList1.SelectedValue == "已得標")
             {
+                _GoodsGridView.Visible = true;
+                // pre-fetch picture pathname from Market_product2 DB
+                fetchProductInfo();
 
+                // to set event handler: row
+                // called while each row data prepared
+                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
+
+                SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status = '已結標' and bid_winner_ID = '" + Session["member_ID"] + "')");
+                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+                _GoodsGridView.DataBind();
+            }
+            else
+            {
+                _GoodsGridView.Visible = false;
             }
         }
         public class fetchProductData
@@ -133,7 +157,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString2"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -227,7 +251,7 @@ namespace BitSystem
             //Response.Write("<script>alert('選擇 GridView 內個別商品');</script>");
         }// 
 
-        protected void SQL_readActionProduct(string connString)
+        protected void SQL_readActionProduct(string connString,string cmdText)
         {
             _cmd.Connection = _Conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
 
@@ -236,7 +260,7 @@ namespace BitSystem
             _Conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            _cmd.CommandText = "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product";   //執行SQL語法進行查詢
+            _cmd.CommandText = cmdText;   //執行SQL語法進行查詢
             _da.SelectCommand = _cmd;            //da選擇資料來源，由cmd載入進來
             _da.Fill(_ds, "Action_product");            //da把資料填入ds裡面
 

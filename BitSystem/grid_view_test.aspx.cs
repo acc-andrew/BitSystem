@@ -39,7 +39,7 @@ namespace BitSystem
             // pre-fetch picture pathname from Market_product2 DB
 
             fetchProductInfo();
-            SQL_readActionProduct("Sale_net_Jun10_2021ConnectionString4");
+            SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString2");
             product_grid.DataSource = ds; //將DataSet的資料載入到GridView1內
             product_grid.DataBind();
 
@@ -55,7 +55,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,official_price,status from Action_product";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT pic_pathname,product,official_price,status from Action_product where status='拍賣中'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product");            //da把資料填入ds裡面
 
@@ -66,7 +66,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString4"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString2"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
