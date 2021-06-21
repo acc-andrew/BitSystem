@@ -186,9 +186,9 @@ Body Section
             <Columns>
                 <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
                     <ItemTemplate>
-                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                        <asp:ImageButton ID="img0" runat="server" Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' />
                     </ItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField> 
                 <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
                     <ItemTemplate>   
                         <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>

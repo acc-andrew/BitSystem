@@ -168,13 +168,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton others;
 
         /// <summary>
-        /// product_grid 控制項。
+        /// pro_gridview 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView product_grid;
+        protected global::System.Web.UI.WebControls.GridView pro_gridview;
 
         /// <summary>
         /// SqlDataSource1 控制項。
