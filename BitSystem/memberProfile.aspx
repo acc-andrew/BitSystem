@@ -208,7 +208,7 @@ Body Section
     Clients 
     -->
     <section class="our_client">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_0618_testConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>
         <hr class="soften"/>

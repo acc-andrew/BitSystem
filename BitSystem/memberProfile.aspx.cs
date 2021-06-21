@@ -54,15 +54,15 @@ namespace BitSystem
 
             }
 
-            /*if (!IsPostBack)
+            if (!IsPostBack)
             {
                 //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
-                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
+                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_0618_testConnectionString"].ConnectionString;
 
                 //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
                 SqlConnection connection = new SqlConnection(s_data);
 
-                string spltest = "select * from Member";
+                string spltest = "select * from Member where member_ID=" + Session["member_ID"];
 
                 //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
                 SqlCommand Command = new SqlCommand(spltest, connection);
@@ -97,7 +97,7 @@ namespace BitSystem
 
                 //關閉與資料庫連接的通道
                 connection.Close();
-            }*/
+            }
         }
 
         //linkbutton 點擊連接網址
@@ -213,11 +213,11 @@ namespace BitSystem
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun10_2021ConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_0618_testConnectionString"].ConnectionString;
 
             SqlConnection connection = new SqlConnection(s_data);
 
-            string splupdate = $"UPDATE member SET name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
+            string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
 
 
             SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句

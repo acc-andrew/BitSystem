@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+
 
 namespace BitSystem
 {
@@ -26,6 +29,7 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+               
             }
 
         }
@@ -125,6 +129,12 @@ namespace BitSystem
         {
             Session["classify"] = "其他類別";
             Response.Redirect("list_view.aspx");
+        }
+
+       
+        protected void more_hot_Click(object sender, EventArgs e)
+        {
+                Response.Redirect("GoodListForm.aspx");
         }
     }
 }
