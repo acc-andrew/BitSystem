@@ -62,7 +62,7 @@ namespace BitSystem
                 //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
                 SqlConnection connection = new SqlConnection(s_data);
 
-                string spltest = "select * from Member";
+                string spltest = "select * from Member where member_ID=" + Session["member_ID"];
 
                 //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
                 SqlCommand Command = new SqlCommand(spltest, connection);
