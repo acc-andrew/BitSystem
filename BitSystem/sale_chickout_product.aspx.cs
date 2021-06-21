@@ -109,7 +109,7 @@ namespace BitSystem
             SqlDataReader Reader1 = Command.ExecuteReader();
 
             //檢查是否有資料列
-            if (Reader1.HasRows != false)
+            if (Reader1.HasRows)
             {
                 //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
                 while (Reader1.Read())
@@ -124,8 +124,10 @@ namespace BitSystem
             }// if (Reader.HasRows) login name match
             else
             {
-                Response.Write("<script>alert('還未有得標商品~要再去逛逛嗎?');</script>");
-                Response.Redirect("Home.aspx");
+                Response.Write("<script>alert('還未有得標商品~要再去逛逛嗎?！');</script>");
+
+                Server.Transfer("Home.aspx");
+                //Response.Redirect("Home.aspx");
 
             }// if (Reader.HasRows) login name mismatch
             //關閉與資料庫連接的通道

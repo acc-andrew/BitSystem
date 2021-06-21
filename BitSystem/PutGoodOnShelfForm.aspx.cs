@@ -207,7 +207,7 @@ namespace BitSystem
             sql_insert_cmd.Parameters["@high_price"].Value = "0";
 
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@status"].Value = "拍賣中";
+            sql_insert_cmd.Parameters["@status"].Value = "已上架";
 
             sql_insert_cmd.Parameters.Add("@official_price", SqlDbType.Int);
             sql_insert_cmd.Parameters["@official_price"].Value = int.Parse(_OfficialPrice.Text);
@@ -326,7 +326,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_netConnectionString", closedDateTime);
+                    SQLDB_writeAutionProduct("Sale_net_Jun18_2021_betaConnectionString3", closedDateTime);
                     Response.Redirect("GoodListForm.aspx");
                 }
 
