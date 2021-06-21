@@ -34,8 +34,7 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
-                Session["logged_to_page"] = "sale_chickout_product.aspx";
-                Response.Redirect("memberLoginForm.aspx");
+
             }
 
             //Session["user"] = "Tom";

@@ -170,20 +170,20 @@ New Products
 					<Columns>
 						<asp:TemplateField  HeaderStyle-Width="200px">
 							<ItemTemplate>
-								<asp:Image ID="img0" runat="server"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+								<asp:Image ID="img0" runat="server" ImageUrl='<%# Eval("pic_pathname") %>' /> 
 							</ItemTemplate>
 						</asp:TemplateField>
-						<asp:TemplateField >
+						<asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
 							<ItemTemplate>   
-								<asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+								<asp:Label  ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
 							</ItemTemplate> 
 						</asp:TemplateField>
-						<asp:TemplateField >
+						<asp:TemplateField HeaderText="市價" HeaderStyle-Width="150px">
 							<ItemTemplate>   
 								<asp:Label ID="official_price" runat="server" Text='<%# Eval("official_price") %>'/>
 							</ItemTemplate> 
 						</asp:TemplateField>
-						<asp:TemplateField >
+						<asp:TemplateField HeaderText="狀態" HeaderStyle-Width="150px">
 							<ItemTemplate>  
 								<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
 							</ItemTemplate> 

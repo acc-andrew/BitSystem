@@ -29,7 +29,7 @@
 <!-- 
 	Upper Header Section 
 -->
-<form class="form-horizontal loginFrm" runat="server">
+<form id="login" class="form-horizontal loginFrm" runat="server">
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
@@ -48,7 +48,6 @@
 		</div>
 	</div>
 </div>
-
 <!--
 Lower Header Section 
 -->
@@ -162,23 +161,52 @@ Body Section
 		<li class="active">訂單查詢</li>
 	</ul>
 	<h3> 訂單明細</h3>	
-	<hr class="soft"/>
     
-        <div>
-			<h1>訂單明細查詢</h1>
-			<asp:Label ID="Label1" runat="server" Text="商品"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label2" runat="server" Text="數量"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label3" runat="server" Text="價錢"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label4" runat="server" Text="狀態"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label5" runat="server" Text="訂單日期"></asp:Label>
-			<br/>
-			<asp:ImageButton ID="OrderList" runat="server" Height="50px" ImageUrl="~/pic/iphone-12.jpg" Width="50px" />&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label6" runat="server" Text="1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label7" runat="server" Text="28500"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label8" runat="server" Text="已出貨"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Label ID="Label9" runat="server" Text="2021/5/30"></asp:Label>
-			<br/>
-        </div>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:ListItem>請選擇</asp:ListItem>
+            <asp:ListItem>已上架</asp:ListItem>
+            <asp:ListItem>競標中</asp:ListItem>
+            <asp:ListItem>已得標</asp:ListItem>
+        </asp:DropDownList>
+	<hr class="soft"/>
+		<asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
+                      CellPadding="4" 
+                      AutoGenerateSelectButton="True"
+                      OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
+            <Columns>
+                <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
+                    <ItemTemplate>
+                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="total_number" runat="server" Text='<%# Eval("total_number") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商家代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="seller_ID" runat="server" Text='<%# Eval("seller_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:Label ID="Action_product_ID" runat="server" Text='<%# Eval("Action_product_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString2 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
     </form>
 		<!-- 
     Clients 
