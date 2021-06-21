@@ -165,7 +165,7 @@ New Products
 			<li class="span4">
 			  <div class="thumbnail">
 
-				<asp:GridView ID="product_grid" GridLines="None"  runat="server"  AutoGenerateColumns="false">
+				<asp:GridView ID="pro_gridview" GridLines="None"  runat="server"  AutoGenerateColumns="false">
 
 					<Columns>
 						<asp:TemplateField  HeaderStyle-Width="200px">
@@ -190,7 +190,7 @@ New Products
 						</asp:TemplateField>
 					</Columns>
 				</asp:GridView>
-			      
+
 			  </div>
 			</li>
 		  </ul>
