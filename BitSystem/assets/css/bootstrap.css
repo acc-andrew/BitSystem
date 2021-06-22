@@ -4605,6 +4605,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li {
   float: left;
+    height: 20px;
 }
 
 .navbar .nav > li > a {

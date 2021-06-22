@@ -125,5 +125,11 @@ namespace BitSystem
             Session["classify"] = "其他類別";
             Response.Redirect("GoodListForm.aspx");
         }
+
+        protected void sale_list_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = null;
+            Response.Redirect("GoodListForm.aspx");
+        }
     }    
 }
