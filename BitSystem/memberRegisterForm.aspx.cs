@@ -174,9 +174,9 @@ namespace BitSystem
             }
             else
             {
-                 SQLDB_write("Sale_net_Jun18_2021_betaConnectionString3");
+                 SQLDB_write("Sale_net_Jun18_2021_betaConnectionString9");
                 // to get BusID from BusAccountTable
-                SQLDB_verify("Sale_net_Jun18_2021_betaConnectionString3", _user_name.Text);
+                SQLDB_verify("Sale_net_Jun18_2021_betaConnectionString9", _user_name.Text);
             }// password matches
         }// protected void RegisterBtn_Click(object sender, EventArgs e)
 

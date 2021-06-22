@@ -203,6 +203,7 @@ Body Section
 			<br/>
 			<asp:Label ID="Label12" runat="server" Text="會員編號："></asp:Label>
 			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString9 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
         </div>
 		<!-- 
     Clients 
