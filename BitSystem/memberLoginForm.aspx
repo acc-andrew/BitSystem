@@ -205,8 +205,7 @@ Body Section
 			</div>
 		</div>
 	</div>
-		<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString2 %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
-	</form>
+		</form>
     <!-- 
     Clients 
     -->

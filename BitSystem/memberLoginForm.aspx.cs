@@ -135,7 +135,7 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString3", _loginName.Text)
+            if (bSQLDB_verify("Sale_net_Jun22_2021ConnectionString", _loginName.Text)
                 == true)
             {
 
@@ -162,7 +162,7 @@ namespace BitSystem
             }
 
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString3", _memberAccount.Text)
+            if (bSQLDB_ifmatch("Sale_net_Jun22_2021ConnectionString", _memberAccount.Text)
                 == true)
             {
                 Response.Write("<script>alert('帳號已有會員登記，請改另一個帳號名稱 ');</script>");

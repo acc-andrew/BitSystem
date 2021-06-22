@@ -45,15 +45,15 @@ namespace BitSystem
             }
 
             //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
-            SQL_readActionProduct_life("Sale_net_Jun18_2021_betaConnectionString3");
+            SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString");
             product_view_life.DataSource = ds; //將DataSet的資料載入到datalist內
             product_view_life.DataBind();
             ds.Clear();
-            SQL_readActionProduct_cloth("Sale_net_Jun18_2021_betaConnectionString3");
+            SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString");
             product_view_cloth.DataSource = ds; //將DataSet的資料載入到datalist內
             product_view_cloth.DataBind();
             ds.Clear();
-            SQL_readActionProduct_bag("Sale_net_Jun18_2021_betaConnectionString3");
+            SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString");
             product_view_bag.DataSource = ds; //將DataSet的資料載入到datalist內
             product_view_bag.DataBind();
 
@@ -68,7 +68,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '居家/生活' and status = '拍賣中'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '居家/生活' and status = '已上架'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product"); //da把資料填入ds裡面
 
@@ -84,7 +84,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '衣服/飾品' and status = '拍賣中'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '衣服/飾品' and status = '已上架'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product"); //da把資料填入ds裡面
 
@@ -100,7 +100,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '包包/精品' and status = '拍賣中' ";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '包包/精品' and status = '已上架' ";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product"); //da把資料填入ds裡面
 
