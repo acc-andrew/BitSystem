@@ -136,7 +136,7 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_netConnectionString", _loginName.Text)
+            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString2", _loginName.Text)
                 == true)
             {
                 Response.Write("<script>alert('會員登入成功！');</script>");
@@ -158,7 +158,7 @@ namespace BitSystem
         protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
         {
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_netConnectionString", _memberEmail.Text)
+            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString2", _memberEmail.Text)
                 == true)
             {
                 Response.Write("<script>alert('E-mail 已有會員登記，請改另一個 E-mail ');</script>");
