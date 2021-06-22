@@ -88,7 +88,11 @@ Navigation Bar Section
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
-				    <li class=""><a id="sale_list" href="list_view.aspx">價低拍賣</a></li>
+				    <li class="">
+					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click">
+						<span>價低拍賣</span>
+					</asp:LinkButton>
+				</li>
 				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
 				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
                 </ul>

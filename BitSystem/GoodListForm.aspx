@@ -68,18 +68,15 @@ Lower Header Section
             </h1>
         </div>
         <div class="span4">
-            <div class="offerNoteWrapper">
-                <h1 class="dotmark">
-                    <i class="icon-cut"></i>
-                </h1>
-            </div>
+            
         </div>
         <div class="span4 alignR">
             <p><br> <strong></strong><br><br></p>
-            <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
-            <span class="btn btn-warning btn-mini">$</span>
-            <span class="btn btn-mini">&pound;</span>
-            <span class="btn btn-mini">&euro;</span>
+            <p><br>
+            <span ></span>
+            <span ></span>
+            <span ></span>
+            <span ></span>
         </div>
     </div>
 </header>
@@ -97,7 +94,11 @@ Navigation Bar Section
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
-				    <li class=""><a id="sale_list" href="list_view.aspx">價低拍賣</a></li>
+				    <li class="">
+					    <asp:LinkButton ID="sale_list" runat="server" OnClick="sale_list_Click">
+						    <span>價低拍賣</span>
+					    </asp:LinkButton>
+				    </li>
 				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
 				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
                 </ul>
@@ -186,9 +187,9 @@ Body Section
             <Columns>
                 <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
                     <ItemTemplate>
-                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                        <asp:ImageButton ID="img0" runat="server" Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' />
                     </ItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField> 
                 <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
                     <ItemTemplate>   
                         <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>

@@ -26,7 +26,7 @@ namespace BitSystem
         {
             /*
             //設定會員登入與否顯現標示不同
-            Session["Login"] = null;
+
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -39,6 +39,7 @@ namespace BitSystem
                 my_info.Visible = true;
                 register.Visible = true;
                 manager.Visible = true;
+                Session["logged_to_page"] = "PutGoodOnShelfForm.aspx";
                 Response.Redirect("memberLoginForm.aspx");
             }
             */
@@ -208,7 +209,7 @@ namespace BitSystem
             sql_insert_cmd.Parameters["@high_price"].Value = "0";
 
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@status"].Value = "拍賣中";
+            sql_insert_cmd.Parameters["@status"].Value = "已上架";
 
             sql_insert_cmd.Parameters.Add("@official_price", SqlDbType.Int);
             sql_insert_cmd.Parameters["@official_price"].Value = int.Parse(_OfficialPrice.Text);
@@ -327,7 +328,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_netConnectionString", closedDateTime);
+                    SQLDB_writeAutionProduct("Sale_net_Jun18_2021_betaConnectionString3", closedDateTime);
                     Response.Redirect("GoodListForm.aspx");
                 }
 
@@ -380,56 +381,63 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "cloth";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "衣服/飾品";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "book";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "書籍/文創";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "life";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "居家/生活";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "bag";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "包包/精品";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "shoes";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "男女鞋款";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "car";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "汽機車/零件百貨";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "entertainment";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "娛樂/收藏";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "pet";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "寵物/用品";
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "others";
-            Response.Redirect("list_view.aspx");
+            Session["classify"] = "其他類別";
+            Response.Redirect("GoodListForm.aspx");
+        }
+
+        //取消classify
+        protected void sale_list_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = null;
+            Response.Redirect("GoodListForm.aspx");
         }
     }//public partial class PutGoodOnShelfForm : System.Web.UI.Page
 }
