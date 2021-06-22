@@ -169,7 +169,7 @@ Body Section
 		<div>
 			<h1>會員註冊畫面</h1>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
-			<asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
+            <asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
 			<asp:TextBox ID="_memberPassword" runat="server" TextMode="Password"></asp:TextBox>
