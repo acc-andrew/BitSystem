@@ -13,6 +13,7 @@ namespace BitSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             //設定會員登入與否顯現標示不同
     
 
@@ -28,6 +29,7 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
             }
+            */
 
             // for year, month  droplist
             if (!IsPostBack) //如果第一次載入頁面
