@@ -87,6 +87,15 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton logout;
 
         /// <summary>
+        /// sale_list 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton sale_list;
+
+        /// <summary>
         /// cloth 控制項。
         /// </summary>
         /// <remarks>
@@ -168,12 +177,30 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton others;
 
         /// <summary>
-        /// more_hot 控制項。
+        /// product_view_life 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button more_hot;
+        protected global::System.Web.UI.WebControls.DataList product_view_life;
+
+        /// <summary>
+        /// product_view_cloth 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList product_view_cloth;
+
+        /// <summary>
+        /// product_view_bag 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList product_view_bag;
     }
 }

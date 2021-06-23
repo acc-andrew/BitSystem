@@ -29,10 +29,10 @@ namespace BitSystem
             }
         }
         
-        protected bool bSQLDB_verify(string ConnectionString, string _guiName)
+        protected bool bSQLDB_verify(string connString, string _guiName)
         {
             bool bFound = false;
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -66,8 +66,9 @@ namespace BitSystem
                         int nMemberID = (int)(Reader["member_ID"]);
                         Session["member_ID"] = nMemberID;
 
-                        Session["Login"] = "logged";
                         Response.Write("<script>alert('會員登入成功');</script>");
+                        Session["Login"] = "logged";
+
                         bFound = true;
                         // Server.Transfer("test2.aspx");
                     }
@@ -90,16 +91,16 @@ namespace BitSystem
             return bFound;
         }// protected void SQLDB_verify()
 
-        protected bool bSQLDB_ifmatch(string ConnectionString, string _enterEmail)
+        protected bool bSQLDB_ifmatch(string connString, string _memberAccount)
         {
             bool bFound = false;
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select * from Member where mail='{_enterEmail}'";
+            string sql_statement = $"select * from Member where user_name='{_memberAccount}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -134,20 +135,19 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString2", _loginName.Text)
+            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString3", _loginName.Text)
                 == true)
             {
-                Response.Write("<script>alert('會員登入成功！');</script>");
 
                 // goto the web page after member logging
                 if(Session["logged_to_page"] != null){
                     string pageAfterLogging = (string) Session["logged_to_page"];
-                    Response.Redirect(pageAfterLogging);
+                    Server.Transfer(pageAfterLogging);
 
                 }
                 else
                 {
-                    Response.Redirect("GoodListForm.aspx");
+                    Response.Redirect("Home.aspx");
                 }
             }
 
@@ -155,17 +155,23 @@ namespace BitSystem
 
         protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
         {
+            if (_memberAccount.Text == "")
+            {
+                Response.Write($"<script>alert('請寫入帳號名稱');</script>");
+                return;
+            }
+
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString2", _memberEmail.Text)
+            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString3", _memberAccount.Text)
                 == true)
             {
-                Response.Write("<script>alert('E-mail 已有會員登記，請改另一個 E-mail ');</script>");
+                Response.Write("<script>alert('帳號已有會員登記，請改另一個帳號名稱 ');</script>");
             }
             else
             {
-                Session["NewMemberEmail"] = _memberEmail.Text;
+                Session["NewMemberAccount"] = _memberAccount.Text;
 
-                Response.Redirect("memberRegisterForm.aspx");
+                Server.Transfer("memberRegisterForm.aspx");
             }
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
@@ -218,55 +224,62 @@ namespace BitSystem
         protected void cloth_Click(object sender, EventArgs e)
         {
             Session["classify"] = "衣服/飾品";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
             Session["classify"] = "書籍/文創";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
             Session["classify"] = "居家/生活";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
             Session["classify"] = "包包/精品";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
             Session["classify"] = "男女鞋款";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
             Session["classify"] = "汽機車/零件百貨";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
             Session["classify"] = "娛樂/收藏";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
             Session["classify"] = "寵物/用品";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
             Session["classify"] = "其他類別";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
+        }
+
+        //取消classify
+        protected void sale_list_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = null;
+            Response.Redirect("GoodListForm.aspx");
         }
 
     }

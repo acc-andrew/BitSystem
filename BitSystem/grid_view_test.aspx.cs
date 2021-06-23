@@ -15,13 +15,10 @@ namespace BitSystem
 
         SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
         DataSet ds = new DataSet();
-        DataSet ds1 = new DataSet();
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
-        DataTable dt = new DataTable();
-        DataTable showTB = new DataTable();
+ 
         
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,18 +37,27 @@ namespace BitSystem
                 manager.Visible = true;
             }
 
-            // pre-fetch picture pathname from Market_product2 DB
 
-            fetchProductInfo();
-            SQL_readActionProduct_pic("Sale_net_Jun18_2021_betaConnectionString2");
-            pro_gridview.DataSource = ds1; //將DataSet的資料載入到GridView1內
-            pro_gridview.DataBind();
+
+            //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
+            SQL_readActionProduct_life("Sale_net_Jun18_2021_betaConnectionString3");
+            product_view_life.DataSource = ds; //將DataSet的資料載入到GridView1內
+            product_view_life.DataBind();
+            ds.Clear();
+            SQL_readActionProduct_cloth("Sale_net_Jun18_2021_betaConnectionString3");
+            product_view_cloth.DataSource = ds; //將DataSet的資料載入到GridView1內
+            product_view_cloth.DataBind();
+            ds.Clear();
+            SQL_readActionProduct_bag("Sale_net_Jun18_2021_betaConnectionString3");
+            product_view_bag.DataSource = ds; //將DataSet的資料載入到GridView1內
+            product_view_bag.DataBind();
             
             
 
         }//protected void Page_Load(object sender, EventArgs e)
 
-        protected void SQL_readActionProduct_pic(string connString)
+
+        protected void SQL_readActionProduct_life(string connString)
         {
             cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
 
@@ -60,38 +66,49 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,official_price,status from Action_product where classify = '居家/生活'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '居家/生活' and status = '拍賣中'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product"); //da把資料填入ds裡面
 
-            dt = ds.Tables[0];
-        
-            showTB.Columns.Add("pic_pathname");
-            showTB.Columns.Add("product");
-            showTB.Columns.Add("official_price");
-            showTB.Columns.Add("status");
-            //針對Column轉向處理
-            for (int i = 0; i < dt.Columns.Count; i++)
-            {
-                DataRow dr = showTB.NewRow();
-                
-                dr["pic_pathname"] = dt.Rows[0][i];
-                dr["product"] = dt.Rows[1][i];
-                dr["official_price"] = dt.Rows[2][i];
-                dr["status"] = dt.Rows[3][i];
-                showTB.Rows.Add(dr);
-            }
-
-            ds1.Tables.Add(showTB);
-            
 
         }// protected void SQL_readActionProduct()
 
-        
-        private void fetchProductInfo()
+        protected void SQL_readActionProduct_cloth(string connString)
+        {
+            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '衣服/飾品' and status = '拍賣中'";   //執行SQL語法進行查詢
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds, "Action_product"); //da把資料填入ds裡面
+
+
+        }// protected void SQL_readActionProduct()
+
+        protected void SQL_readActionProduct_bag(string connString)
+        {
+            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '包包/精品' and status = '拍賣中' ";   //執行SQL語法進行查詢
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds, "Action_product"); //da把資料填入ds裡面
+
+
+        }// protected void SQL_readActionProduct()
+
+        private void fetchProductInfo(string connString)
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -116,8 +133,6 @@ namespace BitSystem
                 while (Reader1.Read())
                 {
                     //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-
-
 
 
                 }// while (Reader.Read())
@@ -181,55 +196,62 @@ namespace BitSystem
         protected void cloth_Click(object sender, EventArgs e)
         {
             Session["classify"] = "衣服/飾品";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
             Session["classify"] = "書籍/文創";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
             Session["classify"] = "居家/生活";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
             Session["classify"] = "包包/精品";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
             Session["classify"] = "男女鞋款";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
             Session["classify"] = "汽機車/零件百貨";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
             Session["classify"] = "娛樂/收藏";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
             Session["classify"] = "寵物/用品";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
             Session["classify"] = "其他類別";
-            Response.Redirect("list_view.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
+
+        protected void sale_list_Click(object sender, EventArgs e)
+        {
+            Session["classify"] = null;
+            Response.Redirect("GoodListForm.aspx");
+        }
+
     }
 }

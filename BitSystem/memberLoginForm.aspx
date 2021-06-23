@@ -90,7 +90,11 @@ Navigation Bar Section
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
-				    <li class=""><a id="sale_list" href="list_view.aspx">價低拍賣</a></li>
+				    <li class="">
+					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click">
+						<span>價低拍賣</span>
+					</asp:LinkButton>
+				</li>
 				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
 				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
 			</ul>
@@ -179,9 +183,9 @@ Body Section
 		<div class="span5">
 			<div class="well">
 				<h1>建立新的帳號</h1><br/>
-				輸入您的電子郵件(e-mail address)以建立一個新帳號<br/><br/><br/>
-                <asp:Label ID="Label3" runat="server" Text="E-mail address : "></asp:Label>
-				<asp:TextBox ID="_memberEmail"  runat="server" Width="160px"></asp:TextBox>
+				輸入您的Member Account以建立一個新帳號<br/><br/><br/>
+                <asp:Label ID="Label3" runat="server" Text="Member Account : "></asp:Label>
+				<asp:TextBox ID="_memberAccount"  runat="server" Width="160px"></asp:TextBox>
 				<asp:Button ID="_CreaateMemberBtn" runat="server" Text="建立新的會員帳號" OnClick="_CreaateMemberBtn_Click"  />
 
 			</div>
@@ -206,7 +210,6 @@ Body Section
     <!-- 
     Clients 
     -->
-   
 
 
 
