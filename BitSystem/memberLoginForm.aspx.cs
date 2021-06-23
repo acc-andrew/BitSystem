@@ -29,10 +29,10 @@ namespace BitSystem
             }
         }
         
-        protected bool bSQLDB_verify(string Sale_net_0618_testConnectionString, string _guiName)
+        protected bool bSQLDB_verify(string ConnectionString, string _guiName)
         {
             bool bFound = false;
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[Sale_net_0618_testConnectionString].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -90,10 +90,10 @@ namespace BitSystem
             return bFound;
         }// protected void SQLDB_verify()
 
-        protected bool bSQLDB_ifmatch(string Sale_net_0618_testConnectionString, string _enterEmail)
+        protected bool bSQLDB_ifmatch(string ConnectionString, string _enterEmail)
         {
             bool bFound = false;
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[Sale_net_0618_testConnectionString].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);

@@ -43,7 +43,7 @@ namespace BitSystem
             // pre-fetch picture pathname from Market_product2 DB
 
             fetchProductInfo();
-            SQL_readActionProduct_pic("Sale_net_Jun18_2021_betaConnectionString");
+            SQL_readActionProduct_pic("Sale_net_Jun18_2021_betaConnectionString2");
             pro_gridview.DataSource = ds1; //將DataSet的資料載入到GridView1內
             pro_gridview.DataBind();
             
@@ -91,7 +91,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString2"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
