@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberProfile.aspx.cs" Inherits="BitSystem.MemberProfile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="manager_check.aspx.cs" Inherits="BitSystem.manager_check" %>
 
 <!DOCTYPE html>
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <title>會員資料</title>
+    <title>管理頁面</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -29,7 +29,7 @@
 <!-- 
 	Upper Header Section 
 -->
-<form class="form-horizontal loginFrm" runat="server">
+<form id="login" class="form-horizontal loginFrm" runat="server">
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
@@ -48,7 +48,6 @@
 		</div>
 	</div>
 </div>
-
 <!--
 Lower Header Section 
 -->
@@ -92,6 +91,7 @@ Navigation Bar Section
 				
 			</li>
 			</ul>
+			
 		  </div>
 		</div>
 	  </div>
@@ -162,57 +162,59 @@ Body Section
 	<div class="span9">
 	<ul class="breadcrumb">
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
-		<li class="active">會員資料</li>
+		<li class="active">訂單查詢</li>
 	</ul>
-	<h3> 會員資料</h3>	
+	<h3> 訂單明細</h3>	
+    
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:ListItem>請選擇</asp:ListItem>
+            <asp:ListItem>已上架</asp:ListItem>
+            <asp:ListItem>競標中</asp:ListItem>
+            <asp:ListItem>已得標</asp:ListItem>
+        </asp:DropDownList>
 	<hr class="soft"/>
-
-        <div>
-			<h1>會員資料修改</h1>
-			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
-			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
-			<asp:TextBox ID="_memberPassword" runat="server" Enabled="False"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label3" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
-			<asp:TextBox ID="_name" runat="server" Enabled="False" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label4" runat="server" Text="電子郵件："></asp:Label>
-			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False" ></asp:TextBox>
-			<br/>            
-			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
-			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label6" runat="server" Text="出生日期："></asp:Label>
-			<asp:DropDownList ID="_birthYear_list" runat="server" Width="80px" Enabled="False" ></asp:DropDownList>
-			<asp:Label ID="Label7" runat="server" Text="年"></asp:Label>
-			&nbsp;&nbsp;
-			<asp:DropDownList ID="_birthMonth_list" runat="server" Width="60px" Enabled="False" ></asp:DropDownList>
-			<asp:Label ID="Label8" runat="server" Text="月"></asp:Label>
-			&nbsp;&nbsp;
-			<asp:DropDownList ID="_birthDate_list" runat="server" Width="60px" Enabled="False" ></asp:DropDownList>
-			<asp:Label ID="Label9" runat="server" Text="日"></asp:Label>
-			<br/>
-			<asp:Label ID="Label10" runat="server" Text="居住地址："></asp:Label>
-			<asp:TextBox ID="_address" runat="server" Enabled="False" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label11" runat="server" Text="會員狀態："></asp:Label>
-			<asp:TextBox ID="_status" runat="server" Enabled="False" ></asp:TextBox>
-			<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="ModifyBtn" runat="server" Text="資料修改" OnClick="ModifyBtn_Click" />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="SaveBtn" runat="server" Text="儲存資料" OnClick="SaveBtn_Click" />
-			<br/>
-			<asp:Label ID="Label12" runat="server" Text="會員編號："></asp:Label>
-			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
-        </div>
+		<asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
+                      CellPadding="4" 
+                      AutoGenerateSelectButton="True"
+                      OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
+            <Columns>
+                <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
+                    <ItemTemplate>
+                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="total_number" runat="server" Text='<%# Eval("total_number") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商家代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="seller_ID" runat="server" Text='<%# Eval("seller_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:Label ID="Action_product_ID" runat="server" Text='<%# Eval("Action_product_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        </form>
 		<!-- 
     Clients 
     -->
     <section class="our_client">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_0618_testConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>
         <hr class="soften"/>
@@ -237,7 +239,6 @@ Body Section
             </div>
         </div>
     </section>
-    </form>
     <!--
     Footer
     -->

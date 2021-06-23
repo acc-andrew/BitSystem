@@ -246,6 +246,7 @@
     <Content Include="grid_view_test.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="list_view.aspx" />
+    <Content Include="manager_check.aspx" />
     <Content Include="memberOrder.aspx" />
     <Content Include="sale_chickout_product.aspx" />
     <Content Include="sale_chickout_member.aspx" />
@@ -333,6 +334,13 @@
     </Compile>
     <Compile Include="list_view.aspx.designer.cs">
       <DependentUpon>list_view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manager_check.aspx.cs">
+      <DependentUpon>manager_check.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manager_check.aspx.designer.cs">
+      <DependentUpon>manager_check.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberOrder.aspx.cs">
       <DependentUpon>memberOrder.aspx</DependentUpon>

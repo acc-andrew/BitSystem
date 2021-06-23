@@ -13,6 +13,25 @@ namespace BitSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //設定會員登入與否顯現標示不同
+            if (Convert.ToString(Session["Login"]) == "logged")
+            {
+                member_info.Visible = true;
+                order_info.Visible = true;
+                logout.Visible = true;
+            }
+            else
+            {
+                my_info.Visible = true;
+                register.Visible = true;
+                manager.Visible = true;
+            }
+
+            if ((string)Session["NewMemberAccount"] != null)
+            {
+                _user_name.Text = (string)Session["NewMemberAccount"];
+            }
+
 
             // for year, month  droplist
             if (!IsPostBack) //如果第一次載入頁面
@@ -34,26 +53,6 @@ namespace BitSystem
                 _birthYear_list.Text = (DateTime.Now.Year).ToString(); 
                 _birthMonth_list.Text = (DateTime.Now.Month).ToString();
                 _birthDate_list.Text = (DateTime.Now.Date).ToString();
-
-
-                //設定會員登入與否顯現標示不同
-                if (Convert.ToString(Session["Login"]) == "logged")
-                {
-                    member_info.Visible = true;
-                    order_info.Visible = true;
-                    logout.Visible = true;
-                }
-                else
-                {
-                    my_info.Visible = true;
-                    register.Visible = true;
-                    manager.Visible = true;
-                }
-
-                if ((string)Session["NewMemberAccount"] != null)
-                {
-                    _user_name.Text = (string)Session["NewMemberAccount"];
-                }
 
             }// if (!IsPostBack)
 
