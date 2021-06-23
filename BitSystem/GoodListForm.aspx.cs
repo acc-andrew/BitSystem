@@ -82,16 +82,16 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun18_2021_betaConnectionString3"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement_no_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product";
+            string sql_statement_no_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where status='已上架'";
 
             // bug1: SQL content
-            string sql_statement1_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where classify ='" + Session["classify"] + "'";
+            string sql_statement1_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where status='已上架' and classify ='" + Session["classify"] + "'";
 
             SqlCommand Command;
             // bug2: sqlText
@@ -199,10 +199,10 @@ namespace BitSystem
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
             // bug1: SQL content without session classify
-            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product";
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='已上架'";
 
             // bug1: SQL content with session classify
-            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where classify ='" + Session["classify"] + "'";
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='已上架' and classify ='" + Session["classify"] + "'";
 
             SqlCommand Command;
             // bug2: sqlText
