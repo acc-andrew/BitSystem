@@ -24,6 +24,7 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             //設定會員登入與否顯現標示不同
 
 
@@ -41,6 +42,7 @@ namespace BitSystem
                 Session["logged_to_page"] = "PutGoodOnShelfForm.aspx";
                 Response.Redirect("memberLoginForm.aspx");
             }
+            
 
 
             // if the page loaded first time

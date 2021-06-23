@@ -192,6 +192,7 @@
     <Content Include="assets\js\owl.js" />
     <Content Include="assets\js\shop.js" />
     <Content Include="assets\js\slick.js" />
+    <Content Include="BitProductForm.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -295,6 +296,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BitProductForm.aspx.cs">
+      <DependentUpon>BitProductForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BitProductForm.aspx.designer.cs">
+      <DependentUpon>BitProductForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

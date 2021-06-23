@@ -183,9 +183,9 @@ Body Section
 		<div class="span5">
 			<div class="well">
 				<h1>建立新的帳號</h1><br/>
-				輸入您的電子郵件(e-mail address)以建立一個新帳號<br/><br/><br/>
-                <asp:Label ID="Label3" runat="server" Text="E-mail address : "></asp:Label>
-				<asp:TextBox ID="_memberEmail"  runat="server" Width="160px"></asp:TextBox>
+				輸入您的Member Account以建立一個新帳號<br/><br/><br/>
+                <asp:Label ID="Label3" runat="server" Text="Member Account : "></asp:Label>
+				<asp:TextBox ID="_memberAccount"  runat="server" Width="160px"></asp:TextBox>
 				<asp:Button ID="_CreaateMemberBtn" runat="server" Text="建立新的會員帳號" OnClick="_CreaateMemberBtn_Click"  />
 
 			</div>
@@ -205,7 +205,7 @@ Body Section
 			</div>
 		</div>
 	</div>
-		
+		<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString2 %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
 	</form>
     <!-- 
     Clients 

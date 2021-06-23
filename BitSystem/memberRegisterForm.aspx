@@ -36,14 +36,14 @@
 		<div class="container">
 			<div class="alignR">
 				<div align="right">
-					<asp:LinkButton ID="home" runat="server" class="icon-home" OnClick="home_Click">首頁</asp:LinkButton>
-					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user" OnClick="member_info_Click">會員資料</asp:LinkButton>
-					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" OnClick="order_info_Click" >訂單查詢</asp:LinkButton>
-					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" OnClick="my_info_Click">我的會員</asp:LinkButton>
-					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit" OnClick="register_Click">免費註冊</asp:LinkButton>
+					<asp:LinkButton ID="home" runat="server" class="icon-home" >首頁</asp:LinkButton>
+					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user">會員資料</asp:LinkButton>
+					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" >訂單查詢</asp:LinkButton>
+					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" >我的會員</asp:LinkButton>
+					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit">免費註冊</asp:LinkButton>
 					<asp:LinkButton ID="contantus" runat="server" class="icon-envelope" OnClick="contantus_Click">聯絡我們</asp:LinkButton>
-					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" OnClick="manager_Click">管理後臺</asp:LinkButton>
-					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" OnClick="logout_Click">登出</asp:LinkButton>
+					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" >管理後臺</asp:LinkButton>
+					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" >登出</asp:LinkButton>
 				</div>
 			</div>
 		</div>
@@ -168,8 +168,8 @@ Body Section
 
 		<div>
 			<h1>會員註冊畫面</h1>
-			<asp:Label ID="Label1" runat="server" Text="會員名稱："></asp:Label>
-			<asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
+			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
+            <asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
 			<asp:TextBox ID="_memberPassword" runat="server" TextMode="Password"></asp:TextBox>
@@ -178,7 +178,7 @@ Body Section
 			<asp:TextBox ID="_ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
 			<asp:Label ID="Label4" runat="server" Text="請與會員密碼相同"></asp:Label>
 			<br/>
-			<asp:Label ID="Label5" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
+			<asp:Label ID="Label5" runat="server" Text="會員名稱："></asp:Label>
 			<asp:TextBox ID="_name" runat="server" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label6" runat="server" Text="電子郵件："></asp:Label>
@@ -187,20 +187,20 @@ Body Section
 			<asp:Label ID="Label7" runat="server" Text="手機號碼："></asp:Label>
 			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
 			<br/>
-			<asp:Label ID="Label8" runat="server" Text="出生年&nbsp;&nbsp;&nbsp;："></asp:Label>
+			<asp:Label ID="Label8" runat="server" Text="出生年份："></asp:Label>
 			<asp:DropDownList ID="_birthYear_list" runat="server" OnSelectedIndexChanged="YearSelected" AutoPostBack="True"></asp:DropDownList>
 			<br/>
-			<asp:Label ID="Label9" runat="server" Text="出生月&nbsp;&nbsp;&nbsp;："></asp:Label>
+			<asp:Label ID="Label9" runat="server" Text="出生月份："></asp:Label>
 			<asp:DropDownList ID="_birthMonth_list" runat="server" OnSelectedIndexChanged="MonthChanged" AutoPostBack="True"></asp:DropDownList>
 			<br/>
-			<asp:Label ID="Label10" runat="server" Text="出生日&nbsp;&nbsp;&nbsp;："></asp:Label>
+			<asp:Label ID="Label10" runat="server" Text="出生日期："></asp:Label>
 			<asp:DropDownList ID="_birthDate_list" runat="server" ></asp:DropDownList>
 			<br/>
 			<asp:Label ID="Label11" runat="server" Text="居住地址："></asp:Label>
 			<asp:TextBox ID="_address" runat="server" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label12" runat="server" Text="會員狀態："></asp:Label>
-			<asp:TextBox ID="_status" runat="server" ></asp:TextBox>
+			<asp:TextBox ID="_status" runat="server" Text="正常" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Button ID="RegisterBtn" runat="server" Text="會員註冊" OnClick="RegisterBtn_Click"/>
 			<br/>

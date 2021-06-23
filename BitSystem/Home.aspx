@@ -199,11 +199,12 @@ Body Section
 <!--
 New Products
 -->
+        
 <div class="well well-small">
 	<h3>熱門商品 搶先看 </h3>
 		<div class="row-fluid">
 		  <div class="thumbnails">
-                  <asp:DataList ID="product_view_life" runat="server" Width="100%"  RepeatColumns="3">
+                  <asp:DataList ID="product_view_life" runat="server" Width="100%"  RepeatColumns="3" >
 					<ItemTemplate>
 						<div class="thumbnail">
 							<table  border="0" cellpadding="5" cellspacing="5">

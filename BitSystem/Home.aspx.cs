@@ -22,8 +22,14 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                product_view_bag.DataBind();    // 自訂的 GridView databind函式
+            }
+
+
             //設定會員登入與否顯現標示不同
-          
+
 
             if (Convert.ToString(Session["Login"]) == "logged")
             {
@@ -256,5 +262,6 @@ namespace BitSystem
             Session["classify"] = null;
             Response.Redirect("GoodListForm.aspx");
         }
+
     }
 }
