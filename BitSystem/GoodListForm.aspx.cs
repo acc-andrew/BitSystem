@@ -22,33 +22,40 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //設定會員登入與否顯現標示不同
-            
 
-            if (Convert.ToString(Session["Login"]) == "logged")
+            if (!IsPostBack)
             {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
+                _GoodsGridView.DataBind();    // 自訂的 GridView databind函式
+
+                //設定會員登入與否顯現標示不同
+
+
+                if (Convert.ToString(Session["Login"]) == "logged")
+                {
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
+                }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                }
+
+                // pre-fetch picture pathname from Market_product2 DB
+                fetchProductInfo();
+
+                // to set event handler: row
+                // called while each row data prepared
+                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
+
+
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
+                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+                _GoodsGridView.DataBind();
+
             }
-            else
-            {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
-            }
-
-            // pre-fetch picture pathname from Market_product2 DB
-            fetchProductInfo();
-
-            // to set event handler: row
-            // called while each row data prepared
-            _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
-
-
-            SQL_readActionProduct("Sale_net_Jun18_2021_betaConnectionString2");
-            _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-            _GoodsGridView.DataBind();
 
         }//protected void Page_Load(object sender, EventArgs e)
 

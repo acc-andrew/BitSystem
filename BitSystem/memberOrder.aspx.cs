@@ -90,7 +90,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='已上架' and seller_ID='" + Session["member_ID"]+"'");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='已上架' and seller_ID='" + Session["member_ID"]+"')");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
