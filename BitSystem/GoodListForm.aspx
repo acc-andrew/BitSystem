@@ -216,8 +216,7 @@ Body Section
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
-    </form>
+        </form>
     <!--
 Footer
 -->

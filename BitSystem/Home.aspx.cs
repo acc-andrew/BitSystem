@@ -15,7 +15,9 @@ namespace BitSystem
     public partial class Home : System.Web.UI.Page
     {
         SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
-        DataSet ds = new DataSet();
+        DataSet ds_first = new DataSet();
+        DataSet ds_sec = new DataSet();
+        DataSet ds_third = new DataSet();
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
 
@@ -25,37 +27,39 @@ namespace BitSystem
             if (!IsPostBack)
             {
                 product_view_bag.DataBind();    // 自訂的 GridView databind函式
+
+
+
+                //設定會員登入與否顯現標示不同
+
+
+                if (Convert.ToString(Session["Login"]) == "logged")
+                {
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
+                }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                }
+
+                //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
+                SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString");
+                product_view_life.DataSource = ds_first; //將DataSet的資料載入到datalist內
+                product_view_life.DataBind();
+                
+                SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString");
+                product_view_cloth.DataSource = ds_sec; //將DataSet的資料載入到datalist內
+                product_view_cloth.DataBind();
+                
+                SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString");
+                product_view_bag.DataSource = ds_third; //將DataSet的資料載入到datalist內
+                product_view_bag.DataBind();
+
             }
-
-
-            //設定會員登入與否顯現標示不同
-
-
-            if (Convert.ToString(Session["Login"]) == "logged")
-            {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
-            }
-            else
-            {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
-            }
-
-            //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
-            SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString");
-            product_view_life.DataSource = ds; //將DataSet的資料載入到datalist內
-            product_view_life.DataBind();
-            ds.Clear();
-            SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString");
-            product_view_cloth.DataSource = ds; //將DataSet的資料載入到datalist內
-            product_view_cloth.DataBind();
-            ds.Clear();
-            SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString");
-            product_view_bag.DataSource = ds; //將DataSet的資料載入到datalist內
-            product_view_bag.DataBind();
 
         }
 
@@ -68,9 +72,9 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '居家/生活' and status = '拍賣中'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '居家/生活' and status = '已上架'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
-            da.Fill(ds, "Action_product"); //da把資料填入ds裡面
+            da.Fill(ds_first, "Action_product"); //da把資料填入ds裡面
 
 
         }// protected void SQL_readActionProduct()
@@ -84,9 +88,9 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '衣服/飾品' and status = '拍賣中'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '衣服/飾品' and status = '已上架'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
-            da.Fill(ds, "Action_product"); //da把資料填入ds裡面
+            da.Fill(ds_sec, "Action_product"); //da把資料填入ds裡面
 
 
         }// protected void SQL_readActionProduct()
@@ -100,9 +104,9 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status from Action_product where classify = '包包/精品' and status = '拍賣中' ";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '包包/精品' and status = '已上架' ";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
-            da.Fill(ds, "Action_product"); //da把資料填入ds裡面
+            da.Fill(ds_third, "Action_product"); //da把資料填入ds裡面
 
 
         }// protected void SQL_readActionProduct()
@@ -116,7 +120,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"SELECT pic_pathname,product,official_price,status from Action_product";
+            string sql_statement = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '包包/精品' and status = '已上架' ";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -149,9 +153,79 @@ namespace BitSystem
             connection.Close();
         }// private void fetchGoodPicsPathname()
 
+        protected void product_view_life_ItemCommand(object source,DataListCommandEventArgs e)
+        {
+            DataListItem currentItem = e.Item;
 
+            if (e.CommandName == "click")
+            {
 
+                product_view_life.SelectedIndex = currentItem.ItemIndex;
 
+                string pic_pathname = ((ImageButton)currentItem.FindControl("pic_pathname")).ImageUrl;
+                string product = ((Label)currentItem.FindControl("product")).Text;
+                string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
+                string description = ((Label)currentItem.FindControl("description")).Text;
+                string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+
+                Session["ProductName"] = product;
+                Session["ProductDesc"] = description;
+                Session["ImageUrl"] = pic_pathname;
+                Session["ProductID"] = action_product_ID;
+                Session["SellerID"] = seller_ID;
+
+                Response.Redirect("BitProductForm.aspx");
+ 
+            }
+        }
+
+        protected void product_view_cloth_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            DataListItem currentItem = e.Item;
+
+            if (e.CommandName == "click")
+            {
+                product_view_cloth.SelectedIndex = currentItem.ItemIndex;
+
+                string pic_pathname1 = ((ImageButton)currentItem.FindControl("pic_pathname1")).ImageUrl;
+                string product = ((Label)currentItem.FindControl("product")).Text;
+                string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
+                string description = ((Label)currentItem.FindControl("description")).Text;
+                string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+
+                Session["ProductName"] = product;
+                Session["ProductDesc"] = description;
+                Session["ImageUrl"] = pic_pathname1;
+                Session["ProductID"] = action_product_ID;
+                Session["SellerID"] = seller_ID;
+
+                Response.Redirect("BitProductForm.aspx");
+            }
+        }
+
+        protected void product_view_bag_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            DataListItem currentItem = e.Item;
+
+            if (e.CommandName == "click")
+            {
+                product_view_bag.SelectedIndex = currentItem.ItemIndex;
+
+                string pic_pathname2 = ((ImageButton)currentItem.FindControl("pic_pathname2")).ImageUrl;
+                string product = ((Label)currentItem.FindControl("product")).Text;
+                string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
+                string description = ((Label)currentItem.FindControl("description")).Text;
+                string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+
+                Session["ProductName"] = product;
+                Session["ProductDesc"] = description;
+                Session["ImageUrl"] = pic_pathname2;
+                Session["ProductID"] = action_product_ID;
+                Session["SellerID"] = seller_ID;
+
+                Response.Redirect("BitProductForm.aspx");
+            }
+        }
 
 
         //linkbutton 點擊連接網址
