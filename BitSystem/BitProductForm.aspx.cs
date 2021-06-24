@@ -223,7 +223,7 @@ namespace BitSystem
             string          strWinnerName = "";
 
             // 1. to open Action_bidder
-            SQLDB_getBidderPrice("Sale_net_Jun22_2021ConnectionString2", ref bidderData);
+            SQLDB_getBidderPrice("Sale_net_Jun22_2021ConnectionString2", ref bidderData, nSelectedProdcutID);
             // case1 : nobody bids
             if(bidderData.Count == 0){
                 _NowBitWinner.Text = "無";
@@ -600,7 +600,7 @@ namespace BitSystem
             string strWinnerName = "";
 
             // 1. to open Action_bidder
-            SQLDB_getBidderPrice("Sale_net_Jun22_2021ConnectionString2", ref bidderData);
+            SQLDB_getBidderPrice("Sale_net_Jun22_2021ConnectionString2", ref bidderData, nSelectedProdcutID);
             // case1 : nobody bids
             if (bidderData.Count == 0)
             {

@@ -48,9 +48,9 @@ namespace BitSystem
             _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
-                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-                _GoodsGridView.DataBind();
+            SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
+            _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+            _GoodsGridView.DataBind();
 
             
 
