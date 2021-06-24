@@ -164,6 +164,12 @@ Body Section
 			</li>
 		  </ul>
 	</div>
+			<div class="span9">
+	<ul class="breadcrumb">
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
+		<li class="active">商品上架</li>
+	</ul>
+	</div>
 
         <h1>商品上架頁面</h1>
         <asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>

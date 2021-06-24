@@ -164,6 +164,7 @@ Body Section
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">會員資料</li>
 	</ul>
+	</div>
 	<h3> 會員資料</h3>	
 	<hr class="soft"/>
 

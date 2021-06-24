@@ -180,7 +180,12 @@ Body Section
 			</li>
 		  </ul>
 	</div>
-
+		<div class="span9">
+	<ul class="breadcrumb">
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
+		<li class="active">商品拍賣</li>
+	</ul>
+	</div>
     
         <div>
             <h1>商品拍賣</h1>
