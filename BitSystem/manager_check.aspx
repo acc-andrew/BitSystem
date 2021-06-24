@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberRegisterForm.aspx.cs" Inherits="BitSystem.memberRegisterForm" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="manager_check.aspx.cs" Inherits="BitSystem.manager_check" %>
 
 <!DOCTYPE html>
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <title>會員註冊</title>
+    <title>管理頁面</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,7 +29,7 @@
 <!-- 
 	Upper Header Section 
 -->
-<form  runat="server">
+<form id="login" class="form-horizontal loginFrm" runat="server">
 <div class="navbar-nav ml-auto">
 	<div class="topNav">
 		<div class="container">
@@ -49,7 +48,6 @@
 		</div>
 	</div>
 </div>
-
 <!--
 Lower Header Section 
 -->
@@ -80,15 +78,20 @@ Navigation Bar Section
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			 <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
+			  <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
 				    <li class="">
-					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click"> <span>價低拍賣</span> </asp:LinkButton>
+					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click">
+						<span>價低拍賣</span>
+					</asp:LinkButton>
 				</li>
 				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
 				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
 			</ul>
 			
 				
+			</li>
+			</ul>
+			
 		  </div>
 		</div>
 	  </div>
@@ -159,55 +162,56 @@ Body Section
 	<div class="span9">
 	<ul class="breadcrumb">
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
-		<li class="active">會員登入</li>
+		<li class="active">訂單查詢</li>
 	</ul>
-	<h3> 會員註冊</h3>	
+	<h3> 訂單明細</h3>	
+    
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:ListItem>請選擇</asp:ListItem>
+            <asp:ListItem>已上架</asp:ListItem>
+            <asp:ListItem>競標中</asp:ListItem>
+            <asp:ListItem>已得標</asp:ListItem>
+        </asp:DropDownList>
 	<hr class="soft"/>
-
-		<div>
-			<h1>會員註冊畫面</h1>
-			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
-            <asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
-			<asp:TextBox ID="_memberPassword" runat="server" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label3" runat="server" Text="確認密碼："></asp:Label>
-			<asp:TextBox ID="_ConfirmPassword" runat="server" ></asp:TextBox>
-			<asp:Label ID="Label4" runat="server" Text="請與會員密碼相同"></asp:Label>
-			<br/>
-			<asp:Label ID="Label5" runat="server" Text="會員名稱："></asp:Label>
-			<asp:TextBox ID="_name" runat="server" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label6" runat="server" Text="電子郵件："></asp:Label>
-			<asp:TextBox ID="_email" runat="server" TextMode="Email" ></asp:TextBox>
-			<br/>            
-			<asp:Label ID="Label7" runat="server" Text="手機號碼："></asp:Label>
-			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label8" runat="server" Text="出生年份："></asp:Label>
-			<asp:DropDownList ID="_birthYear_list" runat="server" OnSelectedIndexChanged="YearSelected" AutoPostBack="True" ></asp:DropDownList>
-			<br/>
-			<asp:Label ID="Label9" runat="server" Text="出生月份："></asp:Label>
-			<asp:DropDownList ID="_birthMonth_list" runat="server" OnSelectedIndexChanged="MonthChanged" AutoPostBack="True"></asp:DropDownList>
-			<br/>
-			<asp:Label ID="Label10" runat="server" Text="出生日期："></asp:Label>
-			<asp:DropDownList ID="_birthDate_list" runat="server" ></asp:DropDownList>
-			<br/>
-			<asp:Label ID="Label11" runat="server" Text="居住地址："></asp:Label>
-			<asp:TextBox ID="_address" runat="server" ></asp:TextBox>
-			<br/>
-			<asp:Label ID="Label12" runat="server" Text="會員狀態："></asp:Label>
-			<asp:TextBox ID="_status" runat="server" Text="正常" Enabled="False"></asp:TextBox>
-			<br/>
-			<asp:Button ID="RegisterBtn" runat="server" Text="會員註冊" OnClick="RegisterBtn_Click"/>
-			<br/>
-			<asp:Label ID="Label13" runat="server" Text="會員編號："></asp:Label>
-			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
-		</div>
-	
-	</form>
-<!-- 
+		<asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
+                      CellPadding="4" 
+                      AutoGenerateSelectButton="True"
+                      OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
+            <Columns>
+                <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
+                    <ItemTemplate>
+                        <asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="150px">
+                    <ItemTemplate>   
+                        <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="total_number" runat="server" Text='<%# Eval("total_number") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商家代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>  
+                        <asp:Label ID="seller_ID" runat="server" Text='<%# Eval("seller_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="商品代號" HeaderStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:Label ID="Action_product_ID" runat="server" Text='<%# Eval("Action_product_ID") %>'/>
+                    </ItemTemplate> 
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        </form>
+		<!-- 
     Clients 
     -->
     <section class="our_client">

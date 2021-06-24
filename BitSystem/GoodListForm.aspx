@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>拍賣網站</title>
+    <title>拍賣商品列</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -197,6 +197,8 @@ Body Section
                 <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="500px">
                     <ItemTemplate>   
                         <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                        <asp:Label ID="seller_ID" runat="server" Visible ="false" Text='<%# Eval("seller_ID") %>'/>
+                        <asp:Label ID="Action_product_ID" runat="server" Visible ="false" Text='<%# Eval("Action_product_ID") %>'/>
                     </ItemTemplate> 
                 </asp:TemplateField>
 
