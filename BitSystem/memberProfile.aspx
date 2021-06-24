@@ -200,6 +200,9 @@ Body Section
 			<asp:Label ID="Label11" runat="server" Text="會員狀態："></asp:Label>
 			<asp:TextBox ID="_status" runat="server" Enabled="False" ></asp:TextBox>
 			<br/>
+			<asp:Label ID="Label13" runat="server" Text="會員餘額："></asp:Label>
+			<asp:TextBox ID="balance" runat="server" Enabled="False" ></asp:TextBox>
+			<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Button ID="ModifyBtn" runat="server" Text="資料修改" OnClick="ModifyBtn_Click" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -212,7 +215,6 @@ Body Section
     Clients 
     -->
     <section class="our_client">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_0618_testConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>
         <hr class="soften"/>
