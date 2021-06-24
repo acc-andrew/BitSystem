@@ -38,7 +38,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select * from Member  where Name='{_guiName}'";
+            string sql_statement = $"select * from Member where Name='{_guiName}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -143,7 +143,6 @@ namespace BitSystem
                 if(Session["logged_to_page"] != null){
                     string pageAfterLogging = (string) Session["logged_to_page"];
                     Server.Transfer(pageAfterLogging);
-
                 }
                 else
                 {

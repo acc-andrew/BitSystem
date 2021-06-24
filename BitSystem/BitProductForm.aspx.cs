@@ -62,7 +62,7 @@ namespace BitSystem
                     showProductLastTime();
 
                     // to display the bit winner until now
-                    ShowNowBitWinner();
+                    ShowNowBitWinner(_ProductID);
                 }
 
                 // Call this procedure when the application starts.  
@@ -74,7 +74,7 @@ namespace BitSystem
                 //設定執行System.Timers.Timer.Elapsed事件
 
                 _timer.Elapsed += new System.Timers.ElapsedEventHandler(Mytimer_tick);
-                _timer.Start();
+                //_timer.Start();
                 
             } // if (IsPostBack == false)
         } // protected void Page_Load(object sender, EventArgs e)
@@ -172,7 +172,7 @@ namespace BitSystem
 
             Response.Write($"<script>alert('修改 Action_product 得標者成功');</script>");
 
-        }//protected void SQLDB_setBitWinnerMark("Sale_netConnectionString", nBidderID)
+        }//protected void SQLDB_setBitWinnerMark("Sale_net_Jun18_2021_betaConnectionString2", nBidderID)
 
         protected void SQLDB_setProductBidPrice(string connString, int nProdcutID, int nNewPrice)
         {
@@ -211,7 +211,7 @@ namespace BitSystem
             SQLDB_setProductBidPrice("Sale_net_Jun22_2021ConnectionString2", nProdcutID, nUpdatedPrice);
         }// protected void SQLDB_updateBidderWinner()
 
-        private void UpdateBitWinner()
+        private void UpdateBitWinner(int nSelectedProdcutID)
         {
             // 1. to open Action_bidder
             // 2. to get the least price and bidder
@@ -390,15 +390,15 @@ namespace BitSystem
         }// protected void getSQLDB_FindProduct_closedDateTime_officialPrice()
 
         // to get data from Action_bidder
-        private void SQLDB_getBidderPrice(string connString, ref List<BidderData> bidderData)
+        private void SQLDB_getBidderPrice(string connString, ref List<BidderData> bidderData, int nSelectedProdcutID)
         {
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
 
-            // bug1: SQL content
-            string sql_statement = $"select bidder_ID,bid_price from Action_product where bidder_ID is not NULL";
+            // "select bid_winner_ID,bid_price from Action_product where bid_winner_ID is not NULL";
+            string sql_statement = $"select bidder_ID,bid_price from Action_product where bit_product_ID={nSelectedProdcutID}";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -592,7 +592,7 @@ namespace BitSystem
             public int _nBidPrice { get; set; }
         }
 
-        private void ShowNowBitWinner()
+        private void ShowNowBitWinner(int nSelectedProdcutID)
         {
             List<BidderData> bidderData = new List<BidderData>();
             BidderData bidderDataWinner = new BidderData();
@@ -684,7 +684,16 @@ namespace BitSystem
                 return;
             }
 
-            // until now
+            // 
+            if(Session["member_ID"] == null){
+                Session["logged_to_page"] = "BitProductForm.aspx";
+                // to the member logging page
+                Response.Write($"<script>alert('請先登入會員');</script>");
+                Response.Redirect("memberLoginForm.aspx");
+                //Server.Transfer("memberLoginForm.aspx");
+                return;
+            }
+
             _bidder_ID = (int)Session["member_ID"];
             int bidderBalance = getSQLDB_FindMember_balance("Sale_net_Jun22_2021ConnectionString2", _bidder_ID);
 
@@ -710,7 +719,7 @@ namespace BitSystem
             SQLDB_saveBidder("Sale_net_Jun22_2021ConnectionString2", _bidder_ID, nProductID, nPrice);
             
             // 4. to show bit winner until now
-            UpdateBitWinner();
+            UpdateBitWinner(nProductID);
 
             // 5. to clean input price after all jobs
             _BitPrice.Text = "";
