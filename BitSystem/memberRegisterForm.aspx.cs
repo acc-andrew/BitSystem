@@ -68,7 +68,7 @@ namespace BitSystem
             connection.Open();
 
             // _File
-            SqlCommand sql_insert_cmd = new SqlCommand("insert into Member(user_name,password,name,mail,mobile_phone,year,month,date,address,status) values(@user_name,@password,@name,@mail,@mobile_phone,@year,@month,@date,@address,@status);", connection); //SQL語句
+            SqlCommand sql_insert_cmd = new SqlCommand("insert into Member(user_name,password,name,mail,mobile_phone,year,month,date,address,status,balance) values(@user_name,@password,@name,@mail,@mobile_phone,@year,@month,@date,@address,@status,@balance);", connection); //SQL語句
             sql_insert_cmd.Parameters.Add("@user_name", SqlDbType.Text);
             sql_insert_cmd.Parameters["@user_name"].Value = _user_name.Text;
 
@@ -99,6 +99,9 @@ namespace BitSystem
 
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
             sql_insert_cmd.Parameters["@status"].Value = _status.Text;
+
+            sql_insert_cmd.Parameters.Add("@balance", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@balance"].Value = 100;
 
             sql_insert_cmd.ExecuteNonQuery();
 
@@ -252,16 +255,16 @@ namespace BitSystem
             else
             {
                 //check memeber account not repeat
-                if (bSQLDB_checkAccount("Sale_net_Jun22_2021ConnectionString2", _user_name.Text)
+                if (bSQLDB_checkAccount("Sale_net_Jun22_2021ConnectionString", _user_name.Text)
                     == true)
                 {
                     Response.Write("<script>alert('帳號已有會員登記，請重新選個好聽的名稱');</script>");
                 }
                 else 
                 { 
-                    SQLDB_write("Sale_net_Jun22_2021ConnectionString2");
+                    SQLDB_write("Sale_net_Jun22_2021ConnectionString");
                     // to get BusID from BusAccountTable
-                    SQLDB_verify("Sale_net_Jun22_2021ConnectionString2", _user_name.Text);
+                    SQLDB_verify("Sale_net_Jun22_2021ConnectionString", _user_name.Text);
                 }
                 
             }// password matches
