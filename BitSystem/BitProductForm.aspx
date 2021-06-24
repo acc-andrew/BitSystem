@@ -187,9 +187,8 @@ Body Section
             <asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>
             <asp:Label ID="_ProductName" runat="server" Text=""></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>
-                <asp:Label ID="Label3" runat="server" Text="剩餘時間："></asp:Label>
-                <asp:Label ID="_LeftTime" runat="server" Text=""></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="剩餘時間："></asp:Label>
+            <asp:Label ID="_LeftTime" runat="server" Text=""></asp:Label>
             <br/><br/>
             <asp:Label ID="Label2" runat="server" Text="商品描述："></asp:Label>
             <asp:Label ID="_ProductDesc" runat="server" Text=""></asp:Label>

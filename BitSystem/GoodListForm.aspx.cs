@@ -48,7 +48,7 @@ namespace BitSystem
             _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
 
-            SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
+            SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
             _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
             _GoodsGridView.DataBind();
 
@@ -86,7 +86,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString2"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
