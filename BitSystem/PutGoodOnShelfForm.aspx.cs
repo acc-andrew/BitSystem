@@ -24,7 +24,7 @@ namespace BitSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+            
             //設定會員登入與否顯現標示不同
 
 
@@ -42,7 +42,7 @@ namespace BitSystem
                 Session["logged_to_page"] = "PutGoodOnShelfForm.aspx";
                 Response.Redirect("memberLoginForm.aspx");
             }
-            */
+            
 
 
             // if the page loaded first time
@@ -175,9 +175,9 @@ namespace BitSystem
 
         protected void SQLDB_writeAutionProduct(string connString, DateTime closedDateTime)
         {
-            int seller_ID = 0;
+         
 
-            seller_ID = (int)(Session["member_ID"]);
+            int seller_ID = (int)(Session["member_ID"]);
 
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
@@ -328,7 +328,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_net_Jun18_2021_betaConnectionString2", closedDateTime);
+                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString", closedDateTime);
                     Response.Redirect("GoodListForm.aspx");
                 }
 

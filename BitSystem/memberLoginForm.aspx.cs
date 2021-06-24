@@ -91,7 +91,7 @@ namespace BitSystem
             return bFound;
         }// protected void SQLDB_verify()
 
-        protected bool bSQLDB_ifmatch(string connString, string _enterEmail)
+        protected bool bSQLDB_ifmatch(string connString, string _memberAccount)
         {
             bool bFound = false;
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
@@ -100,7 +100,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select * from Member where mail='{_enterEmail}'";
+            string sql_statement = $"select * from Member where user_name='{_memberAccount}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -135,7 +135,7 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_net_Jun18_2021_betaConnectionString2", _loginName.Text)
+            if (bSQLDB_verify("Sale_net_Jun22_2021ConnectionString", _loginName.Text)
                 == true)
             {
 
@@ -154,17 +154,23 @@ namespace BitSystem
 
         protected void _CreaateMemberBtn_Click(object sender, EventArgs e)
         {
+            if (_memberAccount.Text == "")
+            {
+                Response.Write($"<script>alert('請寫入帳號名稱');</script>");
+                return;
+            }
+
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_net_Jun18_2021_betaConnectionString2", _memberEmail.Text)
+            if (bSQLDB_ifmatch("Sale_net_Jun22_2021ConnectionString", _memberAccount.Text)
                 == true)
             {
-                Response.Write("<script>alert('E-mail 已有會員登記，請改另一個 E-mail ');</script>");
+                Response.Write("<script>alert('帳號已有會員登記，請改另一個帳號名稱 ');</script>");
             }
             else
             {
-                Session["NewMemberEmail"] = _memberEmail.Text;
+                Session["NewMemberAccount"] = _memberAccount.Text;
 
-                Response.Redirect("memberRegisterForm.aspx");
+                Server.Transfer("memberRegisterForm.aspx");
             }
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)

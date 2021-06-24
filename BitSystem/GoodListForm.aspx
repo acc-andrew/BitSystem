@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>拍賣網站</title>
+    <title>拍賣商品列</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -72,7 +72,6 @@ Lower Header Section
         </div>
         <div class="span4 alignR">
             <p><br> <strong></strong><br><br></p>
-            <p><br>
             <span ></span>
             <span ></span>
             <span ></span>
@@ -195,30 +194,17 @@ Body Section
                         <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
                     </ItemTemplate> 
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="150px">
+                <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="500px">
                     <ItemTemplate>   
                         <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                        <asp:Label ID="seller_ID" runat="server" Visible ="false" Text='<%# Eval("seller_ID") %>'/>
+                        <asp:Label ID="Action_product_ID" runat="server" Visible ="false" Text='<%# Eval("Action_product_ID") %>'/>
                     </ItemTemplate> 
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
-                    <ItemTemplate>  
-                        <asp:Label ID="total_number" runat="server" Text='<%# Eval("total_number") %>'/>
-                    </ItemTemplate> 
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="商家代號" HeaderStyle-Width="150px">
-                    <ItemTemplate>  
-                        <asp:Label ID="seller_ID" runat="server" Text='<%# Eval("seller_ID") %>'/>
-                    </ItemTemplate> 
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="商品代號" HeaderStyle-Width="150px">
-                    <ItemTemplate>
-                        <asp:Label ID="Action_product_ID" runat="server" Text='<%# Eval("Action_product_ID") %>'/>
-                    </ItemTemplate> 
-                </asp:TemplateField>
+
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
-    </form>
+        </form>
     <!--
 Footer
 -->

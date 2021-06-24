@@ -4,7 +4,7 @@
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <title>Twitter Bootstrap shopping cart</title>
+    <title>會員訂單查詢</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -210,8 +210,7 @@ Body Section
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString2 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
-    </form>
+        </form>
 		<!-- 
     Clients 
     -->

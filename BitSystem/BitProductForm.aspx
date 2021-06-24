@@ -7,7 +7,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8">
-    <title>拍賣網站</title>
+    <title>拍賣商品</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -69,7 +69,7 @@ Lower Header Section
     <div class="row">
         <div class="span4">
             <h1>
-                <a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span> 
+                <a class="logo" href="index.html"><span>bitproductform</span> 
                     <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                 </a>
             </h1>
@@ -77,16 +77,16 @@ Lower Header Section
         <div class="span4">
             <div class="offerNoteWrapper">
                 <h1 class="dotmark">
-                    <i class="icon-cut"></i>
+             
                 </h1>
             </div>
         </div>
         <div class="span4 alignR">
-            <p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>
-            <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
-            <span class="btn btn-warning btn-mini">$</span>
-            <span class="btn btn-mini">&pound;</span>
-            <span class="btn btn-mini">&euro;</span>
+            <p><br> <strong></strong><br><br></p>
+            <span></span>
+            <span ></span>
+            <span ></span>
+            <span ></span>
         </div>
     </div>
 </header>
@@ -177,7 +177,6 @@ Body Section
 			  </div>
 			</li>
 		  </ul>
-
 	</div>
 
     <form id="form1" runat="server">

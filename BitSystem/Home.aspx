@@ -4,7 +4,7 @@
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <title>Twitter Bootstrap shopping cart</title>
+    <title>我們競標吧</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -199,17 +199,18 @@ Body Section
 <!--
 New Products
 -->
+        
 <div class="well well-small">
 	<h3>熱門商品 搶先看 </h3>
 		<div class="row-fluid">
 		  <div class="thumbnails">
-                  <asp:DataList ID="product_view_life" runat="server" Width="100%"  RepeatColumns="3">
+                  <asp:DataList ID="product_view_life" runat="server" Width="100%"  RepeatColumns="3" OnItemCommand="product_view_life_ItemCommand" >
 					<ItemTemplate>
 						<div class="thumbnail">
 							<table  border="0" cellpadding="5" cellspacing="5">
 								<tr>
 									<td >
-									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200" CommandName="click"  ImageUrl='<%# Eval("pic_pathname") %>' />
 									</td>
 								</tr>
 								<tr>
@@ -226,6 +227,9 @@ New Products
 								<tr>
 									<td align='center'>
 									<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+									<asp:Label ID="description" runat="server" Visible="false" Text='<%# Eval("description") %>'/>
+									<asp:Label ID="action_product_ID" runat="server" Visible="false" Text='<%# Eval("action_product_ID") %>'/>
+									<asp:Label ID="seller_ID" runat="server" Visible="false" Text='<%# Eval("seller_ID") %>'/>
 									</td>
 								</tr>
 							</table>
@@ -234,13 +238,13 @@ New Products
 				</asp:DataList>
 
 			  <h3>激熱商品 馬上標</h3>
-                  <asp:DataList ID="product_view_cloth" runat="server" Width="100%"  RepeatColumns="3">
+                  <asp:DataList ID="product_view_cloth" runat="server" Width="100%"  RepeatColumns="3"  OnItemCommand="product_view_cloth_ItemCommand">
 					<ItemTemplate>
 						<div class="thumbnail">
 							<table  border="0" cellpadding="5" cellspacing="5">
 								<tr>
 									<td>
-									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									<asp:ImageButton ID="pic_pathname1" runat="server" Height="200"  width="200" CommandName="click" ImageUrl='<%# Eval("pic_pathname") %>' />
 									</td>
 								</tr>
 								<tr>
@@ -257,6 +261,9 @@ New Products
 								<tr>
 									<td align='center'>
 									<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+									<asp:Label ID="description" runat="server" Visible="false" Text='<%# Eval("description") %>'/>
+									<asp:Label ID="action_product_ID" runat="server" Visible="false" Text='<%# Eval("action_product_ID") %>'/>
+									<asp:Label ID="seller_ID" runat="server" Visible="false" Text='<%# Eval("seller_ID") %>'/>
 									</td>
 								</tr>
 							</table>
@@ -265,13 +272,13 @@ New Products
 				</asp:DataList>
 
 			  <h3>精品商品 低價購</h3>
-                  <asp:DataList ID="product_view_bag" runat="server" Width="100%"  RepeatColumns="3">
+                  <asp:DataList ID="product_view_bag" runat="server" Width="100%"  RepeatColumns="3" enableEventValidation="true" OnItemCommand="product_view_bag_ItemCommand">
 					<ItemTemplate>
 						<div class="thumbnail">
 							<table  border="0" cellpadding="5" cellspacing="5">
 								<tr>
 									<td>
-									<asp:ImageButton ID="pic_pathname" runat="server" Height="200"  width="200"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									<asp:ImageButton ID="pic_pathname2" runat="server" Height="200"  width="200" CommandName="click"  ImageUrl='<%# Eval("pic_pathname") %>' />
 									</td>
 								</tr>
 								<tr>
@@ -288,6 +295,9 @@ New Products
 								<tr>
 									<td align='center'>
 									<asp:Label ID="status" runat="server" Text='<%# Eval("status") %>'/>
+									<asp:Label ID="description" runat="server" Visible="false" Text='<%# Eval("description") %>'/>
+									<asp:Label ID="action_product_ID" runat="server" Visible="false" Text='<%# Eval("action_product_ID") %>'/>
+									<asp:Label ID="seller_ID" runat="server" Visible="false" Text='<%# Eval("seller_ID") %>'/>
 									</td>
 								</tr>
 							</table>
