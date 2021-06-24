@@ -253,16 +253,16 @@ namespace BitSystem
             else
             {
                 //check memeber account not repeat
-                if (bSQLDB_checkAccount("Sale_net_Jun22_2021ConnectionString", _user_name.Text)
+                if (bSQLDB_checkAccount("Sale_net_Jun22_2021ConnectionString2", _user_name.Text)
                     == true)
                 {
                     Response.Write("<script>alert('帳號已有會員登記，請重新選個好聽的名稱');</script>");
                 }
                 else 
                 { 
-                    SQLDB_write("Sale_net_Jun22_2021ConnectionString");
+                    SQLDB_write("Sale_net_Jun22_2021ConnectionString2");
                     // to get BusID from BusAccountTable
-                    SQLDB_verify("Sale_net_Jun22_2021ConnectionString", _user_name.Text);
+                    SQLDB_verify("Sale_net_Jun22_2021ConnectionString2", _user_name.Text);
                 }
                 
             }// password matches

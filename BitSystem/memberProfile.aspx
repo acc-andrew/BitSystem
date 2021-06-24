@@ -207,13 +207,12 @@ Body Section
 			<br/>
 			<asp:Label ID="Label12" runat="server" Text="會員編號："></asp:Label>
 			<asp:TextBox ID="_memberID" runat="server" Enabled="False"></asp:TextBox>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun18_2021_betaConnectionString9 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun22_2021ConnectionString2 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
         </div>
 		<!-- 
     Clients 
     -->
     <section class="our_client">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_0618_testConnectionString %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
         <hr class="soften"/>
         <h4 class="title cntr"><span class="text">Manufactures</span></h4>
         <hr class="soften"/>

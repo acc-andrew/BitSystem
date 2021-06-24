@@ -82,9 +82,7 @@ Navigation Bar Section
 			<ul class="nav">
 			 <li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
 				    <li class="">
-					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click">
-						<span>價低拍賣</span>
-					</asp:LinkButton>
+					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click"> <span>價低拍賣</span> </asp:LinkButton>
 				</li>
 				    <li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
 				    <li class=""><a id="sale_chichout"  href="sale_chickout_product.aspx">得標結帳</a></li>
@@ -172,10 +170,10 @@ Body Section
             <asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
-			<asp:TextBox ID="_memberPassword" runat="server" TextMode="Password"></asp:TextBox>
+			<asp:TextBox ID="_memberPassword" runat="server" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label3" runat="server" Text="確認密碼："></asp:Label>
-			<asp:TextBox ID="_ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
+			<asp:TextBox ID="_ConfirmPassword" runat="server" ></asp:TextBox>
 			<asp:Label ID="Label4" runat="server" Text="請與會員密碼相同"></asp:Label>
 			<br/>
 			<asp:Label ID="Label5" runat="server" Text="會員名稱："></asp:Label>
@@ -188,7 +186,7 @@ Body Section
 			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label8" runat="server" Text="出生年份："></asp:Label>
-			<asp:DropDownList ID="_birthYear_list" runat="server" OnSelectedIndexChanged="YearSelected" AutoPostBack="True"></asp:DropDownList>
+			<asp:DropDownList ID="_birthYear_list" runat="server" OnSelectedIndexChanged="YearSelected" AutoPostBack="True" ></asp:DropDownList>
 			<br/>
 			<asp:Label ID="Label9" runat="server" Text="出生月份："></asp:Label>
 			<asp:DropDownList ID="_birthMonth_list" runat="server" OnSelectedIndexChanged="MonthChanged" AutoPostBack="True"></asp:DropDownList>

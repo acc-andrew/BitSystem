@@ -28,8 +28,8 @@ namespace BitSystem
                 member_info.Visible = true;
                 order_info.Visible = true;
                 logout.Visible = true;
-                fetchProductInfo("Sale_net_Jun22_2021ConnectionString");
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
+                fetchProductInfo("Sale_net_Jun22_2021ConnectionString2");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
                 GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
                 GridView1.DataBind();
                 total_price.Text = low_price.ToString();
