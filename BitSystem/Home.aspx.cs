@@ -72,7 +72,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '居家/生活' and status = '已上架'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'life' and status = 'onsale'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_first, "Action_product"); //da把資料填入ds裡面
 
@@ -88,7 +88,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '衣服/飾品' and status = '已上架'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'cloth' and status = 'onsale'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_sec, "Action_product"); //da把資料填入ds裡面
 
@@ -104,7 +104,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '包包/精品' and status = '已上架' ";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'bag' and status = 'onsale' ";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_third, "Action_product"); //da把資料填入ds裡面
 
@@ -120,7 +120,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = '包包/精品' and status = '已上架' ";
+            string sql_statement = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'bag' and status = 'onsale' ";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -273,62 +273,56 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "衣服/飾品";
+            Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "書籍/文創";
+            Session["classify"] = "book";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "居家/生活";
+            Session["classify"] = "life";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "包包/精品";
+            Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "男女鞋款";
+            Session["classify"] = "shoes";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "汽機車/零件百貨";
+            Session["classify"] = "car";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "娛樂/收藏";
+            Session["classify"] = "habbit";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "寵物/用品";
+            Session["classify"] = "pet";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "其他類別";
+            Session["classify"] = "other";
             Response.Redirect("GoodListForm.aspx");
-        }
-
-       
-        protected void more_hot_Click(object sender, EventArgs e)
-        {
-                Response.Redirect("GoodListForm.aspx");
         }
 
         protected void sale_list_Click(object sender, EventArgs e)
@@ -336,6 +330,12 @@ namespace BitSystem
             Session["classify"] = null;
             Response.Redirect("GoodListForm.aspx");
         }
+
+        protected void more_hot_Click(object sender, EventArgs e)
+        {
+                Response.Redirect("GoodListForm.aspx");
+        }
+
 
     }
 }

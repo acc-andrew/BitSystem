@@ -199,7 +199,6 @@ Body Section
 <!--
 New Products
 -->
-        
 <div class="well well-small">
 	<h3>熱門商品 搶先看 </h3>
 		<div class="row-fluid">
