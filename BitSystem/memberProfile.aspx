@@ -57,9 +57,9 @@ Lower Header Section
 <header id="header">
 <div class="row">
 	<div class="span4">
-	<h1>
-	<a class="logo" href="index.html"><span></span> 
-		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+		<h1>
+	<a class="logo" href="Home.aspx"><span></span> 
+		<img src="GoodPics/我們拍賣吧2.png">
 	</a>
 	</h1>
 	</div>
@@ -164,6 +164,7 @@ Body Section
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">會員資料</li>
 	</ul>
+	</div>
 	<h3> 會員資料</h3>	
 	<hr class="soft"/>
 
@@ -199,6 +200,9 @@ Body Section
 			<br/>
 			<asp:Label ID="Label11" runat="server" Text="會員狀態："></asp:Label>
 			<asp:TextBox ID="_status" runat="server" Enabled="False" ></asp:TextBox>
+			<br/>
+			<asp:Label ID="Label13" runat="server" Text="會員餘額："></asp:Label>
+			<asp:TextBox ID="balance" runat="server" Enabled="False" ></asp:TextBox>
 			<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Button ID="ModifyBtn" runat="server" Text="資料修改" OnClick="ModifyBtn_Click" />

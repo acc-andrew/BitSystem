@@ -4,7 +4,7 @@
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <title>我們競標吧</title>
+    <title>我們拍賣吧</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -58,8 +58,8 @@ Lower Header Section
 <div class="row">
 	<div class="span4">
 		<h1>
-	<a class="logo" href="index.html"><span></span> 
-		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	<a class="logo" href="Home.aspx"><span></span> 
+		<img src="GoodPics/我們拍賣吧2.png">
 	</a>
 	</h1>
 		

@@ -35,14 +35,14 @@ Upper Header Section
 		<div class="container">
 			<div class="alignR">
 				<div align="right">
-					<asp:LinkButton ID="home" runat="server" class="icon-home">首頁</asp:LinkButton>
-					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user">會員資料</asp:LinkButton>
-					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit"  >訂單查詢</asp:LinkButton>
-					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" >我的會員</asp:LinkButton>
-					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit">免費註冊</asp:LinkButton>
-					<asp:LinkButton ID="contantus" runat="server" class="icon-envelope" >聯絡我們</asp:LinkButton>
-					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock">管理後臺</asp:LinkButton>
-					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove">登出</asp:LinkButton>
+					<asp:LinkButton ID="home" runat="server" class="icon-home" OnClick="home_Click">首頁</asp:LinkButton>
+					<asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user" OnClick="member_info_Click">會員資料</asp:LinkButton>
+					<asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" OnClick="order_info_Click" >訂單查詢</asp:LinkButton>
+					<asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" OnClick="my_info_Click">我的會員</asp:LinkButton>
+					<asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit" OnClick="register_Click">免費註冊</asp:LinkButton>
+					<asp:LinkButton ID="contantus" runat="server" class="icon-envelope" OnClick="contantus_Click">聯絡我們</asp:LinkButton>
+					<asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" OnClick="manager_Click">管理後臺</asp:LinkButton>
+					<asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" OnClick="logout_Click">登出</asp:LinkButton>
 				</div>
 			</div>
 		</div>
@@ -56,10 +56,10 @@ Lower Header Section
 <header id="header">
     <div class="row">
         <div class="span4">
-            <h1>
-                <a class="logo" href="index.html"><span></span> 
-                    <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
-                </a>
+		<h1>
+	<a class="logo" href="Home.aspx"><span></span> 
+		<img src="GoodPics/我們拍賣吧2.png">
+	</a>
             </h1>
         </div>
         <div class="span4">
@@ -163,6 +163,12 @@ Body Section
 			  </div>
 			</li>
 		  </ul>
+	</div>
+			<div class="span9">
+	<ul class="breadcrumb">
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
+		<li class="active">商品上架</li>
+	</ul>
 	</div>
 
         <h1>商品上架頁面</h1>

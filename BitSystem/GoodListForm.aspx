@@ -61,10 +61,10 @@ Lower Header Section
 <header id="header">
     <div class="row">
         <div class="span4">
-            <h1>
-                <a class="logo" href="index.html"><span></span> 
-                    <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
-                </a>
+		<h1>
+	<a class="logo" href="Home.aspx"><span></span> 
+		<img src="GoodPics/我們拍賣吧2.png">
+	</a>
             </h1>
         </div>
         <div class="span4">
@@ -168,7 +168,12 @@ Body Section
 		  </ul>
 
 	</div>
-
+<div class="span9">
+	<ul class="breadcrumb">
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
+		<li class="active">商品列表</li>
+	</ul>
+	</div>
     
         <div>
             <h1>商品列表</h1>
