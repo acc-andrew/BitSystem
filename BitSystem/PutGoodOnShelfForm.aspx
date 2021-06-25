@@ -122,89 +122,94 @@ Body Section
 
 
 				  <div class="well well-small alert alert-warning cntr">
-				  <h2>50% Discount</h2>
+				  <h2>90% Discount</h2>
 				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
 				  </p>
 			  </div>
 			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
 			
-			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
-			<br>
-			<br>
 			<ul class="nav nav-list promowrapper">
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+				<h4><span class="">Fine Jewelry</span></h4>
+				<img src="pic/A3.jpg" alt="bootstrap ecommerce templates">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
+			<li style="border:1"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+				<h4><span class="">Tiffany T Smile</span></h4>
+				<img src="pic/pexels.jpg" alt="shopping cart template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="Sale_product_login.aspx">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="product_details.html"></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
+			<li style="border:1"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="Sale_product_login.aspx" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+				<h4><span class="">Celine</span> </h4>
+				<img src="pic/Bella.jpg" alt="bootstrap template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="Sale_product_login.aspx">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
 		  </ul>
+	
+
 	</div>
 			<div class="span9">
 	<ul class="breadcrumb">
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">商品上架</li>
 	</ul>
+	<h2>商品上架頁面</h2>
+		<hr class="soft"/>
 	</div>
+	
 
-        <h1>商品上架頁面</h1>
-        <asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>
-        <asp:TextBox ID="_ProductName" runat="server"></asp:TextBox>
-        &nbsp;&nbsp&nbsp;&nbsp;
-        <asp:Label ID="Label4" runat="server" Text="商品分類："></asp:Label>
-        <asp:DropDownList ID="_Classfy" runat="server" AutoPostBack="True" Height="36px" Width="142px"></asp:DropDownList>
-        <br/>
-        <asp:Label ID="Label2" runat="server" Text="商品描述："></asp:Label>
-        <asp:TextBox ID="_GoodDesc" runat="server" Height="112px" TextMode="MultiLine" Width="429px"></asp:TextBox>
-        <br/>
-        <asp:Label ID="Label3" runat="server" Text="官方售價："></asp:Label>
-        <asp:TextBox ID="_OfficialPrice" runat="server" Width="89px"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label5" runat="server" Text="商品數量："></asp:Label>
-        <asp:TextBox ID="_TotalLots" runat="server" Width="84px"></asp:TextBox>
-        <br/>
-        <asp:Label ID="Label7" runat="server" Text="結標日期："></asp:Label>
-        <asp:Calendar ID="_CalendarClosedDate" runat="server" Width="280px"></asp:Calendar>
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="_ClosedHr_list" runat="server" AutoPostBack="True" Height="30px" Width="50px"></asp:DropDownList>
-        <asp:Label ID="Label8" runat="server" Text="&nbsp;&nbsp; 點 &nbsp;"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="_ClosedMin_list" runat="server" AutoPostBack="True" Height="30px" Width="50px"></asp:DropDownList>
-        <asp:Label ID="Label9" runat="server" Text="&nbsp;&nbsp; 分"></asp:Label>
-        <br/>
-        <br/>
-        <asp:Label ID="Label10" runat="server" Text="選取商品圖片："></asp:Label>
-        <asp:FileUpload ID="_FileUpload" runat="server"  />
-        <br/>
-        <asp:Button ID="_SetGoodPicBtn" runat="server" Text="上傳圖片到網站" OnClick="_SetGoodPicBtn_Click"/>
-        <asp:Image ID="_ImgGood" runat="server" Width="200" Height="200"/>
-        <br/>
-        <asp:Button ID="_putOnShelfBtn" runat="server" Text="商品上架" OnClick="_putOnShelfBtn_Click"/>
-    </form>
+		<div class="span9">
+			<div class="breadcrumb">
+				<asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>
+				<asp:TextBox ID="_ProductName" runat="server"></asp:TextBox>
+				&nbsp;&nbsp&nbsp;&nbsp;
+				<asp:Label ID="Label4" runat="server" Text="商品分類："></asp:Label>
+				<asp:DropDownList ID="_Classfy" runat="server" AutoPostBack="True" Height="36px" Width="142px"></asp:DropDownList>
+				<br/>
+				<asp:Label ID="Label2" runat="server" Text="商品描述："></asp:Label>
+				<asp:TextBox ID="_GoodDesc" runat="server" Height="112px" TextMode="MultiLine" Width="429px"></asp:TextBox>
+				<br/>
+				<asp:Label ID="Label3" runat="server" Text="官方售價："></asp:Label>
+				<asp:TextBox ID="_OfficialPrice" runat="server" Width="89px"></asp:TextBox>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<asp:Label ID="Label5" runat="server" Text="商品數量："></asp:Label>
+				<asp:TextBox ID="_TotalLots" runat="server" Width="84px"></asp:TextBox>
+				<br/>
+				<asp:Label ID="Label7" runat="server" Text="結標日期："></asp:Label>
+				<asp:Calendar ID="_CalendarClosedDate" runat="server" Width="280px"></asp:Calendar>
+				<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<asp:DropDownList ID="_ClosedHr_list" runat="server" AutoPostBack="True" Height="30px" Width="50px"></asp:DropDownList>
+				<asp:Label ID="Label8" runat="server" Text="&nbsp;&nbsp; 點 &nbsp;"></asp:Label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<asp:DropDownList ID="_ClosedMin_list" runat="server" AutoPostBack="True" Height="30px" Width="50px"></asp:DropDownList>
+				<asp:Label ID="Label9" runat="server" Text="&nbsp;&nbsp; 分"></asp:Label>
+				<br/>
+				<br/>
+				<asp:Label ID="Label10" runat="server" Text="選取商品圖片："></asp:Label>
+				<asp:FileUpload ID="_FileUpload" runat="server"  />
+				<br/>
+				<asp:Button ID="_SetGoodPicBtn" runat="server" Text="上傳圖片到網站" OnClick="_SetGoodPicBtn_Click"/>
+				<asp:Image ID="_ImgGood" runat="server" Width="200" Height="200"/>
+				<br/>
+				<asp:Button ID="_putOnShelfBtn" runat="server" Text="商品上架" OnClick="_putOnShelfBtn_Click"/>
+			</div>
+		</div>
+</form>
 </body>
 </html>

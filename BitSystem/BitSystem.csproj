@@ -273,10 +273,13 @@
     <Content Include="list_view.aspx" />
     <Content Include="manager_check.aspx" />
     <Content Include="memberOrder.aspx" />
+    <Content Include="pic\A3.jpg" />
+    <Content Include="pic\Bella.jpg" />
     <Content Include="pic\bootstrap_bicycle.png" />
     <Content Include="pic\bootstrap_iphone13.png" />
     <Content Include="pic\bootstrap_mask.png" />
     <Content Include="pic\bootstrap_switch.png" />
+    <Content Include="pic\pexels.jpg" />
     <Content Include="sale_chickout_product.aspx" />
     <Content Include="sale_chickout_member.aspx" />
     <Content Include="product_onsale.aspx" />

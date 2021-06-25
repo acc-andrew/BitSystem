@@ -114,48 +114,46 @@ Body Section
 	</ul>
 </div>
 
-			  <div class="well well-small alert alert-warning cntr">
-				  <h2>50% Discount</h2>
+			 <div class="well well-small alert alert-warning cntr">
+				  <h2>90% Discount</h2>
 				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
 				  </p>
 			  </div>
 			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
 			
-			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
-			<br>
-			<br>
 			<ul class="nav nav-list promowrapper">
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+				<h4><span class="">Fine Jewelry</span></h4>
+				<img src="pic/A3.jpg" alt="bootstrap ecommerce templates">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
+			<li style="border:1"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+				<h4><span class="">Tiffany T Smile</span></h4>
+				<img src="pic/pexels.jpg" alt="shopping cart template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="product_details.html"></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
+			<li style="border:1"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+				<h4><span class="">Celine</span> </h4>
+				<img src="pic/Bella.jpg" alt="bootstrap template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
 		  </ul>
+	
 
 	</div>
 	<div class="span9">
@@ -163,10 +161,11 @@ Body Section
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">會員登入</li>
 	</ul>
-	<h3> 會員註冊</h3>	
+	<h2> 會員註冊</h2>	
 	<hr class="soft"/>
 
-		<div>
+
+            <div class="breadcrumb">
 			<h1>會員註冊畫面</h1>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
             <asp:TextBox ID="_user_name" runat="server"></asp:TextBox>
@@ -212,83 +211,7 @@ Body Section
 <!-- 
     Clients 
     -->
-    <section class="our_client">
-        <hr class="soften"/>
-        <h4 class="title cntr"><span class="text">Manufactures</span></h4>
-        <hr class="soften"/>
-        <div class="row">
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/1.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/2.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/3.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/4.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/5.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/6.png"></a>
-            </div>
-        </div>
-    </section>
-    <!--
-    Footer
-    -->
-    <footer class="footer">
-        <div class="row-fluid">
-            <div class="span2">
-                <h5>Your Account</h5>
-                <a href="#">YOUR ACCOUNT</a><br>
-                <a href="#">PERSONAL INFORMATION</a><br>
-                <a href="#">ADDRESSES</a><br>
-                <a href="#">DISCOUNT</a><br>
-                <a href="#">ORDER HISTORY</a><br>
-            </div>
-            <div class="span2">
-                <h5>Iinformation</h5>
-                <a href="contact.html">CONTACT</a><br>
-                <a href="#">SITEMAP</a><br>
-                <a href="#">LEGAL NOTICE</a><br>
-                <a href="#">TERMS AND CONDITIONS</a><br>
-                <a href="#">ABOUT US</a><br>
-            </div>
-            <div class="span2">
-                <h5>Our Offer</h5>
-                <a href="#">NEW PRODUCTS</a> <br>
-                <a href="#">TOP SELLERS</a><br>
-                <a href="#">SPECIALS</a><br>
-                <a href="#">MANUFACTURERS</a><br>
-                <a href="#">SUPPLIERS</a> <br/>
-            </div>
-            <div class="span6">
-                <h5>The standard chunk of Lorem</h5>
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-                those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
-                Malorum" by Cicero are also reproduced in their exact original form, 
-                accompanied by English versions from the 1914 translation by H. Rackham.
-            </div>
-        </div>
-    </footer>
-</div><!-- /container -->
-
-<div class="copyright">
-    <div class="container">
-        <p class="pull-right">
-            <a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/mc.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/pp.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/visa.png" alt="payment"></a>
-            <a href="#"><img src="assets/img/disc.png" alt="payment"></a>
-        </p>
-        <span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
-    </div>
-</div>
+s
     <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
