@@ -38,7 +38,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select * from Member where Name='{_guiName}'";
+            string sql_statement = $"select * from Member where user_name ='{_guiName}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
