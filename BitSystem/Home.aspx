@@ -118,7 +118,7 @@ Body Section
 			  <div class="well well-small alert alert-warning cntr">
 				  <h2>50% Discount</h2>
 				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
 				  </p>
 			  </div>
 			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
