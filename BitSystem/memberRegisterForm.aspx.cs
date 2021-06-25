@@ -69,6 +69,7 @@ namespace BitSystem
 
             // _File
             SqlCommand sql_insert_cmd = new SqlCommand("insert into Member(user_name,password,name,mail,mobile_phone,year,month,date,address,status,balance) values(@user_name,@password,@name,@mail,@mobile_phone,@year,@month,@date,@address,@status,@balance);", connection); //SQL語句
+            
             sql_insert_cmd.Parameters.Add("@user_name", SqlDbType.Text);
             sql_insert_cmd.Parameters["@user_name"].Value = _user_name.Text;
 
@@ -153,7 +154,7 @@ namespace BitSystem
                         Session["memberLogged"] = "Yes";
                         Response.Write("<script>alert('會員註冊成功');</script>");
 
-                        // Server.Transfer("test2.aspx");
+                        Server.Transfer("memberLoginForm.aspx");
                     }
                     else
                     {
