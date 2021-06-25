@@ -29,12 +29,12 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
                 Session["logged_to_page"] = "sale_chickout_member.aspx";
-                Server.Transfer("memberLoginForm.aspx");
+                Response.Redirect("memberLoginForm.aspx");
             }
 
             if (Convert.ToString(Session["chickout_product"]) != "chicked") 
             {
-                Server.Transfer("sale_chickout_product.aspx");
+                Response.Redirect("sale_chickout_product.aspx");
             }
 
 
@@ -80,7 +80,7 @@ namespace BitSystem
             if (Session["Login"] == null)
             {
 
-                Server.Transfer("memberLoginForm.aspx");
+                Response.Redirect("memberLoginForm.aspx");
             }
             else
             {
@@ -132,7 +132,7 @@ namespace BitSystem
 
         protected void back_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Home.aspx");
+            Response.Redirect("Home.aspx");
         }
 
         //linkbutton 點擊連接網址

@@ -142,7 +142,8 @@ namespace BitSystem
                 // goto the web page after member logging
                 if(Session["logged_to_page"] != null){
                     string pageAfterLogging = (string) Session["logged_to_page"];
-                    Server.Transfer(pageAfterLogging);
+                    
+                    Response.Redirect(pageAfterLogging);
                 }
                 else
                 {
@@ -170,7 +171,7 @@ namespace BitSystem
             {
                 Session["NewMemberAccount"] = _memberAccount.Text;
 
-                Server.Transfer("memberRegisterForm.aspx");
+                Response.Redirect("memberRegisterForm.aspx");
             }
 
         }// protected void _CreaateMemberBtn_Click(object sender, EventArgs e)

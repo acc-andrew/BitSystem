@@ -40,7 +40,7 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
                 Session["logged_to_page"] = "sale_chickout_product.aspx";
-                Server.Transfer("memberLoginForm.aspx");
+                Response.Redirect("memberLoginForm.aspx");
 
             }
 

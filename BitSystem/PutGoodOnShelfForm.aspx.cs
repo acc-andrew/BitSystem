@@ -368,7 +368,8 @@ namespace BitSystem
                     /**/
 
                     SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString", closedDateTime);
-                    Server.Transfer("GoodListForm.aspx");
+
+                    Response.Redirect("GoodListForm.aspx");
                 }
 
             }// member logged
