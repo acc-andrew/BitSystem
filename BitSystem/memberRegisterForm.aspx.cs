@@ -100,7 +100,7 @@ namespace BitSystem
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
             sql_insert_cmd.Parameters["@status"].Value = _status.Text;
 
-            sql_insert_cmd.Parameters.Add("@balance", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@balance", SqlDbType.Int);
             sql_insert_cmd.Parameters["@balance"].Value = 100;
 
             sql_insert_cmd.ExecuteNonQuery();

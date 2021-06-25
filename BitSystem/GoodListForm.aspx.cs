@@ -39,23 +39,33 @@ namespace BitSystem
                     manager.Visible = true;
                 }
 
+                // if user clicks left panel area
+                if(Session["classify"] != null){
+                    DisplayClassifyContent();
+                }
+                else{ // other
+                    // pre-fetch picture pathname from Market_product2 DB
+                    fetchProductInfo();
 
-                // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo();
-
-                // to set event handler: row
-                // called while each row data prepared
-                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
+                    // to set event handler: row
+                    // called while each row data prepared
+                    _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
-                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-                _GoodsGridView.DataBind();
+                    SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
+                    _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+                    _GoodsGridView.DataBind();
 
-            }
-            
+                }// Session["classify"] == null
+
+            }// if (IsPostBack == false)
 
         }//protected void Page_Load(object sender, EventArgs e)
+
+        public void DisplayClassifyContent()
+        {
+
+        }// public void DisplayClassifyContent()
 
         public class fetchProductData
         {
@@ -87,13 +97,13 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString2"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement_no_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where status='已上架'";
+            string sql_statement_no_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where product is not NULL";
 
             // bug1: SQL content
             string sql_statement1_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where status='已上架' and classify ='" + Session["classify"] + "'";
@@ -204,10 +214,10 @@ namespace BitSystem
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
             // bug1: SQL content without session classify
-            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='已上架'";
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where product is not NULL";
 
             // bug1: SQL content with session classify
-            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='已上架' and classify ='" + Session["classify"] + "'";
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where product is not NULL and classify ='" + Session["classify"] + "'";
 
             SqlCommand Command;
             // bug2: sqlText
@@ -226,6 +236,27 @@ namespace BitSystem
             _da.Fill(_ds, "Action_product");            //da把資料填入ds裡面
 
         }// protected void SQL_readActionProduct()
+
+        protected void SQL_readActionProductClassify(string connString, string strCondition)
+         {
+            _cmd.Connection = _Conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            _Conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+            // sql statement
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where {strCondition}";
+
+            _cmd.CommandText = sql_statement1_classify;
+
+            _da.SelectCommand = _cmd;            //da選擇資料來源，由cmd載入進來
+            _da.Fill(_ds, "Action_product");            //da把資料填入ds裡面
+
+            _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+            _GoodsGridView.DataBind();
+
+        }// protected void SQL_readActionProductClassify()
 
         protected void _GoodOnShelfBtn_Click(object sender, EventArgs e)
         {
@@ -287,8 +318,12 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
+            /*
             Session["classify"] = "衣服/飾品";
             Response.Redirect("GoodListForm.aspx");
+            */
+            SQL_readActionProductClassify("Sale_net_Jun22_2021ConnectionString2", 
+                                            "action_product_ID > 19 and action_product_ID < 23");
         }
 
         protected void book_Click(object sender, EventArgs e)
@@ -305,8 +340,12 @@ namespace BitSystem
 
         protected void bag_Click(object sender, EventArgs e)
         {
+            /*
             Session["classify"] = "包包/精品";
             Response.Redirect("GoodListForm.aspx");
+            */
+            SQL_readActionProductClassify("Sale_net_Jun22_2021ConnectionString2", 
+                                        "action_product_ID > 25 and action_product_ID <= 28");
         }
 
         protected void shoes_Click(object sender, EventArgs e)

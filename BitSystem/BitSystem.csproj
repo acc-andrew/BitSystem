@@ -250,6 +250,14 @@
     <Content Include="assets\fonts\slick.eot" />
     <Content Include="assets\fonts\slick.ttf" />
     <Content Include="assets\fonts\slick.woff" />
+    <Content Include="GoodPics\bag1.jpg" />
+    <Content Include="GoodPics\cloth1.jpg" />
+    <Content Include="GoodPics\guggi_bag2.jpg" />
+    <Content Include="GoodPics\iPhoneXS_Max.jpg" />
+    <Content Include="GoodPics\iPhoneX_256G.jpg" />
+    <Content Include="GoodPics\koreanCotton.jpg" />
+    <Content Include="GoodPics\KoreanPuf.jpg" />
+    <Content Include="GoodPics\pack_CELINE.jpg" />
     <Content Include="GoodPics\我們拍賣吧.jpg" />
     <Content Include="GoodPics\我們拍賣吧2.png" />
     <Content Include="grid_view_test.aspx" />
@@ -257,6 +265,10 @@
     <Content Include="list_view.aspx" />
     <Content Include="manager_check.aspx" />
     <Content Include="memberOrder.aspx" />
+    <Content Include="pic\bootstrap_bicycle.png" />
+    <Content Include="pic\bootstrap_iphone13.png" />
+    <Content Include="pic\bootstrap_mask.png" />
+    <Content Include="pic\bootstrap_switch.png" />
     <Content Include="sale_chickout_product.aspx" />
     <Content Include="sale_chickout_member.aspx" />
     <Content Include="product_onsale.aspx" />
