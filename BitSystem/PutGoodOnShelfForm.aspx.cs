@@ -328,13 +328,14 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString", closedDateTime);
+                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString2", closedDateTime);
                     Response.Redirect("GoodListForm.aspx");
                 }
 
             }// member logged
 
         }// protected void _putOnShelfBtn_Click(object sender, EventArgs e)
+
 
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
