@@ -37,29 +37,29 @@
 <!-- 
 Upper Header Section 
 -->
-<div class="navbar-nav ml-auto">
-    <div class="topNav">
-        <div class="container">
-            <div class="alignR">
-                <div align="right">
-                </div>
-            </div>
-        </div>
+<form id="form1" runat="server">
+    <div class="navbar-nav ml-auto">
+	    <div class="topNav">
+		    <div class="container">
+			    <div class="alignR">
+				    <div align="right">
+					    <asp:LinkButton ID="home" runat="server" class="icon-home" OnClick="home_Click">首頁</asp:LinkButton>
+					    <asp:LinkButton ID="member_info" runat="server" Visible="false" class="icon-user" OnClick="member_info_Click">會員資料</asp:LinkButton>
+					    <asp:LinkButton ID="order_info" runat="server" Visible="false" class="icon-edit" OnClick="order_info_Click" >訂單查詢</asp:LinkButton>
+					    <asp:LinkButton ID="my_info" runat="server" Visible="false" class="icon-user" OnClick="my_info_Click">我的會員</asp:LinkButton>
+					    <asp:LinkButton ID="register" runat="server" Visible="false" class="icon-edit" OnClick="register_Click">免費註冊</asp:LinkButton>
+					    <asp:LinkButton ID="contantus" runat="server" class="icon-envelope" OnClick="contantus_Click">聯絡我們</asp:LinkButton>
+					    <asp:LinkButton ID="manager" runat="server" Visible="false" class="icon-lock" OnClick="manager_Click">管理後臺</asp:LinkButton>
+					    <asp:LinkButton ID="logout" runat="server" Visible="false" class="icon-remove" OnClick="logout_Click">登出</asp:LinkButton>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
     </div>
-</div>
 <!-- 
 Upper Header Section 
 -->
-<div class="navbar-nav ml-auto">
-	<div class="topNav">
-		<div class="container">
-			<div class="alignR">
-				<div align="right">
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
 <!--
 Lower Header Section 
 -->
@@ -67,11 +67,12 @@ Lower Header Section
 <div id="gototop"> </div>
 <header id="header">
     <div class="row">
+        
         <div class="span4">
-            <h1>
-                <a class="logo" href="index.html"><span>bitproductform</span> 
-                    <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
-                </a>
+		<h1>
+	<a class="logo" href="Home.aspx"><span></span> 
+		<img src="GoodPics/我們拍賣吧2.png">
+	</a>
             </h1>
         </div>
         <div class="span4">
@@ -94,25 +95,29 @@ Lower Header Section
 Navigation Bar Section 
 -->
 <div class="navbar">
-    <div class="navbar-inner">
-        <div class="container">
-            <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse">
-                <ul class="nav">
-                <li class=""><a href="index.html">首頁</a></li>
-                <li class=><a href="list-view.html">串列顯示</a></li>
-                <li class=""><a href="grid-view.html">格狀顯示</a></li>
-                <li class=""><a href="three-col.html">三欄顯示</a></li>
-                <li class=""><a href="four-col.html">三欄顯示</a></li>
-                <li class="active"><a href="general.html">商品內容</a></li>
-            </div>
-        </div>
-    </div>
-</div>
+	  <div class="navbar-inner">
+		<div class="container">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+				<li class=""><a id="sale_home" href="Home.aspx">拍賣站</a></li>
+				<li class="">
+					<asp:LinkButton ID="sale_list" runat="server"  OnClick="sale_list_Click">
+						<span>價低拍賣</span>
+					</asp:LinkButton>
+				</li>
+				<li class=""><a id="sale_onshelf" href="PutGoodOnShelfForm.aspx">商品上架</a></li>
+				<li class=""><a id="sale_chickout"  href="sale_chickout_product.aspx">得標結帳</a></li>
+			</ul>
+
+		  </div>
+		</div>
+	  </div>
+	</div>
 <!-- 
 Body Section 
 -->
@@ -120,18 +125,15 @@ Body Section
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>衣著</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>美食、伴手禮</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>書籍及文創商品</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>居家生活</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>女生包包/精品</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>男女鞋款</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>汽機車零件百貨</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>娛樂、收藏 </a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>寵物</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>其他類別</a></li>
-		<li style="border:0"> &nbsp;</li>
-		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+		<li><asp:LinkButton ID="cloth" runat="server" class="icon-chevron-right" OnClick="cloth_Click">衣服/飾品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="book" runat="server" class="icon-chevron-right" OnClick="book_Click">書籍/文創</asp:LinkButton></li>
+		<li><asp:LinkButton ID="life" runat="server" class="icon-chevron-right" OnClick="life_Click">居家/生活</asp:LinkButton></li>
+		<li><asp:LinkButton ID="bag" runat="server" class="icon-chevron-right" OnClick="bag_Click">包包/精品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="shoes" runat="server" class="icon-chevron-right" OnClick="shoes_Click">男女鞋款</asp:LinkButton></li>
+		<li><asp:LinkButton ID="car" runat="server" class="icon-chevron-right" OnClick="car_Click">汽機車/零件百貨</asp:LinkButton></li>
+		<li><asp:LinkButton ID="entertainment" runat="server" class="icon-chevron-right" OnClick="entertainment_Click">娛樂/收藏</asp:LinkButton></li>
+		<li><asp:LinkButton ID="pet" runat="server" class="icon-chevron-right" OnClick="pet_Click">寵物/用品</asp:LinkButton></li>
+		<li><asp:LinkButton ID="others" runat="server" class="icon-chevron-right" OnClick="others_Click">其他類別</asp:LinkButton></li>
 	</ul>
 </div>
 
@@ -178,8 +180,13 @@ Body Section
 			</li>
 		  </ul>
 	</div>
-
-    <form id="form1" runat="server">
+		<div class="span9">
+	<ul class="breadcrumb">
+		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
+		<li class="active">商品拍賣</li>
+	</ul>
+	</div>
+    
         <div>
             <h1>商品拍賣</h1>
             <asp:Image ID="_ProductImage" runat="server" Width="300px" Height="300px"/>

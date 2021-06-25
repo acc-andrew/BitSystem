@@ -90,6 +90,7 @@ namespace BitSystem
                         _birthDate_list.Items.Add(Reader["date"].ToString());
                         _address.Text = Reader["address"].ToString();
                         _status.Text = Reader["status"].ToString();
+                        balance.Text = Reader["balance"].ToString();
                         _memberID.Text = Reader["member_ID"].ToString();
 
                     }
