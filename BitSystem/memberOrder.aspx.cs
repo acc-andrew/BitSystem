@@ -90,7 +90,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='已上架' and seller_ID='" + Session["member_ID"]+"')");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='onsale' and seller_ID='" + Session["member_ID"]+"')");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -104,7 +104,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='競標中' and bidder_ID='" + Session["member_ID"] + "'");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='bidding' and bidder_ID='" + Session["member_ID"] + "'");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -118,7 +118,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = '已結標' and bid_winner_ID = '" + Session["member_ID"] + "'");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = 'getbid' and bid_winner_ID = '" + Session["member_ID"] + "'");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -269,59 +269,58 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "衣服/飾品";
+            Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "書籍/文創";
+            Session["classify"] = "book";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "居家/生活";
+            Session["classify"] = "life";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "包包/精品";
+            Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "男女鞋款";
+            Session["classify"] = "shoes";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "汽機車/零件百貨";
+            Session["classify"] = "car";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "娛樂/收藏";
+            Session["classify"] = "habbit";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "寵物/用品";
+            Session["classify"] = "pet";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "其他類別";
+            Session["classify"] = "other";
             Response.Redirect("GoodListForm.aspx");
         }
 
-        //取消classify
         protected void sale_list_Click(object sender, EventArgs e)
         {
             Session["classify"] = null;

@@ -193,8 +193,47 @@ namespace BitSystem
             sql_insert_cmd.Parameters.Add("@closedDateTime", SqlDbType.DateTime);
             sql_insert_cmd.Parameters["@closedDateTime"].Value = closedDateTime;
 
+            //設定classify 中文轉成英文 提供azure 雲端語法辨認
+            string classify_temp = "";
+
+            if (_Classfy.Text == "衣服/飾品"){
+                classify_temp = "cloth";
+            }
+            else if(_Classfy.Text == "書籍/文創")
+            {
+                classify_temp = "book";
+            }
+            else if (_Classfy.Text == "居家/生活")
+            {
+                classify_temp = "life";
+            }
+            else if (_Classfy.Text == "包包/精品")
+            {
+                classify_temp = "bag";
+            }
+            else if (_Classfy.Text == "男女鞋款")
+            {
+                classify_temp = "shoes";
+            }
+            else if (_Classfy.Text == "汽機車/零件百貨")
+            {
+                classify_temp = "car";
+            }
+            else if (_Classfy.Text == "娛樂/收藏")
+            {
+                classify_temp = "habbit";
+            }
+            else if (_Classfy.Text == "寵物/用品")
+            {
+                classify_temp = "pet";
+            }
+            else if (_Classfy.Text == "其他類別")
+            {
+                classify_temp = "other";
+            }
+
             sql_insert_cmd.Parameters.Add("@classify", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@classify"].Value = _Classfy.Text;
+            sql_insert_cmd.Parameters["@classify"].Value = classify_temp;
 
             sql_insert_cmd.Parameters.Add("@product", SqlDbType.Text);
             sql_insert_cmd.Parameters["@product"].Value = _ProductName.Text;
@@ -209,7 +248,7 @@ namespace BitSystem
             sql_insert_cmd.Parameters["@high_price"].Value = "0";
 
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@status"].Value = "已上架";
+            sql_insert_cmd.Parameters["@status"].Value = "onsale";
 
             sql_insert_cmd.Parameters.Add("@official_price", SqlDbType.Int);
             sql_insert_cmd.Parameters["@official_price"].Value = int.Parse(_OfficialPrice.Text);
@@ -382,59 +421,58 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "衣服/飾品";
+            Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "書籍/文創";
+            Session["classify"] = "book";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "居家/生活";
+            Session["classify"] = "life";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "包包/精品";
+            Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "男女鞋款";
+            Session["classify"] = "shoes";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "汽機車/零件百貨";
+            Session["classify"] = "car";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "娛樂/收藏";
+            Session["classify"] = "habbit";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "寵物/用品";
+            Session["classify"] = "pet";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "其他類別";
+            Session["classify"] = "other";
             Response.Redirect("GoodListForm.aspx");
         }
 
-        //取消classify
         protected void sale_list_Click(object sender, EventArgs e)
         {
             Session["classify"] = null;

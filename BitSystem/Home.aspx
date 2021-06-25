@@ -118,7 +118,7 @@ Body Section
 			  <div class="well well-small alert alert-warning cntr">
 				  <h2>50% Discount</h2>
 				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
 				  </p>
 			  </div>
 			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
@@ -199,7 +199,6 @@ Body Section
 <!--
 New Products
 -->
-        
 <div class="well well-small">
 	<h3>熱門商品 搶先看 </h3>
 		<div class="row-fluid">
