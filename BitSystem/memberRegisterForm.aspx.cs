@@ -69,6 +69,7 @@ namespace BitSystem
 
             // _File
             SqlCommand sql_insert_cmd = new SqlCommand("insert into Member(user_name,password,name,mail,mobile_phone,year,month,date,address,status,balance) values(@user_name,@password,@name,@mail,@mobile_phone,@year,@month,@date,@address,@status,@balance);", connection); //SQL語句
+            
             sql_insert_cmd.Parameters.Add("@user_name", SqlDbType.Text);
             sql_insert_cmd.Parameters["@user_name"].Value = _user_name.Text;
 
@@ -153,7 +154,7 @@ namespace BitSystem
                         Session["memberLogged"] = "Yes";
                         Response.Write("<script>alert('會員註冊成功');</script>");
 
-                        // Server.Transfer("test2.aspx");
+                        Server.Transfer("memberLoginForm.aspx");
                     }
                     else
                     {
@@ -373,59 +374,58 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "衣服/飾品";
+            Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "書籍/文創";
+            Session["classify"] = "book";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "居家/生活";
+            Session["classify"] = "life";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "包包/精品";
+            Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "男女鞋款";
+            Session["classify"] = "shoes";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "汽機車/零件百貨";
+            Session["classify"] = "car";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "娛樂/收藏";
+            Session["classify"] = "habbit";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "寵物/用品";
+            Session["classify"] = "pet";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "其他類別";
+            Session["classify"] = "other";
             Response.Redirect("GoodListForm.aspx");
         }
 
-        //取消classify
         protected void sale_list_Click(object sender, EventArgs e)
         {
             Session["classify"] = null;

@@ -138,57 +138,58 @@ Body Section
 </div>
 
 			  <div class="well well-small alert alert-warning cntr">
-				  <h2>50% Discount</h2>
+				  <h2>90% Discount</h2>
 				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
 				  </p>
 			  </div>
 			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
 			
-			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
-			<br>
-			<br>
 			<ul class="nav nav-list promowrapper">
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+				<h4><span class="">Fine Jewelry</span></h4>
+				<img src="pic/A3.jpg" alt="bootstrap ecommerce templates">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
+			<li style="border:1"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+				<h4><span class="">Tiffany T Smile</span></h4>
+				<img src="pic/pexels.jpg" alt="shopping cart template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="product_details.html"></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
+			<li style="border:1"> &nbsp;</li>
 			<li>
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+				<h4><span class="">Celine</span> </h4>
+				<img src="pic/Bella.jpg" alt="bootstrap template">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
 				</div>
 			  </div>
 			</li>
 		  </ul>
 	</div>
+
+
 		<div class="span9">
 	<ul class="breadcrumb">
 		<li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		<li class="active">商品拍賣</li>
 	</ul>
-	</div>
-    
-        <div>
-            <h1>商品拍賣</h1>
+		<h2>商品拍賣</h2>
+	    </div>
+            
+        <div class="span9">
+            <div class="breadcrumb">
+            
             <asp:Image ID="_ProductImage" runat="server" Width="300px" Height="300px"/>
             <br/>
             <asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>

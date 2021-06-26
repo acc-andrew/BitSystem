@@ -40,7 +40,7 @@ namespace BitSystem
                 register.Visible = true;
                 manager.Visible = true;
                 Session["logged_to_page"] = "sale_chickout_product.aspx";
-                Server.Transfer("memberLoginForm.aspx");
+                Response.Redirect("memberLoginForm.aspx");
 
             }
 
@@ -60,7 +60,7 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price from Action_product where status ='已結標' and bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price,bid_price from Action_product where bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product");            //da把資料填入ds裡面
 
@@ -96,7 +96,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price from Action_product where status ='已結標' and bid_winner_ID ='" + Session["member_ID"] + "'";
+            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price,bid_price from Action_product where bid_winner_ID ='" + Session["member_ID"] + "'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -106,17 +106,17 @@ namespace BitSystem
             connection.Open();
 
             //new一個DataReader接取Execute所回傳的資料。
-            SqlDataReader Reader1 = Command.ExecuteReader();
+            SqlDataReader Reader = Command.ExecuteReader();
 
             //檢查是否有資料列
-            if (Reader1.HasRows)
+            if (Reader.HasRows)
             {
                 //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
-                while (Reader1.Read())
+                while (Reader.Read())
                 {
                     //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
                     
-                    low_price += int.Parse(Reader1["low_price"].ToString());
+                    low_price += int.Parse(Reader["bid_price"].ToString());
 
 
                 }// while (Reader.Read())
@@ -180,59 +180,58 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "衣服/飾品";
+            Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "書籍/文創";
+            Session["classify"] = "book";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "居家/生活";
+            Session["classify"] = "life";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "包包/精品";
+            Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "男女鞋款";
+            Session["classify"] = "shoes";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "汽機車/零件百貨";
+            Session["classify"] = "car";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "娛樂/收藏";
+            Session["classify"] = "habbit";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "寵物/用品";
+            Session["classify"] = "pet";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "其他類別";
+            Session["classify"] = "other";
             Response.Redirect("GoodListForm.aspx");
         }
 
-        //取消classify
         protected void sale_list_Click(object sender, EventArgs e)
         {
             Session["classify"] = null;

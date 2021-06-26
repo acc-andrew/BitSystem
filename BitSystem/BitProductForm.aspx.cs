@@ -578,13 +578,24 @@ namespace BitSystem
             //與資料庫連接的通道開啟
             connection.Open();
 
+            
             // _File
-            SqlCommand sql_insert_cmd = new SqlCommand("insert into Action_product(bid_price,status,bit_product_ID,bidder_ID) values(@bid_price,@status,@bit_product_ID,@bidder_ID);", connection); //SQL語句
+            SqlCommand sql_insert_cmd = new SqlCommand("insert into Action_product(product,description,pic_pathname,bid_price,status,bit_product_ID,bidder_ID) values(@product,@description,@pic_pathname,@bid_price,@status,@bit_product_ID,@bidder_ID);", connection); //SQL語句
+            
+            sql_insert_cmd.Parameters.Add("@product", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@product"].Value = Session["ProductName"];
+
+            sql_insert_cmd.Parameters.Add("@description", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@description"].Value = Session["ProductDesc"];
+
+            sql_insert_cmd.Parameters.Add("@pic_pathname", SqlDbType.Text);
+            sql_insert_cmd.Parameters["@pic_pathname"].Value = Session["ImageUrl"];
+
             sql_insert_cmd.Parameters.Add("@bid_price", SqlDbType.Int);
             sql_insert_cmd.Parameters["@bid_price"].Value = nPrice;
 
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
-            sql_insert_cmd.Parameters["@status"].Value = "競標中";
+            sql_insert_cmd.Parameters["@status"].Value = "bidding";
 
             sql_insert_cmd.Parameters.Add("@bit_product_ID", SqlDbType.Int);
             sql_insert_cmd.Parameters["@bit_product_ID"].Value = nProductID;
@@ -785,55 +796,55 @@ namespace BitSystem
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "衣服/飾品";
+            Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void book_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "書籍/文創";
+            Session["classify"] = "book";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void life_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "居家/生活";
+            Session["classify"] = "life";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void bag_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "包包/精品";
+            Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void shoes_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "男女鞋款";
+            Session["classify"] = "shoes";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void car_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "汽機車/零件百貨";
+            Session["classify"] = "car";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void entertainment_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "娛樂/收藏";
+            Session["classify"] = "habbit";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void pet_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "寵物/用品";
+            Session["classify"] = "pet";
             Response.Redirect("GoodListForm.aspx");
         }
 
         protected void others_Click(object sender, EventArgs e)
         {
-            Session["classify"] = "其他類別";
+            Session["classify"] = "other";
             Response.Redirect("GoodListForm.aspx");
         }
 
