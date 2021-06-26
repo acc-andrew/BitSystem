@@ -47,15 +47,15 @@ namespace BitSystem
                 }
 
                 //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
-                SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString2");
                 product_view_life.DataSource = ds_first; //將DataSet的資料載入到datalist內
                 product_view_life.DataBind();
                 
-                SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString2");
                 product_view_cloth.DataSource = ds_sec; //將DataSet的資料載入到datalist內
                 product_view_cloth.DataBind();
                 
-                SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString2");
                 product_view_bag.DataSource = ds_third; //將DataSet的資料載入到datalist內
                 product_view_bag.DataBind();
 

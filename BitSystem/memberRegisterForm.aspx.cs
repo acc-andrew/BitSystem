@@ -100,7 +100,7 @@ namespace BitSystem
             sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
             sql_insert_cmd.Parameters["@status"].Value = _status.Text;
 
-            sql_insert_cmd.Parameters.Add("@balance", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@balance", SqlDbType.Int);
             sql_insert_cmd.Parameters["@balance"].Value = 100;
 
             sql_insert_cmd.ExecuteNonQuery();
@@ -255,16 +255,16 @@ namespace BitSystem
             else
             {
                 //check memeber account not repeat
-                if (bSQLDB_checkAccount("Sale_net_Jun22_2021ConnectionString", _user_name.Text)
+                if (bSQLDB_checkAccount("Sale_net_Jun22_2021ConnectionString2", _user_name.Text)
                     == true)
                 {
                     Response.Write("<script>alert('帳號已有會員登記，請重新選個好聽的名稱');</script>");
                 }
                 else 
                 { 
-                    SQLDB_write("Sale_net_Jun22_2021ConnectionString");
+                    SQLDB_write("Sale_net_Jun22_2021ConnectionString2");
                     // to get BusID from BusAccountTable
-                    SQLDB_verify("Sale_net_Jun22_2021ConnectionString", _user_name.Text);
+                    SQLDB_verify("Sale_net_Jun22_2021ConnectionString2", _user_name.Text);
                 }
                 
             }// password matches
