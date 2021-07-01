@@ -60,7 +60,7 @@ namespace BitSystem
 
         protected void _SaveBtn_Click(object sender, EventArgs e)
         {
-            SQLDB_write("Sale_net_Jun22_2021ConnectionString2", 2);//呼叫（自己寫的一個方法）
+            SQLDB_write("Sale_net_Jun22_2021ConnectionString4", 2);//呼叫（自己寫的一個方法）
         }// protected void _SaveBtn_Click(object sender, EventArgs e)
 
     }
