@@ -147,7 +147,7 @@ namespace BitSystem
                 }
                 else
                 {
-                    Response.Redirect("Home.aspx");
+                    Server.Transfer("Home.aspx");
                 }
             }
 
