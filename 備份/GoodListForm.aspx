@@ -177,39 +177,40 @@ Upper Header Section
             
         <div class="span9">
             <div class="breadcrumb">
-             <asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_DataBound" >
-					<ItemTemplate>
-						<div class="thumbnail">
-							<table  border="1" >
-								<tr>
-									<td align='center'>商品圖片</td>
-									<td align='center'>商品名稱</td>
-									<td align='center'>商品市價</td>
-									<td align='center'>商品描述</td>
-								</tr>
-								<tr>
-									<td >
-									<asp:ImageButton ID="pic_pathname" width="200" runat="server"  CommandName="click"  ImageUrl='<%# Eval("pic_pathname") %>' />
-									</td>
+            <div>
+                
+                <asp:Button ID="_GoodOnShelfBtn" runat="server" Text="商品上架" OnClick="_GoodOnShelfBtn_Click" />
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <asp:Button ID="_SysAdminBtn" runat="server" Text="系統管理員" />
+            </div>
+        
+            <br/><br/>
+            <asp:GridView ID="_GoodsGridView" runat="server"  AutoGenerateColumns="false"
+                          CellPadding="4" 
+                          AutoGenerateSelectButton="True"
+                          OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
+                <Columns>
+                    <asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="img0" runat="server" Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    <asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
+                        <ItemTemplate>   
+                            <asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
+                        </ItemTemplate> 
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="500px">
+                        <ItemTemplate>   
+                            <asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
+                            <asp:Label ID="seller_ID" runat="server" Visible ="false" Text='<%# Eval("seller_ID") %>'/>
+                            <asp:Label ID="Action_product_ID" runat="server" Visible ="false" Text='<%# Eval("Action_product_ID") %>'/>
+                        </ItemTemplate> 
+                    </asp:TemplateField>
 
-									<td align='center'>
-									<asp:Label ID="product" width="80" runat="server" Text='<%# Eval("product") %>'/>
-									</td>
-							
-									<td align='center'>
-									<asp:Label ID="official_price" width="80" runat="server" Text='<%# Eval("official_price") %>'/>
-									</td>
-					
-									<td align='center'>
-									<asp:Label ID="description" width="290" runat="server" Text='<%# Eval("description") %>'/>
-									<asp:Label ID="action_product_ID" runat="server" Visible="false" Text='<%# Eval("action_product_ID") %>'/>
-									<asp:Label ID="seller_ID" runat="server" Visible="false" Text='<%# Eval("seller_ID") %>'/>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</ItemTemplate>
-				</asp:DataList>
+                </Columns>
+            </asp:GridView>
         	    </div>
             </div>
 </form>

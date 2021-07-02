@@ -52,7 +52,12 @@ namespace BitSystem
                     _ProductDesc.Text = strProductDesc;
                 }
 
-                
+                if (Session["official_price"] != null)
+                {
+                    string strofficial_price = (string)Session["official_price"];
+                    _sellerID = int.Parse(strofficial_price);
+                }
+
                 if (Session["SellerID"] != null)
                 {
                     string strSellerID = (string)Session["SellerID"];

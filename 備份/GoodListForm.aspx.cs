@@ -8,17 +8,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace BitSystem
 {
 
     public partial class GoodListForm : System.Web.UI.Page
     {
-        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
-        DataSet ds = new DataSet();
-        SqlCommand cmd = new SqlCommand();
-        SqlConnection conn = new SqlConnection();
-
+        SqlDataAdapter _da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        DataSet        _ds = new DataSet();
+        SqlCommand    _cmd = new SqlCommand();
+        SqlConnection _Conn = new SqlConnection();
+        private List<fetchProductData> _aFetchedProduct = new List<fetchProductData>();
+        public virtual System.Web.UI.WebControls.GridViewRow SelectedRow { get; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,63 +41,53 @@ namespace BitSystem
 
 
                 // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo("Sale_net_Jun22_2021ConnectionString");
+                fetchProductInfo();
+
+                // to set event handler: row
+                // called while each row data prepared
+                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
+
 
                 SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
-                product_view.DataSource = ds; //將DataSet的資料載入到GridView1內
-                product_view.DataBind();
+                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+                _GoodsGridView.DataBind();
 
             }
-
+            
 
         }//protected void Page_Load(object sender, EventArgs e)
 
-        protected void product_view_ItemCommand(object source, DataListCommandEventArgs e)
+        public class fetchProductData
         {
-            DataListItem currentItem = e.Item;
+            public int   _ActionProductID { get; set; }
+            public string _imagePathname { get; set; }
+            public string _product_name { get; set; }
+            public string _description { get; set; }
+            public string _total_number { get; set; }
+            public string _seller_ID { get; set; }
 
-            if (e.CommandName == "click")
+            public fetchProductData()
             {
 
-                product_view.SelectedIndex = currentItem.ItemIndex;
-
-                string pic_pathname = ((ImageButton)currentItem.FindControl("pic_pathname")).ImageUrl;
-                string product = ((Label)currentItem.FindControl("product")).Text;
-                string official_price = ((Label)currentItem.FindControl("official_price")).Text;
-                string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
-                string description = ((Label)currentItem.FindControl("description")).Text;
-                string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
-
-                Session["ProductName"] = product;
-                Session["ProductDesc"] = description;
-                Session["official_price"] = official_price;
-                Session["ImageUrl"] = pic_pathname;
-                Session["ProductID"] = action_product_ID;
-                Session["SellerID"] = seller_ID;
-
-                Response.Redirect("BitProductForm.aspx");
-
             }
-        }
 
-        protected void product_view_DataBound(object sender, EventArgs e)
-        {
-            // 演示ToolTip，使用GridView自帶的ToolTip
-            for (int i = 0; i < product_view.Items.Count; i++)
+            public fetchProductData(int prodID, string imagePathname, 
+                            string name, string description, 
+                            string total_number, string seller_ID)
             {
-                product_view.Items[i].ToolTip = ((Label)product_view.Items[i].FindControl("description")).Text;
-                if (((Label)product_view.Items[i].FindControl("description")).Text.Length > 150)
-                {
-                    ((Label)product_view.Items[i].FindControl("description")).Text = ((Label)product_view.Items[i].FindControl("description")).Text.Substring(0, 125) + "......";
-                }
-            }
-        }
+                this._ActionProductID = prodID;
+                this._imagePathname = imagePathname;
+                this._product_name = name;
+                this._description = description;
+                this._total_number = total_number;
+                this._seller_ID = seller_ID;
+            }// ctor
 
-
-        private void fetchProductInfo(string connectiion)
+        }// public class ListItem
+        private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -115,8 +105,8 @@ namespace BitSystem
             {
                 Command = new SqlCommand(sql_statement_no_classify, connection);
             }
-            else
-            {
+            else {
+
                 Command = new SqlCommand(sql_statement1_classify, connection);
             }
 
@@ -132,6 +122,12 @@ namespace BitSystem
                 //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
                 while (Reader.Read())
                 {
+                    fetchProductData rowData = new fetchProductData();
+                    //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
+                    string str_pic_pathname = Reader["pic_pathname"].ToString();
+                    rowData._imagePathname = str_pic_pathname;
+                    _aFetchedProduct.Add(rowData);
+                    
 
                 }// while (Reader.Read())
 
@@ -141,42 +137,109 @@ namespace BitSystem
                 Response.Write("<script>alert('目前還沒有此分類商品哦~請再看看別的!');</script>");
 
             }// if (Reader.HasRows) login name mismatch
-             //關閉與資料庫連接的通道
+            //關閉與資料庫連接的通道
             connection.Close();
         }// private void fetchGoodPicsPathname()
 
+        protected void GridViewRowDataBound(Object sender, GridViewRowEventArgs e)
+        { 
+            if(e.Row.RowType == DataControlRowType.DataRow)  // 
+            {
+                System.Web.UI.WebControls.Image imgFile = (System.Web.UI.WebControls.Image)e.Row.FindControl("img0");
+
+                string str_pic_pathname = _aFetchedProduct[e.Row.DataItemIndex]._imagePathname;
+                imgFile.ImageUrl = str_pic_pathname;
+
+            }// if(e.Row.RowType == DataControlRowType.DataRow)
+
+        }// void CustomersGridView_RowDataBound(Object sender, GridViewRowEventArgs e)
+
+        private string getCtlText(string idName)
+        {
+            GridViewRow SelectedRow = _GoodsGridView.SelectedRow;
+            Label lblName = (Label)SelectedRow.FindControl(idName);
+            return lblName.Text;
+        }// 
+        private Image getCtlImage(string idName)
+        {
+            GridViewRow SelectedRow = _GoodsGridView.SelectedRow;
+            Image img = (Image)SelectedRow.FindControl(idName);
+            return img;
+        }// 
+        protected void GoodsGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+            int.Parse(getCtlText("Action_product_ID")) ;
+            int nSellerID = int.Parse(getCtlText("seller_ID"));
+            */
+            // 1. to store info to Session
+            // ImageUrl, product, desc, seller_ID
+            // 2. Redirect to ProductDetailForm.aspx
+            Image selectedImage = getCtlImage("img0");
+            Session["ImageUrl"] = selectedImage.ImageUrl;
+
+            string strProductName = getCtlText("product_name");
+            Session["ProductName"] = strProductName;
+
+            string strProductDesc = getCtlText("product_desc");
+            Session["ProductDesc"] = strProductDesc;
+
+            string strSellerID = getCtlText("seller_ID");
+            Session["SellerID"] = strSellerID; 
+
+            string strProductID = getCtlText("Action_product_ID");
+            Session["ProductID"] = strProductID; 
+
+            Response.Redirect("BitProductForm.aspx");
+            //Response.Write("<script>alert('選擇 GridView 內個別商品');</script>");
+        }// 
 
         protected void SQL_readActionProduct(string connString)
-        {
-            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+         {
+            _cmd.Connection = _Conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
 
             //設定連線IP位置、資料表，帳戶，密碼
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
-            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
-                                            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+            _Conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
             // bug1: SQL content without session classify
-            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale'";
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='onsale'";
 
             // bug1: SQL content with session classify
-            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and classify ='" + Session["classify"] + "'";
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='onsale' and classify ='" + Session["classify"] + "'";
 
+            SqlCommand Command;
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
             if (Session["classify"] == null)
             {
-                cmd.CommandText = sql_statement_no_classify;
+                _cmd.CommandText = sql_statement_no_classify;
             }
             else
             {
-                cmd.CommandText = sql_statement1_classify;
+                _cmd.CommandText = sql_statement1_classify;
             }
 
-            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
-            da.Fill(ds, "Action_product");            //da把資料填入ds裡面
+
+            _da.SelectCommand = _cmd;            //da選擇資料來源，由cmd載入進來
+            _da.Fill(_ds, "Action_product");            //da把資料填入ds裡面
 
         }// protected void SQL_readActionProduct()
 
+        protected void _GoodOnShelfBtn_Click(object sender, EventArgs e)
+        {
+            // if user hasn't logged, redirect to memberLoginForm
+            if (Session["member_ID"] == null)
+            {
+                Session["logged_to_page"] = "GoodListForm.aspx";
+                Response.Redirect("memberLoginForm.aspx");
+            }
+            else
+            {
+                Response.Redirect("PutGoodOnShelfForm.aspx");
+            }
+        }
 
 
         //linkbutton 點擊連接網址
@@ -281,5 +344,7 @@ namespace BitSystem
             Session["classify"] = null;
             Response.Redirect("GoodListForm.aspx");
         }
-    }
-}
+
+    }// public partial class GoodListForm : System.Web.UI.Page
+
+}// namespace BitSystem
