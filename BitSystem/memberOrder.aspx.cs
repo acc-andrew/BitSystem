@@ -18,6 +18,7 @@ namespace BitSystem
         SqlConnection _Conn = new SqlConnection();
         private List<fetchProductData> _aFetchedProduct = new List<fetchProductData>();
         public virtual System.Web.UI.WebControls.GridViewRow SelectedRow { get; }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
@@ -36,47 +37,7 @@ namespace BitSystem
             }
         }
 
-        //linkbutton 點擊連接網址
-        protected void home_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Home.aspx");
-        }
-
-        protected void member_info_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberProfile.aspx");
-        }
-
-        protected void order_info_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberOrder.aspx");
-        }
-
-        protected void my_info_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberLoginForm.aspx");
-        }
-
-        protected void register_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("memberRegisterForm.aspx");
-        }
-
-        protected void contantus_Click(object sender, EventArgs e)
-        {
-            // email
-        }
-
-        protected void manager_Click(object sender, EventArgs e)
-        {
-            // back manager
-        }
-
-        protected void logout_Click(object sender, EventArgs e)
-        {
-            Session["Login"] = null;
-            Response.Redirect("Home.aspx");
-        }
+        
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,7 +51,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='已上架' and seller_ID='" + Session["member_ID"]+"')");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='onsale' and seller_ID='" + Session["member_ID"]+"')");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -104,7 +65,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='競標中' and bidder_ID='" + Session["member_ID"] + "'");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='bidding' and bidder_ID='" + Session["member_ID"] + "'");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -118,7 +79,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = '已結標' and bid_winner_ID = '" + Session["member_ID"] + "'");
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = 'getbid' and bid_winner_ID = '" + Session["member_ID"] + "'");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -157,7 +118,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString"].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
@@ -265,6 +226,50 @@ namespace BitSystem
             _da.Fill(_ds, "Action_product");            //da把資料填入ds裡面
 
         }// protected void SQL_readActionProduct()
+
+
+
+        //linkbutton 點擊連接網址
+        protected void home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void member_info_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberProfile.aspx");
+        }
+
+        protected void order_info_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberOrder.aspx");
+        }
+
+        protected void my_info_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberLoginForm.aspx");
+        }
+
+        protected void register_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("memberRegisterForm.aspx");
+        }
+
+        protected void contantus_Click(object sender, EventArgs e)
+        {
+            // email
+        }
+
+        protected void manager_Click(object sender, EventArgs e)
+        {
+            // back manager
+        }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session["Login"] = null;
+            Response.Redirect("Home.aspx");
+        }
 
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)

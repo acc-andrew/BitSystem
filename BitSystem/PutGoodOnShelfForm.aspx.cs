@@ -232,22 +232,22 @@ namespace BitSystem
                 classify_temp = "other";
             }
 
-            sql_insert_cmd.Parameters.Add("@classify", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@classify", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@classify"].Value = classify_temp;
 
-            sql_insert_cmd.Parameters.Add("@product", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@product", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@product"].Value = _ProductName.Text;
             
-            sql_insert_cmd.Parameters.Add("@total_number", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@total_number", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@total_number"].Value = _TotalLots.Text;
 
-            sql_insert_cmd.Parameters.Add("@low_price", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@low_price", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@low_price"].Value = "0";
 
-            sql_insert_cmd.Parameters.Add("@high_price", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@high_price", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@high_price"].Value = "0";
 
-            sql_insert_cmd.Parameters.Add("@status", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@status", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@status"].Value = "onsale";
 
             sql_insert_cmd.Parameters.Add("@official_price", SqlDbType.Int);
@@ -256,10 +256,10 @@ namespace BitSystem
             sql_insert_cmd.Parameters.Add("@seller_ID", SqlDbType.Int);
             sql_insert_cmd.Parameters["@seller_ID"].Value = seller_ID;
 
-            sql_insert_cmd.Parameters.Add("@pic_pathname", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@pic_pathname", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@pic_pathname"].Value = _ImgGood.ImageUrl;
 
-            sql_insert_cmd.Parameters.Add("@description", SqlDbType.Text);
+            sql_insert_cmd.Parameters.Add("@description", SqlDbType.NVarChar);
             sql_insert_cmd.Parameters["@description"].Value = _GoodDesc.Text;
             
             sql_insert_cmd.ExecuteNonQuery();
@@ -367,7 +367,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString2", closedDateTime);
+                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString", closedDateTime);
                     Server.Transfer("GoodListForm.aspx");
                 }
 
