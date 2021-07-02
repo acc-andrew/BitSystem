@@ -174,6 +174,8 @@
 			</br>
 
             <div class="breadcrumb">
+			共有<asp:Label id="lblRecordCount" ForeColor="red" runat="server" />個商品
+			當前為<asp:Label id="lblCurrentPage" ForeColor="red" runat="server" />/<asp:Label id="lblPageCount" ForeColor="red" runat="server" />頁 
 			<asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_DataBound" >
 					<ItemTemplate>
 						<div class="thumbnail">
@@ -207,7 +209,11 @@
 						</div>
 					</ItemTemplate>
 				</asp:DataList>
-
+				<div align ="center">
+					<asp:LinkButton id="lbnPrevPage" Text="上一頁" CommandName="prev" OnCommand="Page_OnClick" runat="server" />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<asp:LinkButton id="lbnNextPage" Text="下一頁" CommandName="next" OnCommand="Page_OnClick" runat="server" />
+				</div>
 		</div>
 </form>
 		<!-- 

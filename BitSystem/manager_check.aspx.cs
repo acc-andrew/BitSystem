@@ -18,6 +18,9 @@ namespace BitSystem
         SqlConnection _Conn = new SqlConnection();
         private List<fetchProductData> _aFetchedProduct = new List<fetchProductData>();
         public virtual System.Web.UI.WebControls.GridViewRow SelectedRow { get; }
+
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
@@ -90,7 +93,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='已上架' and seller_ID='" + Session["member_ID"]+"')");
+                SQL_readActionProduct(connString, "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='已上架' and seller_ID='" + Session["member_ID"]+"')");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -104,7 +107,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='競標中' and bidder_ID='" + Session["member_ID"] + "'");
+                SQL_readActionProduct(connString, "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='競標中' and bidder_ID='" + Session["member_ID"] + "'");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -118,7 +121,7 @@ namespace BitSystem
                 // called while each row data prepared
                 _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = '已結標' and bid_winner_ID = '" + Session["member_ID"] + "'");
+                SQL_readActionProduct(connString, "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = '已結標' and bid_winner_ID = '" + Session["member_ID"] + "'");
                 _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
                 _GoodsGridView.DataBind();
             }
@@ -157,7 +160,7 @@ namespace BitSystem
         private void fetchProductInfo()
         {
             // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);

@@ -21,18 +21,15 @@ namespace BitSystem
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
 
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                product_view_bag.DataBind();    // 自訂的 GridView databind函式
-
-
 
                 //設定會員登入與否顯現標示不同
-
-
                 if (Convert.ToString(Session["Login"]) == "logged")
                 {
                     member_info.Visible = true;
@@ -47,15 +44,15 @@ namespace BitSystem
                 }
 
                 //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
-                SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct_life(connString);
                 product_view_life.DataSource = ds_first; //將DataSet的資料載入到datalist內
                 product_view_life.DataBind();
                 
-                SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct_cloth(connString);
                 product_view_cloth.DataSource = ds_sec; //將DataSet的資料載入到datalist內
                 product_view_cloth.DataBind();
                 
-                SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct_bag(connString);
                 product_view_bag.DataSource = ds_third; //將DataSet的資料載入到datalist內
                 product_view_bag.DataBind();
 
@@ -293,7 +290,7 @@ namespace BitSystem
 
         protected void more_hot_Click(object sender, EventArgs e)
         {
-                Response.Redirect("GoodListForm.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
 

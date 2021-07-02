@@ -18,8 +18,9 @@ namespace BitSystem
         DataSet ds = new DataSet();
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
-
-
+        
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -41,9 +42,9 @@ namespace BitSystem
 
 
                 // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo("Sale_net_Jun22_2021ConnectionString");
+                fetchProductInfo(connString);
 
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
+                SQL_readActionProduct(connString);
                 product_view.DataSource = ds; //將DataSet的資料載入到GridView1內
                 product_view.DataBind();
 

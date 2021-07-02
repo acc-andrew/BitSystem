@@ -11,7 +11,9 @@ namespace BitSystem
 {
     public partial class sale_chickout_product : System.Web.UI.Page
     {
-        
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
+
         SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
         DataSet ds = new DataSet();
         SqlCommand cmd = new SqlCommand();
@@ -28,8 +30,8 @@ namespace BitSystem
                 member_info.Visible = true;
                 order_info.Visible = true;
                 logout.Visible = true;
-                fetchProductInfo("Sale_net_Jun22_2021ConnectionString");
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString");
+                fetchProductInfo(connString);
+                SQL_readActionProduct(connString);
                 GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
                 GridView1.DataBind();
                 total_price.Text = low_price.ToString();

@@ -13,6 +13,10 @@ namespace BitSystem
 {
     public partial class PutGoodOnShelfForm : System.Web.UI.Page
     {
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
+
+
         private string[] aClassfyTitle = new string[]
         {
             "衣服/飾品", "書籍/文創", "居家/生活",
@@ -367,7 +371,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString", closedDateTime);
+                    SQLDB_writeAutionProduct(connString, closedDateTime);
                     Server.Transfer("GoodListForm.aspx");
                 }
 
