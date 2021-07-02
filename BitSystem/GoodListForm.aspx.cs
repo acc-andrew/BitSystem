@@ -15,14 +15,20 @@ namespace BitSystem
     public partial class GoodListForm : System.Web.UI.Page
     {
         SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
-        DataSet ds = new DataSet();
-        SqlCommand cmd = new SqlCommand();
+        DataSet ds_check = new DataSet();
+        DataSet ds_page = new DataSet();
+        SqlCommand cmd_check = new SqlCommand();
+        SqlCommand cmd_page = new SqlCommand();
         SqlConnection conn = new SqlConnection();
-        
+
+        //設定分頁項目
+        int PageSize, RecordCount, PageCount, CurrentPage;
         //設定資料庫資訊
         string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
+            //設定PageSize
+            PageSize = 10;
 
             if (IsPostBack == false)
             {
@@ -42,17 +48,147 @@ namespace BitSystem
 
 
                 // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo(connString);
+                //fetchProductInfo(connString);
 
+                // 判斷有沒有資料
                 SQL_readActionProduct(connString);
-                product_view.DataSource = ds; //將DataSet的資料載入到GridView1內
-                product_view.DataBind();
+                if (ds_check.Tables[0].Rows.Count > 0)
+                {
+                    //初始設定剛進頁面 匯入資料                       
+                    ListBind(connString);
+                    CurrentPage = 0;
+                    ViewState["PageIndex"] = 0;
+
+                    //計算總共有多少記錄(onsale)             
+                    RecordCount = CalculateRecord(connString);
+                    lblRecordCount.Text = RecordCount.ToString();
+
+                    //計算總共有多少頁(onsale)
+                    PageCount = (RecordCount / PageSize) + 1;
+                    lblPageCount.Text = PageCount.ToString();
+                    ViewState["PageCount"] = PageCount;
+                }
+                else
+                {
+                    Response.Write("<script>alert('目前還沒有此分類商品哦~請再看看別的!');</script>");
+                    product_view.Visible = false;
+                }
 
             }
 
 
         }//protected void Page_Load(object sender, EventArgs e)
 
+        //計算總共有多少條記錄
+        public int CalculateRecord(string connectiion)
+        {
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
+            SqlConnection connection = new SqlConnection(s_data);
+            string sql_statement_no_classify = $"select count(*) as co from Action_product " +
+                "where status='onsale'";
+
+            // bug1: SQL content with session classify
+            string sql_statement1_classify = $"select count(*) as co from Action_product " +
+                "where status='onsale' and classify ='" + Session["classify"] + "'";
+            
+            string sql_statement1;
+            // bug2: sqlText
+            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+            if (Session["classify"] == null)
+            {
+                sql_statement1 = sql_statement_no_classify;
+            }
+            else
+            {
+                sql_statement1 = sql_statement1_classify;
+            }
+            SqlCommand Command = new SqlCommand(sql_statement1, connection);
+            connection.Open();
+            SqlDataReader Reader = Command.ExecuteReader();
+
+            int intCount;
+
+            if (Reader.HasRows)
+            {
+                Reader.Read();
+                intCount = Int32.Parse(Reader["co"].ToString());
+            }
+            else
+            {
+                intCount = 0;
+            }
+            Reader.Close();
+            return intCount;
+        }
+
+        // 匯入資料
+        public void ListBind(string connString)
+        {
+            //設定匯入的起終地址
+            int StartIndex = CurrentPage * PageSize;
+            cmd_page.Connection = conn;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data;
+
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                $"from Action_product where status='onsale'";
+
+            // bug1: SQL content with session classify
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                $"from Action_product where status='onsale' and classify ='" + Session["classify"] + "'";
+
+            // bug2: sqlText
+            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+            //da選擇資料來源，由cmd載入進來  
+            if (Session["classify"] == null)
+            {
+                cmd_page.CommandText = sql_statement_no_classify;
+            }
+            else
+            {
+                cmd_page.CommandText = sql_statement1_classify;
+            }
+
+            da.SelectCommand = cmd_page;
+            da.Fill(ds_page, StartIndex, PageSize, "Action_product");//da把資料填入ds裡面
+
+            product_view.DataSource = ds_page.Tables["Action_product"].DefaultView;
+            product_view.DataBind();
+
+            //設定頁數與按鈕顯示
+            lbnNextPage.Enabled = true;
+            lbnPrevPage.Enabled = true;
+            if (CurrentPage == (PageCount - 1)) lbnNextPage.Enabled = false;
+            if (CurrentPage == 0) lbnPrevPage.Enabled = false;
+            lblCurrentPage.Text = (CurrentPage + 1).ToString();
+
+        }
+
+        //按下更換分頁
+        public void Page_OnClick(Object sender, CommandEventArgs e)
+        {
+            CurrentPage = (int)ViewState["PageIndex"];
+            PageCount = (int)ViewState["PageCount"];
+
+            string cmd = e.CommandName;
+            //判斷cmd,以判定翻頁方向
+            switch (cmd)
+            {
+                case "next":
+                    if (CurrentPage < (PageCount - 1)) CurrentPage++;
+                    break;
+                case "prev":
+                    if (CurrentPage > 0) CurrentPage--;
+                    break;
+            }
+
+            ViewState["PageIndex"] = CurrentPage;
+
+            ListBind(connString);
+            
+        }
+
+        // 紀錄商品資訊 提供點擊連結至商品頁
         protected void product_view_ItemCommand(object source, DataListCommandEventArgs e)
         {
             DataListItem currentItem = e.Item;
@@ -80,7 +216,8 @@ namespace BitSystem
 
             }
         }
-
+        
+        // 超過字數的欄位會隱藏 變成...
         protected void product_view_DataBound(object sender, EventArgs e)
         {
             // 演示ToolTip，使用GridView自帶的ToolTip
@@ -94,62 +231,10 @@ namespace BitSystem
             }
         }
 
-
-        private void fetchProductInfo(string connectiion)
-        {
-            // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
-
-            //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
-            SqlConnection connection = new SqlConnection(s_data);
-
-            // bug1: SQL content
-            string sql_statement_no_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where status='onsale'";
-
-            // bug1: SQL content
-            string sql_statement1_classify = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product where status='onsale' and classify ='" + Session["classify"] + "'";
-
-            SqlCommand Command;
-            // bug2: sqlText
-            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
-            if (Session["classify"] == null)
-            {
-                Command = new SqlCommand(sql_statement_no_classify, connection);
-            }
-            else
-            {
-                Command = new SqlCommand(sql_statement1_classify, connection);
-            }
-
-            //與資料庫連接的通道開啟
-            connection.Open();
-
-            //new一個DataReader接取Execute所回傳的資料。
-            SqlDataReader Reader = Command.ExecuteReader();
-
-            //檢查是否有資料列
-            if (Reader.HasRows)
-            {
-                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
-                while (Reader.Read())
-                {
-
-                }// while (Reader.Read())
-
-            }// if (Reader.HasRows) login name match
-            else
-            {
-                Response.Write("<script>alert('目前還沒有此分類商品哦~請再看看別的!');</script>");
-
-            }// if (Reader.HasRows) login name mismatch
-             //關閉與資料庫連接的通道
-            connection.Close();
-        }// private void fetchGoodPicsPathname()
-
-
+        // 檢查個狀態資料庫是否有資料
         protected void SQL_readActionProduct(string connString)
         {
-            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+            cmd_check.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
 
             //設定連線IP位置、資料表，帳戶，密碼
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
@@ -166,18 +251,17 @@ namespace BitSystem
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
             if (Session["classify"] == null)
             {
-                cmd.CommandText = sql_statement_no_classify;
+                cmd_check.CommandText = sql_statement_no_classify;
             }
             else
             {
-                cmd.CommandText = sql_statement1_classify;
+                cmd_check.CommandText = sql_statement1_classify;
             }
 
-            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
-            da.Fill(ds, "Action_product");            //da把資料填入ds裡面
+            da.SelectCommand = cmd_check;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_check, "Action_product");            //da把資料填入ds裡面
 
         }// protected void SQL_readActionProduct()
-
 
 
         //linkbutton 點擊連接網址
