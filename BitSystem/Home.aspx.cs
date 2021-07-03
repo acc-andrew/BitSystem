@@ -28,11 +28,7 @@ namespace BitSystem
             {
                 product_view_bag.DataBind();    // 自訂的 GridView databind函式
 
-
-
                 //設定會員登入與否顯現標示不同
-
-
                 if (Convert.ToString(Session["Login"]) == "logged")
                 {
                     member_info.Visible = true;
@@ -156,10 +152,8 @@ namespace BitSystem
         protected void product_view_life_ItemCommand(object source,DataListCommandEventArgs e)
         {
             DataListItem currentItem = e.Item;
-
             if (e.CommandName == "click")
             {
-
                 product_view_life.SelectedIndex = currentItem.ItemIndex;
 
                 string pic_pathname = ((ImageButton)currentItem.FindControl("pic_pathname")).ImageUrl;
@@ -175,7 +169,6 @@ namespace BitSystem
                 Session["SellerID"] = seller_ID;
 
                 Response.Redirect("BitProductForm.aspx");
- 
             }
         }
 

@@ -40,23 +40,17 @@ namespace BitSystem
                 }
 
                 // if user clicks left panel area
-                if(Session["classify"] != null){
-                    DisplayClassifyContent();
-                }
-                else{ // other
-                    // pre-fetch picture pathname from Market_product2 DB
-                    fetchProductInfo();
 
-                    // to set event handler: row
-                    // called while each row data prepared
-                    _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
+                // pre-fetch picture pathname from Market_product2 DB
+                fetchProductInfo();
 
+                // to set event handler: row
+                // called while each row data prepared
+                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
 
-                    SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
-                    _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-                    _GoodsGridView.DataBind();
-
-                }// Session["classify"] == null
+                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString2");
+                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
+                _GoodsGridView.DataBind();
 
             }// if (IsPostBack == false)
 
@@ -320,9 +314,10 @@ namespace BitSystem
         {
             Session["classify"] = "cloth";
             Response.Redirect("GoodListForm.aspx");
-            */
+            /*
             SQL_readActionProductClassify("Sale_net_Jun22_2021ConnectionString2", 
                                             "action_product_ID > 19 and action_product_ID < 23");
+            */
         }
 
         protected void book_Click(object sender, EventArgs e)
@@ -341,9 +336,10 @@ namespace BitSystem
         {
             Session["classify"] = "bag";
             Response.Redirect("GoodListForm.aspx");
-            */
+            /*
             SQL_readActionProductClassify("Sale_net_Jun22_2021ConnectionString2", 
                                         "action_product_ID > 25 and action_product_ID <= 28");
+            */
         }
 
         protected void shoes_Click(object sender, EventArgs e)
