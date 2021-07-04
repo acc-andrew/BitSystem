@@ -177,30 +177,57 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton others;
 
         /// <summary>
-        /// _GoodOnShelfBtn 控制項。
+        /// lblRecordCount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _GoodOnShelfBtn;
+        protected global::System.Web.UI.WebControls.Label lblRecordCount;
 
         /// <summary>
-        /// _SysAdminBtn 控制項。
+        /// lblCurrentPage 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _SysAdminBtn;
+        protected global::System.Web.UI.WebControls.Label lblCurrentPage;
 
         /// <summary>
-        /// _GoodsGridView 控制項。
+        /// lblPageCount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView _GoodsGridView;
+        protected global::System.Web.UI.WebControls.Label lblPageCount;
+
+        /// <summary>
+        /// product_view 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList product_view;
+
+        /// <summary>
+        /// lbnPrevPage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnPrevPage;
+
+        /// <summary>
+        /// lbnNextPage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnNextPage;
     }
 }

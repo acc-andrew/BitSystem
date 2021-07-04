@@ -11,6 +11,9 @@ namespace BitSystem
 {
     public partial class MemberProfile : System.Web.UI.Page
     {
+
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -57,7 +60,7 @@ namespace BitSystem
             if (!IsPostBack)
             {
                 //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
-                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString2"].ConnectionString;
+                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
                 //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
                 SqlConnection connection = new SqlConnection(s_data);
@@ -214,7 +217,7 @@ namespace BitSystem
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString2"].ConnectionString;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
             SqlConnection connection = new SqlConnection(s_data);
 

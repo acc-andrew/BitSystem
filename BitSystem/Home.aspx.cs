@@ -21,12 +21,13 @@ namespace BitSystem
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
 
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                product_view_bag.DataBind();    // 自訂的 GridView databind函式
 
                 //設定會員登入與否顯現標示不同
                 if (Convert.ToString(Session["Login"]) == "logged")
@@ -43,15 +44,15 @@ namespace BitSystem
                 }
 
                 //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
-                SQL_readActionProduct_life("Sale_net_Jun22_2021ConnectionString2");
+                SQL_readActionProduct_life(connString);
                 product_view_life.DataSource = ds_first; //將DataSet的資料載入到datalist內
                 product_view_life.DataBind();
                 
-                SQL_readActionProduct_cloth("Sale_net_Jun22_2021ConnectionString2");
+                SQL_readActionProduct_cloth(connString);
                 product_view_cloth.DataSource = ds_sec; //將DataSet的資料載入到datalist內
                 product_view_cloth.DataBind();
                 
-                SQL_readActionProduct_bag("Sale_net_Jun22_2021ConnectionString2");
+                SQL_readActionProduct_bag(connString);
                 product_view_bag.DataSource = ds_third; //將DataSet的資料載入到datalist內
                 product_view_bag.DataBind();
 
@@ -107,47 +108,7 @@ namespace BitSystem
 
         }// protected void SQL_readActionProduct()
 
-        private void fetchProductInfo(string connString)
-        {
-            // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
-
-            //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
-            SqlConnection connection = new SqlConnection(s_data);
-
-            // bug1: SQL content
-            string sql_statement = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'bag' and status = 'onsale' ";
-
-            // bug2: sqlText
-            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
-            SqlCommand Command = new SqlCommand(sql_statement, connection);
-
-            //與資料庫連接的通道開啟
-            connection.Open();
-
-            //new一個DataReader接取Execute所回傳的資料。
-            SqlDataReader Reader1 = Command.ExecuteReader();
-
-            //檢查是否有資料列
-            if (Reader1.HasRows)
-            {
-                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
-                while (Reader1.Read())
-                {
-                    //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-
-
-                }// while (Reader.Read())
-
-            }// if (Reader.HasRows) login name match
-            else
-            {
-                //Response.Write("<script>alert('商品資料庫 Action_product 無此帳號！');</script>");
-
-            }// if (Reader.HasRows) login name mismatch
-            //關閉與資料庫連接的通道
-            connection.Close();
-        }// private void fetchGoodPicsPathname()
+        
 
         protected void product_view_life_ItemCommand(object source,DataListCommandEventArgs e)
         {
@@ -326,7 +287,7 @@ namespace BitSystem
 
         protected void more_hot_Click(object sender, EventArgs e)
         {
-                Response.Redirect("GoodListForm.aspx");
+            Response.Redirect("GoodListForm.aspx");
         }
 
 

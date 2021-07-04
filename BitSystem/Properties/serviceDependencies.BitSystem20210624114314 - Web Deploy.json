@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/membertestdb/databases/Sale_net_Jun22_2021",
+      "type": "mssql.azure",
+      "connectionId": "sale_netConnectionString2",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

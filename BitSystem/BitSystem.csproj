@@ -51,6 +51,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -273,10 +274,13 @@
     <Content Include="list_view.aspx" />
     <Content Include="manager_check.aspx" />
     <Content Include="memberOrder.aspx" />
+    <Content Include="pic\A3.jpg" />
+    <Content Include="pic\Bella.jpg" />
     <Content Include="pic\bootstrap_bicycle.png" />
     <Content Include="pic\bootstrap_iphone13.png" />
     <Content Include="pic\bootstrap_mask.png" />
     <Content Include="pic\bootstrap_switch.png" />
+    <Content Include="pic\pexels.jpg" />
     <Content Include="sale_chickout_product.aspx" />
     <Content Include="sale_chickout_member.aspx" />
     <Content Include="product_onsale.aspx" />

@@ -10,6 +10,9 @@ namespace BitSystem
 {
     public partial class memberLoginForm : System.Web.UI.Page
     {
+
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
@@ -135,7 +138,7 @@ namespace BitSystem
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (bSQLDB_verify("Sale_net_Jun22_2021ConnectionString2", _loginName.Text)
+            if (bSQLDB_verify(connString, _loginName.Text)
                 == true)
             {
 
@@ -147,7 +150,7 @@ namespace BitSystem
                 }
                 else
                 {
-                    Response.Redirect("Home.aspx");
+                    Server.Transfer("Home.aspx");
                 }
             }
 
@@ -162,7 +165,7 @@ namespace BitSystem
             }
 
             // if the e-mail exists, reply the account has used
-            if (bSQLDB_ifmatch("Sale_net_Jun22_2021ConnectionString2", _memberAccount.Text)
+            if (bSQLDB_ifmatch(connString, _memberAccount.Text)
                 == true)
             {
                 Response.Write("<script>alert('帳號已有會員登記，請改另一個帳號名稱 ');</script>");
