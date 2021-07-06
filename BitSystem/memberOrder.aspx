@@ -165,53 +165,55 @@
 		<h2> 訂單明細</h2>	
     
 			<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-				<asp:ListItem>請選擇</asp:ListItem>
 				<asp:ListItem>已上架</asp:ListItem>
 				<asp:ListItem>競標中</asp:ListItem>
 				<asp:ListItem>已得標</asp:ListItem>
 			</asp:DropDownList>
 			
+			<br>
 			</br>
 
             <div class="breadcrumb">
+			共有<asp:Label id="lblRecordCount" ForeColor="red" runat="server" />個商品
+			當前為<asp:Label id="lblCurrentPage" ForeColor="red" runat="server" />/<asp:Label id="lblPageCount" ForeColor="red" runat="server" />頁 
+			<asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_DataBound" >
+					<ItemTemplate>
+						<div class="thumbnail">
+							<table  border="1" >
+								<tr>
+									<td align='center'>商品圖片</td>
+									<td align='center'>商品名稱</td>
+									<td align='center'>商品市價</td>
+									<td align='center'>商品描述</td>
+								</tr>
+								<tr>
+									<td >
+									<asp:ImageButton ID="pic_pathname" width="200" runat="server"  CommandName="click"  ImageUrl='<%# Eval("pic_pathname") %>' />
+									</td>
 
-			<asp:GridView ID="_GoodsGridView" runat="server" AutoGenerateColumns="false"
-						  CellPadding="4" 
-						  AutoGenerateSelectButton="True"
-						  OnSelectedIndexChanged="GoodsGridView_SelectedIndexChanged">
-				<Columns>
-					<asp:TemplateField HeaderText="圖片" HeaderStyle-Width="200px">
-						<ItemTemplate>
-							<asp:Image ID="img0" runat="server"  Height="160"  width="160"  ImageUrl='<%# Eval("pic_pathname") %>' /> 
-						</ItemTemplate>
-					</asp:TemplateField>
-					<asp:TemplateField HeaderText="商品名稱" HeaderStyle-Width="150px">
-						<ItemTemplate>   
-							<asp:Label ID="product_name" runat="server" Text='<%# Eval("product") %>'/>
-						</ItemTemplate> 
-					</asp:TemplateField>
-					<asp:TemplateField HeaderText="商品描述" HeaderStyle-Width="150px">
-						<ItemTemplate>   
-							<asp:Label ID="product_desc" runat="server" Text='<%# Eval("description") %>'/>
-						</ItemTemplate> 
-					</asp:TemplateField>
-					<asp:TemplateField HeaderText="商品數量" HeaderStyle-Width="150px">
-						<ItemTemplate>  
-							<asp:Label ID="total_number" runat="server" Text='<%# Eval("total_number") %>'/>
-						</ItemTemplate> 
-					</asp:TemplateField>
-					<asp:TemplateField HeaderText="商家代號" HeaderStyle-Width="150px">
-						<ItemTemplate>  
-							<asp:Label ID="seller_ID" runat="server" Text='<%# Eval("seller_ID") %>'/>
-						</ItemTemplate> 
-					</asp:TemplateField>
-					<asp:TemplateField HeaderText="商品代號" HeaderStyle-Width="150px">
-						<ItemTemplate>
-							<asp:Label ID="Action_product_ID" runat="server" Text='<%# Eval("Action_product_ID") %>'/>
-						</ItemTemplate> 
-					</asp:TemplateField>
-				</Columns>
-			</asp:GridView>
+									<td align='center'>
+									<asp:Label ID="product" width="80" runat="server" Text='<%# Eval("product") %>'/>
+									</td>
+							
+									<td align='center'>
+									<asp:Label ID="official_price" width="80" runat="server" Text='<%# Eval("official_price") %>'/>
+									</td>
+					
+									<td align='center'>
+									<asp:Label ID="description" width="290" runat="server" Text='<%# Eval("description") %>'/>
+									<asp:Label ID="action_product_ID" runat="server" Visible="false" Text='<%# Eval("action_product_ID") %>'/>
+									<asp:Label ID="seller_ID" runat="server" Visible="false" Text='<%# Eval("seller_ID") %>'/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</ItemTemplate>
+				</asp:DataList>
+				<div align ="center">
+					<asp:LinkButton id="lbnPrevPage" Text="上一頁" CommandName="prev" OnCommand="Page_OnClick" runat="server" />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<asp:LinkButton id="lbnNextPage" Text="下一頁" CommandName="next" OnCommand="Page_OnClick" runat="server" />
+				</div>
 		</div>
 </form>
 		<!-- 

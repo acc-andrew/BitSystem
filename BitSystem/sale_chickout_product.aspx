@@ -216,8 +216,8 @@ Body Section
 			</div>
 			<div class="row-fluid">	 
 				<div align ="center" >
-				<asp:Button ID="Button4" runat="server" Text="確認資料" OnClick="Button3_Click" />
-				<asp:Button ID="Button2" runat="server" Text="繼續下標" OnClick="Button4_Click" />
+				<asp:Button ID="checkdata" runat="server" Text="確認資料" OnClick="checkdata_Click" />
+				<asp:Button ID="backbid" runat="server" Text="繼續下標" OnClick="backbid_Click" />
 				</div>
 			</div>
 	</div>

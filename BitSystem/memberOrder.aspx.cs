@@ -7,34 +7,353 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using Microsoft.Build.Tasks.Deployment.Bootstrapper;
+using System.Collections;
 
 namespace BitSystem
 {
     public partial class memberOrder : System.Web.UI.Page
     {
-        SqlDataAdapter _da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
-        DataSet _ds = new DataSet();
-        SqlCommand _cmd = new SqlCommand();
-        SqlConnection _Conn = new SqlConnection();
-        private List<fetchProductData> _aFetchedProduct = new List<fetchProductData>();
-        public virtual System.Web.UI.WebControls.GridViewRow SelectedRow { get; }
+        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        DataSet ds_check = new DataSet();
+        DataSet ds_page = new DataSet();
+        SqlCommand cmd_check = new SqlCommand();
+        SqlCommand cmd_page = new SqlCommand();
+        SqlConnection conn = new SqlConnection();
+
+        //設定分頁項目
+        int PageSize, RecordCount, PageCount, CurrentPage;
+
+        //設定資料庫資訊
+        string connString = "Sale_net_Jun22_2021ConnectionString";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //設定會員登入與否顯現標示不同
+            //設定PageSize
+            PageSize = 10;
 
-            if (Convert.ToString(Session["Login"]) == "logged")
+            //設定會員登入與否顯現標示不同
+            if (IsPostBack == false)
             {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
+                if (Convert.ToString(Session["Login"]) == "logged")
+                {
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
+                }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                }
+
+                if (DropDownList1.SelectedValue == "已上架")
+                {
+                    product_view.Visible = true;
+
+                    //已上架
+                    string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                        "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                                        
+                    // 判斷有沒有資料
+                    SQL_readActionProduct(connString, cmdText_onsale);
+                                        
+                    if (ds_check.Tables[0].Rows.Count > 0)
+                    {
+                        //初始設定剛進頁面 匯入資料                       
+                        ListBind(connString, cmdText_onsale);
+                        CurrentPage = 0;
+                        ViewState["PageIndex"] = 0;
+
+                        //計算總共有多少記錄(onsale)             
+                        string sql_statement1_onsale = $"select count(*) as co from Action_product " +
+                        "where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                        RecordCount = CalculateRecord(connString, sql_statement1_onsale);
+                        lblRecordCount.Text = RecordCount.ToString();
+
+                        //計算總共有多少頁(onsale)
+                        PageCount = (RecordCount / PageSize)+1;
+                        lblPageCount.Text = PageCount.ToString();
+                        ViewState["PageCount"] = PageCount;
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('還沒有商品喔!');</script>");
+                        product_view.Visible = false;
+                    }
+                }
+            }
+        }
+
+        //下拉式選單選擇時出現商品頁更換
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (DropDownList1.SelectedValue == "已上架")
+            {
+                product_view.Visible = true;
+
+                //已上架
+                string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                        "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                // 判斷有沒有資料
+                SQL_readActionProduct(connString, cmdText_onsale);
+
+                if (ds_check.Tables[0].Rows.Count > 0)
+                {
+                    //初始設定剛進頁面 匯入資料
+                    ListBind(connString, cmdText_onsale);
+                    CurrentPage = 0;
+                    ViewState["PageIndex"] = 0;
+
+                    //計算總共有多少記錄(onsale)             
+                    string sql_statement1_onsale = $"select count(*) as co from Action_product " +
+                    "where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                    RecordCount = CalculateRecord(connString, sql_statement1_onsale);
+                    lblRecordCount.Text = RecordCount.ToString();
+
+                    //計算總共有多少頁(onsale)
+                    PageCount = (RecordCount / PageSize) + 1;
+                    lblPageCount.Text = PageCount.ToString();
+                    ViewState["PageCount"] = PageCount;
+                }
+                else
+                {
+                    lblRecordCount.Text = "0";
+                    lblPageCount.Text = "0";
+                    lblCurrentPage.Text = "0";
+                    Response.Write("<script>alert('還沒有商品喔!');</script>");
+                    product_view.Visible = false;
+                }
+            }
+            else if (DropDownList1.SelectedValue == "競標中")
+            {
+                product_view.Visible = true;
+
+                //競標中
+                string cmdText_bidding = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                    "from Action_product where status='bidding' and seller_ID='" + Session["member_ID"] + "'";
+                // 判斷有沒有資料
+                SQL_readActionProduct(connString, cmdText_bidding);
+
+                if (ds_check.Tables[0].Rows.Count > 0)
+                {
+                    //初始設定剛進頁面 匯入資料      
+                    ListBind(connString, cmdText_bidding);
+                    CurrentPage = 0;
+                    ViewState["PageIndex"] = 0;
+
+                    //計算總共有多少記錄(onsale)             
+                    string sql_statement1_onsale = $"select count(*) as co from Action_product " +
+                    "where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                    RecordCount = CalculateRecord(connString, sql_statement1_onsale);
+                    lblRecordCount.Text = RecordCount.ToString();
+
+                    //計算總共有多少頁(onsale)
+                    PageCount = (RecordCount / PageSize) + 1;
+                    lblPageCount.Text = PageCount.ToString();
+                    ViewState["PageCount"] = PageCount;
+                }
+                else
+                {
+                    lblRecordCount.Text = "0";
+                    lblPageCount.Text = "0";
+                    lblCurrentPage.Text = "0";
+                    Response.Write("<script>alert('還沒有商品喔!');</script>");
+                    product_view.Visible = false;
+                }
+            }
+            else if (DropDownList1.SelectedValue == "已得標")
+            {
+                product_view.Visible = true;
+
+                //已結標
+                string cmdText_getbid = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                    "from Action_product where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
+                // 判斷有沒有資料
+                SQL_readActionProduct(connString, cmdText_getbid);
+
+                if (ds_check.Tables[0].Rows.Count > 0)
+                {
+                    //初始設定剛進頁面 匯入資料
+                    
+                    ListBind(connString, cmdText_getbid);
+                    CurrentPage = 0;
+                    ViewState["PageIndex"] = 0;
+
+                    //計算總共有多少記錄(onsale)
+                    string sql_statement1_onsale = $"select count(*) as co from Action_product " +
+                    "where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
+                    RecordCount = CalculateRecord(connString, sql_statement1_onsale);
+                    lblRecordCount.Text = RecordCount.ToString();
+
+                    //計算總共有多少頁(onsale)
+                    PageCount = (RecordCount / PageSize) + 1;
+                    lblPageCount.Text = PageCount.ToString();
+                    ViewState["PageCount"] = PageCount;
+                }
+                else
+                {
+                    lblRecordCount.Text = "0";
+                    lblPageCount.Text = "0";
+                    lblCurrentPage.Text = "0";
+                    Response.Write("<script>alert('還沒有商品喔!');</script>");
+                    product_view.Visible = false;
+                }
+            }
+        }
+
+
+        //計算總共有多少條記錄
+        public int CalculateRecord(string connectiion, string sql_statement1)
+        {
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
+            SqlConnection connection = new SqlConnection(s_data);
+            SqlCommand Command = new SqlCommand(sql_statement1, connection);
+            connection.Open();
+            SqlDataReader Reader = Command.ExecuteReader();
+            
+            int intCount;
+
+            if (Reader.HasRows)
+            {
+                Reader.Read();
+                intCount = Int32.Parse(Reader["co"].ToString());
             }
             else
             {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
+                intCount = 0;
+            }
+            Reader.Close();
+            return intCount;
+        }
+
+        // 匯入資料
+        public void ListBind(string connString, string sql_statement1_onsale)
+        {
+            //設定匯入的起終地址
+            int StartIndex = CurrentPage * PageSize;
+            cmd_page.Connection = conn;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data;
+
+            cmd_page.CommandText = sql_statement1_onsale;   //執行SQL語法進行查詢
+            da.SelectCommand = cmd_page;            //da選擇資料來源，由cmd載入進來  
+            da.Fill(ds_page, StartIndex, PageSize, "Action_product");//da把資料填入ds裡面
+
+            product_view.DataSource = ds_page.Tables["Action_product"].DefaultView;
+            product_view.DataBind();
+
+            //設定頁數與按鈕顯示
+            lbnNextPage.Enabled = true;
+            lbnPrevPage.Enabled = true;
+            if (CurrentPage == (PageCount - 1)) lbnNextPage.Enabled = false;
+            if (CurrentPage == 0) lbnPrevPage.Enabled = false;
+            lblCurrentPage.Text = (CurrentPage + 1).ToString();
+
+        }
+
+        //按下更換分頁
+        public void Page_OnClick(Object sender, CommandEventArgs e)
+        {
+            CurrentPage = (int)ViewState["PageIndex"];
+            PageCount = (int)ViewState["PageCount"];
+
+            string cmd = e.CommandName;
+            //判斷cmd,以判定翻頁方向
+            switch (cmd)
+            {
+                case "next":
+                    if (CurrentPage < (PageCount - 1)) CurrentPage++;
+                    break;
+                case "prev":
+                    if (CurrentPage > 0) CurrentPage--;
+                    break;
+            }
+
+            ViewState["PageIndex"] = CurrentPage;
+
+            if (DropDownList1.SelectedValue == "已上架")
+            {
+                string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                        "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                ListBind(connString, cmdText_onsale);
+            }
+            else if (DropDownList1.SelectedValue == "競標中")
+            {
+                string cmdText_bidding = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                    "from Action_product where status='bidding' and seller_ID='" + Session["member_ID"] + "'";
+                ListBind(connString, cmdText_bidding);
+            }
+            else if (DropDownList1.SelectedValue == "已得標")
+            {
+                string cmdText_getbid = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                    "from Action_product where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
+                ListBind(connString, cmdText_getbid);
             }
         }
+
+        // 紀錄商品資訊 提供點擊連結至商品頁
+        protected void product_view_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            DataListItem currentItem = e.Item;
+
+            if (e.CommandName == "click")
+            {
+
+                product_view.SelectedIndex = currentItem.ItemIndex;
+
+                string pic_pathname = ((ImageButton)currentItem.FindControl("pic_pathname")).ImageUrl;
+                string product = ((Label)currentItem.FindControl("product")).Text;
+                string official_price = ((Label)currentItem.FindControl("official_price")).Text;
+                string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
+                string description = ((Label)currentItem.FindControl("description")).Text;
+                string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+
+                Session["ProductName"] = product;
+                Session["ProductDesc"] = description;
+                Session["official_price"] = official_price;
+                Session["ImageUrl"] = pic_pathname;
+                Session["ProductID"] = action_product_ID;
+                Session["SellerID"] = seller_ID;
+
+                Response.Redirect("BitProductForm.aspx");
+
+            }
+        }
+
+        // 超過字數的欄位會隱藏 變成...
+        protected void product_view_DataBound(object sender, EventArgs e)
+        {
+            // 演示ToolTip，使用GridView自帶的ToolTip
+            for (int i = 0; i < product_view.Items.Count; i++)
+            {
+                product_view.Items[i].ToolTip = ((Label)product_view.Items[i].FindControl("description")).Text;
+                if (((Label)product_view.Items[i].FindControl("description")).Text.Length > 150)
+                {
+                    ((Label)product_view.Items[i].FindControl("description")).Text = ((Label)product_view.Items[i].FindControl("description")).Text.Substring(0, 125) + "......";
+                }
+            }
+        }
+     
+        // 檢查個狀態資料庫是否有資料
+        protected void SQL_readActionProduct(string connString,string cmdText)
+        {
+            cmd_check.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            cmd_check.CommandText = cmdText;   //執行SQL語法進行查詢
+            da.SelectCommand = cmd_check;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_check, "Action_product");            //da把資料填入ds裡面
+
+        }// protected void SQL_readActionProduct()
+
+
 
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
@@ -77,194 +396,6 @@ namespace BitSystem
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
         }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(DropDownList1.SelectedValue == "已上架")
-            {
-                _GoodsGridView.Visible = true;
-                // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo();
-
-                // to set event handler: row
-                // called while each row data prepared
-                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
-
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString4", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where (status='onsale' and seller_ID='" + Session["member_ID"]+"')");
-                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-                _GoodsGridView.DataBind();
-            }
-            else if (DropDownList1.SelectedValue == "競標中")
-            {
-                _GoodsGridView.Visible = true;
-                // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo();
-
-                // to set event handler: row
-                // called while each row data prepared
-                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
-
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString4", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status='bidding' and bidder_ID='" + Session["member_ID"] + "'");
-                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-                _GoodsGridView.DataBind();
-            }
-            else if (DropDownList1.SelectedValue == "已得標")
-            {
-                _GoodsGridView.Visible = true;
-                // pre-fetch picture pathname from Market_product2 DB
-                fetchProductInfo();
-
-                // to set event handler: row
-                // called while each row data prepared
-                _GoodsGridView.RowDataBound += new GridViewRowEventHandler(GridViewRowDataBound);
-
-                SQL_readActionProduct("Sale_net_Jun22_2021ConnectionString4", "SELECT pic_pathname,product,description,total_number,seller_ID,Action_product_ID from Action_product where status = 'getbid' and bid_winner_ID = '" + Session["member_ID"] + "'");
-                _GoodsGridView.DataSource = _ds; //將DataSet的資料載入到GridView1內
-                _GoodsGridView.DataBind();
-            }
-            else
-            {
-                _GoodsGridView.Visible = false;
-            }
-        }
-        public class fetchProductData
-        {
-            public int _ActionProductID { get; set; }
-            public string _imagePathname { get; set; }
-            public string _product_name { get; set; }
-            public string _description { get; set; }
-            public string _total_number { get; set; }
-            public string _seller_ID { get; set; }
-
-            public fetchProductData()
-            {
-
-            }
-
-            public fetchProductData(int prodID, string imagePathname,
-                            string name, string description,
-                            string total_number, string seller_ID)
-            {
-                this._ActionProductID = prodID;
-                this._imagePathname = imagePathname;
-                this._product_name = name;
-                this._description = description;
-                this._total_number = total_number;
-                this._seller_ID = seller_ID;
-            }// ctor
-
-        }// public class ListItem
-        private void fetchProductInfo()
-        {
-            // SQL DB
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["Sale_net_Jun22_2021ConnectionString4"].ConnectionString;
-
-            //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
-            SqlConnection connection = new SqlConnection(s_data);
-
-            // bug1: SQL content
-            string sql_statement = $"select action_product_ID,product,total_number,description,seller_ID,pic_pathname from Action_product";
-
-            // bug2: sqlText
-            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
-            SqlCommand Command = new SqlCommand(sql_statement, connection);
-
-            //與資料庫連接的通道開啟
-            connection.Open();
-
-            //new一個DataReader接取Execute所回傳的資料。
-            SqlDataReader Reader = Command.ExecuteReader();
-
-            //檢查是否有資料列
-            if (Reader.HasRows)
-            {
-                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
-                while (Reader.Read())
-                {
-                    fetchProductData rowData = new fetchProductData();
-                    //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-                    string str_pic_pathname = Reader["pic_pathname"].ToString();
-                    rowData._imagePathname = str_pic_pathname;
-                    _aFetchedProduct.Add(rowData);
-                }// while (Reader.Read())
-
-            }// if (Reader.HasRows) login name match
-            else
-            {
-                Response.Write("<script>alert('商品資料庫 Action_product 無此帳號！');</script>");
-
-            }// if (Reader.HasRows) login name mismatch
-            //關閉與資料庫連接的通道
-            connection.Close();
-        }// private void fetchGoodPicsPathname()
-
-        protected void GridViewRowDataBound(Object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)  // 
-            {
-                System.Web.UI.WebControls.Image imgFile = (System.Web.UI.WebControls.Image)e.Row.FindControl("img0");
-
-                string str_pic_pathname = _aFetchedProduct[e.Row.DataItemIndex]._imagePathname;
-                imgFile.ImageUrl = str_pic_pathname;
-
-            }// if(e.Row.RowType == DataControlRowType.DataRow)
-
-        }// void CustomersGridView_RowDataBound(Object sender, GridViewRowEventArgs e)
-
-        private string getCtlText(string idName)
-        {
-            GridViewRow SelectedRow = _GoodsGridView.SelectedRow;
-            Label lblName = (Label)SelectedRow.FindControl(idName);
-            return lblName.Text;
-        }// 
-        private Image getCtlImage(string idName)
-        {
-            GridViewRow SelectedRow = _GoodsGridView.SelectedRow;
-            Image img = (Image)SelectedRow.FindControl(idName);
-            return img;
-        }// 
-        protected void GoodsGridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*
-            int.Parse(getCtlText("Action_product_ID")) ;
-            int nSellerID = int.Parse(getCtlText("seller_ID"));
-            */
-            // 1. to store info to Session
-            // ImageUrl, product, desc, seller_ID
-            // 2. Redirect to ProductDetailForm.aspx
-            Image selectedImage = getCtlImage("img0");
-            Session["ImageUrl"] = selectedImage.ImageUrl;
-
-            string strProductName = getCtlText("product_name");
-            Session["ProductName"] = strProductName;
-
-            string strProductDesc = getCtlText("product_desc");
-            Session["ProductDesc"] = strProductDesc;
-
-            string strSellerID = getCtlText("seller_ID");
-            Session["SellerID"] = strSellerID;
-
-            string strProductID = getCtlText("Action_product_ID");
-            Session["ProductID"] = strProductID;
-
-            Response.Redirect("BitProductForm.aspx");
-            //Response.Write("<script>alert('選擇 GridView 內個別商品');</script>");
-        }// 
-
-        protected void SQL_readActionProduct(string connString,string cmdText)
-        {
-            _cmd.Connection = _Conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
-
-            //設定連線IP位置、資料表，帳戶，密碼
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
-            _Conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
-            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
-
-            _cmd.CommandText = cmdText;   //執行SQL語法進行查詢
-            _da.SelectCommand = _cmd;            //da選擇資料來源，由cmd載入進來
-            _da.Fill(_ds, "Action_product");            //da把資料填入ds裡面
-
-        }// protected void SQL_readActionProduct()
 
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
