@@ -181,6 +181,7 @@
 			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False" ></asp:TextBox>
 			<br/>            
 			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
+			ˊ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label6" runat="server" Text="出生日期："></asp:Label>

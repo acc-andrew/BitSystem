@@ -14,7 +14,7 @@ namespace BitSystem
     public partial class PutGoodOnShelfForm : System.Web.UI.Page
     {
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString4";
 
 
         private string[] aClassfyTitle = new string[]

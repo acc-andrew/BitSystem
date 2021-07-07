@@ -24,7 +24,7 @@ namespace BitSystem
         //設定分頁項目
         int PageSize, RecordCount, PageCount, CurrentPage;
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString4";
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定PageSize
@@ -90,6 +90,7 @@ namespace BitSystem
             // bug1: SQL content with session classify
             string sql_statement1_classify = $"select count(*) as co from Action_product " +
                 "where status='onsale' and classify ='" + Session["classify"] + "'";
+           
             
             string sql_statement1;
             // bug2: sqlText
