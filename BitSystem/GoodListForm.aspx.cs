@@ -95,11 +95,11 @@ namespace BitSystem
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
             SqlConnection connection = new SqlConnection(s_data);
             string sql_statement_no_classify = $"select count(*) as co from Action_product " +
-                "where status='onsale'" + $"and closedDateTime >= '{strToday}' order by closedDateTime";
+                "where status='onsale'" + $"and closedDateTime >= '{strToday}'";
 
             // bug1: SQL content with session classify
             string sql_statement1_classify = $"select count(*) as co from Action_product " +
-                "where status='onsale' and classify ='" + Session["classify"] + "'" + $"and closedDateTime >= '{strToday}' order by closedDateTime";
+                "where status='onsale' and classify ='" + Session["classify"] + "'" + $"and closedDateTime >= '{strToday}'";
             
             string sql_statement1;
             // bug2: sqlText
