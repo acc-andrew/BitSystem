@@ -41,14 +41,12 @@ namespace BitSystem
                     manager.Visible = true;
                 }
 
-
                 if (Session["ProductName"] != null)
                 {
                     string strProductName = (string) Session["ProductName"];
                     _ProductName.Text = strProductName;
                 }
 
-                
                 if (Session["ProductDesc"] != null)
                 {
                     string strProductDesc = (string)Session["ProductDesc"];
@@ -73,7 +71,6 @@ namespace BitSystem
                     _ProductImage.ImageUrl = strImageUrl;
                 }
 
-                
                 if (Session["ProductID"] != null)
                 {
                     string strProductID = (string)Session["ProductID"];

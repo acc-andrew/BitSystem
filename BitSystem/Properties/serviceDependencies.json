@@ -2,7 +2,7 @@
   "dependencies": {
     "mssql1": {
       "type": "mssql",
-      "connectionId": "sale_netConnectionString2"
+      "connectionId": "Sale_net_Jun22_2021ConnectionString2"
     }
   }
 }
