@@ -28,7 +28,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定PageSize
-            PageSize = 10;
+            PageSize = 7;
 
             if (IsPostBack == false)
             {
@@ -45,6 +45,60 @@ namespace BitSystem
                     register.Visible = true;
                     manager.Visible = true;
                 }
+
+                //設定/商品列表/分類顯示
+                if (Convert.ToString(Session["classify"]) == "cloth")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "衣服飾品";
+                }
+                else if (Convert.ToString(Session["classify"]) == "book")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "書籍文創";
+                }
+                else if (Convert.ToString(Session["classify"]) == "life")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "居家生活";
+                }
+                else if (Convert.ToString(Session["classify"]) == "bag")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "包包精品";
+                }
+                else if (Convert.ToString(Session["classify"]) == "shoes")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "男女鞋款";
+                }
+                else if (Convert.ToString(Session["classify"]) == "car")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "汽機車零件百貨";
+                }
+                else if (Convert.ToString(Session["classify"]) == "habbit")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "娛樂收藏";
+                }
+                else if (Convert.ToString(Session["classify"]) == "pet")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "寵物用品";
+                }
+                else if (Convert.ToString(Session["classify"]) == "other")
+                {
+                    classify_label.Visible = true;
+                    classify_label.Text = "其他類別";
+                }
+                else
+                {
+                    classify_label.Visible = false;
+                }
+
+
+
 
 
                 // pre-fetch picture pathname from Market_product2 DB
