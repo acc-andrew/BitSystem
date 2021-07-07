@@ -269,9 +269,7 @@
     <Content Include="GoodPics\我們拍賣吧.jpg" />
     <Content Include="GoodPics\我們拍賣吧.png" />
     <Content Include="GoodPics\我們拍賣吧2.png" />
-    <Content Include="grid_view_test.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="list_view.aspx" />
     <Content Include="manager_check.aspx" />
     <Content Include="contactus_mail.aspx" />
     <Content Include="memberOrder.aspx" />
@@ -284,7 +282,6 @@
     <Content Include="pic\pexels.jpg" />
     <Content Include="sale_chickout_product.aspx" />
     <Content Include="sale_chickout_member.aspx" />
-    <Content Include="product_onsale.aspx" />
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
     <Content Include="PutGoodOnShelfForm.aspx" />
@@ -349,26 +346,12 @@
     <Compile Include="GoodListForm.aspx.designer.cs">
       <DependentUpon>GoodListForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="grid_view_test.aspx.cs">
-      <DependentUpon>grid_view_test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="grid_view_test.aspx.designer.cs">
-      <DependentUpon>grid_view_test.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="list_view.aspx.cs">
-      <DependentUpon>list_view.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="list_view.aspx.designer.cs">
-      <DependentUpon>list_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="manager_check.aspx.cs">
       <DependentUpon>manager_check.aspx</DependentUpon>
@@ -404,13 +387,6 @@
     </Compile>
     <Compile Include="sale_chickout_member.aspx.designer.cs">
       <DependentUpon>sale_chickout_member.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="product_onsale.aspx.cs">
-      <DependentUpon>product_onsale.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="product_onsale.aspx.designer.cs">
-      <DependentUpon>product_onsale.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberProfile.aspx.cs">
       <DependentUpon>memberProfile.aspx</DependentUpon>

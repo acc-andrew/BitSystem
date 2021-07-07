@@ -18,11 +18,12 @@ namespace BitSystem
         DataSet ds_first = new DataSet();
         DataSet ds_sec = new DataSet();
         DataSet ds_third = new DataSet();
+        DataSet ds_getbid = new DataSet();
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,21 +45,44 @@ namespace BitSystem
                 }
 
                 //fetchProductInfo("Sale_net_Jun18_2021_betaConnectionString3");
+                // 載入生活熱門
                 SQL_readActionProduct_life(connString);
                 product_view_life.DataSource = ds_first; //將DataSet的資料載入到datalist內
                 product_view_life.DataBind();
-                
+                // 載入衣服熱門
                 SQL_readActionProduct_cloth(connString);
                 product_view_cloth.DataSource = ds_sec; //將DataSet的資料載入到datalist內
                 product_view_cloth.DataBind();
-                
+                // 載入包包熱門
                 SQL_readActionProduct_bag(connString);
                 product_view_bag.DataSource = ds_third; //將DataSet的資料載入到datalist內
                 product_view_bag.DataBind();
+                // 載入以截標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
 
             }
 
         }
+        // 左側以截標商品展示
+        protected void SQL_readActionProduct_getbid(string connString)
+        {
+            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            cmd.CommandText = $"SELECT Top 4 *,Member.name FROM Action_product " +
+                        "INNER JOIN Member " +
+                        "ON Action_product.bid_winner_ID = Member.member_ID";   //執行SQL語法進行查詢
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+
+            da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
+
+
+        }// protected void SQL_readActionProduct()
 
         protected void SQL_readActionProduct_life(string connString)
         {
@@ -75,6 +99,7 @@ namespace BitSystem
 
 
         }// protected void SQL_readActionProduct()
+
 
         protected void SQL_readActionProduct_cloth(string connString)
         {

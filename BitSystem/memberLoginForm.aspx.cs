@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,28 +11,56 @@ namespace BitSystem
 {
     public partial class memberLoginForm : System.Web.UI.Page
     {
+        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        SqlConnection conn = new SqlConnection();
+        DataSet ds_getbid = new DataSet();
+        SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同
-            
 
-            if (Convert.ToString(Session["Login"]) == "logged")
+            if (IsPostBack == false)
             {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
-            }
-            else
-            {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
+                    if (Convert.ToString(Session["Login"]) == "logged")
+                {
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
+                }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                }
+
+                // 載入已結標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
             }
         }
-        
+
+        // 左測已結標商品展示
+        protected void SQL_readActionProduct_getbid(string connString)
+        {
+            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+            cmd.CommandText = $"SELECT Top 4 *,Member.name FROM Action_product " +
+                        "INNER JOIN Member " +
+                        "ON Action_product.bid_winner_ID = Member.member_ID";   //執行SQL語法進行查詢
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
+
+        }// protected void SQL_readActionProduct()
+
+
         protected bool bSQLDB_verify(string connString, string _guiName)
         {
             bool bFound = false;

@@ -11,9 +11,13 @@ namespace BitSystem
 {
     public partial class sale_chickout_member : System.Web.UI.Page
     {
+        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        SqlConnection conn = new SqlConnection();
+        DataSet ds_getbid = new DataSet();
+        SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -76,7 +80,27 @@ namespace BitSystem
             //關閉與資料庫連接的通道
             connection.Close();
 
+            // 載入已結標熱門
+            SQL_readActionProduct_getbid(connString);
+            getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+            getbid_view.DataBind();
+
         }
+
+        // 左測已結標商品展示
+        protected void SQL_readActionProduct_getbid(string connString)
+        {
+            cmd.Connection = conn;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data;
+            cmd.CommandText = $"SELECT Top 4 *,Member.name FROM Action_product " +
+                        "INNER JOIN Member " +
+                        "ON Action_product.bid_winner_ID = Member.member_ID";   //執行SQL語法進行查詢
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
+
+        }
+
 
         protected void pay_Click(object sender, EventArgs e)
         {
