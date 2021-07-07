@@ -145,9 +145,12 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 4 *,Member.name FROM Action_product " +
-                        "INNER JOIN Member " +
-                        "ON Action_product.bid_winner_ID = Member.member_ID";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 *,Member.name " +
+                $"FROM Action_product " +
+                $"INNER JOIN Member " +
+                $"ON Action_product.bid_winner_ID = Member.member_ID " +
+                $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢
+
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
 
             da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面

@@ -98,9 +98,13 @@ namespace BitSystem
             cmd.Connection = conn;
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
             conn.ConnectionString = s_data;
-            cmd.CommandText = $"SELECT Top 4 *,Member.name FROM Action_product " +
-                        "INNER JOIN Member " +
-                        "ON Action_product.bid_winner_ID = Member.member_ID";   //執行SQL語法進行查詢
+
+            cmd.CommandText = $"SELECT Top 3 *,Member.name " +
+                 $"FROM Action_product " +
+                 $"INNER JOIN Member " +
+                 $"ON Action_product.bid_winner_ID = Member.member_ID " +
+                 $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢
+
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
 
