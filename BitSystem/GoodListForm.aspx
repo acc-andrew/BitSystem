@@ -170,6 +170,7 @@ Upper Header Section
 	    <ul class="breadcrumb">
 		    <li><a href="Home.aspx">Home</a> <span class="divider">/</span></li>
 		    <li class="active">商品列表</li>
+	        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 	    </ul>
         <h2>商品列表</h2>
 

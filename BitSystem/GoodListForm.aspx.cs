@@ -46,6 +46,12 @@ namespace BitSystem
                     manager.Visible = true;
                 }
 
+                if (Convert.ToString(Session["classify"]) != "null")
+                {
+                    Label1.Text = (string)Session["classify"];
+                }
+                
+
                 // if user clicks left panel area
 
                 // pre-fetch picture pathname from Market_product2 DB
