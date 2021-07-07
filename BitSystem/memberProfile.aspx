@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberProfile.aspx.cs" Inherits="BitSystem.MemberProfile" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberProfile.aspx.cs" Inherits="BitSystem.MemberProfile" %>
 
 <!DOCTYPE html>
 <html lang="en">
