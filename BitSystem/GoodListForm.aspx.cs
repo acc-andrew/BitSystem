@@ -20,6 +20,9 @@ namespace BitSystem
         SqlCommand cmd_check = new SqlCommand();
         SqlCommand cmd_page = new SqlCommand();
         SqlConnection conn = new SqlConnection();
+        DataSet ds_getbid = new DataSet();
+        SqlCommand cmd = new SqlCommand();
+
 
         //設定分頁項目
         int PageSize, RecordCount, PageCount, CurrentPage;
@@ -97,7 +100,7 @@ namespace BitSystem
                     classify_label.Visible = false;
                 }
 
-                //fetchProductInfo(connString);
+
 
                 // 判斷有沒有資料
                 SQL_readActionProduct_byClosest(connString);
@@ -124,14 +127,42 @@ namespace BitSystem
                     product_view.Visible = false;
                 }
 
+                // 載入以截標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
+
             }
         }// Page_Load
+
+        // 左側以截標商品展示
+        protected void SQL_readActionProduct_getbid(string connString)
+        {
+            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+                                            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,official_price,low_price,Member.name " +
+                            $"FROM Action_product " +
+                $"INNER JOIN Member " +
+                $"ON Action_product.bid_winner_ID = Member.member_ID " +
+                $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢
+
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+
+            da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
+
+        }// protected void SQL_readActionProduct()
 
 
         //計算總共有多少條記錄
         public int CalculateRecord(string connectiion)
         {
+            // 抓取今日資訊
             string strToday = getTodayString();
+
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
             SqlConnection connection = new SqlConnection(s_data);
             string sql_statement_no_classify = $"select count(*) as co from Action_product " +
@@ -308,10 +339,12 @@ namespace BitSystem
                                             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
             // bug1: SQL content without session classify
-            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and closedDateTime >= '{strTotal}'";
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                $"from Action_product where status='onsale' and closedDateTime >= '{strTotal}'";
 
             // bug1: SQL content with session classify
-            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and classify ='" + Session["classify"] + "'" + $" and closedDateTime >= '{strTotal}'";
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                $"from Action_product where status='onsale' and classify ='" + Session["classify"] + "'" + $" and closedDateTime >= '{strTotal}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
