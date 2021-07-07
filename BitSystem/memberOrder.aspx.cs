@@ -30,7 +30,7 @@ namespace BitSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定PageSize
-            PageSize = 10;
+            PageSize = 7;
 
             //設定會員登入與否顯現標示不同
             if (IsPostBack == false)
@@ -330,9 +330,9 @@ namespace BitSystem
             for (int i = 0; i < product_view.Items.Count; i++)
             {
                 product_view.Items[i].ToolTip = ((Label)product_view.Items[i].FindControl("description")).Text;
-                if (((Label)product_view.Items[i].FindControl("description")).Text.Length > 150)
+                if (((Label)product_view.Items[i].FindControl("description")).Text.Length > 100)
                 {
-                    ((Label)product_view.Items[i].FindControl("description")).Text = ((Label)product_view.Items[i].FindControl("description")).Text.Substring(0, 125) + "......";
+                    ((Label)product_view.Items[i].FindControl("description")).Text = ((Label)product_view.Items[i].FindControl("description")).Text.Substring(0, 100) + "......";
                 }
             }
         }
