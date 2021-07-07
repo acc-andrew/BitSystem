@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+
 
 namespace BitSystem
 {
@@ -20,7 +20,7 @@ namespace BitSystem
         public virtual System.Web.UI.WebControls.GridViewRow SelectedRow { get; }
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString2";
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定會員登入與否顯現標示不同

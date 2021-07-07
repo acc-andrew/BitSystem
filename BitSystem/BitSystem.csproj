@@ -288,7 +288,7 @@
     <Content Include="memberProfile.aspx" />
     <Content Include="pic\iphone-12.jpg" />
     <Content Include="PutGoodOnShelfForm.aspx" />
-    <None Include="Properties\PublishProfiles\letsBiddingWeb - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\BitSystem20210624123254 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GoodListForm.aspx" />
     <Content Include="GoodPics\iPhone8_256g.jpg" />

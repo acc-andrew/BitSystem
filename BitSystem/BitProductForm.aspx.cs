@@ -20,7 +20,7 @@ namespace BitSystem
         System.Timers.Timer _timer;
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString2";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,14 +41,12 @@ namespace BitSystem
                     manager.Visible = true;
                 }
 
-
                 if (Session["ProductName"] != null)
                 {
                     string strProductName = (string) Session["ProductName"];
                     _ProductName.Text = strProductName;
                 }
 
-                
                 if (Session["ProductDesc"] != null)
                 {
                     string strProductDesc = (string)Session["ProductDesc"];
@@ -73,7 +71,6 @@ namespace BitSystem
                     _ProductImage.ImageUrl = strImageUrl;
                 }
 
-                
                 if (Session["ProductID"] != null)
                 {
                     string strProductID = (string)Session["ProductID"];

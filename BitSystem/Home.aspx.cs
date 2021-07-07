@@ -22,7 +22,7 @@ namespace BitSystem
         SqlConnection conn = new SqlConnection();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString2";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -113,10 +113,8 @@ namespace BitSystem
         protected void product_view_life_ItemCommand(object source,DataListCommandEventArgs e)
         {
             DataListItem currentItem = e.Item;
-
             if (e.CommandName == "click")
             {
-
                 product_view_life.SelectedIndex = currentItem.ItemIndex;
 
                 string pic_pathname = ((ImageButton)currentItem.FindControl("pic_pathname")).ImageUrl;
@@ -132,7 +130,6 @@ namespace BitSystem
                 Session["SellerID"] = seller_ID;
 
                 Response.Redirect("BitProductForm.aspx");
- 
             }
         }
 

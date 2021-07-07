@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/bitsystemdbserver/databases/BitSystem_db",
+      "type": "mssql.azure",
+      "connectionId": "Sale_net_Jun22_2021ConnectionString2",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
