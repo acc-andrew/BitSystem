@@ -253,33 +253,38 @@ namespace BitSystem
                                     {
                                         if (_address.Text != "")
                                         {
-                                            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+                                            if (_cellphoneNo.Text.Length == 10)
+                                            {
+                                                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
-                                            SqlConnection connection = new SqlConnection(s_data);
+                                                SqlConnection connection = new SqlConnection(s_data);
 
-                                            string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
-
-
-                                            SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
-
-                                            //與資料庫連接的通道開啟
-                                            connection.Open();
-
-                                            Command.ExecuteNonQuery();
+                                                string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
 
 
+                                                SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
 
-                                            //關閉與資料庫連接的通道
-                                            connection.Close();
+                                                //與資料庫連接的通道開啟
+                                                connection.Open();
 
-                                            _memberPassword.Enabled = false;
-                                            _name.Enabled = false;
-                                            _email.Enabled = false;
-                                            _cellphoneNo.Enabled = false;
-                                            _birthYear_list.Enabled = false;
-                                            _birthMonth_list.Enabled = false;
-                                            _birthDate_list.Enabled = false;
-                                            _address.Enabled = false;
+                                                Command.ExecuteNonQuery();
+
+
+
+                                                //關閉與資料庫連接的通道
+                                                connection.Close();
+
+                                                _memberPassword.Enabled = false;
+                                                _name.Enabled = false;
+                                                _email.Enabled = false;
+                                                _cellphoneNo.Enabled = false;
+                                                _birthYear_list.Enabled = false;
+                                                _birthMonth_list.Enabled = false;
+                                                _birthDate_list.Enabled = false;
+                                                _address.Enabled = false;
+                                            }
+                                            else
+                                                Response.Write($"<script>alert('行動電話長度錯誤，請填入完整10碼');</script>");
                                         }
                                         else
                                             Response.Write($"<script>alert('請輸入地址');</script>");

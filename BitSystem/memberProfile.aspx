@@ -169,8 +169,7 @@
 	<div class="span9">
 		<h2> 會員資料</h2>	
 
-        <div>
-			<h1>會員資料修改</h1>
+       會員資料修改</h1>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
 			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
@@ -184,7 +183,7 @@
 			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False" ></asp:TextBox>
 			<br/>            
 			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
-			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" ></asp:TextBox>
+			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" MaxLength="10" ></asp:TextBox>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<br/>
 			<asp:Label ID="Label6" runat="server" Text="出生日期："></asp:Label>
