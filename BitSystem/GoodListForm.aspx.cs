@@ -24,7 +24,8 @@ namespace BitSystem
         //設定分頁項目
         int PageSize, RecordCount, PageCount, CurrentPage;
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString2";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定PageSize
@@ -52,7 +53,10 @@ namespace BitSystem
                 //fetchProductInfo(connString);
 
                 // 判斷有沒有資料
-                SQL_readActionProduct(connString);
+                // SQL_readActionProduct(connString);
+                // 顯示結標日期晚於今天的商品
+                // SQL_readActionProduct_afterToday(connString);
+                SQL_readActionProduct_byClosest(connString);
                 if (ds_check.Tables[0].Rows.Count > 0)
                 {
                     //初始設定剛進頁面 匯入資料                       
@@ -76,6 +80,7 @@ namespace BitSystem
                 }
 
             }
+        }// Page_Load
 
 
         public void DisplayClassifyContent()
@@ -86,14 +91,15 @@ namespace BitSystem
         //計算總共有多少條記錄
         public int CalculateRecord(string connectiion)
         {
+            string strToday = getTodayString();
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connectiion].ConnectionString;
             SqlConnection connection = new SqlConnection(s_data);
             string sql_statement_no_classify = $"select count(*) as co from Action_product " +
-                "where status='onsale'";
+                "where status='onsale'" + $"and closedDateTime >= '{strToday}' order by closedDateTime";
 
             // bug1: SQL content with session classify
             string sql_statement1_classify = $"select count(*) as co from Action_product " +
-                "where status='onsale' and classify ='" + Session["classify"] + "'";
+                "where status='onsale' and classify ='" + Session["classify"] + "'" + $"and closedDateTime >= '{strToday}' order by closedDateTime";
             
             string sql_statement1;
             // bug2: sqlText
@@ -128,6 +134,7 @@ namespace BitSystem
         // 匯入資料
         public void ListBind(string connString)
         {
+            string strToday = getTodayString();
             //設定匯入的起終地址
             int StartIndex = CurrentPage * PageSize;
             cmd_page.Connection = conn;
@@ -135,11 +142,11 @@ namespace BitSystem
             conn.ConnectionString = s_data;
 
             string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
-                $"from Action_product where status='onsale'";
+                $"from Action_product where status='onsale'" + $"and closedDateTime >= '{strToday}' order by closedDateTime";
 
             // bug1: SQL content with session classify
             string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
-                $"from Action_product where status='onsale' and classify ='" + Session["classify"] + "'";
+                $"from Action_product where status='onsale' and classify ='" + Session["classify"] + "'" + $"and closedDateTime >= '{strToday}' order by closedDateTime";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -235,6 +242,80 @@ namespace BitSystem
             }
         }
 
+        protected string getTodayString()
+        {
+            string strYear = DateTime.Today.Year.ToString();
+            string strMonth = DateTime.Today.Month.ToString("00");
+            string strDay = DateTime.Today.Day.ToString("00");  
+            string strTotal = strYear+strMonth+strDay;  
+            return strTotal;
+        }
+
+        protected void SQL_readActionProduct_byClosest(string connString)
+        {
+            string strTotal = getTodayString();
+            // string today = DateTime.Now.Date.ToString("YYYYMMDD");
+            cmd_check.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+                                            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            // bug1: SQL content without session classify
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and closedDateTime >= '{strTotal}' order by closedDateTime";
+
+            // bug1: SQL content with session classify
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and classify ='" + Session["classify"] + "'" + $" and closedDateTime >= '{strTotal}' order by closedDateTime";
+
+            // bug2: sqlText
+            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+            if (Session["classify"] == null)
+            {
+                cmd_check.CommandText = sql_statement_no_classify;
+            }
+            else
+            {
+                cmd_check.CommandText = sql_statement1_classify;
+            }
+
+            da.SelectCommand = cmd_check;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_check, "Action_product");            //da把資料填入ds裡面
+        }// protected void SQL_readActionProduct_byClosest(string connString)
+
+
+        protected void SQL_readActionProduct_afterToday(string connString)
+        {
+            string strTotal = getTodayString();
+            // string today = DateTime.Now.Date.ToString("YYYYMMDD");
+            cmd_check.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+                                            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            // bug1: SQL content without session classify
+            string sql_statement_no_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and closedDateTime >= '{strTotal}'";
+
+            // bug1: SQL content with session classify
+            string sql_statement1_classify = $"SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price from Action_product where status='onsale' and classify ='" + Session["classify"] + "'" + $" and closedDateTime >= '{strTotal}'";
+
+            // bug2: sqlText
+            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+            if (Session["classify"] == null)
+            {
+                cmd_check.CommandText = sql_statement_no_classify;
+            }
+            else
+            {
+                cmd_check.CommandText = sql_statement1_classify;
+            }
+
+            da.SelectCommand = cmd_check;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_check, "Action_product");            //da把資料填入ds裡面
+
+        }
         // 檢查個狀態資料庫是否有資料
         protected void SQL_readActionProduct(string connString)
         {

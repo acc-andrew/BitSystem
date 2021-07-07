@@ -22,7 +22,7 @@ namespace BitSystem
         SqlConnection conn = new SqlConnection();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString2";
 
         protected void Page_Load(object sender, EventArgs e)
         {
