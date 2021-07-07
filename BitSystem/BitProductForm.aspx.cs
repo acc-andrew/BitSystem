@@ -116,10 +116,10 @@ namespace BitSystem
             //設定連線IP位置、資料表，帳戶，密碼
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
-            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+                                            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 *,Member.name " +
-                $"FROM Action_product " +
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,official_price,low_price,Member.name " +
+                            $"FROM Action_product " +
                 $"INNER JOIN Member " +
                 $"ON Action_product.bid_winner_ID = Member.member_ID " +
                 $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢

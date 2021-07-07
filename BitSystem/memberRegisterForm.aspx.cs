@@ -78,7 +78,7 @@ namespace BitSystem
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
             conn.ConnectionString = s_data;
 
-            cmd.CommandText = $"SELECT Top 3 *,Member.name " +
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,official_price,low_price,Member.name " +
                  $"FROM Action_product " +
                  $"INNER JOIN Member " +
                  $"ON Action_product.bid_winner_ID = Member.member_ID " +
