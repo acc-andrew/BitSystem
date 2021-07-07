@@ -217,35 +217,73 @@ namespace BitSystem
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            if (_memberPassword.Text != "")
+            {
+                if (_name.Text != "")
+                {
+                    if (_email.Text != "")
+                    {
+                        if (_cellphoneNo.Text != "")
+                        {
+                            if (_birthYear_list.Text != "")
+                            {
+                                if (_birthMonth_list.Text != "")
+                                {
+                                    if (_birthDate_list.Text != "")
+                                    {
+                                        if (_address.Text != "")
+                                        {
+                                            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
-            SqlConnection connection = new SqlConnection(s_data);
+                                            SqlConnection connection = new SqlConnection(s_data);
 
-            string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
-
-
-            SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
-
-            //與資料庫連接的通道開啟
-            connection.Open();
-
-            Command.ExecuteNonQuery();
-
-
-
-            //關閉與資料庫連接的通道
-            connection.Close();
-
-            _memberPassword.Enabled = false;
-            _name.Enabled = false;
-            _email.Enabled = false;
-            _cellphoneNo.Enabled = false;
-            _birthYear_list.Enabled = false;
-            _birthMonth_list.Enabled = false;
-            _birthDate_list.Enabled = false;
-            _address.Enabled = false;
+                                            string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
 
 
+                                            SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
+
+                                            //與資料庫連接的通道開啟
+                                            connection.Open();
+
+                                            Command.ExecuteNonQuery();
+
+
+
+                                            //關閉與資料庫連接的通道
+                                            connection.Close();
+
+                                            _memberPassword.Enabled = false;
+                                            _name.Enabled = false;
+                                            _email.Enabled = false;
+                                            _cellphoneNo.Enabled = false;
+                                            _birthYear_list.Enabled = false;
+                                            _birthMonth_list.Enabled = false;
+                                            _birthDate_list.Enabled = false;
+                                            _address.Enabled = false;
+                                        }
+                                        else
+                                            Response.Write($"<script>alert('請輸入地址');</script>");
+                                    }
+                                    else
+                                        Response.Write($"<script>alert('請輸入出生日期');</script>");
+                                }
+                                else
+                                    Response.Write($"<script>alert('請輸入出生月份');</script>");
+                            }
+                            else
+                                Response.Write($"<script>alert('請輸入出生年份');</script>");
+                        }
+                        else
+                            Response.Write($"<script>alert('請輸入手機號碼');</script>");
+                    }
+                    else
+                        Response.Write($"<script>alert('請輸入電子信箱');</script>");
+                }
+                else
+                    Response.Write($"<script>alert('請輸入姓名');</script>");
+            }
+            else
+                Response.Write($"<script>alert('請輸入密碼');</script>");
 
         }
 

@@ -174,15 +174,15 @@
 			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
 			<asp:TextBox ID="_memberPassword" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
-			<asp:Label ID="Label3" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
+			<asp:Label ID="Label3" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
 			<asp:TextBox ID="_name" runat="server" Enabled="False" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label4" runat="server" Text="電子郵件："></asp:Label>
 			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False" ></asp:TextBox>
 			<br/>            
 			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
-			ˊ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" ></asp:TextBox>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<br/>
 			<asp:Label ID="Label6" runat="server" Text="出生日期："></asp:Label>
 			<asp:DropDownList ID="_birthYear_list" runat="server" Width="80px" Enabled="False" ></asp:DropDownList>
