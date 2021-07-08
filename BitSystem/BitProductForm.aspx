@@ -193,7 +193,7 @@ Body Section
         <div class="span9">
             <div class="breadcrumb">
             
-            <asp:Image ID="_ProductImage" runat="server" Width="300px" Height="300px"/>
+            <asp:Image ID="_ProductImage" runat="server" width="300px" height="300px"/>
             <br/>
             <asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>
             <asp:Label ID="_ProductName" runat="server" Text=""></asp:Label>
