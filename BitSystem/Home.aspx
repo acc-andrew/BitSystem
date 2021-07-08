@@ -101,62 +101,65 @@ Body Section
 -->
 	<div class="row">
 <div id="sidebar" class="span3">
-<div class="well well-small">
-	<ul class="nav nav-list">
-		<li><asp:LinkButton ID="cloth" runat="server" class="icon-chevron-right" OnClick="cloth_Click">衣服/飾品</asp:LinkButton></li>
-		<li><asp:LinkButton ID="book" runat="server" class="icon-chevron-right" OnClick="book_Click">書籍/文創</asp:LinkButton></li>
-		<li><asp:LinkButton ID="life" runat="server" class="icon-chevron-right" OnClick="life_Click">居家/生活</asp:LinkButton></li>
-		<li><asp:LinkButton ID="bag" runat="server" class="icon-chevron-right" OnClick="bag_Click">包包/精品</asp:LinkButton></li>
-		<li><asp:LinkButton ID="shoes" runat="server" class="icon-chevron-right" OnClick="shoes_Click">男女鞋款</asp:LinkButton></li>
-		<li><asp:LinkButton ID="car" runat="server" class="icon-chevron-right" OnClick="car_Click">汽機車/零件百貨</asp:LinkButton></li>
-		<li><asp:LinkButton ID="entertainment" runat="server" class="icon-chevron-right" OnClick="entertainment_Click">娛樂/收藏</asp:LinkButton></li>
-		<li><asp:LinkButton ID="pet" runat="server" class="icon-chevron-right" OnClick="pet_Click">寵物/用品</asp:LinkButton></li>
-		<li><asp:LinkButton ID="others" runat="server" class="icon-chevron-right" OnClick="others_Click">其他類別</asp:LinkButton></li>
-	</ul>
+	<div class="well well-small">
+		<ul class="nav nav-list">
+			<li><asp:LinkButton ID="cloth" runat="server" class="icon-chevron-right" OnClick="cloth_Click">衣服/飾品</asp:LinkButton></li>
+			<li><asp:LinkButton ID="book" runat="server" class="icon-chevron-right" OnClick="book_Click">書籍/文創</asp:LinkButton></li>
+			<li><asp:LinkButton ID="life" runat="server" class="icon-chevron-right" OnClick="life_Click">居家/生活</asp:LinkButton></li>
+			<li><asp:LinkButton ID="bag" runat="server" class="icon-chevron-right" OnClick="bag_Click">包包/精品</asp:LinkButton></li>
+			<li><asp:LinkButton ID="shoes" runat="server" class="icon-chevron-right" OnClick="shoes_Click">男女鞋款</asp:LinkButton></li>
+			<li><asp:LinkButton ID="car" runat="server" class="icon-chevron-right" OnClick="car_Click">汽機車/零件百貨</asp:LinkButton></li>
+			<li><asp:LinkButton ID="entertainment" runat="server" class="icon-chevron-right" OnClick="entertainment_Click">娛樂/收藏</asp:LinkButton></li>
+			<li><asp:LinkButton ID="pet" runat="server" class="icon-chevron-right" OnClick="pet_Click">寵物/用品</asp:LinkButton></li>
+			<li><asp:LinkButton ID="others" runat="server" class="icon-chevron-right" OnClick="others_Click">其他類別</asp:LinkButton></li>
+		</ul>
+		</div>
+		
+		<div class="well well-small">
+		<div class="well well-small alert alert-warning cntr">
+			<h3>最新得標商品</h3>
+		</div>
+
+
+			<div class="thumbnail">
+		<table>	
+			<asp:DataList ID="getbid_view" runat="server" Width="100%"  RepeatColumns="4">
+				<ItemTemplate>	
+						<tr>
+							<td align='center'> 
+							<asp:ImageButton ID="pic_pathname" width="180" runat="server"  ImageUrl='<%# Eval("pic_pathname") %>' />
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label1" runat="server" Text="市價: "></asp:Label>
+							<s><asp:Label ID="official_price"  runat="server" Text='<%# Eval("official_price") %>'/></s>
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label2" runat="server" Text="得標價: "></asp:Label>
+							<asp:Label ID="low_price" ForeColor="red"  runat="server" Text='<%# Eval("low_price") %>'/>
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label3" runat="server" Text="得標者: "></asp:Label>
+							<asp:Label ID="name"  runat="server" Text='<%# Eval("name") %>'/>
+							</td>
+						</tr>
+						<tr>
+							<td><HR SIZE=5></td>
+						</tr>
+				</ItemTemplate>
+			</asp:DataList>
+		</table>
+		</div>
+		</div>
+		
+		
 </div>
 
-			  <div class="well well-small alert alert-warning cntr">
-				  <h2>90% Discount</h2>
-				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
-				  </p>
-			  </div>
-			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
-			
-			<ul class="nav nav-list promowrapper">
-			<li>
-			  <div class="thumbnail">
-				<h4><span class="">Fine Jewelry</span></h4>
-				<img src="pic/A3.jpg" alt="bootstrap ecommerce templates">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:1"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<h4><span class="">Tiffany T Smile</span></h4>
-				<img src="pic/pexels.jpg" alt="shopping cart template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html"></a> <span class="">$10.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:1"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<h4><span class="">Celine</span> </h4>
-				<img src="pic/Bella.jpg" alt="bootstrap template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>
-	
-
-	</div>
 	<div class="span9">
 	<div class="well np">
 		<div id="myCarousel" class="carousel slide homCar">

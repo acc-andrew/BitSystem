@@ -12,8 +12,13 @@ namespace BitSystem
     public partial class MemberProfile : System.Web.UI.Page
     {
 
+        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        SqlConnection conn = new SqlConnection();
+        DataSet ds_getbid = new DataSet();
+        SqlCommand cmd = new SqlCommand();
+
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString4";
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -55,27 +60,18 @@ namespace BitSystem
                 _birthMonth_list.Text = (DateTime.Now.Month).ToString();
                 _birthDate_list.Text = (DateTime.Now.Date).ToString();
 
-            }
 
-            if (!IsPostBack)
-            {
                 //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
                 string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
-
                 //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
                 SqlConnection connection = new SqlConnection(s_data);
-
                 string spltest = "select * from Member where member_ID=" + Session["member_ID"];
-
                 //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
                 SqlCommand Command = new SqlCommand(spltest, connection);
-
                 //與資料庫連接的通道開啟
                 connection.Open();
-
                 //new一個DataReader接取Execute所回傳的資料。
                 SqlDataReader Reader = Command.ExecuteReader();
-
                 //檢查是否有資料列
                 if (Reader.HasRows)
                 {
@@ -98,11 +94,35 @@ namespace BitSystem
 
                     }
                 }
-
                 //關閉與資料庫連接的通道
                 connection.Close();
+
+                // 載入已結標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
+
             }
         }
+
+        // 左測已結標商品展示
+        protected void SQL_readActionProduct_getbid(string connString)
+        {
+            cmd.Connection = conn;
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data;
+
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,official_price,low_price,Member.name " +
+                $"FROM Action_product " +
+                $"INNER JOIN Member " +
+                $"ON Action_product.bid_winner_ID = Member.member_ID " +
+                $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢
+
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
+
+        }
+
 
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
@@ -217,35 +237,78 @@ namespace BitSystem
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            if (_memberPassword.Text != "")
+            {
+                if (_name.Text != "")
+                {
+                    if (_email.Text != "")
+                    {
+                        if (_cellphoneNo.Text != "")
+                        {
+                            if (_birthYear_list.Text != "")
+                            {
+                                if (_birthMonth_list.Text != "")
+                                {
+                                    if (_birthDate_list.Text != "")
+                                    {
+                                        if (_address.Text != "")
+                                        {
+                                            if (_cellphoneNo.Text.Length == 10)
+                                            {
+                                                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
 
-            SqlConnection connection = new SqlConnection(s_data);
+                                                SqlConnection connection = new SqlConnection(s_data);
 
-            string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
-
-
-            SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
-
-            //與資料庫連接的通道開啟
-            connection.Open();
-
-            Command.ExecuteNonQuery();
-
-
-
-            //關閉與資料庫連接的通道
-            connection.Close();
-
-            _memberPassword.Enabled = false;
-            _name.Enabled = false;
-            _email.Enabled = false;
-            _cellphoneNo.Enabled = false;
-            _birthYear_list.Enabled = false;
-            _birthMonth_list.Enabled = false;
-            _birthDate_list.Enabled = false;
-            _address.Enabled = false;
+                                                string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
 
 
+                                                SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句
+
+                                                //與資料庫連接的通道開啟
+                                                connection.Open();
+
+                                                Command.ExecuteNonQuery();
+
+
+
+                                                //關閉與資料庫連接的通道
+                                                connection.Close();
+
+                                                _memberPassword.Enabled = false;
+                                                _name.Enabled = false;
+                                                _email.Enabled = false;
+                                                _cellphoneNo.Enabled = false;
+                                                _birthYear_list.Enabled = false;
+                                                _birthMonth_list.Enabled = false;
+                                                _birthDate_list.Enabled = false;
+                                                _address.Enabled = false;
+                                            }
+                                            else
+                                                Response.Write($"<script>alert('行動電話長度錯誤，請填入完整10碼');</script>");
+                                        }
+                                        else
+                                            Response.Write($"<script>alert('請輸入地址');</script>");
+                                    }
+                                    else
+                                        Response.Write($"<script>alert('請輸入出生日期');</script>");
+                                }
+                                else
+                                    Response.Write($"<script>alert('請輸入出生月份');</script>");
+                            }
+                            else
+                                Response.Write($"<script>alert('請輸入出生年份');</script>");
+                        }
+                        else
+                            Response.Write($"<script>alert('請輸入手機號碼');</script>");
+                    }
+                    else
+                        Response.Write($"<script>alert('請輸入電子信箱');</script>");
+                }
+                else
+                    Response.Write($"<script>alert('請輸入姓名');</script>");
+            }
+            else
+                Response.Write($"<script>alert('請輸入密碼');</script>");
 
         }
 

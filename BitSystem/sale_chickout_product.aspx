@@ -116,45 +116,47 @@ Body Section
 	</ul>
 </div>
 
-			  <div class="well well-small alert alert-warning cntr">
-				  <h2>90% Discount</h2>
-				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
-				  </p>
-			  </div>
-			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
-			
-			<ul class="nav nav-list promowrapper">
-			<li>
-			  <div class="thumbnail">
-				<h4><span class="">Fine Jewelry</span></h4>
-				<img src="pic/A3.jpg" alt="bootstrap ecommerce templates">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:1"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<h4><span class="">Tiffany T Smile</span></h4>
-				<img src="pic/pexels.jpg" alt="shopping cart template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html"></a> <span class="">$10.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:1"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<h4><span class="">Celine</span> </h4>
-				<img src="pic/Bella.jpg" alt="bootstrap template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>
+			   <div class="well well-small">
+		<div class="well well-small alert alert-warning cntr">
+			<h3>最新得標商品</h3>
+		</div>
+
+
+			<div class="thumbnail">
+		<table>	
+			<asp:DataList ID="getbid_view" runat="server" Width="100%"  RepeatColumns="4">
+				<ItemTemplate>	
+						<tr>
+							<td align='center'> 
+							<asp:ImageButton ID="pic_pathname" width="180" runat="server"  ImageUrl='<%# Eval("pic_pathname") %>' />
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label1" runat="server" Text="市價: "></asp:Label>
+							<s><asp:Label ID="official_price"  runat="server" Text='<%# Eval("official_price") %>'/></s>
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label2" runat="server" Text="得標價: "></asp:Label>
+							<asp:Label ID="low_price" ForeColor="red"  runat="server" Text='<%# Eval("low_price") %>'/>
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label3" runat="server" Text="得標者: "></asp:Label>
+							<asp:Label ID="name"  runat="server" Text='<%# Eval("name") %>'/>
+							</td>
+						</tr>
+						<tr>
+							<td><HR SIZE=5></td>
+						</tr>
+				</ItemTemplate>
+			</asp:DataList>
+		</table>
+		</div>
+		</div>
 	
 
 	</div>

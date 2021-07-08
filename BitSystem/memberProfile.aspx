@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberProfile.aspx.cs" Inherits="BitSystem.MemberProfile" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="memberProfile.aspx.cs" Inherits="BitSystem.MemberProfile" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -115,45 +116,47 @@
 		</ul>
 	</div>
 
-				 <div class="well well-small alert alert-warning cntr">
-					  <h2>90% Discount</h2>
-					  <p> 
-						 only valid for online order. <br><br><a class="defaultBtn" href="#"> </a>
-					  </p>
-				  </div>
-				  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
-			
-				<ul class="nav nav-list promowrapper">
-				<li>
-				  <div class="thumbnail">
-					<h4><span class="">Fine Jewelry</span></h4>
-					<img src="pic/A3.jpg" alt="bootstrap ecommerce templates">
-					<div class="caption">
-					  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li style="border:1"> &nbsp;</li>
-				<li>
-				  <div class="thumbnail">
-					<h4><span class="">Tiffany T Smile</span></h4>
-					<img src="pic/pexels.jpg" alt="shopping cart template">
-					<div class="caption">
-					  <h4><a class="defaultBtn" href="product_details.html"></a> <span class="">$10.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li style="border:1"> &nbsp;</li>
-				<li>
-				  <div class="thumbnail">
-					<h4><span class="">Celine</span> </h4>
-					<img src="pic/Bella.jpg" alt="bootstrap template">
-					<div class="caption">
-					  <h4><a class="defaultBtn" href=""></a> <span class="">$10.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
+				 <div class="well well-small">
+		<div class="well well-small alert alert-warning cntr">
+			<h3>最新得標商品</h3>
+		</div>
+
+
+			<div class="thumbnail">
+		<table>	
+			<asp:DataList ID="getbid_view" runat="server" Width="100%"  RepeatColumns="4">
+				<ItemTemplate>	
+						<tr>
+							<td align='center'> 
+							<asp:ImageButton ID="pic_pathname" width="180" runat="server"  ImageUrl='<%# Eval("pic_pathname") %>' />
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label1" runat="server" Text="市價: "></asp:Label>
+							<s><asp:Label ID="official_price"  runat="server" Text='<%# Eval("official_price") %>'/></s>
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label2" runat="server" Text="得標價: "></asp:Label>
+							<asp:Label ID="low_price" ForeColor="red"  runat="server" Text='<%# Eval("low_price") %>'/>
+							</td>
+						</tr>
+						<tr>
+							<td align='center'>
+							<asp:Label ID="Label3" runat="server" Text="得標者: "></asp:Label>
+							<asp:Label ID="name"  runat="server" Text='<%# Eval("name") %>'/>
+							</td>
+						</tr>
+						<tr>
+							<td><HR SIZE=5></td>
+						</tr>
+				</ItemTemplate>
+			</asp:DataList>
+		</table>
+		</div>
+		</div>
 	
 
 		</div>
@@ -166,22 +169,22 @@
 	<div class="span9">
 		<h2> 會員資料</h2>	
 
-        <div>
-			<h1>會員資料修改</h1>
+       會員資料修改</h1>
 			<asp:Label ID="Label1" runat="server" Text="會員帳號："></asp:Label>
 			<asp:TextBox ID="_user_name" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label2" runat="server" Text="會員密碼："></asp:Label>
 			<asp:TextBox ID="_memberPassword" runat="server" Enabled="False"></asp:TextBox>
 			<br/>
-			<asp:Label ID="Label3" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
+			<asp:Label ID="Label3" runat="server" Text="名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱    ："></asp:Label>
 			<asp:TextBox ID="_name" runat="server" Enabled="False" ></asp:TextBox>
 			<br/>
 			<asp:Label ID="Label4" runat="server" Text="電子郵件："></asp:Label>
 			<asp:TextBox ID="_email" runat="server" TextMode="Email" Enabled="False" ></asp:TextBox>
 			<br/>            
 			<asp:Label ID="Label5" runat="server" Text="手機號碼："></asp:Label>
-			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" ></asp:TextBox>
+			<asp:TextBox ID="_cellphoneNo" runat="server" TextMode="Phone" Enabled="False" MaxLength="10" ></asp:TextBox>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<br/>
 			<asp:Label ID="Label6" runat="server" Text="出生日期："></asp:Label>
 			<asp:DropDownList ID="_birthYear_list" runat="server" Width="80px" Enabled="False" ></asp:DropDownList>
@@ -213,31 +216,7 @@
 		<!-- 
     Clients 
     -->
-    <section class="our_client">
-        <hr class="soften"/>
-        <h4 class="title cntr"><span class="text">Manufactures</span></h4>
-        <hr class="soften"/>
-        <div class="row">
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/1.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/2.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/3.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/4.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/5.png"></a>
-            </div>
-            <div class="span2">
-                <a href="#"><img alt="" src="assets/img/6.png"></a>
-            </div>
-        </div>
-    </section>
+    
     </form>
     <!--
     Footer
