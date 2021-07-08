@@ -23,7 +23,7 @@ namespace BitSystem
         SqlConnection conn = new SqlConnection();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString4";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -149,7 +149,9 @@ namespace BitSystem
                 string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
                 string description = ((Label)currentItem.FindControl("description")).Text;
                 string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+                string official_price = ((Label)currentItem.FindControl("official_price")).Text;
 
+                Session["official_price"] = official_price;
                 Session["ProductName"] = product;
                 Session["ProductDesc"] = description;
                 Session["ImageUrl"] = pic_pathname;
@@ -173,7 +175,9 @@ namespace BitSystem
                 string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
                 string description = ((Label)currentItem.FindControl("description")).Text;
                 string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+                string official_price = ((Label)currentItem.FindControl("official_price")).Text;
 
+                Session["official_price"] = official_price;
                 Session["ProductName"] = product;
                 Session["ProductDesc"] = description;
                 Session["ImageUrl"] = pic_pathname1;
@@ -197,7 +201,9 @@ namespace BitSystem
                 string action_product_ID = ((Label)currentItem.FindControl("action_product_ID")).Text;
                 string description = ((Label)currentItem.FindControl("description")).Text;
                 string seller_ID = ((Label)currentItem.FindControl("seller_ID")).Text;
+                string official_price = ((Label)currentItem.FindControl("official_price")).Text;
 
+                Session["official_price"] = official_price;
                 Session["ProductName"] = product;
                 Session["ProductDesc"] = description;
                 Session["ImageUrl"] = pic_pathname2;
@@ -317,6 +323,113 @@ namespace BitSystem
             Response.Redirect("GoodListForm.aspx");
         }
 
+        protected void IPhone13_Click(object sender, ImageClickEventArgs e)
+        {
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            SqlConnection connection = new SqlConnection(s_data);
+            string sql_statement = $"SELECT pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product where pic_pathname = '~/GoodPics/bootstrap_iphone13.png'";   
+            SqlCommand Command = new SqlCommand(sql_statement, connection);
+            connection.Open();
+            SqlDataReader Reader = Command.ExecuteReader();
+            if (Reader.HasRows)
+            {
+                if (Reader.Read())
+                {
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ProductName"] = Reader["product"];
+                    Session["ProductDesc"] = Reader["description"];
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ImageUrl"] = Reader["pic_pathname"];
+                    Session["ProductID"] = Reader["action_product_ID"];
+                    Session["SellerID"] = Reader["seller_ID"];
+                }// if (Reader.Read())
+            }// if (Reader.HasRows) login name match
+            connection.Close();
+
+            Response.Redirect("BitProductForm.aspx");
+        }
+
+        protected void bicyle_Click(object sender, ImageClickEventArgs e)
+        {
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            SqlConnection connection = new SqlConnection(s_data);
+            string sql_statement = $"SELECT pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product where pic_pathname = '~/GoodPics/bootstrap_bicycle.png'";
+            SqlCommand Command = new SqlCommand(sql_statement, connection);
+            connection.Open();
+            SqlDataReader Reader = Command.ExecuteReader();
+            if (Reader.HasRows)
+            {
+                if (Reader.Read())
+                {
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ProductName"] = Reader["product"];
+                    Session["ProductDesc"] = Reader["description"];
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ImageUrl"] = Reader["pic_pathname"];
+                    Session["ProductID"] = Reader["action_product_ID"];
+                    Session["SellerID"] = Reader["seller_ID"];
+                }// if (Reader.Read())
+            }// if (Reader.HasRows) login name match
+            connection.Close();
+
+            Response.Redirect("BitProductForm.aspx");
+        }
+
+        protected void mask_Click(object sender, ImageClickEventArgs e)
+        {
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            SqlConnection connection = new SqlConnection(s_data);
+            string sql_statement = $"SELECT pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product where pic_pathname = '~/GoodPics/bootstrap_mask.png'";
+            SqlCommand Command = new SqlCommand(sql_statement, connection);
+            connection.Open();
+            SqlDataReader Reader = Command.ExecuteReader();
+            if (Reader.HasRows)
+            {
+                if (Reader.Read())
+                {
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ProductName"] = Reader["product"];
+                    Session["ProductDesc"] = Reader["description"];
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ImageUrl"] = Reader["pic_pathname"];
+                    Session["ProductID"] = Reader["action_product_ID"];
+                    Session["SellerID"] = Reader["seller_ID"];
+                }// if (Reader.Read())
+            }// if (Reader.HasRows) login name match
+            connection.Close();
+
+            Response.Redirect("BitProductForm.aspx");
+        }
+
+        protected void switch_Click(object sender, ImageClickEventArgs e)
+        {
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            SqlConnection connection = new SqlConnection(s_data);
+            string sql_statement = $"SELECT pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product where pic_pathname = '~/GoodPics/bootstrap_switch.png'";
+            SqlCommand Command = new SqlCommand(sql_statement, connection);
+            connection.Open();
+            SqlDataReader Reader = Command.ExecuteReader();
+            if (Reader.HasRows)
+            {
+                if (Reader.Read())
+                {
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ProductName"] = Reader["product"];
+                    Session["ProductDesc"] = Reader["description"];
+                    Session["official_price"] = Reader["official_price"];
+                    Session["ImageUrl"] = Reader["pic_pathname"];
+                    Session["ProductID"] = Reader["action_product_ID"];
+                    Session["SellerID"] = Reader["seller_ID"];
+                }// if (Reader.Read())
+            }// if (Reader.HasRows) login name match
+            connection.Close();
+
+            Response.Redirect("BitProductForm.aspx");
+        }
 
     }
 }

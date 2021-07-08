@@ -25,7 +25,7 @@ namespace BitSystem
         System.Timers.Timer _timer;
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString4";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,13 +60,13 @@ namespace BitSystem
 
                 if (Session["official_price"] != null)
                 {
-                    string strofficial_price = (string)Session["official_price"];
+                    string strofficial_price = Convert.ToInt32(Session["official_price"]).ToString();
                     _sellerID = int.Parse(strofficial_price);
                 }
 
                 if (Session["SellerID"] != null)
                 {
-                    string strSellerID = (string)Session["SellerID"];
+                    string strSellerID = Convert.ToInt32(Session["SellerID"]).ToString();
                     _sellerID = int.Parse(strSellerID);
                 }
 
@@ -78,7 +78,7 @@ namespace BitSystem
 
                 if (Session["ProductID"] != null)
                 {
-                    string strProductID = (string)Session["ProductID"];
+                    string strProductID = Convert.ToInt32(Session["ProductID"]).ToString();
                     _ProductID = int.Parse(strProductID);
 
                     getSQLDB_FindProduct_closedDateTime_officialPrice(connString, _ProductID);
