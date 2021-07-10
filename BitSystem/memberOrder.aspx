@@ -178,15 +178,19 @@
             <div class="breadcrumb">
 			共有<asp:Label id="lblRecordCount" ForeColor="red" runat="server" />個商品
 			當前為<asp:Label id="lblCurrentPage" ForeColor="red" runat="server" />/<asp:Label id="lblPageCount" ForeColor="red" runat="server" />頁 
-			<asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_DataBound" >
+			<asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_ItemDataBound" >
 					<ItemTemplate>
 						<div class="thumbnail">
 							<table  border="1" >
 								<tr>
 									<td align='center'>商品圖片</td>
 									<td align='center'>商品名稱</td>
+									<td align='center'>商品狀態</td>
 									<td align='center'>商品市價</td>
-									<td align='center'>商品描述</td>
+									<td align='center'>
+                                        <asp:Label ID="head_descript" runat="server" Text="商品描述"></asp:Label>
+										<asp:Label ID="head_bitprice" runat="server" Text="下標價錢"></asp:Label>
+									</td>
 								</tr>
 								<tr>
 									<td >
@@ -198,13 +202,18 @@
 									</td>
 							
 									<td align='center'>
+									<asp:Label ID="status" width="80" runat="server" Text='<%# Eval("status") %>'/>
+									</td>
+
+									<td align='center'>
 									<asp:Label ID="official_price" width="80" runat="server" Text='<%# Eval("official_price") %>'/>
 									</td>
 					
 									<td align='center'>
-									<asp:Label ID="description" width="290" runat="server" Text='<%# Eval("description") %>'/>
+									<asp:Label ID="description" width="210" runat="server" Text='<%# Eval("description") %>'/>
 									<asp:Label ID="action_product_ID" runat="server" Visible="false" Text='<%# Eval("action_product_ID") %>'/>
 									<asp:Label ID="seller_ID" runat="server" Visible="false" Text='<%# Eval("seller_ID") %>'/>
+									<asp:Label ID="bid_price" width="210" runat="server" Visible="false" Text='<%# Eval("bid_price") %>'/>
 									</td>
 								</tr>
 							</table>

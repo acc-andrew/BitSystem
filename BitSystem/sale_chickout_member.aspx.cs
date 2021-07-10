@@ -17,74 +17,78 @@ namespace BitSystem
         SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString4";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            //設定會員登入與否顯現標示不同
-            //Session["Login"] = "logged";
-
-            if (Convert.ToString(Session["Login"]) == "logged")
+          
+            if (IsPostBack == false)
             {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
-            }
-            else
-            {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
-                Session["logged_to_page"] = "sale_chickout_member.aspx";
-                Response.Redirect("memberLoginForm.aspx");
-            }
-
-            if (Convert.ToString(Session["chickout_product"]) != "chicked") 
-            {
-                Response.Redirect("sale_chickout_product.aspx");
-            }
-
-
-            //Session["member_ID"] = "1";
-
-
-            //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
-            //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
-            SqlConnection connection = new SqlConnection(s_data);
-            string sqlcode = $"SELECT * FROM [Member] where member_ID = " + Session["member_ID"];
-            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
-            SqlCommand Command = new SqlCommand(sqlcode, connection);
-            //與資料庫連接的通道開啟
-            connection.Open();
-            //new一個DataReader接取Execute所回傳的資料。
-            SqlDataReader Reader = Command.ExecuteReader();
-
-
-            //檢查是否有資料列
-            if (Reader.HasRows)
-            {
-                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
-                if (Reader.Read())
+                //設定會員登入與否顯現標示不同
+                //Session["Login"] = "logged";
+                if (Convert.ToString(Session["Login"]) == "logged")
                 {
-                    //memberID.Text = (Int32)((String)Reader["member_ID"]);
-                    _user_name.Text = (String)Reader["user_name"];
-                    _name.Text = (String)Reader["name"];
-                    _email.Text = (String)Reader["mail"];
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
                 }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                    Session["logged_to_page"] = "sale_chickout_member.aspx";
+                    Response.Redirect("memberLoginForm.aspx");
+                }
+
+                if (Convert.ToString(Session["chickout_product"]) != "chicked")
+                {
+                    Response.Redirect("sale_chickout_product.aspx");
+                }
+
+
+                //Session["member_ID"] = "1";
+
+
+                //創一個變數存放從config內的資訊，其實也可不用創立這變數，直接放進SqlConnection內即可。
+                string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+                //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
+                SqlConnection connection = new SqlConnection(s_data);
+
+                string sqlcode = $"SELECT user_name,name,mail " +
+                    $"FROM [Member] " +
+                    $"where member_ID = " + Session["member_ID"];
+                //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+
+                SqlCommand Command = new SqlCommand(sqlcode, connection);
+                //與資料庫連接的通道開啟
+                connection.Open();
+                //new一個DataReader接取Execute所回傳的資料。
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                //檢查是否有資料列
+                if (Reader.HasRows)
+                {
+                    //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
+                    if (Reader.Read())
+                    {
+                        //memberID.Text = (Int32)((String)Reader["member_ID"]);
+                        _user_name.Text = (String)Reader["user_name"];
+                        _name.Text = (String)Reader["name"];
+                        _email.Text = (String)Reader["mail"];
+                    }
+                }
+                else
+                {
+
+                }
+                //關閉與資料庫連接的通道
+                connection.Close();
+
+                // 載入已結標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
             }
-            else
-            {
-
-            }
-            //關閉與資料庫連接的通道
-            connection.Close();
-
-            // 載入已結標熱門
-            SQL_readActionProduct_getbid(connString);
-            getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
-            getbid_view.DataBind();
-
         }
 
         // 左測已結標商品展示
@@ -105,7 +109,7 @@ namespace BitSystem
 
         }
 
-
+        // 點擊付款行為
         protected void pay_Click(object sender, EventArgs e)
         {
             if (Session["Login"] == null)
@@ -128,7 +132,6 @@ namespace BitSystem
                     Response.Write($"<script>alert('請寫入寄送地址');</script>");
                 }
 
-
                 else
                 {
                     string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
@@ -136,13 +139,15 @@ namespace BitSystem
                     SqlConnection connection = new SqlConnection(s_data);
 
                     //string sqlcode = $"insert into [account](account,password,nickname) values('"+user.Text+"','"+passwd.Text+"','"+nick.Text+"')";
-                    string sqlcode = $"insert into [Action_order](receiver_name,receiver_phone,receiver_address) values(@receiver_name,@receiver_phone,@receiver_address)";
-
-                    //與資料庫連接的通道開啟
+                    string sqlcode = $"insert into [Action_product]" +
+                        $"(receiver_name,receiver_phone,receiver_address) " +
+                        $"values(@receiver_name,@receiver_phone,@receiver_address) " +
+                        $"where bid_winner_ID ='" + Session["member_ID"] + "'";
                     connection.Open();
                     //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
                     SqlCommand Command = new SqlCommand(sqlcode, connection);
 
+                    // 寫入收件者
                     Command.Parameters.Add("@receiver_name", SqlDbType.NVarChar);
                     Command.Parameters["@receiver_name"].Value = receiver.Text;
 
@@ -154,12 +159,30 @@ namespace BitSystem
 
                     //new一個DataReader接取Execute所回傳的資料。
                     Command.ExecuteNonQuery();
+
+                    // 更新得標狀態-已結標
+                    string sqlcode_status = $"UPDATE [Action_product]" +
+                        $"SET status='checkedout' " +
+                        $"where status='getbid' AND bid_winner_ID ='" + Session["member_ID"] + "'";
+                    SqlCommand Command_status = new SqlCommand(sqlcode_status, connection);
+                    
+                    Command_status.ExecuteNonQuery();
+                    
                     connection.Close();
+
                     Response.Write($"<script>alert('準備進行付款');</script>");
                     Server.Transfer("Home.aspx");
+
+                    // 寄email
+
+
                 }
             }
         }
+
+        //寄email
+
+
 
         protected void back_Click(object sender, EventArgs e)
         {
