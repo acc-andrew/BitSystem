@@ -165,28 +165,28 @@ Body Section
 		<div id="myCarousel" class="carousel slide homCar">
             <div class="carousel-inner">
 			  <div class="item">
-                <img style="width:800px;height:450px" src="pic/bootstrap_iphone13.png" alt="bootstrap ecommerce templates">
+                <asp:ImageButton ID="IPhone13" runat="server" style="width:650px;height:450px" ImageUrl="~/GoodPics/bootstrap_iphone13.png" alt="bootstrap ecommerce templates" OnClick="IPhone13_Click" />
                 <div class="carousel-caption">
                       <h4>iphone13</h4>
                       <p><span>Very clean simple to use</span></p>
                 </div>
               </div>
 			  <div class="item">
-                <img style="width:800px;height:450px" src="pic/bootstrap_bicycle.png" alt="bootstrap ecommerce templates">
+				<asp:ImageButton ID="bicyle" runat="server" style="width:650px;height:450px" ImageUrl="~/GoodPics/bootstrap_bicycle.png" alt="bootstrap ecommerce templates" OnClick="bicyle_Click" />
                 <div class="carousel-caption">
                       <h4>bicycle  </h4>
-                      <p><span>Highly Google seo friendly</span></p>
+                  Highly Google seo friendly</span></p>
                 </div>
               </div>
 			  <div class="item active">
-                <img style="width:800px;height:450px" src="pic/bootstrap_mask.png" alt="bootstrap ecommerce templates">
+				<asp:ImageButton ID="mask" runat="server" style="width:650px;height:450px" ImageUrl="~/GoodPics/bootstrap_mask.png" alt="bootstrap ecommerce templates" OnClick="mask_Click" />
                 <div class="carousel-caption">
-                      <h4>mask</h4>
+                      <h4>mask     <h4>mask</h4>
                       <p><span>Very easy to integrate and expand.</span></p>
                 </div>
               </div>
               <div class="item">
-                <img style="width:800px;height:450px" src="pic/bootstrap_switch.png" alt="bootstrap templates">
+				<asp:ImageButton ID="switch" runat="server" style="width:650px;height:450px" ImageUrl="~/GoodPics/bootstrap_switch.png" alt="bootstrap ecommerce templates" OnClick="switch_Click"/>
                 <div class="carousel-caption">
                       <h4>switch</h4>
                       <p><span>Compitable to many more opensource cart</span></p>

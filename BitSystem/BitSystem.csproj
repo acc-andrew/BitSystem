@@ -258,6 +258,10 @@
     <Content Include="GoodPics\bag1.jpg" />
     <Content Include="GoodPics\bidding.jpg" />
     <Content Include="GoodPics\book.jpg" />
+    <Content Include="GoodPics\bootstrap_bicycle.png" />
+    <Content Include="GoodPics\bootstrap_iphone13.png" />
+    <Content Include="GoodPics\bootstrap_mask.png" />
+    <Content Include="GoodPics\bootstrap_switch.png" />
     <Content Include="GoodPics\c98ba0ce7cc60ca03ffe90818a026e13.jpg" />
     <Content Include="GoodPics\car.jpg" />
     <Content Include="GoodPics\cloth1.jpg" />
