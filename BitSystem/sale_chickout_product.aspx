@@ -190,17 +190,17 @@ Body Section
                         <asp:Label ID="product_name" runat="server" text-align ="center" Text='<%# Eval("product") %>'/>
                     </ItemTemplate> 
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="商品市價" HeaderStyle-Width="80px">
+                <asp:TemplateField HeaderText="商品市價" HeaderStyle-Width="120px">
                     <ItemTemplate>  
                         <asp:Label ID="official_price" runat="server" text-align ="center" Text='<%# Eval("official_price") %>'/>
                     </ItemTemplate> 
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="得標價錢" HeaderStyle-Width="80px">
+                <asp:TemplateField HeaderText="得標價錢" HeaderStyle-Width="120px">
                     <ItemTemplate>  
                         <asp:Label ID="low_price" runat="server" text-align ="center" Text='<%# Eval("low_price") %>'/>
                     </ItemTemplate> 
 				</asp:TemplateField>
-				<asp:TemplateField HeaderText="下標手續" HeaderStyle-Width="80px">
+				<asp:TemplateField HeaderText="總下標手續費" HeaderStyle-Width="120px">
                     <ItemTemplate>  
                         <asp:Label ID="handling_fee" runat="server" text-align ="center" Text='<%# Eval("handling_fee") %>'/>
                     </ItemTemplate> 

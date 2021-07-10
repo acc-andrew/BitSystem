@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static BitSystem.BitProductForm;
 
 namespace BitSystem
 {
@@ -14,7 +15,7 @@ namespace BitSystem
         //設定資料庫資訊
         string connString = "Sale_net_Jun22_2021ConnectionString";
 
-        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        SqlDataAdapter da = new SqlDataAdapter(); //SQL 資料庫的連接與執行命令
         DataSet ds = new DataSet();
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
@@ -22,6 +23,7 @@ namespace BitSystem
 
         //設定總共價錢
         int low_price;
+        // 建立得標手續費資料
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -86,13 +88,49 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,official_price,low_price,bid_price " +
-                $"from Action_product " +
-                $"where bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT * " +
+                    $"FROM [Action_product] " +
+                    $"where status='getbid' AND bid_winner_ID = " + Session["member_ID"];
 
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product");            //da把資料填入ds裡面
+            ds.Tables[0].Columns.Add("handling_fee", typeof(int)); // 建立一個欄位放手續費
 
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                // 找出每筆下標的商品是哪個
+                string bit_product_ID;
+
+                if (ds.Tables[0].Rows[i]["action_product_ID"] != null)
+                {
+                    bit_product_ID = (ds.Tables[0].Rows[i]["action_product_ID"]).ToString();
+                }
+                else
+                {
+                    bit_product_ID = "0";
+                }
+                string handlingfee_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+                SqlConnection connection = new SqlConnection(handlingfee_data);
+                
+                string sql_statement = $"select count(*) as co from Action_product " +
+                    "where bidder_ID='" + Session["member_ID"] + "' AND bit_product_ID='" + bit_product_ID + "'";
+
+                SqlCommand Command = new SqlCommand(sql_statement, connection);
+                connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                int intCount;
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        intCount = Int32.Parse(Reader["co"].ToString());
+                        intCount *= 10;
+                        ds.Tables[0].Rows[i]["handling_fee"] = intCount;
+                    }// while (Reader.Read())
+                }
+                connection.Close();
+
+            }
         }// protected void SQL_readActionProduct()
 
         // 前往確認收件人資料網頁
@@ -124,7 +162,7 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
             string sql_statement = $"SELECT pic_pathname,product,total_number,low_price,bid_price " +
                 $"from Action_product " +
-                $"where bid_winner_ID ='" + Session["member_ID"] + "'";
+                $"where status = 'getbid' AND bid_winner_ID ='" + Session["member_ID"] + "'";
             SqlCommand Command = new SqlCommand(sql_statement, connection);
             connection.Open();
             SqlDataReader Reader = Command.ExecuteReader();
@@ -132,7 +170,7 @@ namespace BitSystem
             {
                 while (Reader.Read())
                 {                  
-                    low_price += int.Parse(Reader["bid_price"].ToString());
+                    low_price += int.Parse(Reader["low_price"].ToString());
                 }// while (Reader.Read())
 
             }// if (Reader.HasRows) login name match

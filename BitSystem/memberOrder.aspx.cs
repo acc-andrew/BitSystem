@@ -278,15 +278,15 @@ namespace BitSystem
             {
                 if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "onsale    ")
                 {
-                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已上架";
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已上架商品";
                 }
                 else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "bidding   ")
                 {
-                    ds_page.Tables["Action_product"].Rows[i]["status"] = "競標中";
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "下標過商品";
                 }
                 else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "getbid    ")
                 {
-                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已得標";
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已得標未結帳";
                 }
                 else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "checkout  ")
                 {
