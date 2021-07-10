@@ -328,19 +328,19 @@ namespace BitSystem
 
             if (DropDownList1.SelectedValue == "已上架")
             {
-                string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_onsale = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                         "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
                 ListBind(connString, cmdText_onsale);
             }
             else if (DropDownList1.SelectedValue == "競標中")
             {
-                string cmdText_bidding = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_bidding = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                     "from Action_product where status='bidding' and seller_ID='" + Session["member_ID"] + "'";
                 ListBind(connString, cmdText_bidding);
             }
             else if (DropDownList1.SelectedValue == "已得標")
             {
-                string cmdText_getbid = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_getbid = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                     "from Action_product where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
                 ListBind(connString, cmdText_getbid);
             }
