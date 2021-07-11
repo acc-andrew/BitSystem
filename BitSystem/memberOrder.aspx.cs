@@ -27,7 +27,7 @@ namespace BitSystem
         int PageSize, RecordCount, PageCount, CurrentPage;
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace BitSystem
                     product_view.Visible = true;
 
                     //已上架
-                    string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                    string cmdText_onsale = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                         "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
                                         
                     // 判斷有沒有資料
@@ -124,7 +124,7 @@ namespace BitSystem
                 product_view.Visible = true;
 
                 //已上架
-                string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_onsale = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                         "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
                 // 判斷有沒有資料
                 SQL_readActionProduct(connString, cmdText_onsale);
@@ -158,11 +158,13 @@ namespace BitSystem
             }
             else if (DropDownList1.SelectedValue == "競標中")
             {
+                // 顯示表格對應欄位
                 product_view.Visible = true;
 
                 //競標中
-                string cmdText_bidding = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
-                    "from Action_product where status='bidding' and seller_ID='" + Session["member_ID"] + "'";
+                string cmdText_bidding = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
+                    "from Action_product " +
+                    "where status='bidding' and bidder_ID='" + Session["member_ID"] + "'";
                 // 判斷有沒有資料
                 SQL_readActionProduct(connString, cmdText_bidding);
 
@@ -175,7 +177,7 @@ namespace BitSystem
 
                     //計算總共有多少記錄(onsale)             
                     string sql_statement1_onsale = $"select count(*) as co from Action_product " +
-                    "where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
+                    "where status='bidding' and bidder_ID='" + Session["member_ID"] + "'";
                     RecordCount = CalculateRecord(connString, sql_statement1_onsale);
                     lblRecordCount.Text = RecordCount.ToString();
 
@@ -198,8 +200,9 @@ namespace BitSystem
                 product_view.Visible = true;
 
                 //已結標
-                string cmdText_getbid = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
-                    "from Action_product where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
+                string cmdText_getbid = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
+                    "from Action_product " +
+                    "where (status='getbid' or status='checkedout') and bid_winner_ID='" + Session["member_ID"] + "'";
                 // 判斷有沒有資料
                 SQL_readActionProduct(connString, cmdText_getbid);
 
@@ -213,7 +216,7 @@ namespace BitSystem
 
                     //計算總共有多少記錄(onsale)
                     string sql_statement1_onsale = $"select count(*) as co from Action_product " +
-                    "where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
+                    "where status='getbid' and bid_winner_ID='" + Session["member_ID"] + "'";
                     RecordCount = CalculateRecord(connString, sql_statement1_onsale);
                     lblRecordCount.Text = RecordCount.ToString();
 
@@ -271,6 +274,26 @@ namespace BitSystem
             da.SelectCommand = cmd_page;            //da選擇資料來源，由cmd載入進來  
             da.Fill(ds_page, StartIndex, PageSize, "Action_product");//da把資料填入ds裡面
 
+            for (int i = 0; i < ds_page.Tables["Action_product"].Rows.Count; i++) 
+            {
+                if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "onsale    ")
+                {
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已上架商品";
+                }
+                else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "bidding   ")
+                {
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "下標過商品";
+                }
+                else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "getbid    ")
+                {
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已得標未結帳";
+                }
+                else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "checkout  ")
+                {
+                    ds_page.Tables["Action_product"].Rows[i]["status"] = "已結帳";
+                }
+            }
+
             product_view.DataSource = ds_page.Tables["Action_product"].DefaultView;
             product_view.DataBind();
 
@@ -305,19 +328,19 @@ namespace BitSystem
 
             if (DropDownList1.SelectedValue == "已上架")
             {
-                string cmdText_onsale = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_onsale = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                         "from Action_product where status='onsale' and seller_ID='" + Session["member_ID"] + "'";
                 ListBind(connString, cmdText_onsale);
             }
             else if (DropDownList1.SelectedValue == "競標中")
             {
-                string cmdText_bidding = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_bidding = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                     "from Action_product where status='bidding' and seller_ID='" + Session["member_ID"] + "'";
                 ListBind(connString, cmdText_bidding);
             }
             else if (DropDownList1.SelectedValue == "已得標")
             {
-                string cmdText_getbid = "SELECT pic_pathname,product,description,total_number,seller_ID,action_product_ID,official_price " +
+                string cmdText_getbid = "SELECT pic_pathname,product,description,status,total_number,seller_ID,action_product_ID,bid_price,official_price " +
                     "from Action_product where status='getbid' and seller_ID='" + Session["member_ID"] + "'";
                 ListBind(connString, cmdText_getbid);
             }
@@ -348,21 +371,30 @@ namespace BitSystem
                 Session["SellerID"] = seller_ID;
 
                 Response.Redirect("BitProductForm.aspx");
-
             }
         }
 
         // 超過字數的欄位會隱藏 變成...
-        protected void product_view_DataBound(object sender, EventArgs e)
+        protected void product_view_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            // 演示ToolTip，使用GridView自帶的ToolTip
-            for (int i = 0; i < product_view.Items.Count; i++)
+
+            // itemdatabound 使用e.Item.FindControl解決每個row的最後一項讀不到的問題
+            if (((Label)e.Item.FindControl("description")).Text.Length > 75)
             {
-                product_view.Items[i].ToolTip = ((Label)product_view.Items[i].FindControl("description")).Text;
-                if (((Label)product_view.Items[i].FindControl("description")).Text.Length > 100)
-                {
-                    ((Label)product_view.Items[i].FindControl("description")).Text = ((Label)product_view.Items[i].FindControl("description")).Text.Substring(0, 100) + "......";
-                }
+                ((Label)e.Item.FindControl("description")).Text = ((Label)e.Item.FindControl("description")).Text.Substring(0, 75) + "......";
+            }
+
+            // 競標中改變欄位
+            if (DropDownList1.SelectedValue == "競標中")
+            {
+                Label head_descript = (Label)e.Item.FindControl("head_descript");
+                head_descript.Visible = false;
+                Label head_bitprice = (Label)e.Item.FindControl("head_bitprice");
+                head_bitprice.Visible = true;
+                Label description = (Label)e.Item.FindControl("description");
+                description.Visible = false;
+                Label bid_price = (Label)e.Item.FindControl("bid_price");
+                bid_price.Visible = true;
             }
         }
      

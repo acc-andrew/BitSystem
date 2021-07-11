@@ -6,15 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static BitSystem.BitProductForm;
 
 namespace BitSystem
 {
     public partial class sale_chickout_product : System.Web.UI.Page
     {
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
-        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        SqlDataAdapter da = new SqlDataAdapter(); //SQL 資料庫的連接與執行命令
         DataSet ds = new DataSet();
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn = new SqlConnection();
@@ -22,38 +23,41 @@ namespace BitSystem
 
         //設定總共價錢
         int low_price;
+        // 建立得標手續費資料
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //設定會員登入與否顯現標示不同
-            
 
-            if (Convert.ToString(Session["Login"]) == "logged")
+            if (IsPostBack == false)
             {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
-                fetchProductInfo(connString);
-                SQL_readActionProduct(connString);
-                GridView1.DataSource = ds; //將DataSet的資料載入到GridView1內
-                GridView1.DataBind();
-                total_price.Text = low_price.ToString();
-            }
-            else
-            {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
-                Session["logged_to_page"] = "sale_chickout_product.aspx";
-                Response.Redirect("memberLoginForm.aspx");
+                //設定會員登入與否顯現標示不同
+                if (Convert.ToString(Session["Login"]) == "logged")
+                {
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
+
+                    fetchProductInfo(connString);
+                    SQL_readActionProduct(connString);
+                    getbid_product.DataSource = ds; //將DataSet的資料載入到GridView1內
+                    getbid_product.DataBind();
+                    total_price.Text = low_price.ToString();
+                }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                    Session["logged_to_page"] = "sale_chickout_product.aspx";
+                    Response.Redirect("memberLoginForm.aspx");
+                }
+
+                // 載入已結標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
 
             }
-
-            // 載入已結標熱門
-            SQL_readActionProduct_getbid(connString);
-            getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
-            getbid_view.DataBind();
-
         }//protected void Page_Load(object sender, EventArgs e)
 
 
@@ -74,7 +78,7 @@ namespace BitSystem
             da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
         }
 
-
+        // 載入得標商品資料
         protected void SQL_readActionProduct(string connString)
         {
             cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
@@ -84,13 +88,52 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT pic_pathname,product,total_number,low_price,bid_price from Action_product where bid_winner_ID ='" +Session["member_ID"]+"'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT * " +
+                    $"FROM [Action_product] " +
+                    $"where status='getbid' AND bid_winner_ID = " + Session["member_ID"];
+
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds, "Action_product");            //da把資料填入ds裡面
+            ds.Tables[0].Columns.Add("handling_fee", typeof(int)); // 建立一個欄位放手續費
 
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                // 找出每筆下標的商品是哪個
+                string bit_product_ID;
+
+                if (ds.Tables[0].Rows[i]["action_product_ID"] != null)
+                {
+                    bit_product_ID = (ds.Tables[0].Rows[i]["action_product_ID"]).ToString();
+                }
+                else
+                {
+                    bit_product_ID = "0";
+                }
+                string handlingfee_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+                SqlConnection connection = new SqlConnection(handlingfee_data);
+                
+                string sql_statement = $"select count(*) as co from Action_product " +
+                    "where bidder_ID='" + Session["member_ID"] + "' AND bit_product_ID='" + bit_product_ID + "'";
+
+                SqlCommand Command = new SqlCommand(sql_statement, connection);
+                connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                int intCount;
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        intCount = Int32.Parse(Reader["co"].ToString());
+                        intCount *= 10;
+                        ds.Tables[0].Rows[i]["handling_fee"] = intCount;
+                    }// while (Reader.Read())
+                }
+                connection.Close();
+
+            }
         }// protected void SQL_readActionProduct()
 
-
+        // 前往確認收件人資料網頁
         protected void checkdata_Click(object sender, EventArgs e)
         {
             // if user hasn't logged, redirect to memberLoginForm
@@ -111,52 +154,34 @@ namespace BitSystem
             Response.Redirect("Home.aspx");
         }
 
+        // 計算總共價錢
         private void fetchProductInfo(string connString)
         {
             // SQL DB
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
-
-            //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
-
-            // bug1: SQL content
-            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price,bid_price from Action_product where bid_winner_ID ='" + Session["member_ID"] + "'";
-
-            // bug2: sqlText
-            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
+            string sql_statement = $"SELECT pic_pathname,product,total_number,low_price,bid_price " +
+                $"from Action_product " +
+                $"where status = 'getbid' AND bid_winner_ID ='" + Session["member_ID"] + "'";
             SqlCommand Command = new SqlCommand(sql_statement, connection);
-
-            //與資料庫連接的通道開啟
             connection.Open();
-
-            //new一個DataReader接取Execute所回傳的資料。
             SqlDataReader Reader = Command.ExecuteReader();
-
-            //檢查是否有資料列
             if (Reader.HasRows)
             {
-                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
                 while (Reader.Read())
-                {
-                    //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-                    
-                    low_price += int.Parse(Reader["bid_price"].ToString());
-
-
+                {                  
+                    low_price += int.Parse(Reader["low_price"].ToString());
                 }// while (Reader.Read())
 
             }// if (Reader.HasRows) login name match
             else
             {
                 Response.Write("<script>alert('還未有得標商品~要再去逛逛嗎?！');</script>");
-
                 Server.Transfer("Home.aspx");
-                //Response.Redirect("Home.aspx");
-
             }// if (Reader.HasRows) login name mismatch
-            //關閉與資料庫連接的通道
             connection.Close();
         }// private void fetchGoodPicsPathname()
+
 
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)

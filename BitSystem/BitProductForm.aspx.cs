@@ -125,7 +125,6 @@ namespace BitSystem
                 $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢
 
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
-
             da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
 
         }// protected void SQL_readActionProduct()
