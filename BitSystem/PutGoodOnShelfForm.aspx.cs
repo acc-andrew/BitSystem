@@ -19,7 +19,7 @@ namespace BitSystem
         SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString4";
+        string connString = "Sale_net_Jun22_2021ConnectionString2";
 
 
         private string[] aClassfyTitle = new string[]
