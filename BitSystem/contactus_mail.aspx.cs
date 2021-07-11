@@ -16,6 +16,8 @@ namespace BitSystem
         SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
         SqlConnection conn = new SqlConnection();
         DataSet ds_getbid = new DataSet();
+        SqlDataAdapter da_contact = new SqlDataAdapter();
+        DataSet ds_contact = new DataSet();
         SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
@@ -46,6 +48,11 @@ namespace BitSystem
                 SQL_readActionProduct_getbid(connString);
                 getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
                 getbid_view.DataBind();
+
+                // 載入曾詢問過問題
+                SQL_read_contact_us(connString);
+                contactus_view.DataSource = ds_contact; //將DataSet的資料載入到datalist內
+                contactus_view.DataBind();
             }
             else
             { // postback
@@ -72,6 +79,7 @@ namespace BitSystem
 
         }
 
+        // 寫入建議到資料庫
         protected void SQLDB_writeContactUs(string connString)
         {
          
@@ -109,8 +117,40 @@ namespace BitSystem
 
             Response.Write($"<script>alert('送出建議成功');</script>");
 
-
         }// protected void SQLDB_write()
+
+        // 顯示提問過問題
+        protected void SQL_read_contact_us(string connString)
+        {
+            cmd.Connection = conn;   //將SQL執行的命令語法程式CMD與CONN與SQL連接
+            //設定連線IP位置、資料表，帳戶，密碼
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
+                                            //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
+
+            cmd.CommandText = $"select *" +
+                $"from Contact_us " +
+                $"where member_ID ='{Session["member_ID"]}'";
+
+            da_contact.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da_contact.Fill(ds_contact, "Contact_us"); //da把資料填入ds裡面
+
+            for (int i = 0; i < ds_contact.Tables[0].Rows.Count; i++)
+            {
+                // 如果客服尚未回覆為NULL
+                string feedback_text;
+                if ((ds_contact.Tables[0].Rows[i]["feedback"]).ToString() == "")
+                {
+                    feedback_text = "尚未回覆";
+                }
+                else
+                {
+                    feedback_text = (ds_contact.Tables[0].Rows[i]["feedback"]).ToString();
+                }
+
+                ds_contact.Tables[0].Rows[i]["feedback"] = feedback_text;
+            }
+        }// protected void SQL_readActionProduct()
 
         protected void contactus_Click(object sender, EventArgs e)
         {

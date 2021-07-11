@@ -192,6 +192,46 @@ Body Section
 				<asp:Button ID="contactus" runat="server" Text="送出" OnClick="contactus_Click"/>
 				</div>
 			</div>
+			
+			<div class="breadcrumb">
+				<h4>詢問紀錄</h4>
+				<asp:DataList ID="contactus_view" runat="server" Width="100%">
+					<ItemTemplate>
+						<div class="thumbnail">
+							<table  border="1" >
+								<tr>
+									<td align='center'>問題主題</td>
+									<td align='center'>商品編號</td>
+									<td align='center'>問題描述</td>
+									<td align='center'>客服回復</td>
+									<td align='center'>詢問時間</td>
+								</tr>
+								<tr>
+									<td align='center'>
+									<asp:Label ID="target_view" width="80" runat="server" Text='<%# Eval("target") %>'/>
+									</td>
+
+									<td align='center'>
+									<asp:Label ID="action_product_ID_view" width="80" runat="server" Text='<%# Eval("action_product_ID") %>'/>
+									</td>
+							
+									<td align='center'>
+									<asp:Label ID="contact_text_view" width="200" runat="server" Text='<%# Eval("contact_text") %>'/>
+									</td>
+					
+									<td align='center'>
+									<asp:Label ID="feedback_view" width="200" runat="server" Text='<%# Eval("feedback") %>'/>
+									</td>
+
+									<td align='center'>
+									<asp:Label ID="datetime" width="80" runat="server" Text='<%# Eval("datetime") %>'/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</ItemTemplate>
+				</asp:DataList>
+			</div>
 		</div>
 </form>
 </body>

@@ -117,7 +117,9 @@ Body Section
 		
 		<div class="well well-small">
 		<div class="well well-small alert alert-warning cntr">
-			<h3>最新得標商品</h3>
+			<div align="center">
+				<h3>最新得標商品</h3>
+			</div>
 		</div>
 
 
