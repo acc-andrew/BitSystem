@@ -1,73 +1,146 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebGrease.Css;
 
 namespace BitSystem
 {
     public partial class contactus_mail : System.Web.UI.Page
     {
+        SqlDataAdapter da = new SqlDataAdapter();       //SQL 資料庫的連接與執行命令
+        SqlConnection conn = new SqlConnection();
+        DataSet ds_getbid = new DataSet();
+        SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
         string connString = "Sale_net_Jun22_2021ConnectionString";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //設定會員登入與否顯現標示不同
-            
-
-            if (Convert.ToString(Session["Login"]) == "logged")
+            // if the page loaded first time
+            if (IsPostBack == false)
             {
-                member_info.Visible = true;
-                order_info.Visible = true;
-                logout.Visible = true;
+                //設定會員登入與否顯現標示不同
+                if (Convert.ToString(Session["Login"]) == "logged")
+                {
+                    member_info.Visible = true;
+                    order_info.Visible = true;
+                    logout.Visible = true;
+                    member_ID.Text = Session["member_ID"].ToString();
+                }
+                else
+                {
+                    my_info.Visible = true;
+                    register.Visible = true;
+                    manager.Visible = true;
+                    Response.Redirect("memberLoginForm.aspx");
+                }
+
+                // 載入已結標熱門
+                SQL_readActionProduct_getbid(connString);
+                getbid_view.DataSource = ds_getbid; //將DataSet的資料載入到datalist內
+                getbid_view.DataBind();
             }
             else
-            {
-                my_info.Visible = true;
-                register.Visible = true;
-                manager.Visible = true;
-            }
-        }
-        
+            { // postback
 
-        protected bool bSQLDB_ifmatch(string connString, string _memberAccount)
+            }// postback
+
+        }// protected void Page_Load(object sender, EventArgs e)
+
+        // 左測已結標商品展示
+        protected void SQL_readActionProduct_getbid(string connString)
         {
-            bool bFound = false;
+            cmd.Connection = conn;
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+            conn.ConnectionString = s_data;
+
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,official_price,low_price,Member.name " +
+                 $"FROM Action_product " +
+                 $"INNER JOIN Member " +
+                 $"ON Action_product.bid_winner_ID = Member.member_ID " +
+                 $"ORDER BY Action_product.closedDateTime Desc";   //執行SQL語法進行查詢
+
+            da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
+            da.Fill(ds_getbid, "Action_product"); //da把資料填入ds裡面
+
+        }
+
+        protected void SQLDB_writeContactUs(string connString)
+        {
+         
+            int seller_ID = (int)(Session["member_ID"]);
+
+            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings[connString].ConnectionString;
+
             //new一個SqlConnection物件，是與資料庫連結的通道(其名為Connection)，以s_data內的連接字串連接所對應的資料庫。
             SqlConnection connection = new SqlConnection(s_data);
-            // bug1: SQL content
-            string sql_statement = $"select * from Member where user_name='{_memberAccount}'";
-            // bug2: sqlText
-            //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
-            SqlCommand Command = new SqlCommand(sql_statement, connection);
+
             //與資料庫連接的通道開啟
             connection.Open();
-            //new一個DataReader接取Execute所回傳的資料。
-            SqlDataReader Reader = Command.ExecuteReader();
-            //檢查是否有資料列
-            if (Reader.HasRows)
-            {
-                //使用Read方法把資料讀進Reader，讓Reader一筆一筆順向指向資料列，並回傳是否成功。
-                if (Reader.Read())
-                {
-                    bFound = true;
-                }// if (Reader.Read())
+            // _File
+            SqlCommand sql_insert_cmd = new SqlCommand("insert into Contact_us" +
+                "(member_ID,action_product_ID,target,contact_text) " +
+                "values(@member_ID,@action_product_ID,@target,@contact_text);", connection); //SQL語句
 
-            }// if (Reader.HasRows) login name match
-            else
-            {
-                bFound = false;
-            }// if (Reader.HasRows) login name mismatch
+            // run-time error type mismatch
+            sql_insert_cmd.Parameters.Add("@member_ID", SqlDbType.Int);
+            sql_insert_cmd.Parameters["@member_ID"].Value = Session["member_ID"];
+
+            sql_insert_cmd.Parameters.Add("@action_product_ID", SqlDbType.NVarChar);
+            sql_insert_cmd.Parameters["@action_product_ID"].Value = action_product_ID.Text;
+
+            sql_insert_cmd.Parameters.Add("@target", SqlDbType.NVarChar);
+            sql_insert_cmd.Parameters["@target"].Value = target.Text;
+            
+            sql_insert_cmd.Parameters.Add("@contact_text", SqlDbType.NVarChar);
+            sql_insert_cmd.Parameters["@contact_text"].Value = contact_text.Text;
+            
+            sql_insert_cmd.ExecuteNonQuery();
+
             //關閉與資料庫連接的通道
             connection.Close();
-            return bFound;
-        }// protected void bSQLDB_ifmatch()
 
-       
+            Response.Write($"<script>alert('送出建議成功');</script>");
+
+
+        }// protected void SQLDB_write()
+
+        protected void contactus_Click(object sender, EventArgs e)
+        {
+            if (Session["member_ID"] == null)
+            {
+                Response.Redirect("memberLoginForm.aspx");
+            }
+            else
+            {       
+                // to check every field are filled
+                if (target.Text == "")
+                {
+                    Response.Write($"<script>alert('請寫入問題主題');</script>");
+                    return;
+                }
+                else if (contact_text.Text == "")
+                {
+                    Response.Write($"<script>alert('請寫入問題描述');</script>");
+                    return;
+                }
+                else
+                {
+                    SQLDB_writeContactUs(connString);
+                }
+
+            }// member logged
+
+        }// protected void _putOnShelfBtn_Click(object sender, EventArgs e)
+
+
         //linkbutton 點擊連接網址
         protected void home_Click(object sender, EventArgs e)
         {
@@ -96,7 +169,7 @@ namespace BitSystem
 
         protected void contantus_Click(object sender, EventArgs e)
         {
-            // email
+            Response.Redirect("contactus_mail.aspx");
         }
 
         protected void manager_Click(object sender, EventArgs e)
@@ -109,7 +182,6 @@ namespace BitSystem
             Session["Login"] = null;
             Response.Redirect("Home.aspx");
         }
-
 
         //左側連接分類功能
         protected void cloth_Click(object sender, EventArgs e)
@@ -171,6 +243,5 @@ namespace BitSystem
             Session["classify"] = null;
             Response.Redirect("GoodListForm.aspx");
         }
-
-    }
+    }//public partial class PutGoodOnShelfForm : System.Web.UI.Page
 }

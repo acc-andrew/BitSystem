@@ -389,7 +389,7 @@ namespace BitSystem
 
         protected void contantus_Click(object sender, EventArgs e)
         {
-            // email
+            Response.Redirect("contactus_mail.aspx");
         }
 
         protected void manager_Click(object sender, EventArgs e)

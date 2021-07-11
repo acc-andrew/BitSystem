@@ -177,31 +177,13 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.LinkButton others;
 
         /// <summary>
-        /// Label3 控制項。
+        /// getbid_view 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-
-        /// <summary>
-        /// _memberAccount 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _memberAccount;
-
-        /// <summary>
-        /// _CreaateMemberBtn 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _CreaateMemberBtn;
+        protected global::System.Web.UI.WebControls.DataList getbid_view;
 
         /// <summary>
         /// Label1 控制項。
@@ -213,13 +195,49 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// _loginName 控制項。
+        /// member_ID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _loginName;
+        protected global::System.Web.UI.WebControls.TextBox member_ID;
+
+        /// <summary>
+        /// Label5 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
+
+        /// <summary>
+        /// target 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox target;
+
+        /// <summary>
+        /// Label4 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+
+        /// <summary>
+        /// action_product_ID 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox action_product_ID;
 
         /// <summary>
         /// Label2 控制項。
@@ -231,21 +249,21 @@ namespace BitSystem
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// _loginPassword 控制項。
+        /// contact_text 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _loginPassword;
+        protected global::System.Web.UI.WebControls.TextBox contact_text;
 
         /// <summary>
-        /// LoginBtn 控制項。
+        /// contactus 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LoginBtn;
+        protected global::System.Web.UI.WebControls.Button contactus;
     }
 }

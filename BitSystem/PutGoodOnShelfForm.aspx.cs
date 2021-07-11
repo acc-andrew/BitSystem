@@ -401,7 +401,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString2", closedDateTime);
+                    SQLDB_writeAutionProduct(connString, closedDateTime);
                     Response.Redirect("GoodListForm.aspx");
                 }
 
@@ -438,7 +438,7 @@ namespace BitSystem
 
         protected void contantus_Click(object sender, EventArgs e)
         {
-            // email
+            Response.Redirect("contactus_mail.aspx");
         }
 
         protected void manager_Click(object sender, EventArgs e)
