@@ -29,7 +29,6 @@ namespace BitSystem
         {
             if (!IsPostBack)
             {
-
                 //設定會員登入與否顯現標示不同
                 if (Convert.ToString(Session["Login"]) == "logged")
                 {
@@ -95,7 +94,9 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'life' and status = 'onsale'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product " +
+                $"where classify = 'life' and status = 'onsale'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_first, "Action_product"); //da把資料填入ds裡面
 
@@ -112,7 +113,9 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'cloth' and status = 'onsale'";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product " +
+                $"where classify = 'cloth' and status = 'onsale'";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_sec, "Action_product"); //da把資料填入ds裡面
 
@@ -128,7 +131,9 @@ namespace BitSystem
             conn.ConnectionString = s_data; //"Data Source=127.0.0.1;Initial Catalog=NorthwindChinese;Persist Security Info=True";
             //這一行可依連線的字串不同而去定義它該連線到哪個資料庫!!
 
-            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID from Action_product where classify = 'bag' and status = 'onsale' ";   //執行SQL語法進行查詢
+            cmd.CommandText = $"SELECT Top 3 pic_pathname,product,official_price,status,description,seller_ID,action_product_ID " +
+                $"from Action_product " +
+                $"where classify = 'bag' and status = 'onsale' ";   //執行SQL語法進行查詢
             da.SelectCommand = cmd;            //da選擇資料來源，由cmd載入進來
             da.Fill(ds_third, "Action_product"); //da把資料填入ds裡面
 
