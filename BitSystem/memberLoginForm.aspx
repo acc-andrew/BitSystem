@@ -202,6 +202,7 @@ Body Section
 				<br/>
 				<asp:Button ID="LoginBtn" runat="server" Text="會員登入" OnClick="LoginBtn_Click" />
 				<br/>
+			    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Sale_net_Jun22_2021ConnectionString5 %>" SelectCommand="SELECT * FROM [Action_product]"></asp:SqlDataSource>
 			</div>
 		</div>
 	</div>
