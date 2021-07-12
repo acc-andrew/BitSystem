@@ -25,7 +25,7 @@ namespace BitSystem
         System.Timers.Timer _timer;
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString2";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -375,8 +375,8 @@ namespace BitSystem
                 nOriMin = ts.TotalMinutes;
                 nDays = (int)Math.Floor(ts.TotalDays);
                 if (nOriMin > 1440.0)// day
-                    nMin -= (nDays * 1440.0);
-                else if (nOriMin > 60.0)
+                    nOriMin -= (nDays * 1440.0);
+                if (nOriMin > 60.0)
                 { // hour
                     nHour = nOriMin / 60.0;
                     nHour = (int)Math.Floor(nHour);
