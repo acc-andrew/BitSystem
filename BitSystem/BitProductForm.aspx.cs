@@ -79,6 +79,7 @@ namespace BitSystem
                 if (Session["ProductID"] != null)
                 {
                     string strProductID = Convert.ToInt32(Session["ProductID"]).ToString();
+                    action_product_ID.Text = strProductID;
                     _ProductID = int.Parse(strProductID);
 
                     getSQLDB_FindProduct_closedDateTime_officialPrice(connString, _ProductID);
@@ -806,7 +807,7 @@ namespace BitSystem
 
         protected void contantus_Click(object sender, EventArgs e)
         {
-            // email
+            Response.Redirect("contactus_mail.aspx");
         }
 
         protected void manager_Click(object sender, EventArgs e)

@@ -182,7 +182,7 @@ Upper Header Section
             <div class="breadcrumb">
 			共有<asp:Label id="lblRecordCount" ForeColor="red" runat="server" />個商品
 			當前為<asp:Label id="lblCurrentPage" ForeColor="red" runat="server" />/<asp:Label id="lblPageCount" ForeColor="red" runat="server" />頁 
-             <asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_DataBound" >
+             <asp:DataList ID="product_view" runat="server" Width="100%" OnItemCommand="product_view_ItemCommand" OnItemDataBound="product_view_ItemDataBound" >
 					<ItemTemplate>
 						<div class="thumbnail">
 							<table  border="1" >

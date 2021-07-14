@@ -302,16 +302,12 @@ namespace BitSystem
         }
         
         // 超過字數的欄位會隱藏 變成...
-        protected void product_view_DataBound(object sender, EventArgs e)
+        protected void product_view_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            // 演示ToolTip，使用GridView自帶的ToolTip
-            for (int i = 0; i < product_view.Items.Count; i++)
+            // itemdatabound 使用e.Item.FindControl解決每個row的最後一項讀不到的問題
+            if (((Label)e.Item.FindControl("description")).Text.Length > 75)
             {
-                product_view.Items[i].ToolTip = ((Label)product_view.Items[i].FindControl("description")).Text;
-                if (((Label)product_view.Items[i].FindControl("description")).Text.Length > 150)
-                {
-                    ((Label)product_view.Items[i].FindControl("description")).Text = ((Label)product_view.Items[i].FindControl("description")).Text.Substring(0, 125) + "......";
-                }
+                ((Label)e.Item.FindControl("description")).Text = ((Label)e.Item.FindControl("description")).Text.Substring(0, 75) + "......";
             }
         }
 
@@ -391,7 +387,7 @@ namespace BitSystem
 
         protected void contantus_Click(object sender, EventArgs e)
         {
-            // email
+            Response.Redirect("contactus_mail.aspx");
         }
 
         protected void manager_Click(object sender, EventArgs e)

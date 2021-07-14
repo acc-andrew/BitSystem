@@ -195,12 +195,15 @@ Body Section
             
             <asp:Image ID="_ProductImage" runat="server" width="300px" height="300px"/>
             <br/>
-            <asp:Label ID="Label3" runat="server" Text="剩餘時間："></asp:Label>
-            <asp:Label ID="_LeftTime" runat="server" Text=""></asp:Label>
-            <br/><br/>
+            <asp:Label ID="Label7" runat="server" Text="商品編號："></asp:Label>
+            <asp:Label ID="action_product_ID" runat="server" Text=""></asp:Label>
+			<br/>
             <asp:Label ID="Label1" runat="server" Text="商品名稱："></asp:Label>
             <asp:Label ID="_ProductName" runat="server" Text=""></asp:Label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            <br/>
+            <asp:Label ID="Label3" runat="server" Text="剩餘時間："></asp:Label>
+            <asp:Label ID="_LeftTime" runat="server" Text=""></asp:Label>
+            <br/>
             <asp:Label ID="Label2" runat="server" Text="商品描述："></asp:Label>
             <asp:Label ID="_ProductDesc" runat="server" Text=""></asp:Label>
             <br/><br/>
