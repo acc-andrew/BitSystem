@@ -19,7 +19,7 @@ namespace BitSystem
         SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString5";
 
 
         private string[] aClassfyTitle = new string[]
@@ -401,7 +401,7 @@ namespace BitSystem
                     closedDateTime += setTimespan;
                     /**/
 
-                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString2", closedDateTime);
+                    SQLDB_writeAutionProduct("Sale_net_Jun22_2021ConnectionString5", closedDateTime);
                     Response.Redirect("GoodListForm.aspx");
                 }
 
