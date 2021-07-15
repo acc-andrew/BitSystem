@@ -27,7 +27,7 @@ namespace BitSystem
         //設定分頁項目
         int PageSize, RecordCount, PageCount, CurrentPage;
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString5";
         protected void Page_Load(object sender, EventArgs e)
         {
             //設定PageSize

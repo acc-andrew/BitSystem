@@ -25,7 +25,7 @@ namespace BitSystem
         System.Timers.Timer _timer;
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString";
+        string connString = "Sale_net_Jun22_2021ConnectionString5";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -93,14 +93,15 @@ namespace BitSystem
 
                 // Call this procedure when the application starts.  
                 // Set to 1 minute.  
-                int interval = 1000;
+                int interval = 3000;
                 _timer = new System.Timers.Timer(interval);
                 //設定重複計時
                 _timer.AutoReset = true;
                 //設定執行System.Timers.Timer.Elapsed事件
 
                 _timer.Elapsed += new System.Timers.ElapsedEventHandler(Mytimer_tick);
-                //_timer.Start();
+                _timer.Enabled = true;
+                _timer.Start();
 
                 // 載入以截標熱門
                 SQL_readActionProduct_getbid(connString);
@@ -380,25 +381,15 @@ namespace BitSystem
 
                 nOriMin = ts.TotalMinutes;
                 nDays = (int)Math.Floor(ts.TotalDays);
-                if (nOriMin > 1440.0)// day
-                    nOriMin -= (nDays * 1440.0);
-                if (nOriMin > 60.0)
-                { // hour
-                    nHour = nOriMin / 60.0;
-                    nHour = (int)Math.Floor(nHour);
-                    nMin = nOriMin - (nHour * 60.0);
-                    nMin = (int)Math.Floor(nMin);
-                    strSec = ts.Seconds.ToString();
-                }
-                else
-                {
-                    nMin = (int)Math.Floor(nOriMin);
-                    strSec = ts.Seconds.ToString();
-                }
+
+                nDays = ts.Days;
+                nHour = ts.Hours;
+                nMin  = ts.Minutes;
+                nSec  = ts.Seconds;
                 _LeftTime.Text = "差距 " + Convert.ToInt32(nDays).ToString() + " 天 "
                                  + nHour.ToString() + " 小時 "
                                  + nMin.ToString() + " 分鐘 "
-                                 + strSec + " 秒";
+                                 + nSec.ToString() + " 秒";
 
                 // Response.Redirect(Request.RawUrl);
             }// if closedDateTime is later than now
