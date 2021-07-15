@@ -259,7 +259,16 @@ namespace BitSystem
 
                                                 SqlConnection connection = new SqlConnection(s_data);
 
-                                                string splupdate = $"UPDATE member SET password='{_memberPassword.Text}',name='{_name.Text}',mail='{_email.Text}',mobile_phone='{_cellphoneNo.Text}',year='{_birthYear_list.Text}',month='{_birthMonth_list.Text}',date='{_birthDate_list.Text}',address='{_address.Text}' WHERE member_ID='{_memberID.Text}'";
+                                                string splupdate = $"UPDATE member " +
+                                                    $"SET password='{_memberPassword.Text}'," +
+                                                    $"name='{_name.Text}'," +
+                                                    $"mail='{_email.Text}'," +
+                                                    $"mobile_phone='{_cellphoneNo.Text}'," +
+                                                    $"year='{_birthYear_list.Text}'," +
+                                                    $"month='{_birthMonth_list.Text}'," +
+                                                    $"date='{_birthDate_list.Text}'," +
+                                                    $"address='{_address.Text}' " +
+                                                    $"WHERE member_ID='{_memberID.Text}'";
 
 
                                                 SqlCommand Command = new SqlCommand(splupdate, connection); //SQL語句

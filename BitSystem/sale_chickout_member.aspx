@@ -204,9 +204,14 @@ Body Section
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<asp:Button ID="pay" runat="server" Text="前往付款" OnClick="pay_Click" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<asp:Button ID="back" runat="server" Text="繼續下標" OnClick="back_Click" />
-			<br/>	
-	</form>
+			<asp:Button ID="back" runat="server" Text="回前頁" OnClick="back_Click" />
+			<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+	
+</form>
 	</div>
 </div>
 </div>

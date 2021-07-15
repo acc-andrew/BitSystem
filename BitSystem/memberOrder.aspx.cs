@@ -216,7 +216,7 @@ namespace BitSystem
 
                     //計算總共有多少記錄(onsale)
                     string sql_statement1_onsale = $"select count(*) as co from Action_product " +
-                    "where status='getbid' and bid_winner_ID='" + Session["member_ID"] + "'";
+                    "where (status='getbid' or status='checkedout') and bid_winner_ID='" + Session["member_ID"] + "'";
                     RecordCount = CalculateRecord(connString, sql_statement1_onsale);
                     lblRecordCount.Text = RecordCount.ToString();
 
@@ -288,7 +288,7 @@ namespace BitSystem
                 {
                     ds_page.Tables["Action_product"].Rows[i]["status"] = "已得標未結帳";
                 }
-                else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "checkout  ")
+                else if ((string)ds_page.Tables["Action_product"].Rows[i]["status"] == "checkedout")
                 {
                     ds_page.Tables["Action_product"].Rows[i]["status"] = "已結帳";
                 }

@@ -148,7 +148,9 @@ namespace BitSystem
             //與資料庫連接的通道開啟
             connection.Open();
             // string sql_update = string.Format("update Member SET balance={0} where member_ID='{1}'", nBalance, bidder_ID);
-            string sql_update = string.Format("update Action_product SET bid_winner_ID={0} where action_product_ID='{1}'", bidder_ID, nProdcutID);
+            string sql_update = string.Format("update Action_product " +
+                "SET bid_winner_ID={0} " +
+                "where action_product_ID='{1}'", bidder_ID, nProdcutID);
             SqlCommand sql_update_cmd = new SqlCommand(sql_update, connection); //SQL語句
 
             sql_update_cmd.ExecuteNonQuery();
@@ -214,7 +216,9 @@ namespace BitSystem
             //與資料庫連接的通道開啟
             connection.Open();
             // string sql_update = string.Format("update Member SET balance={0} where member_ID='{1}'", nBalance, bidder_ID);
-            string sql_update = string.Format("update Action_product SET bid_winner_ID='{0}' where action_product_ID='{1}'", nSetValue, nProdcutID);
+            string sql_update = string.Format("update Action_product " +
+                "SET bid_winner_ID='{0}' " +
+                "where action_product_ID='{1}'", nSetValue, nProdcutID);
             SqlCommand sql_update_cmd = new SqlCommand(sql_update, connection); //SQL語句
 
             sql_update_cmd.ExecuteNonQuery();
@@ -236,7 +240,9 @@ namespace BitSystem
             //與資料庫連接的通道開啟
             connection.Open();
             // string sql_update = string.Format("update Member SET balance={0} where member_ID='{1}'", nBalance, bidder_ID);
-            string sql_update = string.Format("update Action_product SET bid_price={0} where action_product_ID={1}", nNewPrice, nProdcutID);
+            string sql_update = string.Format("update Action_product " +
+                "SET bid_price={0} " +
+                "where action_product_ID={1}", nNewPrice, nProdcutID);
             SqlCommand sql_update_cmd = new SqlCommand(sql_update, connection); //SQL語句
 
             sql_update_cmd.ExecuteNonQuery();
@@ -407,7 +413,9 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select closedDateTime, official_price from Action_product where action_product_ID='{nProductID}'";
+            string sql_statement = $"select closedDateTime, official_price " +
+                $"from Action_product " +
+                $"where action_product_ID='{nProductID}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -450,7 +458,9 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // "select bid_winner_ID,bid_price from Action_product where bid_winner_ID is not NULL";
-            string sql_statement = $"select bidder_ID,bid_price from Action_product where bit_product_ID={nSelectedProdcutID}";
+            string sql_statement = $"select bidder_ID,bid_price " +
+                $"from Action_product " +
+                $"where bit_product_ID={nSelectedProdcutID}";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令
@@ -491,7 +501,9 @@ namespace BitSystem
             SqlConnection connection = new SqlConnection(s_data);
 
             // bug1: SQL content
-            string sql_statement = $"select user_name from Member where member_ID='{nWinnerID}'";
+            string sql_statement = $"select user_name " +
+                $"from Member " +
+                $"where member_ID='{nWinnerID}'";
 
             // bug2: sqlText
             //new一個SqlCommand告訴這個物件準備要執行什麼SQL指令

@@ -221,7 +221,9 @@ namespace BitSystem
             //與資料庫連接的通道開啟
             connection.Open();
             // _File
-            SqlCommand sql_insert_cmd = new SqlCommand("insert into Action_product(classify,product,total_number,low_price,status,description,official_price,seller_ID,closedDateTime,pic_pathname,high_price) values(@classify,@product,@total_number,@low_price,@status,@description,@official_price,@seller_ID,@closedDateTime,@pic_pathname,@high_price);", connection); //SQL語句
+            SqlCommand sql_insert_cmd = new SqlCommand("insert into Action_product" +
+                "(classify,product,total_number,low_price,status,description,official_price,seller_ID,closedDateTime,pic_pathname,high_price) " +
+                "values(@classify,@product,@total_number,@low_price,@status,@description,@official_price,@seller_ID,@closedDateTime,@pic_pathname,@high_price);", connection); //SQL語句
 
             // run-time error type mismatch
             sql_insert_cmd.Parameters.Add("@closedDateTime", SqlDbType.DateTime);

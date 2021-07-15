@@ -22,7 +22,7 @@ namespace BitSystem
         DataSet ds_getbid = new DataSet();
 
         //設定總共價錢
-        int low_price;
+        int total_low_price;
         // 建立得標手續費資料
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,7 +41,13 @@ namespace BitSystem
                     SQL_readActionProduct(connString);
                     getbid_product.DataSource = ds; //將DataSet的資料載入到GridView1內
                     getbid_product.DataBind();
-                    total_price.Text = low_price.ToString();
+                    
+                    // 抓取dataset 給後續寄信用
+                    Session["getbid_datalist"] = ds;
+                    // 抓取total price 給後續寄信用
+                    total_price.Text = total_low_price.ToString();
+                    Session["total_price"] = total_low_price;
+
                 }
                 else
                 {
@@ -169,8 +175,8 @@ namespace BitSystem
             if (Reader.HasRows)
             {
                 while (Reader.Read())
-                {                  
-                    low_price += int.Parse(Reader["low_price"].ToString());
+                {
+                    total_low_price += int.Parse(Reader["low_price"].ToString());
                 }// while (Reader.Read())
 
             }// if (Reader.HasRows) login name match
