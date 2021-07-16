@@ -21,7 +21,7 @@ namespace BitSystem
         SqlCommand cmd = new SqlCommand();
 
         //設定資料庫資訊
-        string connString = "Sale_net_Jun22_2021ConnectionString5";
+        string connString = "Sale_net_Jun22_2021ConnectionString";
         protected void Page_Load(object sender, EventArgs e)
         {
             // if the page loaded first time
