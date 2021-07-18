@@ -204,9 +204,13 @@ namespace BitSystem
 
         private AlternateView Mail_Body()
         {
-            string str = $@"<h3>以下是您的得標結帳資訊,請參考! </h3><br/><br/>";
-            str += "<table style='text - align:'center';text-size = '3'; border='1'>";
-            str += "<tr>" +
+            LinkedResource imageResource;
+            AlternateView htmlView;
+
+            string htmlBody = $@"<h3>以下是您的得標結帳資訊,請參考! </h3><br/><br/>";
+            htmlBody += "<table style='text - align:'center';text-size = '3'; border='1'>";
+            htmlBody += "<tr>" +
+                        "<td>商品圖片</td>" +
                         "<td>商品名稱</td>" +
                         "<td>商品市價</td>" +
                         "<td>得標價錢</td>" +
@@ -216,18 +220,32 @@ namespace BitSystem
             // 把dataset資料塞到BODY
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                str += "<tr>" +
+                string[] prepare = ds.Tables[0].Rows[i]["pic_pathname"].ToString().Split('/');
+                string pathway = ds.Tables[0].Rows[i]["pic_pathname"].ToString().Replace("~", "");
+                string filenojpg = prepare[prepare.Length - 1].Replace(".jpg","");
+
+                htmlBody += "<tr>" +
+                            "<td>" + $"<img alt=\'\' width='150' hspace=0 src=\'cid:{filenojpg}\' align=baseline >" + " </td>" +
                             "<td>" + ds.Tables[0].Rows[i]["product"] + "</td>" +
                             "<td>" + ds.Tables[0].Rows[i]["official_price"] + "</td>" +
                             "<td>" + ds.Tables[0].Rows[i]["low_price"] + "</td>" +
                             "<td>" + ds.Tables[0].Rows[i]["handling_fee"] + "</td>" +
                         "</tr>";
-            }
-            str += "</table>";
-            str += "<h2 align='center'>總共金額 : " + Session["total_price"] + "</h2>";
 
-            AlternateView AV = AlternateView.CreateAlternateViewFromString(str, null, MediaTypeNames.Text.Html);
-            return AV;
+                htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, "text/html");
+                imageResource = new LinkedResource($@"{Request.PhysicalApplicationPath}" + $@"{pathway}", MediaTypeNames.Image.Jpeg);
+                imageResource.ContentId = filenojpg;
+                imageResource.TransferEncoding = TransferEncoding.Base64;
+                htmlView.LinkedResources.Add(imageResource);
+
+            }
+
+            htmlBody += "</table>";
+            htmlBody += "<h2 align='center'>總共金額 : " + Session["total_price"] + "</h2>";
+            htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, "text/html");
+
+            return htmlView;
+
         }
 
         // // 讀取資料庫找到寄送資料 放到dataset
