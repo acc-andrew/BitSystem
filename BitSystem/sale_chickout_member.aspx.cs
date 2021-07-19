@@ -182,7 +182,46 @@ namespace BitSystem
             mail.BodyEncoding = Encoding.UTF8;
             mail.IsBodyHtml = true;
             // 寫入mailbody
-            mail.AlternateViews.Add(Mail_Body());
+            LinkedResource imageResource;
+            AlternateView htmlView;
+
+            string htmlBody = $@"<h3>以下是您的得標結帳資訊,請參考! </h3>";
+            htmlBody += "<h2>總共金額 : " + Session["total_price"] + "</h2>";
+            htmlBody += "<table style=text-align: 'center';text-size = '3'; border='1'>";
+            htmlBody += "<tr>" +
+                        "<td aligh='center'><div style='width:120px;'>商品圖片</div></td>" +
+                        "<td aligh='center'><div style='width:120px;'>商品名稱</div></td>" +
+                        "<td aligh='center'><div style='width:120px;'>商品市價</div></td>" +
+                        "<td aligh='center'><div style='width:120px;'>得標價錢</div></td>" +
+                        "<td aligh='center'><div style='width:120px;'>總下標手續費</div></td>" +
+                   "</tr>";
+            htmlBody += "</table>";
+
+            // 把dataset資料塞到BODY
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                string[] prepare = ds.Tables[0].Rows[i]["pic_pathname"].ToString().Split('/');
+                string pathway = ds.Tables[0].Rows[i]["pic_pathname"].ToString().Replace("~", "");
+                string filenojpg = prepare[prepare.Length - 1].Replace(".jpg", "");
+
+                htmlBody += "<table style=text-align: 'center';text-size = '3'; border='1'>";
+                htmlBody += "<tr>" +
+                            "<td>" + $"<img alt=\'\' width='120' hspace=0 src=\'cid:{filenojpg}\' align=baseline >" + " </td>" +
+                            "<td><div style='width:120px';text-align:'center';text-size = '3';'>" + ds.Tables[0].Rows[i]["product"] + "</div></td>" +
+                            "<td><div style='width:120px';text-align:'center';text-size = '3';'>" + ds.Tables[0].Rows[i]["official_price"] + "</div></td>" +
+                            "<td><div style='width:120px';text-align:'center';text-size = '3';'>" + ds.Tables[0].Rows[i]["low_price"] + "</div></td>" +
+                            "<td><div style='width:120px';text-align:'center';text-size = '3';'>" + ds.Tables[0].Rows[i]["handling_fee"] + "</div></td>" +
+                        "</tr>";
+                htmlBody += "</table>";
+
+                htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, "text/html");
+                imageResource = new LinkedResource($@"{Request.PhysicalApplicationPath}" + $@"{pathway}", MediaTypeNames.Image.Jpeg);
+                imageResource.ContentId = filenojpg;
+                imageResource.TransferEncoding = TransferEncoding.Base64;
+                htmlView.LinkedResources.Add(imageResource);
+                mail.AlternateViews.Add(htmlView);
+
+            }
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
             System.Net.NetworkCredential basicCredential1 = new
@@ -200,52 +239,6 @@ namespace BitSystem
             {
                 throw ex;
             }
-        }
-
-        private AlternateView Mail_Body()
-        {
-            LinkedResource imageResource;
-            AlternateView htmlView;
-
-            string htmlBody = $@"<h3>以下是您的得標結帳資訊,請參考! </h3><br/><br/>";
-            htmlBody += "<table style='text - align:'center';text-size = '3'; border='1'>";
-            htmlBody += "<tr>" +
-                        "<td>商品圖片</td>" +
-                        "<td>商品名稱</td>" +
-                        "<td>商品市價</td>" +
-                        "<td>得標價錢</td>" +
-                        "<td>總下標手續費</td>" +
-                   "</tr>";
-
-            // 把dataset資料塞到BODY
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                string[] prepare = ds.Tables[0].Rows[i]["pic_pathname"].ToString().Split('/');
-                string pathway = ds.Tables[0].Rows[i]["pic_pathname"].ToString().Replace("~", "");
-                string filenojpg = prepare[prepare.Length - 1].Replace(".jpg","");
-
-                htmlBody += "<tr>" +
-                            "<td>" + $"<img alt=\'\' width='150' hspace=0 src=\'cid:{filenojpg}\' align=baseline >" + " </td>" +
-                            "<td>" + ds.Tables[0].Rows[i]["product"] + "</td>" +
-                            "<td>" + ds.Tables[0].Rows[i]["official_price"] + "</td>" +
-                            "<td>" + ds.Tables[0].Rows[i]["low_price"] + "</td>" +
-                            "<td>" + ds.Tables[0].Rows[i]["handling_fee"] + "</td>" +
-                        "</tr>";
-
-                htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, "text/html");
-                imageResource = new LinkedResource($@"{Request.PhysicalApplicationPath}" + $@"{pathway}", MediaTypeNames.Image.Jpeg);
-                imageResource.ContentId = filenojpg;
-                imageResource.TransferEncoding = TransferEncoding.Base64;
-                htmlView.LinkedResources.Add(imageResource);
-
-            }
-
-            htmlBody += "</table>";
-            htmlBody += "<h2 align='center'>總共金額 : " + Session["total_price"] + "</h2>";
-            htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, "text/html");
-
-            return htmlView;
-
         }
 
         // // 讀取資料庫找到寄送資料 放到dataset
