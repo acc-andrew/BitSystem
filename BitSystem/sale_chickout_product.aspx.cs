@@ -42,8 +42,6 @@ namespace BitSystem
                     getbid_product.DataSource = ds; //將DataSet的資料載入到GridView1內
                     getbid_product.DataBind();
                     
-                    // 抓取dataset 給後續寄信用
-                    Session["getbid_datalist"] = ds;
                     // 抓取total price 給後續寄信用
                     total_price.Text = total_low_price.ToString();
                     Session["total_price"] = total_low_price;
